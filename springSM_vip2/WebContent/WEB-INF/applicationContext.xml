@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	
+	<!-- 扫描指定的包，如果包中有注解就能扫描到 -->
+	<!-- base-package指定要扫描的包 -->
+	<context:component-scan base-package="com.zd.service"></context:component-scan>
+	
+	<!-- 配置spring事务管理mybaits的事务 -->
+	<!-- 1、配置事务管理器 -->
+	<bean id="tm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 要管理事务必须需要数据源 -->
+		<property name="dataSource" ref="c3p0"></property>
+	</bean>
+	<!-- 2、配置spring特有的通知,使用tx:advice配置 -->
+	<!-- transaction-manager指定事务管理器 -->
+	<tx:advice id="advice" transaction-manager="tm">
+		<!-- 事务的传播机制(事务规则，哪里需要使用使用，哪里不需要) -->
+		<tx:attributes>
+			 <!-- name中的*表示所有方法 -->
+			 <tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 3、配置aop,将通知应用到切点上,实现事务 -->
+	<aop:config>
+		<!-- 配置切点,让事务应用到service层 -->
+		<aop:pointcut expression="execution(*  com.zd.service.*.*(..))" id="pc"/>
+		<!-- 将通知应用到切点上,spring特有的通知必须通过通知者进行通知 -->
+		<!-- 将advice这个通知通知到pc这个切点上 -->
+		<aop:advisor advice-ref="advice" pointcut-ref="pc"/>
+	</aop:config>
+	
+	<!-- 引入外部的spring配置文件 -->
+	<import resource="spring-dao.xml"/>
+	
+</beans>
