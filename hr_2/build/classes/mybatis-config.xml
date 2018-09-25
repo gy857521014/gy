@@ -4,9 +4,17 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
+=======
+		<typeAlias type="com.zd.entity.User" alias="user"/>
+>>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 	</typeAliases>
 	<mappers>
+<<<<<<< HEAD
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
+=======
+		<mapper resource="com/zd/mappers/UserMapper.xml"/>
+>>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 	</mappers>
 </configuration>
