@@ -140,13 +140,13 @@ first_kind_name VARCHAR(60)
 	recovery_time DATE, -- 档案恢复时间
 	human_file_status INT -- 档案状态(1：待复核 2：正常 3：已删除)
 	
-	13.Salary_standard_details:薪酬标准单详细信息
-sdt_id	INTEGER	主键，自动增长列
-standard_id	INTEGER	薪酬标准单编号
-standard_name	STRING	薪酬标准单名称
-item_id	INTEGER	薪酬项目序号 
-item_name	STRING	薪酬项目名称 
-salary	DOUBLE	薪酬金额
+-- 薪酬标准单详细信息 --
+sdt_id			主键，自动增长列
+standard_id		薪酬标准单编号
+standard_name	薪酬标准单名称
+item_id			薪酬项目序号 
+item_name		薪酬项目名称 
+salary			薪酬金额
 
 CREATE TABLE Salary_standard_details(
 sdt_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -157,22 +157,21 @@ item_name VARCHAR(60),
 salary DOUBLE
 );
 
-14.Salary_standard：薪酬标准基本信息表 
- 列	类型	描述
-ssd_id	INTEGER	主键，自动增长列
-standard_id	INTEGER	薪酬标准单编号(外健：Salary_standard_details表中standard_id)
-standard_name	STRING	薪酬标准单名称
-designer	STRING	制定者名字
-register	STRING	登记人
-checker	STRING	复核人
-changer	STRING	 变更人 
-regist_time	DATE	登记时间
-check_time	DATE	复核时间
-change_time	DATE	变更时间
-salary_sum	DOUBLE	薪酬总额
-check_status	INTEGER	是否经过复核(1：通过 2:未通过)
-change_status	INTEGER	 更改状态 
-check_comment	STRING	复核意见  
+-- 薪酬标准基本信息表 --
+ssd_id			主键，自动增长列
+standard_id		薪酬标准单编号(外健：Salary_standard_details表中standard_id)
+standard_name	薪酬标准单名称
+designer		制定者名字
+register		登记人
+checker			复核人
+changer		 	变更人 
+regist_time		登记时间
+check_time		复核时间
+change_time		变更时间
+salary_sum		薪酬总额
+check_status	是否经过复核(1：通过 2:未通过)
+change_status	更改状态 
+check_comment	复核意见  
 remark	STRING	备注
 CREATE TABLE Salary_standard(
 ssd_id INT PRIMARY KEY AUTO_INCREMENT,
