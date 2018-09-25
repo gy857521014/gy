@@ -76,3 +76,5 @@ qfk_id INT PRIMARY KEY AUTO_INCREMENT,
 first_kind_id INT,
 first_kind_name VARCHAR(60)
 );
+-- 人力资源档案 --
+
