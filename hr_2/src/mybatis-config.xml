@@ -3,12 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
-		<typeAlias type="com.zd.entity.g_user" alias="g_user"/>
-		<typeAlias type="com.zd.entity.student" alias="student"/>
-	</typeAliases>
 	<mappers>
-		<mapper resource="com/zd/mappers/g_userMapper.xml"/>
-		<mapper resource="com/zd/mappers/studentMapper.xml"/>
+		<mapper resource="com/zd/mappers/EngageMajorMapper.xml"/>
 	</mappers>
 </configuration>
