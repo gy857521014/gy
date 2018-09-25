@@ -4,9 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.zd.entity.User" alias="user"/>
+		
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/zd/mappers/UserMapper.xml"/>
+	
+		<mapper resource="com/zd/mappers/EngageMajorMapper.xml"/>
 	</mappers>
 </configuration>
