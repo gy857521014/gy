@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,40 +51,19 @@
 					</td>
 				</tr>
 
-				
-				<tr>
+				<c:forEach items="${cffklist }" var="c">
+				<tr id="${c.ffk_id }">
 					<td class="TD_STYLE2">
-						1353318953319
+						${c.first_kind_id }
 					</td>
 					<td class="TD_STYLE2">
-						Ⅰ级结构
+						${c.first_kind_name }
 					</td>
 					<td class="TD_STYLE2">
-						2
+						${c.first_kind_salary_id }
 					</td>
 					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
-					</td>
-				</tr>
-				
-				<tr>
-					<td class="TD_STYLE2">
-						1353318929919
-					</td>
-					<td class="TD_STYLE2">
-						集团
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						2
+						${c.first_kind_sale_id }
 					</td>
 					<td class="TD_STYLE2">
 						<a href="first_kind_change.html">变更</a>
@@ -90,27 +72,8 @@
 						<a href="first_delete_success.html">删除</a>
 					</td>
 				</tr>
+				</c:forEach>
 				
-				<tr>
-					<td class="TD_STYLE2">
-						1353318937391
-					</td>
-					<td class="TD_STYLE2">
-						总部
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
-					</td>
-				</tr>
 				
 
 			</table>

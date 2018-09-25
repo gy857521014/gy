@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IConfig_file_first_kindDao">
+  <resultMap type="cffk" id="cffk">
+  	<result property="ffk_id" column="ffk_id"/>
+  	<result property="first_kind_id" column="first_kind_id"/>
+  	<result property="first_kind_name" column="first_kind_name"/>
+  	<result property="first_kind_salary_id" column="first_kind_salary_id"/>
+  	<result property="first_kind_sale_id" column="first_kind_sale_id"/>
+</resultMap>
+</mapper>
