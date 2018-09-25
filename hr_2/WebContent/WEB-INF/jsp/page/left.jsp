@@ -224,7 +224,7 @@
 									<ul>
 												<li>
 													<span>
-														<a href="client/first_kind.html" target="mainFrame" style="color:black;">Ⅰ级机构设置</a>
+														<a href="selcffk" target="mainFrame" style="color:black;">Ⅰ级机构设置</a>
 													</span>
 												</li>
 												<li>
