@@ -77,4 +77,65 @@ first_kind_id INT,
 first_kind_name VARCHAR(60)
 );
 -- 人力资源档案 --
-
+	hfd_id INT PRIMARY KEY AUTO_INCREMENT, -- 人力资源id，主键
+	human_id INT, -- 档案编号
+	first_king_id INT, -- 一级机构编号
+	first_king_name VARCHAR(50), -- 一级机构名称
+	second_kind_id INT, -- 二级机构编号
+	second_kind_name VARCHAR(50), -- 二级机构名称
+	third_kind_id INT, -- 三级机构编号
+	third_kind_name VARCHAR(50), -- 三级机构名称
+	human_name VARCHAR(20), -- 姓名
+	human_address VARCHAR(100), -- 地址
+	human_postcode INT, -- 邮政编码
+	human_pro_designation VARCHAR(20), -- 职称
+	human_major_kind_id INT, -- 职位分类编号
+	human_major_kind_name VARCHAR(20), -- 职位分类名称
+	human_major_id INT, -- 职位编号
+	hunma_major_name VARCHAR(20), -- 职位名称
+	human_telephone VARCHAR(50), -- 电话
+	human_mobilephone VARCHAR(50), -- 手机号码
+	human_bank VARCHAR(100), -- 开户银行
+	human_account VARCHAR(100), -- 银行帐号
+	human_qq INT, -- QQ号码
+	human_email VARCHAR(50), -- 电子邮件
+	human_hobby VARCHAR(50), -- 爱好
+	human_speciality VARCHAR(100), -- 特长
+	human_sex CHAR, -- 性别
+	human_religion VARCHAR(50), -- 宗教信仰
+	human_party VARCHAR(20), -- 政治面貌
+	human_nationality VARCHAR(50), -- 国籍
+	human_race VARCHAR(20), -- 民族
+	human_birthday DATE, -- 出生日期
+	human_birthplace VARCHAR(100), -- 出生地
+	human_age INT, -- 年龄
+	human_educated_degree VARCHAR(20), -- 学历
+	human_educated_years DOUBLE, -- 教育年限
+	human_educated_major VARCHAR(50), -- 学历专业
+	human_society_security_id INT, -- 社会保障号
+	human_id_card VARCHAR(100), -- 身份证号
+	remark VARCHAR(100), -- 备注
+	salary_standard_id INT, -- 薪酬标准编号
+	salary_standard_name VARCHAR(50), -- 薪酬标准名称
+	salary_sum DOUBLE, -- 基本薪酬总额
+	demand_salaray_sum DOUBLE, -- 应发薪酬总额
+	paid_salary_sum DOUBLE, -- 实发薪酬总额
+	major_change_amount INT, -- 调动次数
+	bonus_amount INT, -- 激励累计次数
+	training_amount INT, -- 培训累计次数
+	file_chang_amount INT, -- 档案变更累计次数
+	human_histroy_records VARCHAR(100), -- 简历
+	human_family_membership VARCHAR(50), -- 家庭关系
+	human_picture VARCHAR(50), -- 相片
+	attachment_name VARCHAR(50), -- 附件名称
+	check_status INT, -- 复核状态(1：通过复核 2：未通过复核)
+	register VARCHAR(50), -- 档案登记人
+	checker VARCHAR(50), -- 档案复核人
+	changer VARCHAR(50), -- 档案变更人
+	regist_time DATE, -- 档案登记时间
+	check_time DATE, -- 档案复核时间
+	change_time DATE, -- 档案变更时间
+	lastly_change_time DATE, -- 档案最近更改时间
+	delete_time DATE, -- 档案删除时间
+	recovery_time DATE, -- 档案恢复时间
+	human_file_status INT -- 档案状态(1：待复核 2：正常 3：已删除)
