@@ -2,7 +2,7 @@ package com.zd.entity;
 
 public class Config_file_first_kind {
 	private int ffk_id;
-	private int first_kind_id;
+	private String first_kind_id;
 	private String first_kind_name;
 	private int first_kind_salary_id;
 	private int first_kind_sale_id;
@@ -12,10 +12,11 @@ public class Config_file_first_kind {
 	public void setFfk_id(int ffk_id) {
 		this.ffk_id = ffk_id;
 	}
-	public int getFirst_kind_id() {
+	
+	public String getFirst_kind_id() {
 		return first_kind_id;
 	}
-	public void setFirst_kind_id(int first_kind_id) {
+	public void setFirst_kind_id(String first_kind_id) {
 		this.first_kind_id = first_kind_id;
 	}
 	public String getFirst_kind_name() {
