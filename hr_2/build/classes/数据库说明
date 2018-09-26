@@ -188,7 +188,7 @@ salary			薪酬金额
 
 CREATE TABLE Salary_standard_details(
 sdt_id INT PRIMARY KEY AUTO_INCREMENT,
-standard_id INT,
+standard_id VARCHAR(60),
 standard_name VARCHAR(60),
 item_id INT,
 item_name VARCHAR(60),
@@ -197,27 +197,27 @@ salary DOUBLE
 
 -- 薪酬标准基本信息表 --
 ssd_id			主键，自动增长列
-standard_id		薪酬标准单编号(外健：Salary_standard_details表中standard_id)
-standard_name	薪酬标准单名称
-designer		制定者名字
-register		登记人
+standard_id	*	薪酬标准单编号(外健：Salary_standard_details表中standard_id)
+standard_name*	薪酬标准单名称
+designer	*	制定者名字
+register	*	登记人
 checker			复核人
 changer		 	变更人 
-regist_time		登记时间
+regist_time	*	登记时间
 check_time		复核时间
 change_time		变更时间
-salary_sum		薪酬总额
+salary_sum	*	薪酬总额
 check_status	是否经过复核(1：通过 2:未通过)
 change_status	更改状态 
 check_comment	复核意见  
-remark	STRING	备注
+remark	STRING*	备注
 CREATE TABLE Salary_standard(
 ssd_id INT PRIMARY KEY AUTO_INCREMENT,
-standard_id INT,
+standard_id VARCHAR(60),
 standard_name VARCHAR(60),
 designer VARCHAR(60),
 register VARCHAR(60),
-checker VARCHAR(60),
+checker VARCHAR(60),4
 changer VARCHAR(60),
 regist_time DATE,
 check_time DATE,
@@ -228,3 +228,9 @@ change_status INT,
 check_comment VARCHAR(200),
 remark VARCHAR(200)
 )
+
+
+
+
+63  64
+11111111  
