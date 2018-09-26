@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
+import com.zd.entity.Humman_file;
 
 /**
  * 人力资源管理Service
@@ -34,4 +35,6 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//查询爱好
 	public List<Config_public_char> listaihao();
+	public int sel1all();
+	
 }

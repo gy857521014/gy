@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css"
+		<link rel="stylesheet" href="../css/table.css"
 			type="text/css"></link>
-			 
 	</head>
+	<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+		function sel(){
+			var aaa=$(".INPUT_STYLE2").val();
+			location.href = "selnum?num="+aaa;
+		}
+		
+	</script>
 	
 	<body>
 		<form action="register_list.html" method="post">
@@ -21,7 +27,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="确 定"  class="BUTTON_STYLE1">
+						<input type="button" value="确 定"  class="BUTTON_STYLE1" onclick="sel()">
 					</td>
 				</tr>
 			</table>
@@ -34,7 +40,9 @@
 					</td>
 					<td width="22%" class="TD_STYLE1">
 						<select name="submitType" class="INPUT_STYLE2">
-								<option value="1">一级机构发放方式</option>
+							<option value="1">一级机构发放方式</option>
+							<option value="2">二级机构发放方式</option>
+							<option value="3">三级机构发放方式</option>
 						</select>
 					</td>
 					<td width="60%" class="TD_STYLE1"></td>

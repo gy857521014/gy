@@ -1,12 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 		</script>
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
+		<link rel="stylesheet" href="../css/table.css" type="text/css" />
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<title>无标题文档</title>
 		<STYLE type="text/css">
 		td{text-align: center}
@@ -26,7 +29,7 @@
 				 
 			</table>
 					<br> 
-					薪酬总数:3，
+					薪酬总数:${hsum }，
 					总人数:8，基本薪酬总数:141821.0，实发总额:1998.0
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
@@ -39,16 +42,9 @@
 					
 					
 					<td width="40%"  class="TD_STYLE1">
+					
 						<span>I级机构名称</span>
 					</td>
-					
-					
-					
-					
-					
-							
-					
-						
 					<td width="10%" class="TD_STYLE1">
 						<span>人数</span>
 					</td>
@@ -59,79 +55,14 @@
 						登记
 					</td>
 				</tr>
-				
-				
+						<c:forEach items="${arr }" var="a" varStatus="vs">
 					<tr class="TD_STYLE2">
 						<td>
-							1
+							${vs.count }
 						</td>
-						
-					
-						
-						
-					<td> &#8544;&#32423;&#32467;&#26500;  </td>
-					
-					
-					
-					
-					
-						
+					<td> ${a.first_kind_name }  </td>
 						<td>
-							5 
-						</td>
-						<td>
-							139823.0 
-						</td>
-						<td>
-							<a href="register_commit.html">登 记</a>
-						</td>
-					</tr>
-					
-				
-					<tr class="TD_STYLE2">
-						<td>
-							2
-						</td>
-						
-					
-						
-						
-					<td> &#38598;&#22242;  </td>
-					
-					
-					
-					
-					
-						
-						<td>
-							1 
-						</td>
-						<td>
-							666.0 
-						</td>
-						<td>
-							<a href="register_commit.html">登 记</a>
-						</td>
-					</tr>
-					
-				
-					<tr class="TD_STYLE2">
-						<td>
-							3
-						</td>
-						
-					
-						
-						
-					<td> &#24635;&#37096;  </td>
-					
-					
-					
-					
-					
-						
-						<td>
-							2 
+							${sum } 
 						</td>
 						<td>
 							1332.0 
@@ -140,12 +71,9 @@
 							<a href="register_commit.html">登 记</a>
 						</td>
 					</tr>
-					
-					
-					
+						</c:forEach>
 				</table>
 			<p>
-			 
 				&nbsp;
 			</p>
 		 

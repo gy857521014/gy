@@ -20,6 +20,8 @@ import com.zd.service.IHumman_fileService;
  */
 @Service
 public class Humman_fileService implements IHumman_fileService {
+	@Autowired
+	private IHumman_fileDao dao;
 
 	@Autowired
 	private IConfig_file_first_kindDao config_file_first_kindDao;
@@ -68,4 +70,9 @@ public class Humman_fileService implements IHumman_fileService {
 	public List<Config_public_char> listaihao() {
 		return config_public_charDao.listaihao();
 	}
+	@Override
+	public int sel1all() {
+		return dao.sel1all();
+	}
+	
 }
