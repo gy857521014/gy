@@ -1,7 +1,5 @@
 package com.zd.entity;
 
-import java.sql.Date;
-
 public class Salary_standard {
 	private int ssd_id;
 	private String standard_id;
@@ -10,9 +8,9 @@ public class Salary_standard {
 	private String register;
 	private String checker;
 	private String changer;
-	private Date regist_time;
-	private Date check_time;
-	private Date change_time;
+	private String regist_time;
+	private String check_time;
+	private String change_time;
 	private double salary_sum;
 	private int check_status;
 	private int change_status;
@@ -60,22 +58,22 @@ public class Salary_standard {
 	public void setChanger(String changer) {
 		this.changer = changer;
 	}
-	public Date getRegist_time() {
+	public String getRegist_time() {
 		return regist_time;
 	}
-	public void setRegist_time(Date regist_time) {
+	public void setRegist_time(String regist_time) {
 		this.regist_time = regist_time;
 	}
-	public Date getCheck_time() {
+	public String getCheck_time() {
 		return check_time;
 	}
-	public void setCheck_time(Date check_time) {
+	public void setCheck_time(String check_time) {
 		this.check_time = check_time;
 	}
-	public Date getChange_time() {
+	public String getChange_time() {
 		return change_time;
 	}
-	public void setChange_time(Date change_time) {
+	public void setChange_time(String change_time) {
 		this.change_time = change_time;
 	}
 	public double getSalary_sum() {
@@ -109,8 +107,8 @@ public class Salary_standard {
 		this.remark = remark;
 	}
 	public Salary_standard(int ssd_id, String standard_id, String standard_name, String designer, String register,
-			String checker, String changer, Date regist_time, Date check_time, Date change_time, double salary_sum,
-			int check_status, int change_status, String check_comment, String remark) {
+			String checker, String changer, String regist_time, String check_time, String change_time,
+			double salary_sum, int check_status, int change_status, String check_comment, String remark) {
 		super();
 		this.ssd_id = ssd_id;
 		this.standard_id = standard_id;
@@ -132,6 +130,7 @@ public class Salary_standard {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	

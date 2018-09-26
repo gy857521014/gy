@@ -17,15 +17,15 @@ public class Salary_standardController {
 	private ISalary_standardService Salary_standardService;
 	
 	//薪酬标准登记页面获取时间搓
-	@RequestMapping("tosalarystandard_register")
+	@RequestMapping("page/tosalarystandard_register")
 	public String tosalarystandard_register(Map map) {
 		long sytime = System.currentTimeMillis();
 		map.put("sytime", sytime);
-		return "/page/salaryCriterion/salarystandard_register";
+		return "page/salaryCriterion/salarystandard_register";
 	}
 	
 	//薪酬标准登记页面登记
-	@RequestMapping("addSalary_standard")
+	@RequestMapping("page/addSalary_standard")
 	public String addSalary_standard(Salary_standard ss,Compensation_item ci) {
 		Salary_standardService.addSalary_standard(ss);
 		ci.setStandard_id(ss.getStandard_id());

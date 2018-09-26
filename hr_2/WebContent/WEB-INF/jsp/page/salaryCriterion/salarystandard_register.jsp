@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
-<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
+<link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 </head>
 <body>
-	<form method="post" action="salarystandard_register_success.html">
+	<form method="post" action="addSalary_standard">
 		<table width="100%">
 			<tr>
 				<td><font color="black">您正在做的业务是：人力资源--薪酬标准管理--薪酬标准登记 </font></td>
