@@ -9,6 +9,5 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
-		<mapper resource="com/zd/mappers/EngageMajorMapper.xml"/>
 	</mappers>
 </configuration>
