@@ -12,7 +12,7 @@
 		</script>
 	</head>
 	<body>
-		<form method="post" action="../customiz/customizAction!findFirstKind">
+		<form method="post" action="toadd">
 			<table width="100%">
 				<tr>
 					<td>
@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="添加" class="BUTTON_STYLE1"
+						<input type="submit" value="添加" class="BUTTON_STYLE1"
 							onclick="window.location.href='first_kind_register.html'" />
 					</td>
 				</tr>
@@ -66,10 +66,10 @@
 						${c.first_kind_sale_id }
 					</td>
 					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
+						<a href="selcffkid?first_kind_id=${c.first_kind_id }">变更</a>
 					</td>
 					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
+						<a href="deletecffk?ffk_id=${c.ffk_id }">删除</a>
 					</td>
 				</tr>
 				</c:forEach>

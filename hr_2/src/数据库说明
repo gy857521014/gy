@@ -139,3 +139,18 @@ first_kind_name VARCHAR(60)
 	delete_time DATE, -- 档案删除时间
 	recovery_time DATE, -- 档案恢复时间
 	human_file_status INT -- 档案状态(1：待复核 2：正常 3：已删除)
+	
+	
+	
+	
+	
+	
+	
+	
+-- 公共字段设置(董志鹏)
+CREATE TABLE config_public_char(
+pbc_id INT PRIMARY KEY AUTO_INCREMENT,
+attribute_kind VARCHAR(60),
+attribute_name VARCHAR(60)
+);
+	
