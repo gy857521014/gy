@@ -1,0 +1,18 @@
+package com.zd.service;
+
+import java.util.List;
+
+import com.zd.entity.Config_file_first_kind;
+
+/**
+ * 人力资源管理Service
+ * @author 周泽旭
+ *
+ */
+public interface IHumman_fileService {
+
+	//三级联动
+		//一级机构查询
+	public List<Config_file_first_kind> selcffk();
+	
+}
