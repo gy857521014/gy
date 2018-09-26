@@ -24,7 +24,7 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/position/position_register.html" target="mainFrame" style="color:black;">职位发布登记</a>
+														<a href="torecruit" target="mainFrame" style="color:black;">职位发布登记</a>
 													</span>
 												</li>
 												<li>
@@ -154,7 +154,7 @@
 					<ul>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_register.html" target="mainFrame" style="color:black;">薪酬标准登记</a>
+										<a href="tosalarystandard_register" target="mainFrame" style="color:black;">薪酬标准登记</a>
 									</span>
 								</li>
 								<li>

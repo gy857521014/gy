@@ -6,8 +6,14 @@
 	<typeAliases>
 		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
 		<typeAlias type="com.zd.entity.EngageMajor" alias="engagemajor"/>
+		<typeAlias type="com.zd.entity.User" alias="user"/>
+		<typeAlias type="com.zd.entity.Config_major_kind" alias="major_king"/>
+		<typeAlias type="com.zd.entity.Config_major" alias="major"/>
 	</typeAliases>
 	<mappers>
+		<mapper resource="com/zd/mappers/UserMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
+		<mapper resource="com/zd/mappers/Config_major_kindMapper.xml"/>
+		<mapper resource="com/zd/mappers/Config_majorMapper.xml"/>
 	</mappers>
 </configuration>

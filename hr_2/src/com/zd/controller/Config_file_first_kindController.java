@@ -17,12 +17,6 @@ public class Config_file_first_kindController {
 	@Autowired
 	private IConfig_file_first_kindService icffkservice;
 	
-	@RequestMapping("tologin")
-	public String tologin() {
-		return "redirect:selcffk";
-	}
-	
-	
 	@RequestMapping("/selcffk")
 	public  String selcffk(Map<String, Object> map) {
 		List<Config_file_first_kind> cffklist = 
