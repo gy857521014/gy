@@ -6,6 +6,8 @@ public class Config_file_first_kind {
 	private String first_kind_name;
 	private int first_kind_salary_id;
 	private int first_kind_sale_id;
+	
+	
 	public int getFfk_id() {
 		return ffk_id;
 	}

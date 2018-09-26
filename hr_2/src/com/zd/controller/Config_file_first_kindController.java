@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.zd.entity.Config_file_first_kind;
 import com.zd.service.IConfig_file_first_kindService;
 
@@ -17,7 +18,7 @@ public class Config_file_first_kindController {
 	private IConfig_file_first_kindService icffkservice;
 	
 	//查询所有
-	@RequestMapping("/selcffk")
+	@RequestMapping("page/selcffk")
 	public  String selcffk(Map<String, Object> map) {
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{
@@ -31,7 +32,7 @@ public class Config_file_first_kindController {
 		return "/page/client/first_kind";
 	}
 	//跳转添加获取时间搓
-	@RequestMapping("/toadd")
+	@RequestMapping("page/toadd")
 	public String toadd(Map<String, Object> map) {
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{
@@ -45,7 +46,7 @@ public class Config_file_first_kindController {
 	}
 	
 	//添加
-	@RequestMapping("/addcffk")
+	@RequestMapping("page/addcffk")
 	public String addcffk(Config_file_first_kind config_file_first_kind) {
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{
@@ -57,7 +58,7 @@ public class Config_file_first_kindController {
 		return "/page/client/first_kind_register_success";
 	}
 	// 查询修改
-	@RequestMapping("/selcffkid")
+	@RequestMapping("page/selcffkid")
 	public String selcffkid(Map<String, Object> map,String first_kind_id){
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{
@@ -71,7 +72,7 @@ public class Config_file_first_kindController {
 	}
 		
 	// 修改
-	@RequestMapping("/updatecffk")
+	@RequestMapping("page/updatecffk")
 	public String updatecffk(Config_file_first_kind config_file_first_kind){
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{
@@ -83,7 +84,7 @@ public class Config_file_first_kindController {
 		return "/page/client/first_kind_change_success";
 	}
 	//删除
-	@RequestMapping("/deletecffk")
+	@RequestMapping("page/deletecffk")
 	public String deletecffk(int ffk_id) {
 		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 		try{

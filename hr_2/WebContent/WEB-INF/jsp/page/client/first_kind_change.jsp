@@ -4,9 +4,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-		<link rel="stylesheet" href="../../css/table.css" type="text/css"></link>
-		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
-		<script type="text/javascript" src="javascript/jquery-1.7.2.js"></script>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
 		function checkeServiceName(){
 			// 获取机构名称
@@ -16,10 +16,25 @@
 			if(document.getElementById("zrrbh").value==''){
 				$("#errorSpanzrrbh").html("<font color='red'>不能为空</font>");
 				return;
+			}else{
+				var reg = /^\d{1,}$/;
+				var b = reg.test(zrrbh);
+				if(!b){
+					$("#errorSpanzrrbh").html("<font color='red'>必须填写数字编号</font>");
+					return;
+				}
 			}
+			
 			if(document.getElementById("xsbh").value==''){
 				$("#errorSpanxsbh").html("<font color='red'>不能为空</font>");
 				return;
+			}else{
+				var reg = /^\d{1,}$/;
+				var b = reg.test(xsbh);
+				if(!b){
+					$("#errorSpanxsbh").html("<font color='red'>必须填写数字编号</font>");
+					return;
+				}
 			}
 			$("#cc").submit();
 		}
@@ -39,7 +54,7 @@
 					<td align="right">
 						<input type="button" value="提交" class="BUTTON_STYLE1" onclick="checkeServiceName()" />
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back();">
+							onclick="window.location.href='selcffk'">
 					</td>
 				</tr>
 			</table>

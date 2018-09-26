@@ -4,9 +4,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-		<link rel="stylesheet" href="../../css/table.css" type="text/css"></link>
-		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
-		<script type="text/javascript" src="javascript/jquery-1.7.2.js"></script>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
 			function checkeServiceName(){
 				// 获取机构名称
@@ -18,13 +18,29 @@
 					$("#errorSpan").html("<font color='red'>不能为空</font>");
 					return;
 				}
+				
 				if(document.getElementById("zrrbh").value==''){
 					$("#errorSpanzrrbh").html("<font color='red'>不能为空</font>");
 					return;
+				}else{
+					var reg = /^\d{1,}$/;
+					var b = reg.test(zrrbh);
+					if(!b){
+						$("#errorSpanzrrbh").html("<font color='red'>必须填写数字编号</font>");
+						return;
+					}
 				}
+				
 				if(document.getElementById("xsbh").value==''){
 					$("#errorSpanxsbh").html("<font color='red'>不能为空</font>");
 					return;
+				}else{
+					var reg = /^\d{1,}$/;
+					var b = reg.test(xsbh);
+					if(!b){
+						$("#errorSpanxsbh").html("<font color='red'>必须填写数字编号</font>");
+						return;
+					}
 				}
 				$("#cc").submit();
 			}
@@ -44,7 +60,7 @@
 					<td align="right">
 						<input type="button" value="提交" onclick="checkeServiceName()" class="BUTTON_STYLE1">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back();">
+							onclick="window.location.href='selcffk'">
 					</td>
 				</tr>
 			</table>
@@ -72,7 +88,7 @@
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						薪酬发放责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
+						薪酬发放责任人编号
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="zrrbh" name="first_kind_salary_id" rows="4"
@@ -82,7 +98,7 @@
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						销售责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
+						销售责任人编号
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="xsbh" name="first_kind_sale_id" rows="4"
