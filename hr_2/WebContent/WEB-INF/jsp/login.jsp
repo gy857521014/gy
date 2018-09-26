@@ -29,7 +29,7 @@
 		</script>
 	</head>
 	<body>
-		<form action="" method="post">
+		<form action="login" method="post" id="login1">
 			<div>
 				<table cellspacing=0 cellpadding=0 width=900 align=center border=0>
 					<tbody>
@@ -55,7 +55,7 @@
 																登 录 名：
 															</td>
 															<td style="height: 28px" width=150>
-																<input id="userName" style="width: 130px"/>
+																<input id="userName" name="user_name" style="width: 130px"/>
 															</td>
 														</tr>
 														<tr>
@@ -63,7 +63,7 @@
 																登录密码：
 															</td>
 															<td style="height: 28px">
-																<input id="userPassword" style="width: 130px" type="password"/>
+																<input id="userPassword" name="user_password" style="width: 130px" type="password"/>
 															</td>
 														</tr>
 
