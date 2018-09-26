@@ -107,7 +107,7 @@
 					<ul>
 								<li>
 									<span>
-											<a href="humanResources/human_register.html" target="mainFrame" style="color:black;">人力资源档案登记</a>
+											<a href="human_register" target="mainFrame" style="color:black;">人力资源档案登记</a>
 									</span>
 								</li>
 								<li>
