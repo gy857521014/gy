@@ -6,9 +6,12 @@
 	<typeAliases>
 		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
 		<typeAlias type="com.zd.entity.User" alias="user"/>
+		<!-- 公共表字段映射 -->
+		<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/UserMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
+		<mapper resource="com/zd/mappers/Config_public_charMapper.xml"/>
 	</mappers>
 </configuration>

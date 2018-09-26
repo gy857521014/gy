@@ -8,5 +8,9 @@ package com.zd.dao;
  *
  */
 public interface IHumman_fileDao {
-
+	
+	
+	
+	
+	
 }
