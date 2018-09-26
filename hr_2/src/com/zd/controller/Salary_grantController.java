@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.service.IConfig_file_first_kindService;
+import com.zd.service.IHumman_fileService;
 
 
 @Controller
 public class Salary_grantController {
 	@Autowired
+	private IConfig_file_first_kindService ffk;
+	@Autowired
 	private IConfig_file_first_kindService icffkservice;
-	
+	@Autowired
+	public IHumman_fileService hf;
 	
 	@RequestMapping("page/tolo")
 	public String tolo() {
@@ -30,7 +34,11 @@ public class Salary_grantController {
 		try {
 			if(num==1) {
 				List<Config_file_first_kind> arr = icffkservice.selcffk();
+				int sum = hf.sel1all();
+				int hsum = ffk.selhumnum();
 				map.put("arr", arr);
+				map.put("sum",sum);
+				map.put("hsum", hsum);
 				return "page/salaryGrant/register_list";
 			}
 			if(num==2) {

@@ -15,4 +15,6 @@ public interface IConfig_file_first_kindService {
 	public void updatecffk(Config_file_first_kind config_file_first_kind);
 	// É¾³ýÓÃ»§
 	public void deletecffk(int ffk_id);
+	
+	public int selhumnum();
 }
