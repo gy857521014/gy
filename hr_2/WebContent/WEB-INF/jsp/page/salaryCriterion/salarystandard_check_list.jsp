@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
+<link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 <title>无标题文档</title>
 <style type="text/css">
 <!--

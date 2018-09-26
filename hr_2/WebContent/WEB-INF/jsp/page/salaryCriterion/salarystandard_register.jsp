@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
-<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
+<link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 </head>
 <body>
-	<form method="post" action="salarystandard_register_success.html">
+	<form method="post" action="addSalary_standard">
 		<table width="100%">
 			<tr>
 				<td><font color="black">您正在做的业务是：人力资源--薪酬标准管理--薪酬标准登记 </font></td>
@@ -26,15 +26,15 @@
 			<tr>
 				<td width="74" class="TD_STYLE1">薪酬标准编号</td>
 				<td width="168" class="TD_STYLE2"><input type="text"
-					name="standard.standardId" value="1353752304959"
+					name="standard_id" value="${sytime }"
 					readonly="readonly" class="INPUT_STYLE2"></td>
 				<td width="83" class="TD_STYLE1">薪酬标准名称</td>
 				<td width="171" class="TD_STYLE2"><input type="text"
-					name="standard.standardName" id="standardName" class="INPUT_STYLE2">
+					name="standard_name" id="standardName" class="INPUT_STYLE2">
 				</td>
 				<td width="170" class="TD_STYLE1">薪酬总额</td>
 				<td width="138" class="TD_STYLE2"><input type="text"
-					name="standard.salarySum" id="sumSalary" value="0.0" readonly
+					name="salary_sum" id="sumSalary" value="0.0" readonly
 					class="INPUT_STYLE2" /></td>
 				<td width="103" class="TD_STYLE1">&nbsp;</td>
 				<td width="95" height="26" class="TD_STYLE2">&nbsp;</td>
@@ -42,14 +42,14 @@
 			<tr>
 				<td class="TD_STYLE1">制定人</td>
 				<td class="TD_STYLE2"><input type="text" id="designer"
-					name="standard.designer" class="INPUT_STYLE2"></td>
+					name="designer" class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">登记人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.register" value="better_admin" readonly="readonly"
+					name="register" value="better_admin" readonly="readonly"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">登记时间</td>
 				<td class="TD_STYLE2"><input type="text" id="Tdate"
-					name="standard.registTime" readonly="readonly" class="INPUT_STYLE2">
+					name="regist_time" readonly="readonly" class="INPUT_STYLE2">
 				</td>
 				<td class="TD_STYLE1">&nbsp;</td>
 				<td class="TD_STYLE2">&nbsp;</td>
@@ -57,7 +57,7 @@
 			<tr>
 				<td class="TD_STYLE1">备注</td>
 				<td colspan="7" class="TD_STYLE2"><textarea
-						name="standard.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
 				</td>
 			</tr>
 			<tr class="TD_STYLE1">
@@ -76,7 +76,7 @@
 						name="details[0].itemName" value="出差补助">
 					</td>
 					<td><input type="text" id="salary1" value="0.00"
-						name="details[0].salary" onkeyup="countMoney('6','salary1')"
+						name="travel" onkeyup="countMoney('6','salary1')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -89,7 +89,7 @@
 						name="details[1].itemName" value="交通补贴">
 					</td>
 					<td><input type="text" id="salary2" value="0.00"
-						name="details[1].salary" onkeyup="countMoney('6','salary2')"
+						name="traffic" onkeyup="countMoney('6','salary2')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -102,7 +102,7 @@
 						name="details[2].itemName" value="住房补贴">
 					</td>
 					<td><input type="text" id="salary3" value="0.00"
-						name="details[2].salary" onkeyup="countMoney('6','salary3')"
+						name="housing" onkeyup="countMoney('6','salary3')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -115,7 +115,7 @@
 						name="details[3].itemName" value="基本工资">
 					</td>
 					<td><input type="text" id="salary4" value="0.00"
-						name="details[3].salary" onkeyup="countMoney('6','salary4')"
+						name="basic" onkeyup="countMoney('6','salary4')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -128,7 +128,7 @@
 						name="details[4].itemName" value="年终奖">
 					</td>
 					<td><input type="text" id="salary5" value="0.00"
-						name="details[4].salary" onkeyup="countMoney('6','salary5')"
+						name="year_end" onkeyup="countMoney('6','salary5')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -141,7 +141,7 @@
 						name="details[5].itemName" value="误餐补助">
 					</td>
 					<td><input type="text" id="salary6" value="0.00"
-						name="details[5].salary" onkeyup="countMoney('6','salary6')"
+						name="mistakes" onkeyup="countMoney('6','salary6')"
 						class="INPUT_STYLE2"></td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
