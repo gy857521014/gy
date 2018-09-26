@@ -17,11 +17,11 @@ public class Config_file_first_kindController {
 	@Autowired
 	private IConfig_file_first_kindService icffkservice;
 	
-	@RequestMapping("/selcffk")
+	@RequestMapping("page/selcffk")
 	public  String selcffk(Map<String, Object> map) {
 		List<Config_file_first_kind> cffklist = 
 				icffkservice.selcffk();
 		map.put("cffklist", cffklist);
-		return "/page/client/first_kind";
+		return "page/client/first_kind";
 	}
 }
