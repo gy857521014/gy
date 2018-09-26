@@ -179,7 +179,7 @@
 					<ul>
 								<li>
 									<span>
-										<a href="salaryGrant/register_locate.html" target="mainFrame" style="color:black;">薪酬发放登记</a>
+										<a href="tolo" target="mainFrame" style="color:black;">薪酬发放登记</a>
 									</span>
 								</li>
 								<li>

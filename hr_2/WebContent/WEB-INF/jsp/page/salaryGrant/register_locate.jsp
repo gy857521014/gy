@@ -4,15 +4,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css"
+		<link rel="stylesheet" href="../css/table.css"
 			type="text/css"></link>
 	</head>
-	<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 	<script type="text/javascript">
 		function sel(){
 			var aaa=$(".INPUT_STYLE2").val();
-			location.href = "selnum";
+			location.href = "selnum?num="+aaa;
 		}
+		
 	</script>
 	
 	<body>

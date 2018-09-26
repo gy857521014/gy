@@ -6,10 +6,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 		</script>
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
+		<link rel="stylesheet" href="../css/table.css" type="text/css" />
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<title>无标题文档</title>
 		<STYLE type="text/css">
 		td{text-align: center}
@@ -42,6 +42,7 @@
 					
 					
 					<td width="40%"  class="TD_STYLE1">
+					
 						<span>I级机构名称</span>
 					</td>
 					<td width="10%" class="TD_STYLE1">
