@@ -164,6 +164,20 @@ engage_required	VARCHAR(60)	-- 招聘要求
 	recovery_time DATE, -- 档案恢复时间
 	human_file_status INT -- 档案状态(1：待复核 2：正常 3：已删除)
 	
+	
+	
+	
+	
+	
+	
+	
+-- 公共字段设置(董志鹏)
+CREATE TABLE config_public_char(
+pbc_id INT PRIMARY KEY AUTO_INCREMENT,
+attribute_kind VARCHAR(60),
+attribute_name VARCHAR(60)
+);
+	
 -- 薪酬标准单详细信息 --
 sdt_id			主键，自动增长列
 standard_id		薪酬标准单编号
@@ -268,6 +282,7 @@ change_time	DATE,	-- 变更时间
 major_describe	VARCHAR(60),	-- 职位描述 
 engage_required	VARCHAR(60)	-- 招聘要求
 )
+
 
 
 63  64

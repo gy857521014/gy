@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,84 +68,23 @@
 				<td colspan="3">&nbsp;</td>
 			</tr>
 			<tbody>
-
-				<tr class="TD_STYLE2">
-					<td align="center">63 <input type="hidden"
-						name="details[0].itemId" value="63">
+			
+				<c:forEach items="${xm }" var="xm">
+					<tr class="TD_STYLE2">
+					<td align="center">${xm.pbc_id } <input type="hidden"
+						name="${xm.pbc_id }" value="${xm.pbc_id }">
 					</td>
-					<td colspan="3">出差补助 <input type="hidden" id="details1"
-						name="details[0].itemName" value="出差补助">
+					<td colspan="3">${xm.attribute_name }<input type="hidden" id="details6"
+						name="${xm.attribute_name }" value="${xm.attribute_name }">
 					</td>
-					<td><input type="text" id="salary1" value="0.00"
-						name="travel" onkeyup="countMoney('6','salary1')"
-						class="INPUT_STYLE2"></td>
+					<td>
+						<input type="text" id="salary${xm.pbc_id }" value="0.00" name="x_${xm.pbc_id }" 
+						onkeyup="countMoney('6','salary${xm.pbc_id }')" class="INPUT_STYLE2">
+					</td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
-
-				<tr class="TD_STYLE2">
-					<td align="center">64 <input type="hidden"
-						name="details[1].itemId" value="64">
-					</td>
-					<td colspan="3">交通补贴 <input type="hidden" id="details2"
-						name="details[1].itemName" value="交通补贴">
-					</td>
-					<td><input type="text" id="salary2" value="0.00"
-						name="traffic" onkeyup="countMoney('6','salary2')"
-						class="INPUT_STYLE2"></td>
-					<td colspan="3">&nbsp;</td>
-				</tr>
-
-				<tr class="TD_STYLE2">
-					<td align="center">65 <input type="hidden"
-						name="details[2].itemId" value="65">
-					</td>
-					<td colspan="3">住房补贴 <input type="hidden" id="details3"
-						name="details[2].itemName" value="住房补贴">
-					</td>
-					<td><input type="text" id="salary3" value="0.00"
-						name="housing" onkeyup="countMoney('6','salary3')"
-						class="INPUT_STYLE2"></td>
-					<td colspan="3">&nbsp;</td>
-				</tr>
-
-				<tr class="TD_STYLE2">
-					<td align="center">66 <input type="hidden"
-						name="details[3].itemId" value="66">
-					</td>
-					<td colspan="3">基本工资 <input type="hidden" id="details4"
-						name="details[3].itemName" value="基本工资">
-					</td>
-					<td><input type="text" id="salary4" value="0.00"
-						name="basic" onkeyup="countMoney('6','salary4')"
-						class="INPUT_STYLE2"></td>
-					<td colspan="3">&nbsp;</td>
-				</tr>
-
-				<tr class="TD_STYLE2">
-					<td align="center">67 <input type="hidden"
-						name="details[4].itemId" value="67">
-					</td>
-					<td colspan="3">年终奖 <input type="hidden" id="details5"
-						name="details[4].itemName" value="年终奖">
-					</td>
-					<td><input type="text" id="salary5" value="0.00"
-						name="year_end" onkeyup="countMoney('6','salary5')"
-						class="INPUT_STYLE2"></td>
-					<td colspan="3">&nbsp;</td>
-				</tr>
-
-				<tr class="TD_STYLE2">
-					<td align="center">68 <input type="hidden"
-						name="details[5].itemId" value="68">
-					</td>
-					<td colspan="3">误餐补助 <input type="hidden" id="details6"
-						name="details[5].itemName" value="误餐补助">
-					</td>
-					<td><input type="text" id="salary6" value="0.00"
-						name="mistakes" onkeyup="countMoney('6','salary6')"
-						class="INPUT_STYLE2"></td>
-					<td colspan="3">&nbsp;</td>
-				</tr>
+				</c:forEach>
+				
 
 			</tbody>
 		</table>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +11,7 @@
 		</script>
 	</head>
 	<body>
-		<form method="post" action="configfilefirstkind.do">
+		<form method="post" action="toadd">
 			<table width="100%">
 				<tr>
 					<td colspan="2">
@@ -22,10 +24,10 @@
 						录入成功。
 					</td>
 					<td width="51%" align="right">
-						<input type="button" value="继续录入" class="BUTTON_STYLE1"
+						<input type="submit" value="继续录入" class="BUTTON_STYLE1"
 							onclick="window.location.href='first_kind_register.html'">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="window.location.href='first_kind.html'">
+							onclick="window.location.href='selcffk'">
 					</td>
 				</tr>
 			</table>
