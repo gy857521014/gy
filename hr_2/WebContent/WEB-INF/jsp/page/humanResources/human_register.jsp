@@ -148,6 +148,7 @@ function queryThird(){
 					</td>
 					<td class="TD_STYLE2">
 						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind" onchange="fun()" >
+							<option value="0">请选择</option>
 							<c:forEach var="fenleilist" items="${fenleilist }">
 								<option value="${fenleilist.major_kind_id }">${fenleilist.major_kind_name }</option>
 							</c:forEach>
@@ -168,9 +169,9 @@ function queryThird(){
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<select name="human_pro_designation" class="SELECT_STYLE1">
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+						<c:forEach var="listzhicheng" items="${listzhicheng }" >
+							<option>${listzhicheng.attribute_name }</option>
+						</c:forEach>
 						</select>
 					</td>
 				</tr>
