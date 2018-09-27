@@ -1,5 +1,6 @@
 package com.zd.dao;
 
+
 import org.apache.ibatis.annotations.Select;
 
 public interface ISalary_grantDao {
@@ -11,4 +12,5 @@ public interface ISalary_grantDao {
 	public int shifa();
 	@Select("SELECT SUM(salary_sum) FROM humman_file WHERE first_king_name !=''")
 	public int zong();
+	
 }

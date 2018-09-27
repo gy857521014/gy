@@ -1,6 +1,7 @@
 package com.zd.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -34,4 +35,11 @@ public interface IConfig_file_second_kindDao {
 	@Select("SELECT * FROM config_file_second_kind WHERE first_kind_id = #{fsk_id}")
 	@ResultMap("cfsk")
 	public List<Config_file_second_kind> selerji(String fsk_id);
+	
+	
+	
+	// 通过二级名称统计人数、薪酬
+	@Select("SELECT second_kind_name fname, COUNT(*) fcount,SUM(salary_sum) fsum FROM humman_file GROUP BY second_kind_name")
+	@ResultMap("mapmapper")
+	public List<Map> tongjiByFname();
 }

@@ -1,6 +1,7 @@
 package com.zd.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	//根据一级机构编号查询二级机构
 	public List<Config_file_second_kind> selerji(String fsk_id) {
 		return icfskdao.selerji(fsk_id);
+	}
+	
+	
+	public List<Map> tongjiByFname() {
+		return icfskdao.tongjiByFname();
 	}
 	
 }
