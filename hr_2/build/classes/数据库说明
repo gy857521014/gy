@@ -229,7 +229,14 @@ check_comment VARCHAR(200),
 remark VARCHAR(200)
 )
 
+--角色表--
 
+INSERT INTO user_role(
+uroleid INT, --角色id
+urole_name VARCHAR(30),--角色名称
+urole_exp VARCHAR(200),--角色说明
+urole_state INT --角色状态
+);
 
 
 63  64

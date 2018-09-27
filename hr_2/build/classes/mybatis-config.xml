@@ -6,8 +6,10 @@
 	<typeAliases>
 		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
 		<typeAlias type="com.zd.entity.User" alias="user"/>
+		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
 	</typeAliases>
 	<mappers>
+		<mapper resource="com/zd/mappers/User_roleMapper.xml"/>
 		<mapper resource="com/zd/mappers/UserMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
 	</mappers>

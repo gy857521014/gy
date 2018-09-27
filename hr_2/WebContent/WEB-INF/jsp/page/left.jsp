@@ -315,7 +315,7 @@
 						<ul>
 								<li>
 									<span>
-											<a href="power/user_list.html" target="mainFrame" style="color:black;">用户管理</a>
+											<a href="queryAll" target="mainFrame" style="color:black;">用户管理</a>
 									</span>
 								</li>
 								<li>

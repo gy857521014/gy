@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html public "-//w3c//dtd html 4.01 transitional//en"
 "http://www.w3.org/tr/html4/loose.dtd">
 <html>
@@ -24,7 +25,7 @@
 		</script>
 		<script type="text/javascript">
 			$(function() {
-				$.messager.show("<font style='font-family:宋体;'>消息提示","欢迎你：人事经理(${loginUser.user_true_name })！</font>",2000);
+				$.messager.show("<font style='font-family:宋体;'>消息提示","欢迎你：<c:forEach items='${loginUser.urole }' var='ur'>${ur.urole_name }</c:forEach>(${loginUser.user_true_name })！</font>",2000);
 			});
 		</script>
 	</head>
