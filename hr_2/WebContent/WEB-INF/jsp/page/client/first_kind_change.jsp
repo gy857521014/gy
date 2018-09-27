@@ -83,7 +83,7 @@
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						薪酬发放责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
+						薪酬发放责任人编号
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="zrrbh" name="first_kind_salary_id"  rows="4"
@@ -93,7 +93,7 @@
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						销售责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
+						销售责任人编号
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="xsbh" name="first_kind_sale_id" rows="4"

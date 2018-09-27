@@ -4,11 +4,13 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
+		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffkentity"/>
+		<typeAlias type="com.zd.entity.Config_file_second_kind" alias="cfskentity"/>
 		<typeAlias type="com.zd.entity.User" alias="user"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/UserMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
+		<mapper resource="com/zd/mappers/Config_file_second_kind.xml"/>
 	</mappers>
 </configuration>

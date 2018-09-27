@@ -229,7 +229,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/second_kind.html" target="mainFrame" style="color:black;">Ⅱ级机构设置</a>
+														<a href="selcfsk" target="mainFrame" style="color:black;">Ⅱ级机构设置</a>
 													</span>
 												</li>
 												<li>
