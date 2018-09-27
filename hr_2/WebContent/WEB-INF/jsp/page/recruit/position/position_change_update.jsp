@@ -1,29 +1,32 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 		<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="../css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 		</script>
 	 <script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 		</script>
 		
 		<script type="text/javascript">
@@ -77,65 +80,50 @@
 					</td>
 				</tr>
 				
-					
+			<c:forEach var="rlist" items="${releaselist}">
 				<tr>
 						<td class="TD_STYLE2">
-							&#21306;&#22495;&#32463;&#29702;
+							${rlist.major_name }
 						</td>
 						<td class="TD_STYLE2">
-							&#36719;&#20214;&#20844;&#21496;
+							<c:if test="${not empty rlist.third_kind_name}">
+								${rlist.third_kind_name}
+							</c:if>
+							
+							<c:if test="${empty rlist.third_kind_name and not empty rlist.second_kind_name}">
+								${rlist.second_kind_name }
+							</c:if>
+							
+							<c:if test="${empty rlist.third_kind_name or empty rlist.second_kind_name}">
+								${rlist.first_kind_name}
+							</c:if>
 						</td>
 						<td class="TD_STYLE2">
-							3
+							${rlist.human_amount }
 						</td>
 						<td class="TD_STYLE2"> 
-						2012-08-01 12:00:00  
+							${rlist.regist_time }
 						</td >
 						<td class="TD_STYLE2"> 
-						2012-12-30 12:00:00  
+							${rlist.deadline } 
 						</td>
 					 
 			
 						<td class="TD_STYLE2">
-							<a href="position_release_change.html">修改</a>
+							<a href="updatechange?mre_id=${rlist.mre_id}">修改</a>
 						</td>
 						<td class="TD_STYLE2">
 							<a href="position_change_update.html">删除</a>
 						</td>
 					</tr>
-					
+					</c:forEach>
 				
-				<tr>
-						<td class="TD_STYLE2">
-							&#24635;&#32463;&#29702;
-						</td>
-						<td class="TD_STYLE2">
-							&#29983;&#29289;&#31185;&#25216;&#26377;&#38480;&#20844;&#21496;
-						</td>
-						<td class="TD_STYLE2">
-							2
-						</td>
-						<td class="TD_STYLE2"> 
-						2012-08-02 12:00:00  
-						</td >
-						<td class="TD_STYLE2"> 
-						2012-11-15 12:00:00  
-						</td>
-					 
-			
-						<td class="TD_STYLE2">
-							<a href="position_release_change.html">修改</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="position_change_update.html">删除</a>
-						</td>
-					</tr>
-					
+				
 				
 			</table>
 			<p>&nbsp;&nbsp;总数：2 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type="image" src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type="image" src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage){  

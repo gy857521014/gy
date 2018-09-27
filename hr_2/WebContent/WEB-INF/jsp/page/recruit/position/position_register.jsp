@@ -1,30 +1,33 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'index.jsp' starting page</title>
 	 
 		 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="../css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 		</script>
 	 <script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 		</script>
 	
  		<script type="text/javascript">
@@ -101,6 +104,30 @@
 	
 	 
 </script> 
+
+<script>
+function fun(){
+	var pid =$("#majorKindId").val();
+	$.ajax({
+		url:'selzhiwei?majorid='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#majorId");
+			cityselect.empty();
+			cityselect.append("<option>--请选择职位名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.major_id;
+				var name=eachCity.major_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		
+		});
+
+	}
+
+</script>
  	</head>
 	<body>
 		<form name="humanfileForm" method="post" action="position_change_update.html" >
@@ -130,10 +157,9 @@
 						<select name="emajorRelease.firstKindId" id="firstKindId"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 					
-					<option value="01">集团</option>
-					
-					<option value="02">总部</option>
-					
+					<c:forEach var="flist" items="${firstlist}">					
+						<option value="${flist.first_kind_id}">${flist.first_kind_name}</option>
+					</c:forEach>
 					 
 					 </select>
 					</td>
@@ -173,17 +199,12 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindId" id="majorKindId" class="SELECT_STYLE1">
+						<select name="emajorRelease.majorKindId" id="majorKindId" onchange="fun()" class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
 							
-							<option value="01">销售</option> 
-							
-							<option value="02">软件开发</option> 
-							
-							<option value="03">人力资源</option> 
-							
-							<option value="04">生产部</option> 
-							
+							<c:forEach var="list" items="${kindlist}">
+								<option value="${list.major_kind_id }">${list.major_kind_name }</option> 
+							</c:forEach>
 								 </select>
 					</td>
 					<td class="TD_STYLE1">

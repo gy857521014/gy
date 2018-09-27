@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
 import com.zd.entity.Compensation_item;
@@ -22,4 +23,5 @@ public interface ISalary_standardDao {
 	//登记薪酬标准薪酬项目
 	@Insert("insert into Compensation_item values(#{standard_id},#{pbc_id},#{money})")
 	public void addCompensation_item(Map map);
+
 }

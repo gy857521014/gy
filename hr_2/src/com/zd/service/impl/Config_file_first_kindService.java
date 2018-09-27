@@ -7,14 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.IConfig_file_first_kindDao;
-import com.zd.dao.ISalary_grantDao;
 import com.zd.entity.Config_file_first_kind;
 import com.zd.service.IConfig_file_first_kindService;
 
 @Service
 public class Config_file_first_kindService implements IConfig_file_first_kindService{
-	@Autowired
-	private ISalary_grantDao dao;
 	@Autowired
 	private IConfig_file_first_kindDao icffkdao;
 	
@@ -39,14 +36,15 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 	public void deletecffk(int ffk_id) {
 		icffkdao.deletecffk(ffk_id);
 	}
-	
-	
+	@Override
 	public int selhumnum() {
-		return dao.selhumnum();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	// 通过一级名称统计人数、薪酬
 	public List<Map> tongjiByFname(){
 		return icffkdao.tongjiByFname();
 	}
+	
 }

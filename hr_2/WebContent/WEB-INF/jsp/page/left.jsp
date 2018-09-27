@@ -24,12 +24,12 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/position/position_register.html" target="mainFrame" style="color:black;">职位发布登记</a>
+														<a href="torecruit" target="mainFrame" style="color:black;">职位发布登记</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_change_update.html" target="mainFrame" style="color:black;">职位发布变更</a>
+														<a href="selallrelease" target="mainFrame" style="color:black;">职位发布变更</a>
 													</span>
 												</li>
 												<li>
@@ -229,7 +229,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/second_kind.html" target="mainFrame" style="color:black;">Ⅱ级机构设置</a>
+														<a href="selcfsk" target="mainFrame" style="color:black;">Ⅱ级机构设置</a>
 													</span>
 												</li>
 												<li>

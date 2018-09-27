@@ -15,30 +15,30 @@
 				var xsbh = $("#xsbh").val();
 				//在判断是否为空
 				if(document.getElementById("jgmc").value==''){
-					$("#errorSpan").html("<font color='red'>不能为空</font>");
+					$("#errorSpan").html("<font color='red'>请输入I级机构名称</font>");
 					return;
 				}
 				
 				if(document.getElementById("zrrbh").value==''){
-					$("#errorSpanzrrbh").html("<font color='red'>不能为空</font>");
+					$("#errorSpanzrrbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
 					return;
 				}else{
 					var reg = /^\d{1,}$/;
 					var b = reg.test(zrrbh);
 					if(!b){
-						$("#errorSpanzrrbh").html("<font color='red'>必须填写数字编号</font>");
+						$("#errorSpanzrrbh").html("<font color='red'>请填写数字编号</font>");
 						return;
 					}
 				}
 				
 				if(document.getElementById("xsbh").value==''){
-					$("#errorSpanxsbh").html("<font color='red'>不能为空</font>");
+					$("#errorSpanxsbh").html("<font color='red'>请输入销售责任人编号</font>");
 					return;
 				}else{
 					var reg = /^\d{1,}$/;
 					var b = reg.test(xsbh);
 					if(!b){
-						$("#errorSpanxsbh").html("<font color='red'>必须填写数字编号</font>");
+						$("#errorSpanxsbh").html("<font color='red'>请填写填写数字编号</font>");
 						return;
 					}
 				}

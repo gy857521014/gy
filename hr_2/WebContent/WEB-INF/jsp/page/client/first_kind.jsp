@@ -73,9 +73,6 @@
 					</td>
 				</tr>
 				</c:forEach>
-				
-				
-
 			</table>
 			<p>
 				 
