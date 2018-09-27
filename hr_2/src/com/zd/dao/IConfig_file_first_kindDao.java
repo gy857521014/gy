@@ -28,4 +28,5 @@ public interface IConfig_file_first_kindDao {
 	//É¾³ý
 	@Delete("delete from Config_file_first_kind where ffk_id=#{ffk_id}")
 	public void deletecffk(int ffk_id);
+	
 }
