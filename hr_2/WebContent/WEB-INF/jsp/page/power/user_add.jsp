@@ -50,11 +50,9 @@
 					<td class="TD_STYLE1">用户身份</td>
 					<td class="TD_STYLE2">
 						<select name="users.sysRole.roleId" multiple="multiple">
-							
-							<c:forEach items="${urLiset }" var="ur">
+							<c:forEach items="${urList }" var="ur">
 								<option value="1">${ur.urole_name }</option>
 							</c:forEach>	
-							
 						</select>
 					</td>
 				</tr>

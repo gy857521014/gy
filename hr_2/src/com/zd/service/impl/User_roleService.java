@@ -17,8 +17,7 @@ public class User_roleService implements IUser_roleService {
 	//查询所有角色
 	@Override
 	public List<User_role> queryUr() {
-		// TODO Auto-generated method stub
-		return null;
+		return user_roleDao.queryUr();
 	}
 
 }

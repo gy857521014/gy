@@ -12,7 +12,7 @@ public interface IUser_roleDao {
 	public List<User_role> queryByUid(int userid);
 	
 	//查询所有角色
-	@Select("select * from User_role")
+	@Select("select * from user_role")
 	@ResultMap("user_roleMapper")
 	public List<User_role> queryUr();
 }
