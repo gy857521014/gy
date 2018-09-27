@@ -1,5 +1,11 @@
 package com.zd.entity;
 
+import java.util.List;
+
+/*
+ * 用户表
+ */
+
 public class User {
 
 	private int userid ;
@@ -7,6 +13,16 @@ public class User {
 	private String user_true_name;// VARCHAR(60),
 	private String user_password;// VARCHAR(60)
 	
+	//角色表
+	private List<User_role> urole;
+	
+	
+	public List<User_role> getUrole() {
+		return urole;
+	}
+	public void setUrole(List<User_role> urole) {
+		this.urole = urole;
+	}
 	public int getUserid() {
 		return userid;
 	}

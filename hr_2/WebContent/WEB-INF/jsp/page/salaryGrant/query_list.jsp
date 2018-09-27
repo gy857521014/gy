@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,46 +15,53 @@
 	</head>
 
 	<body>
-		<form method="post" action="/HR_Fist/salaryGrant/salaryGrantAction!toCheckList">
+	<form action="/HR_Fist/salaryGrant/salaryGrantAction!toQueryListByPage">
 			<table width="100%">
 				<tr>
 					<td style="text-align:left;">
-						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放登记审核</font>					
-						<br/><br/><br/>
+						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放查询</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
 					</td>
 				</tr>
 			</table>
-									
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="10%" class="TD_STYLE1">
-						<span>薪酬发放编号</span>
-					</td>
 					<td width="20%" class="TD_STYLE1">
+						<span>薪酬编号</span>
+					</td>
+					<td width="15%" class="TD_STYLE1">
 						<span>I级机构名称</span>
 					</td>
-					<td width="20%" class="TD_STYLE1">
+					<td width="15%" class="TD_STYLE1">
 						<span>II级机构名称</span>
 					</td>
-					<td width="20%" class="TD_STYLE1">
+					<td width="15%" class="TD_STYLE1">
 						<span>III级机构名称</span>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						<span>人数</span>
 					</td>
-					<td width="10%" class="TD_STYLE1">
+					<td width="20%" class="TD_STYLE1">
 						基本薪酬总额(元)
 					</td>
-					<td width="10%" class="TD_STYLE1">
-						复核
-					</td>
+				
 				</tr>
+				
 				
 					<tr class="TD_STYLE2">
 						<td>
-							HS1353753198460
+							<a href="query.html">HS1353753198460</a>
 						</td>
 						<td>
 							Ⅰ级结构 
@@ -69,62 +78,35 @@
 						<td>
 							139823.0
 						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322455169
-						</td>
-						<td>
-							Ⅰ级结构  
-						</td>
-						<td>
-							Ⅱ级结构3  
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							1
-						</td>
-						<td>
-							1332.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322419274
-						</td>
-						<td>
-							Ⅰ级结构 
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							5
-						</td>
-						<td>
-							139157.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
 						 
-
+					</tr>
+				
+					<tr class="TD_STYLE2">
+						<td>
+							<a href="query.html">HS1353322467447</a>
+						</td>
+						<td>
+							总部  
+						</td>
+						<td>
+							湖南分校区  
+						</td>
+						<td>
+							长沙分校区1  
+						</td>
+						<td>
+							2
+						</td>
+						<td>
+							2664.0
+						</td>
+						 
+					</tr>
+					
+				 			
 			</table>
-			 
+			
+			
 <html>
   <head>  
   </head>  
@@ -132,7 +114,7 @@
    <p>
    <div align="center" style="font-size: 18px;color: gray">
 				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">3</font>
+				<font style="color: maroon;font-weight: bold;">2</font>
 				例 
 				&nbsp;&nbsp;&nbsp;
 				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
@@ -182,7 +164,12 @@ function doPage(startsize) {
   </body>
 </html>
  
-				
-		</form>
+			
+			
+			
+			</form>
+				 
+
 	</body>
 </html>
+

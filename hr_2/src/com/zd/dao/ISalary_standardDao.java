@@ -23,4 +23,5 @@ public interface ISalary_standardDao {
 	//登记薪酬标准薪酬项目
 	@Insert("insert into Compensation_item values(#{standard_id},#{pbc_id},#{money})")
 	public void addCompensation_item(Map map);
+
 }

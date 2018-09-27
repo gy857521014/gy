@@ -1,13 +1,13 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>用户管理</title>
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="../css/table.css" type="text/css"/>
 		<script type="text/javascript">
 			function doDelete(id) {
 				if (confirm("确定删除此用户吗？")) {
@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td align="right">
-					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='user_add.html'">
+					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='queryUr'">
 				</td>
 			</tr>
 		</table>
@@ -58,138 +58,32 @@
 				</td>
 			</tr>
 			
+			<c:forEach items="${userList }" var="user">
 				<tr class="TR_STYLE2">
 					<td class="TD_STYLE2">
-						9
+						${user.userid }
 					</td>
 					<td class="TD_STYLE2">
-						better_admin
+						${user.user_name }
 					</td>
 					<td class="TD_STYLE2">
-						zhangsan
+						${user.user_true_name }
 					</td>
 					<td class="TD_STYLE2">
-						123123
+						${user.user_password }
 					</td>
 					<td class="TD_STYLE2">
-						系统管理员
+						<c:forEach items="${user.urole }" var="ur">
+						${ur.urole_name }
+						</c:forEach>
 					</td>
 					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(9)"/>
+						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
+						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(9)"/>
 					</td>
 				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						1026
-					</td>
-					<td class="TD_STYLE2">
-						xiaojianjian
-					</td>
-					<td class="TD_STYLE2">
-						姜凯
-					</td>
-					<td class="TD_STYLE2">
-						123456
-					</td>
-					<td class="TD_STYLE2">
-						人事专员
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1026)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						1015
-					</td>
-					<td class="TD_STYLE2">
-						xiepeng
-					</td>
-					<td class="TD_STYLE2">
-						谢鹏
-					</td>
-					<td class="TD_STYLE2">
-						123456
-					</td>
-					<td class="TD_STYLE2">
-						人事经理
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1015)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						1178
-					</td>
-					<td class="TD_STYLE2">
-						yangyang
-					</td>
-					<td class="TD_STYLE2">
-						杨阳
-					</td>
-					<td class="TD_STYLE2">
-						123123
-					</td>
-					<td class="TD_STYLE2">
-						人事专员
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1178)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						10
-					</td>
-					<td class="TD_STYLE2">
-						manager
-					</td>
-					<td class="TD_STYLE2">
-						杨阳
-					</td>
-					<td class="TD_STYLE2">
-						123123
-					</td>
-					<td class="TD_STYLE2">
-						系统管理员
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(10)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						1177
-					</td>
-					<td class="TD_STYLE2">
-						xiaojianjian
-					</td>
-					<td class="TD_STYLE2">
-						姜凯
-					</td>
-					<td class="TD_STYLE2">
-						123123
-					</td>
-					<td class="TD_STYLE2">
-						人事专员
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1177)"/>
-					</td>
-				</tr>
-			
+			</c:forEach>
+
 		</table>
 		<p style="text-align:center;">
 			

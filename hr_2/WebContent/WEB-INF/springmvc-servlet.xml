@@ -14,19 +14,20 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 	
 	<!-- 配置拦截器 -->
-	<mvc:interceptors>
+	 <!-- <mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/**"/>
 			<bean class="com.zd.interceptor.CheckLogininterceptor">
 				<property name="notUrl">
 					<list>
-						<value>/tologin</value>
 						<value>/login</value>
+						<value>/tologin</value>
+						<value>page/tologin</value>
 					</list>
 				</property>
 			</bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors>  -->
 	
 	<!-- 扫描controller包，让包中的注解生效 -->
 	<!-- base-package指定要扫描的包 -->
