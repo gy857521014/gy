@@ -1,6 +1,7 @@
 package com.zd.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,9 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 		return 0;
 	}
 	
+	// 通过一级名称统计人数、薪酬
+	public List<Map> tongjiByFname(){
+		return icffkdao.tongjiByFname();
+	}
 	
 }
