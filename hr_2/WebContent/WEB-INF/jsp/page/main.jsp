@@ -24,7 +24,7 @@
 		</script>
 		<script type="text/javascript">
 			$(function() {
-				$.messager.show("<font style='font-family:宋体;'>消息提示","欢迎你：人事经理谢鹏！</font>",2000);
+				$.messager.show("<font style='font-family:宋体;'>消息提示","欢迎你：人事经理(${loginUser.user_true_name })！</font>",2000);
 			});
 		</script>
 	</head>

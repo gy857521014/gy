@@ -25,6 +25,7 @@ public class Config_file_first_kindController {
 		List<Config_file_first_kind> cffklist = 
 				icffkservice.selcffk();
 		map.put("cffklist", cffklist);
+		return "page/client/first_kind";
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("≤È—Ø–≈œ¢¥ÌŒÛ",e);
