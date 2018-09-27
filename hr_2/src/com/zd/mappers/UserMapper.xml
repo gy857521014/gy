@@ -6,6 +6,8 @@
 	<result property="user_name" column="user_name"/>
 	<result property="user_true_name" column="user_true_name"/>
 	<result property="user_password" column="user_password"/>
+	
+	<collection property="urole" column="userid" select="com.zd.dao.IUser_roleDao.queryByUid"/>
 </resultMap>
 
 </mapper>

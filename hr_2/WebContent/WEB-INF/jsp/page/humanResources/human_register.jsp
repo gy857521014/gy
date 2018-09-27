@@ -65,6 +65,27 @@ function querySecond(){
 		});
 	}
 </script>
+<!-- 机构的三级联动 -->
+<script type="text/javascript">
+function queryThird(){
+	var pid =$("#secondKind").val();
+	$.ajax({
+		url:'selerji?fsk_id='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#thirdKind");
+			cityselect.empty();
+			cityselect.append("<option>--请选择三级机构名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.third_kind_id;
+				var name=eachCity.third_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
+</script>
 	</head>
 	<body>
 		<form method="post" action="add">
@@ -104,8 +125,8 @@ function querySecond(){
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind">
-							<option value="1">湖南分校</option>
+						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind" onchange="queryThird()">
+							<option value="0">请选择</option>
 						</select>
 						<input type="hidden" name="second_kind_name"/>
 					</td>
@@ -114,7 +135,7 @@ function querySecond(){
 					</td>
 					<td class="TD_STYLE2" colspan="2">
 						<select name="third_kind_id" class="SELECT_STYLE1" id="thirdKind">
-							<option value="1">长沙华瑞</option>
+							<option value="0">请选择</option>
 						</select>
 						<input type="hidden" name="third_kind_name"/>
 					</td>
@@ -127,6 +148,7 @@ function querySecond(){
 					</td>
 					<td class="TD_STYLE2">
 						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind" onchange="fun()" >
+							<option value="0">请选择</option>
 							<c:forEach var="fenleilist" items="${fenleilist }">
 								<option value="${fenleilist.major_kind_id }">${fenleilist.major_kind_name }</option>
 							</c:forEach>
@@ -147,9 +169,9 @@ function querySecond(){
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<select name="human_pro_designation" class="SELECT_STYLE1">
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+						<c:forEach var="listzhicheng" items="${listzhicheng }" >
+							<option>${listzhicheng.attribute_name }</option>
+						</c:forEach>
 						</select>
 					</td>
 				</tr>
