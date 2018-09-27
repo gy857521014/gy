@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -51,21 +51,9 @@
 					<td class="TD_STYLE2">
 						<select name="users.sysRole.roleId" multiple="multiple">
 							
-								<option value="1">人事专员</option>
-							
-								<option value="2">人事经理</option>
-							
-								<option value="3">薪酬专员</option>
-							
-								<option value="4">薪酬经理</option>
-							
-								<option value="5">招聘专员</option>
-							
-								<option value="6">招聘经理</option>
-							
-								<option value="7">应聘者</option>
-							
-								<option value="8">系统管理员</option>
+							<c:forEach items="${urLiset }" var="ur">
+								<option value="1">${ur.urole_name }</option>
+							</c:forEach>	
 							
 						</select>
 					</td>

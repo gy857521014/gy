@@ -1,6 +1,7 @@
 package com.zd.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -28,4 +29,9 @@ public interface IConfig_file_first_kindDao {
 	//删除
 	@Delete("delete from Config_file_first_kind where ffk_id=#{ffk_id}")
 	public void deletecffk(int ffk_id);
+	
+	// 通过一级名称统计人数、薪酬
+	@Select("SELECT first_king_name fname, COUNT(*) fcount,SUM(salary_sum) fsum FROM humman_file GROUP BY first_king_name")
+	@ResultMap("mapMapper")
+	public List<Map> tongjiByFname();
 }

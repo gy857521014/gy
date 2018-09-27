@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td align="right">
-					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='toUserAdd'">
+					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='queryUr'">
 				</td>
 			</tr>
 		</table>
