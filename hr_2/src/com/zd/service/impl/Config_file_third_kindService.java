@@ -23,13 +23,9 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 	public List<Config_file_third_kind> selcftk() {
 		return icftkdao.selcftk();
 	}
-
-	@Autowired
-	private IConfig_file_third_kindDao config_file_third_kindDao;
-
 	//根据二级机构编号查询三级机构
 	public List<Config_file_third_kind> selsanji(String fsk_id) {
-		return config_file_third_kindDao.selsanji(fsk_id);
+		return icftkdao.selsanji(fsk_id);
 	}
 	
 
