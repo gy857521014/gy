@@ -186,9 +186,9 @@ function fun(){
 					<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option> 
 							
-							<option value="校园招聘">校园招聘</option> 
-							
-							<option value="社会招聘">社会招聘</option> 
+							<c:forEach var="zhlist" items="${zhaoplist}">
+								<option value="${zhlist.pbc_id}" selected>${zhlist.attribute_name}</option>  
+							</c:forEach>
 							
 								 </select>
 						 

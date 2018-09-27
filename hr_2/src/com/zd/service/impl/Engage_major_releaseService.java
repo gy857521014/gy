@@ -29,4 +29,14 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 		return release;
 	}
 	
+	//ÐÞ¸Ä
+	public void updaterelease(Engage_major_release release) {
+		releasedao.updaterelease(release);
+	}
+	
+	//É¾³ý
+	public void deleterelease(int id) {
+		releasedao.deleterelease(id);
+	}
+	
 }

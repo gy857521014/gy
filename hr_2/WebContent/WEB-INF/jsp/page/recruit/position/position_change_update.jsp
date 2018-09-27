@@ -30,12 +30,24 @@
 		</script>
 		
 		<script type="text/javascript">
-		function doDelete(id){
-		if(window.confirm("确认删除该项纪录？")){
-		window.location.href("/HR_Fist/recruit/recruitAction!deletePosition?emajorRelease.mreId="+id)
-		}
-		
-		}
+		function dodelete(id){
+			
+	    		if(confirm("您确定要删除吗？")){
+					$.ajax({
+						url:'deleterelease?id='+id,
+						type:'get',
+						success:function(data){
+							if(data=="1"){
+								
+								$("#"+id).remove();
+							}
+						
+						}
+
+					});
+
+	    		}
+	    	}
 		</script>
 		
 		</head>
@@ -81,7 +93,7 @@
 				</tr>
 				
 			<c:forEach var="rlist" items="${releaselist}">
-				<tr>
+				<tr id="${rlist.mre_id}">
 						<td class="TD_STYLE2">
 							${rlist.major_name }
 						</td>
@@ -113,7 +125,7 @@
 							<a href="updatechange?mre_id=${rlist.mre_id}">修改</a>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="position_change_update.html">删除</a>
+							<a href="javascript:dodelete(${rlist.mre_id})">删除</a>
 						</td>
 					</tr>
 					</c:forEach>

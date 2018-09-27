@@ -35,6 +35,8 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//查询爱好
 	public List<Config_public_char> listaihao();
+	//查询招聘类型
+	public List<Config_public_char> listzhaopin();
 	public int sel1all();
 	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
   <head>
@@ -71,17 +72,58 @@
 		}
  		</script>
  		
- 		<script type="text/javascript">
+ 	<!--  <script type="text/javascript">
  	   function mySubmit(){  
   	document.humanfileForm.submit();
  	}
   
- 	
- 	</script>
+ 	</script> 
+ 	-->
+ 	<script type="text/javascript">
+        function myfunction()
+		{
+    		
+        	document.getElementById("name").style.display ="none";
+
+			if(document.getElementById("renshu").value.trim()<1||document.getElementById("renshu").value.trim().length>10)
+			{
+				document.getElementById("name").style.display ="";
+				return false;    				
+			}
+			if(document.getElementById("riqi").value.trim()<1||document.getElementById("riqi").value.trim().length>10)
+			{
+				document.getElementById("name").style.display ="";
+				return false;    				
+			}
+			if(document.getElementById("bgr").value.trim()<1||document.getElementById("bgr").value.trim().length>11)
+			{
+				document.getElementById("name").style.display ="";
+				return false;    				
+			}
+			if(document.getElementById("zhiwei").value.trim()<1||document.getElementById("zhiwei").value.trim().length>20)
+			{
+				document.getElementById("name").style.display ="";
+				return false;    				
+			}
+			if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>20)
+			{
+				document.getElementById("name").style.display ="";
+				return false;    				
+			}
+			
+			 
+			 
+			document.humanfileForm.submit();
+			return true;
+		}
+
+
+            	
+    </script>
 </head>
 	<body>
-		<form id="recruitAction!applyPosition" name="humanfileForm" action="/HR_Fist/recruit/recruitAction!applyPosition" method="post">
-		
+		<form id="recruitAction!applyPosition" name="humanfileForm" action="updaterelease" method="post">
+			<input type="hidden" name="mre_id" value="${release.mre_id}"/>
 			<table width="100%">
 				<tr>
 					<td>
@@ -91,7 +133,7 @@
 				<tr>
 					<td align="right">
 						<input type="button" value="提交" class="BUTTON_STYLE1"
-							onclick="mySubmit()">
+							onclick="return myfunction()" />
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
@@ -130,11 +172,16 @@
 					</td>
 					<td class="TD_STYLE2" colspan="2">
 					 
-				 	<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1">  
+				 	<select name="engage_type" id="engageType" class="SELECT_STYLE1">  
 							 
-							<option value="校园招聘" selected>校园招聘</option>  
-							 
-							<option value="社会招聘" selected>社会招聘</option>  
+						<c:forEach var="zhlist" items="${zhaoplist}">
+							<c:if test="${zhlist.attribute_name==release.engage_type }">
+								<option value="${zhlist.attribute_name}" selected>${zhlist.attribute_name}</option>  
+							</c:if>
+							<c:if test="${zhlist.attribute_name!=release.engage_type }">
+								<option value="${zhlist.attribute_name}" >${zhlist.attribute_name}</option>  
+							</c:if>
+						</c:forEach>
 							
 					 </select>
 				 	</td>
@@ -154,20 +201,20 @@
 					<td class="TD_STYLE2">
 					<input type="hidden" name="emajorRelease.majorName" value="&#24635;&#32463;&#29702;"/> 
 					<input type="hidden" name="emajorRelease.majorId" value="02"/>
-						${release.major_name }
+						${release.major_name }   
 					</td>
 					<td class="TD_STYLE1">
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.humanAmount" value="${release.human_amount }" class="INPUT_STYLE2">
+						 <input type="text" id="renshu" name="human_amount" value="${release.human_amount }" class="INPUT_STYLE2">
 						</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2"> 
-						<input type="text" name="emajorRelease.deadline" 
-							  class="INPUT_STYLE2"  onclick="aa('emajorRelease.deadline')" value="${release. deadline}">
+						<input type="text" id="riqi" name="deadline" 
+							  class="INPUT_STYLE2"  onclick="aa('deadline')" value="${release. deadline}">
 						   </td>
 				</tr>
 				<tr>
@@ -175,7 +222,7 @@
 						变更人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.changer" value="${release.changer }" class="INPUT_STYLE2">
+						 <input type="text" id="bgr" name="changer" value="${release.changer }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						变更时间
@@ -197,7 +244,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.majorDescribe" rows="4" cols="100%" class="TEXTAREA_STYLE1"  >${release.major_describe }</textarea>
+						<textarea name="major_describe" id="zhiwei" rows="4" cols="100%" class="TEXTAREA_STYLE1"  >${release.major_describe }</textarea>
 					</td>
 					 
 				</tr>
@@ -206,10 +253,11 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.engageRequired" rows="4"  cols="100%" class="TEXTAREA_STYLE1"   >${release.engage_required }</textarea>
+						<textarea name="engage_required" id="zhp" rows="4"  cols="100%" class="TEXTAREA_STYLE1"   >${release.engage_required }</textarea>
 					</td>
 					 
 				</tr>
+				<span style="color:red;display:none" id="name">请完善资料</span>
 			</table>
 		</form>
 
