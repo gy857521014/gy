@@ -16,6 +16,9 @@ public interface IHumman_fileService {
 		//一级机构查询
 	public List<Config_file_first_kind> selcffk();
 	
-	public int sel1all();
+	public int selnumz();
 	
+	public int shifa();
+	
+	public int zong();
 }

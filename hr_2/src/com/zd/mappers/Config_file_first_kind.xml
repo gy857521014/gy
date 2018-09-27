@@ -9,4 +9,6 @@
   	<result property="first_kind_salary_id" column="first_kind_salary_id"/>
   	<result property="first_kind_sale_id" column="first_kind_sale_id"/>
 </resultMap>
+
+	<resultMap type="java.util.Map" id="mapMapper"></resultMap>
 </mapper>

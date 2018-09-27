@@ -1,6 +1,9 @@
 package com.zd.dao;
 
 
+
+import java.util.List;
+
 import org.apache.ibatis.annotations.Select;
 
 
@@ -10,6 +13,7 @@ import org.apache.ibatis.annotations.Select;
  *
  */
 public interface IHumman_fileDao {
-	@Select("SELECT COUNT(*) FROM humman_file WHERE first_king_id !=''")
-	public int sel1all();
+	
+	
 }
+
