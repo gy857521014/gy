@@ -283,9 +283,7 @@ change_time	DATE,	-- 变更时间
 major_describe	VARCHAR(60),	-- 职位描述 
 engage_required	VARCHAR(60)	-- 招聘要求
 )
-=======
 --角色表--
->>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 
 INSERT INTO user_role(
 uroleid INT, --角色id
@@ -294,6 +292,3 @@ urole_exp VARCHAR(200),--角色说明
 urole_state INT --角色状态
 );
 
-
-63  64
-11111111  

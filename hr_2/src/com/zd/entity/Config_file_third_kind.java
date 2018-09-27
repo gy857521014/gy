@@ -5,7 +5,6 @@ package com.zd.entity;
  *
  */
 public class Config_file_third_kind {
-	
 	public Config_file_third_kind() {
 		super();
 	}

@@ -15,6 +15,14 @@ import com.zd.service.IConfig_file_third_kindService;
  */
 @Service
 public class Config_file_third_kindService implements IConfig_file_third_kindService {
+	@Autowired
+	private IConfig_file_third_kindDao icftkdao;
+	
+	
+	@Override
+	public List<Config_file_third_kind> selcftk() {
+		return icftkdao.selcftk();
+	}
 
 	@Autowired
 	private IConfig_file_third_kindDao config_file_third_kindDao;
