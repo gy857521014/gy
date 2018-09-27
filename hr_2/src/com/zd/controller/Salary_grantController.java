@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.service.IConfig_file_first_kindService;
+import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IHumman_fileService;
 
 
 @Controller
 public class Salary_grantController {
 	@Autowired
-	private IConfig_file_first_kindService ffk;
+	private IConfig_file_second_kindService fsk;
 	@Autowired
 	private IConfig_file_first_kindService icffkservice;
 	@Autowired
@@ -36,7 +37,7 @@ public class Salary_grantController {
 				//总人数
 				int numz = hf.selnumz();
 				//总机构
-				int hsum = ffk.selhumnum();
+				int hsum = icffkservice.selhumnum();
 				//实发工资
 				int shifa = hf.shifa();
 				//总薪资
@@ -51,8 +52,9 @@ public class Salary_grantController {
 				return "page/salaryGrant/register_list";
 			}
 			if(num==2) {
-				
-				
+				List<Map> maplist =  fsk.tongjiByFname();
+				map.put("maplist", maplist);
+				System.out.println(map);
 				return "page/salaryGrant/register_list2";
 			}
 			if(num==3) {
