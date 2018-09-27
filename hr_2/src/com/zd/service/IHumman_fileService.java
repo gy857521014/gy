@@ -17,6 +17,7 @@ public interface IHumman_fileService {
 		//一级机构查询
 		public List<Config_file_first_kind> selcffk();
 	
+	public int selnumz();
 	//查询国籍
 	public List<Config_public_char> listguoji();
 	//查询民族
@@ -35,6 +36,8 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//查询爱好
 	public List<Config_public_char> listaihao();
-	public int sel1all();
 	
+	public int shifa();
+	
+	public int zong();
 }

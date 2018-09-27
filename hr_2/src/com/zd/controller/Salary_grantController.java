@@ -33,15 +33,26 @@ public class Salary_grantController {
 		Logger log = LoggerFactory.getLogger(Salary_grantController.class);
 		try {
 			if(num==1) {
-				List<Config_file_first_kind> arr = icffkservice.selcffk();
-				int sum = hf.sel1all();
+				//总人数
+				int numz = hf.selnumz();
+				//总机构
 				int hsum = ffk.selhumnum();
-				map.put("arr", arr);
-				map.put("sum",sum);
+				//实发工资
+				int shifa = hf.shifa();
+				//总薪资
+				int zong = hf.zong();
+				map.put("numz", numz);
 				map.put("hsum", hsum);
+				map.put("shifa", shifa);
+				map.put("zong", zong);
+				List<Map> mapList = icffkservice.tongjiByFname();
+				// fname=一级机构  fsum=11111  fcount=2
+				map.put("mapList", mapList);
 				return "page/salaryGrant/register_list";
 			}
 			if(num==2) {
+				
+				
 				return "page/salaryGrant/register_list2";
 			}
 			if(num==3) {
