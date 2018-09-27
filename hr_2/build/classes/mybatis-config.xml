@@ -14,6 +14,7 @@
 		<typeAlias type="com.zd.entity.Engage_major_release" alias="release"/>
 		<!-- 三级机构映射 -->
 		<typeAlias type="com.zd.entity.Config_file_third_kind" alias="cftkentity"/>
+		<typeAlias type="com.zd.entity.Config_file_third_kind" alias="Config_file_third_kind"/>
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
 	</typeAliases>
 	<mappers>

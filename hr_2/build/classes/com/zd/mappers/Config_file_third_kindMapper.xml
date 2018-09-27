@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- SQL语句映射文件，mapper-映射 -->
+<!-- 三级机构mapper映射 -->
 <mapper namespace="com.zd.dao.IConfig_file_third_kindDao">
   <resultMap type="cftkentity" id="cfsk">
   	<result property="ftk_id" column="ftk_id"/>
