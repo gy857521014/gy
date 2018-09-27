@@ -229,6 +229,7 @@ check_comment VARCHAR(200),
 remark VARCHAR(200)
 )
 
+<<<<<<< HEAD
 9.Config_major_kind：职位分类设置
 
  列	类型	描述
@@ -282,7 +283,16 @@ change_time	DATE,	-- 变更时间
 major_describe	VARCHAR(60),	-- 职位描述 
 engage_required	VARCHAR(60)	-- 招聘要求
 )
+=======
+--角色表--
+>>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 
+INSERT INTO user_role(
+uroleid INT, --角色id
+urole_name VARCHAR(30),--角色名称
+urole_exp VARCHAR(200),--角色说明
+urole_state INT --角色状态
+);
 
 
 63  64

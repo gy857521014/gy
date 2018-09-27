@@ -32,7 +32,7 @@ public class CheckLogininterceptor extends HandlerInterceptorAdapter{
 		if(obj != null) {
 			return true;
 		}else {
-			response.sendRedirect("tologin");
+			response.sendRedirect("page/tologin");
 			return false;
 		}
 	}

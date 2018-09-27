@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html public "-//w3c//dtd html 4.01 transitional//en"
 "http://www.w3.org/tr/html4/loose.dtd">
 <html>
@@ -27,7 +28,9 @@
 				</td>
 				<td style="text-align: right;font-size:17px;width:35%;color:black;">
 					<br />
-					欢迎你：${loginUser.user_true_name }(人事经理)&nbsp;
+					欢迎你：${loginUser.user_true_name }(<c:forEach items="${loginUser.urole }" var="ur">
+																	${ur.urole_name }
+														</c:forEach>)&nbsp;
 					<input type="button" value="退出系统" class="BUTTON_STYLE1" onclick="parent.location.href='../login.html'"/>&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="esc"></a>
 				</td>

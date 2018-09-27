@@ -27,11 +27,11 @@
 		<script type="text/javascript"
 			src="javascript/login.js">
 		</script>
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 		if(top.location != self.location){
 			top.location = self.location
 		}
-		</script>
+		</script> -->
 	</head>
 	<body>
 		<form action="login" method="post" id="login1">
