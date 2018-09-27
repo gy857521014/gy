@@ -23,18 +23,7 @@
 		</script>
 		<script type="text/javascript" src="../../javascript/human_input_check.js">
 		</script>
-<script type="text/javascript">
-		function querySecond() {
-			var fid = $("#firstKind").val();
-			$.ajax({
-				url:'',
-				type:'get',
-				success:function(data){
-					
-				}
-			});
-		}
-</script>
+
 	</head>
 	<body>
 		<form method="post" action="add">
@@ -68,27 +57,25 @@
 								<option value="${firstList.first_kind_id }">${firstList.first_kind_name }</option>
 							</c:forEach>
 						</select>
-						<input type="hidden" name="humanFile.firstKindName"/>
+						<input type="hidden" name="first_kind_name"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="secondKindId" class="SELECT_STYLE1" id="secondKind">
-							<option value="0">请选择</option>
-							<option>湖南分校</option>
+						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind">
+							<option value="1">湖南分校</option>
 						</select>
-						<input type="hidden" name="humanFile.secondKindName"/>
+						<input type="hidden" name="second_kind_name"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="humanFile.thirdKindId" class="SELECT_STYLE1" id="thirdKind">
-							<option value="0">请选择</option>
-							<option>长沙华瑞</option>
+						<select name="third_kind_id" class="SELECT_STYLE1" id="thirdKind">
+							<option value="1">长沙华瑞</option>
 						</select>
-						<input type="hidden" name="humanFile.thirdKindName"/>
+						<input type="hidden" name="third_kind_name"/>
 					</td>
 					<td rowspan="5" style="text-align: center;">
 					</td>
@@ -98,27 +85,27 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorKindId" class="SELECT_STYLE1" id="majorKind">
-							<option>销售</option>
-							<option>软件开发</option>
+						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind">
+							<option value="1">销售</option>
+							<option value="2">软件开发</option>
 						</select>
-						<input type="hidden" name="humanFile.humanMajorKindName"/>
+						<input type="hidden" name="human_major_kind_name"/>
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorId" class="SELECT_STYLE1" id="majorName">
+						<select name="human_major_id" class="SELECT_STYLE1" id="majorName">
 							<option>区域经理</option>
 							<option>总经理</option>
 						</select>
-						<input type="hidden" name="humanFile.hunmaMajorName"/>
+						<input type="hidden" name="hunma_major_name"/>
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1">
+						<select name="human_pro_designation" class="SELECT_STYLE1">
 							<option>工程师</option>
 							<option>助理</option>
 							<option>经理</option>
@@ -151,7 +138,7 @@
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_email" id="humanEmail"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -160,21 +147,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_telephone" id="humanTelephone"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_qq" id="humanQq"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_mobilephone" id="humanMobilephone"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -183,14 +170,14 @@
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="human_address"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_postcode"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -209,14 +196,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_birthplace"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="human_birthday" readonly="readonly"
-							class="INPUT_STYLE2" id="birthday">
+							class="INPUT_STYLE2" id="birthday"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						民族
@@ -255,14 +242,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_id_card" id="humanIdCard"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_society_security_id"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -271,7 +258,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_age" id="humanAge"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						学历
@@ -309,7 +296,7 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_id" class="SELECT_STYLE1">
+						<select name="salary_standard_name" class="SELECT_STYLE1">
 							<option>薪酬标准1</option>
 							<option>薪酬标准2</option>
 						</select>
@@ -319,21 +306,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_bank"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						登记人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="register" value="谢鹏"
-							readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="register" value="${loginUser.user_true_name }"
+							readonly="readonly" class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -342,7 +329,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="regist_time" id="create_time" readonly="readonly"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						特长
