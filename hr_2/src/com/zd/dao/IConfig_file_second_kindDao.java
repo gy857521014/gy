@@ -29,4 +29,9 @@ public interface IConfig_file_second_kindDao {
 	//修改用户
 	@Update("update Config_file_second_kind set second_salary_id=#{second_salary_id},second_sale_id=#{second_sale_id} where fsk_id=#{fsk_id}")
 	public void updatecfsk(Config_file_second_kind config_file_second_kind);
+	
+	//根据一级机构编号查询二级机构
+	@Select("SELECT * FROM config_file_second_kind WHERE first_kind_id = #{fsk_id}")
+	@ResultMap("cfsk")
+	public List<Config_file_second_kind> selerji(String fsk_id);
 }

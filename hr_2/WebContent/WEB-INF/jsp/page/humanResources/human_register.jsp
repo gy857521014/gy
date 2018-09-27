@@ -7,23 +7,64 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet" href="../css/table.css" type="text/css"/>
 		<link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"/>
-		<script type="text/javascript" src="../../javascript/jquery-1.7.2.js">
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/jquery.messager.js">
+		<script type="text/javascript" src="../javascript/jquery.messager.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/comm/comm.js">
+		<script type="text/javascript" src="../javascript/comm/comm.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/comm/select.js">
+		<script type="text/javascript" src="../javascript/comm/select.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/calendar-ch.js">
+		<script type="text/javascript" src="../javascript/calendar-ch.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/time.js">
+		<script type="text/javascript" src="../javascript/time.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/human_register.js">
+		<script type="text/javascript" src="../javascript/human_register.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/human_input_check.js">
+		<script type="text/javascript" src="../javascript/human_input_check.js">
 		</script>
-
+<!-- 职位二级联动 -->
+<script type="text/javascript">
+function fun(){
+	var pid =$("#majorKind").val();
+	$.ajax({
+		url:'selectzhiwei?majorid='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#majorName");
+			cityselect.empty();
+			cityselect.append("<option>--请选择职位名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.major_id;
+				var name=eachCity.major_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
+</script>
+<!-- 机构的二级联动 -->
+<script type="text/javascript">
+function querySecond(){
+	var pid =$("#firstKind").val();
+	$.ajax({
+		url:'selerji?fsk_id='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#secondKind");
+			cityselect.empty();
+			cityselect.append("<option>--请选择二级机构名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.second_kind_id;
+				var name=eachCity.second_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
+</script>
 	</head>
 	<body>
 		<form method="post" action="add">
@@ -85,9 +126,10 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind">
-							<option value="1">销售</option>
-							<option value="2">软件开发</option>
+						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind" onchange="fun()" >
+							<c:forEach var="fenleilist" items="${fenleilist }">
+								<option value="${fenleilist.major_kind_id }">${fenleilist.major_kind_name }</option>
+							</c:forEach>
 						</select>
 						<input type="hidden" name="human_major_kind_name"/>
 					</td>
@@ -96,8 +138,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="human_major_id" class="SELECT_STYLE1" id="majorName">
-							<option>区域经理</option>
-							<option>总经理</option>
+							<option value="0">请选择</option>
 						</select>
 						<input type="hidden" name="hunma_major_name"/>
 					</td>
@@ -202,8 +243,8 @@
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						<input type="text" name="human_birthday" readonly="readonly"
-							class="INPUT_STYLE2" id="birthday"/>
+						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
+							class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						民族
