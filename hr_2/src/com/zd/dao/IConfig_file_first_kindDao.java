@@ -12,4 +12,5 @@ public interface IConfig_file_first_kindDao {
 	@Select("select * from Config_file_first_kind")
 	@ResultMap("cffk")
 	public List<Config_file_first_kind>  selcffk();
+	
 }

@@ -29,7 +29,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_change_update.html" target="mainFrame" style="color:black;">职位发布变更</a>
+														<a href="selallrelease" target="mainFrame" style="color:black;">职位发布变更</a>
 													</span>
 												</li>
 												<li>

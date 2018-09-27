@@ -157,10 +157,9 @@ function fun(){
 						<select name="emajorRelease.firstKindId" id="firstKindId"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 					
-					<option value="01">集团</option>
-					
-					<option value="02">总部</option>
-					
+					<c:forEach var="flist" items="${firstlist}">					
+						<option value="${flist.first_kind_id}">${flist.first_kind_name}</option>
+					</c:forEach>
 					 
 					 </select>
 					</td>
