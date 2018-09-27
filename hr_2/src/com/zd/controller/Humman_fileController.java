@@ -28,7 +28,7 @@ import com.zd.service.IHumman_fileService;
  */
 @Controller
 public class Humman_fileController {
-	//人力资源管理
+	//人力资源管理公共字段
 	@Autowired
 	private IHumman_fileService humman_fileService;
 	//职位分类
@@ -83,6 +83,9 @@ public class Humman_fileController {
 			//查询爱好
 			List<Config_public_char> listaihao = humman_fileService.listaihao();
 			map.put("listaihao", listaihao);
+			//查询职称
+			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
+			map.put("listzhicheng", listzhicheng);
 			return "page/humanResources/human_register";
 		}
 		//根据一级机构编号查询二级机构
