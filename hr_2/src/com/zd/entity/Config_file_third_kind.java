@@ -7,7 +7,7 @@ package com.zd.entity;
 public class Config_file_third_kind {
 	public Config_file_third_kind() {
 		super();
-	}
+	}	
 	public Config_file_third_kind(int ftk_id, String first_kind_id, String first_kind_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, int third_kind_sale_id,
 			int third_kind_is_retail) {

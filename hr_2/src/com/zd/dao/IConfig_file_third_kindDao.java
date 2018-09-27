@@ -24,8 +24,9 @@ public interface IConfig_file_third_kindDao {
 		@Select("select * from Config_file_third_kind")
 		@ResultMap("cftk")
 		public List<Config_file_third_kind>  selcftk();
+		
 	//根据二级机构编号查询三级机构
 	@Select("SELECT * FROM config_file_third_kind WHERE second_kind_id = #{fsk_id}")
-	@ResultMap("Config_file_third_kind")
+	@ResultMap("cftk")
 	public List<Config_file_third_kind> selsanji(String fsk_id);
 }
