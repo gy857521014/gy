@@ -1,5 +1,8 @@
 package com.zd.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +25,11 @@ public class UserController {
 	//登陆跳转
 	@RequestMapping("/tologin")
 	public String tologin() {
-		return "login";
+		return "page/login";
+	}
+	@RequestMapping("page/tologin")
+	public String pagetologin() {
+		return "page/login";
 	}
 	
 	//登陆跳转
@@ -42,14 +49,14 @@ public class UserController {
 		}catch (Exception e) {
 			logger.error("登陆失败",e);
 		}
-	return "redirect:tologin";
+	return "redirect:/tologin";
 	}
 	
 	//退出
 	@RequestMapping("page/esc")
 	public String esc(HttpSession session){
 		session.removeAttribute("loginUser");
-		return "login";
+		return "page/login";
 	}
 	
 	//跳转页面的方法
@@ -60,4 +67,23 @@ public class UserController {
 		return path;
 	}
 	
+	//查询所有用户信息
+	@RequestMapping("page/queryAll")
+	public String queryAll(Map<String, Object> map) {
+		Logger logger = LoggerFactory.getLogger(UserController.class);
+		
+		try {
+			List<User> userList = userService.queryAll();
+			map.put("userList", userList);
+		}catch(Exception e) {
+			logger.error("查询所有用户信息错误",e);
+		}
+		return "page/power/user_list";
+	}
+	
+	//跳转到添加用户界面
+	@RequestMapping("page/toUserAdd")
+	public String toUserAdd() {
+		return "page/power/user_add";
+	}
 }

@@ -88,40 +88,25 @@
 						删除
 					</td>
 				</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">集团
-						</td>
-						<td class="TD_STYLE2">软件公司
-						</td>
-						<td class="TD_STYLE2">1353319004705
-						</td>
-						<td class="TD_STYLE2">外包公司
+				<c:forEach items="${cftklist }" var="c">
+					<tr id="${c.ftk_id }">
+						<td class="TD_STYLE2">
+						${c.first_kind_name }
 						</td>
 						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
+						${c.second_kind_name }
 						</td>
 						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
+						${c.third_kind_id }
 						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">集团
+						<td class="TD_STYLE2">
+						${c.third_kind_name }
 						</td>
-						<td class="TD_STYLE2">软件公司
+						<td class="TD_STYLE2">
+						${c.third_kind_sale_id }
 						</td>
-						<td class="TD_STYLE2">1353319004705
-						</td>
-						<td class="TD_STYLE2">软件股份有限公司
-						</td>
-						<td class="TD_STYLE2">1212
-						</td>
-						<td class="TD_STYLE2">是
+						<td class="TD_STYLE2">
+						${c.third_kind_is_retail }
 						</td>
 						<td class="TD_STYLE2">
 							<a href="third_kind_change.html">变更</a>
@@ -130,175 +115,7 @@
 							<a href="third_delete_success.html">删除</a>
 						</td>
 					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">北京分校区
-						</td>
-						<td class="TD_STYLE2">1353319033409
-						</td>
-						<td class="TD_STYLE2">中关村分校区1
-						</td>
-						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">北京分校区
-						</td>
-						<td class="TD_STYLE2">1353319033409
-						</td>
-						<td class="TD_STYLE2">中关村分校区2
-						</td>
-						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">北京分校区
-						</td>
-						<td class="TD_STYLE2">1353319033409
-						</td>
-						<td class="TD_STYLE2">中关村分校区3
-						</td>
-						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">湖南分校区
-						</td>
-						<td class="TD_STYLE2">1353319038682
-						</td>
-						<td class="TD_STYLE2">长沙分校区1
-						</td>
-						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">湖南分校区
-						</td>
-						<td class="TD_STYLE2">1353319038682
-						</td>
-						<td class="TD_STYLE2">长沙分校区2
-						</td>
-						<td class="TD_STYLE2">dfsaf
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">总部
-						</td>
-						<td class="TD_STYLE2">湖南分校区
-						</td>
-						<td class="TD_STYLE2">1353319038682
-						</td>
-						<td class="TD_STYLE2">长沙分校区3
-						</td>
-						<td class="TD_STYLE2">
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">Ⅰ级结构
-						</td>
-						<td class="TD_STYLE2">Ⅱ级结构1
-						</td>
-						<td class="TD_STYLE2">1353318979558
-						</td>
-						<td class="TD_STYLE2">Ⅲ级结构111
-						</td>
-						<td class="TD_STYLE2">12
-						</td>
-						<td class="TD_STYLE2">是
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">Ⅰ级结构
-						</td>
-						<td class="TD_STYLE2">Ⅱ级结构1
-						</td>
-						<td class="TD_STYLE2">1353318979558
-						</td>
-						<td class="TD_STYLE2">Ⅲ级结构222
-						</td>
-						<td class="TD_STYLE2">12
-						</td>
-						<td class="TD_STYLE2">否
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
-						</td>
-						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
-						</td>
-					</tr>
-					
+					</c:forEach>
 			</table>
 			<br>
 			<br>

@@ -234,7 +234,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/third_kind.html" target="mainFrame" style="color:black;">Ⅲ级机构设置</a>
+														<a href="selcftk" target="mainFrame" style="color:black;">Ⅲ级机构设置</a>
 													</span>
 												</li>
 												<li>
@@ -315,7 +315,7 @@
 						<ul>
 								<li>
 									<span>
-											<a href="power/user_list.html" target="mainFrame" style="color:black;">用户管理</a>
+											<a href="queryAll" target="mainFrame" style="color:black;">用户管理</a>
 									</span>
 								</li>
 								<li>
