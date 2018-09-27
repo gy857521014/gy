@@ -9,7 +9,7 @@ public class Humman_file {
 	public Humman_file() {
 		super();
 	}
-	public Humman_file(int hfd_id, String human_id, String first_kind_id, String first_kind_name, String second_kind_id,
+	public Humman_file(int hfd_id, String human_id, String first_king_id, String first_king_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
 			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
 			String human_major_kind_name, int human_major_id, String hunma_major_name, String human_telephone,
@@ -27,8 +27,8 @@ public class Humman_file {
 		super();
 		this.hfd_id = hfd_id;
 		this.human_id = human_id;
-		this.first_kind_id = first_kind_id;
-		this.first_kind_name = first_kind_name;
+		this.first_king_id = first_king_id;
+		this.first_king_name = first_king_name;
 		this.second_kind_id = second_kind_id;
 		this.second_kind_name = second_kind_name;
 		this.third_kind_id = third_kind_id;
@@ -90,8 +90,8 @@ public class Humman_file {
 	}
 	private int hfd_id;//人力资源档案的id
 	private String human_id;//档案编号
-	private String first_kind_id;//一级机构编号
-	private String first_kind_name;//一级机构名称
+	private String first_king_id;//一级机构编号
+	private String first_king_name;//一级机构名称
 	private String second_kind_id;//二级机构编号
 	private String second_kind_name;//二级机构名称
 	private String third_kind_id;//三级机构编号
@@ -164,16 +164,16 @@ public class Humman_file {
 		this.human_id = human_id;
 	}
 	public String getFirst_kind_id() {
-		return first_kind_id;
+		return first_king_id;
 	}
 	public void setFirst_kind_id(String first_kind_id) {
-		this.first_kind_id = first_kind_id;
+		this.first_king_id = first_kind_id;
 	}
 	public String getFirst_kind_name() {
-		return first_kind_name;
+		return first_king_name;
 	}
 	public void setFirst_kind_name(String first_kind_name) {
-		this.first_kind_name = first_kind_name;
+		this.first_king_name = first_kind_name;
 	}
 	public String getSecond_kind_id() {
 		return second_kind_id;

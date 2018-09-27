@@ -12,6 +12,8 @@
 		<typeAlias type="com.zd.entity.Config_major_kind" alias="major_king"/>
 		<typeAlias type="com.zd.entity.Config_major" alias="major"/>
 		<typeAlias type="com.zd.entity.Engage_major_release" alias="release"/>
+		<!-- 三级机构映射 -->
+		<typeAlias type="com.zd.entity.Config_file_third_kind" alias="Config_file_third_kind"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/UserMapper.xml"/>
@@ -21,5 +23,6 @@
 		<mapper resource="com/zd/mappers/Config_major_kindMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_majorMapper.xml"/>
 		<mapper resource="com/zd/mappers/Engage_major_releaseMapper.xml"/>
+		<mapper resource="com/zd/mappers/Config_file_third_kindMapper.xml" />
 	</mappers>
 </configuration>
