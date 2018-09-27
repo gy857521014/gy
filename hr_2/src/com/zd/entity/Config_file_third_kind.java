@@ -5,5 +5,5 @@ package com.zd.entity;
  *
  */
 public class Config_file_third_kind {
-
+	
 }
