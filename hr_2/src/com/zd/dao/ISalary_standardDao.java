@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
 
@@ -21,11 +22,18 @@ public interface ISalary_standardDao {
 	@Insert("insert into Salary_standard values(null,#{standard_id},#{standard_name},#{designer},#{register},null,null,#{regist_time},null,null,#{salary_sum},2,0,null,#{remark})")
 	public void addSalary_standard(Salary_standard ss);
 	//登记薪酬标准薪酬项目
-	@Insert("insert into Compensation_item values(#{standard_id},#{pbc_id},#{money})")
+	@Insert("insert into Compensation_item values(#{standard_id},#{pbc_id},#{money},#{attribute_name})")
 	public void addCompensation_item(Map map);
 	//薪酬标准登记复核页面例
 	@Select("SELECT COUNT(*) FROM salary_standard")
 	public int selSalary_standardli();
 	//薪酬标准登记复核页面查询*****
 	public List<Salary_standard> selSalary_standard(int start);
+	//单条查询薪酬标准登记
+	@Select("select * from salary_standard where standard_id=#{standard_id}")
+	@ResultMap("Salary_standardMapper")
+	public Salary_standard selOneSalary_standard(String standard_id);
+	//根据薪酬编号查询薪酬项目名称
+	@Select("select * from compensation_item where standard_id=#{standard_id}")
+	public List<Compensation_item> selCompensation_item(String standard_id);
 }

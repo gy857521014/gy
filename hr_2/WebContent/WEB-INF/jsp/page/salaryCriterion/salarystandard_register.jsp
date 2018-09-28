@@ -69,16 +69,16 @@
 			</tr>
 			<tbody>
 			
-				<c:forEach items="${xm }" var="xm">
+				<c:forEach items="${xm }" var="xm" varStatus="vs">
 					<tr class="TD_STYLE2">
 					<td align="center">${xm.pbc_id } <input type="hidden"
-						name="${xm.pbc_id }" value="${xm.pbc_id }">
+						name="${xm.pbc_id }" value="${vs.count}">
 					</td>
 					<td colspan="3">${xm.attribute_name }<input type="hidden" id="details6"
 						name="${xm.attribute_name }" value="${xm.attribute_name }">
 					</td>
 					<td>
-						<input type="text" id="salary${xm.pbc_id }" value="0.00" name="x_${xm.pbc_id }" 
+						<input type="text" id="salary${xm.pbc_id }" value="0.00" name="x_${xm.pbc_id }_${xm.attribute_name }" 
 						onkeyup="countMoney('6','salary${xm.pbc_id }')" class="INPUT_STYLE2">
 					</td>
 					<td colspan="3">&nbsp;</td>
