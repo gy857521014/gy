@@ -25,9 +25,6 @@ public class Humman_fileService implements IHumman_fileService {
 	private ISalary_grantDao gdao;
 	
 	@Autowired
-	private IHumman_fileDao dao;
-
-	@Autowired
 	private IConfig_file_first_kindDao config_file_first_kindDao;
 	@Autowired
 	private IConfig_public_charDao config_public_charDao; 
@@ -78,6 +75,8 @@ public class Humman_fileService implements IHumman_fileService {
 	public List<Config_public_char> listzhicheng() {
 		return config_public_charDao.listzhicheng();
 	}
+	
+	
 	public int selnumz() {
 		return gdao.selnumz();
 	}
