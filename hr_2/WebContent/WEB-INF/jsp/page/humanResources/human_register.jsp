@@ -7,33 +7,84 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet" href="../css/table.css" type="text/css"/>
 		<link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"/>
-		<script type="text/javascript" src="../../javascript/jquery-1.7.2.js">
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/jquery.messager.js">
+		<script type="text/javascript" src="../javascript/jquery.messager.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/comm/comm.js">
+		<script type="text/javascript" src="../javascript/comm/comm.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/comm/select.js">
+		<script type="text/javascript" src="../javascript/comm/select.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/calendar-ch.js">
+		<script type="text/javascript" src="../javascript/calendar-ch.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/time.js">
+		<script type="text/javascript" src="../javascript/time.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/human_register.js">
+		<script type="text/javascript" src="../javascript/human_register.js">
 		</script>
-		<script type="text/javascript" src="../../javascript/human_input_check.js">
+		<script type="text/javascript" src="../javascript/human_input_check.js">
 		</script>
+<!-- 职位二级联动 -->
 <script type="text/javascript">
-		function querySecond() {
-			var fid = $("#firstKind").val();
-			$.ajax({
-				url:'',
-				type:'get',
-				success:function(data){
-					
+function fun(){
+	var pid =$("#majorKind").val();
+	$.ajax({
+		url:'selectzhiwei?majorid='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#majorName");
+			cityselect.empty();
+			cityselect.append("<option>--请选择职位名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.major_id;
+				var name=eachCity.major_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
 				}
-			});
-		}
+			}
+		});
+	}
+</script>
+<!-- 机构的二级联动 -->
+<script type="text/javascript">
+function querySecond(){
+	var pid =$("#firstKind").val();
+	$.ajax({
+		url:'selerji?fsk_id='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#secondKind");
+			cityselect.empty();
+			cityselect.append("<option>--请选择二级机构名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.second_kind_id;
+				var name=eachCity.second_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
+</script>
+<!-- 机构的三级联动 -->
+<script type="text/javascript">
+function queryThird(){
+	var pid =$("#secondKind").val();
+	$.ajax({
+		url:'selerji?fsk_id='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#thirdKind");
+			cityselect.empty();
+			cityselect.append("<option>--请选择三级机构名称--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.third_kind_id;
+				var name=eachCity.third_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
 </script>
 	</head>
 	<body>
@@ -68,27 +119,25 @@
 								<option value="${firstList.first_kind_id }">${firstList.first_kind_name }</option>
 							</c:forEach>
 						</select>
-						<input type="hidden" name="humanFile.firstKindName"/>
+						<input type="hidden" name="first_kind_name"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="secondKindId" class="SELECT_STYLE1" id="secondKind">
+						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind" onchange="queryThird()">
 							<option value="0">请选择</option>
-							<option>湖南分校</option>
 						</select>
-						<input type="hidden" name="humanFile.secondKindName"/>
+						<input type="hidden" name="second_kind_name"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="humanFile.thirdKindId" class="SELECT_STYLE1" id="thirdKind">
+						<select name="third_kind_id" class="SELECT_STYLE1" id="thirdKind">
 							<option value="0">请选择</option>
-							<option>长沙华瑞</option>
 						</select>
-						<input type="hidden" name="humanFile.thirdKindName"/>
+						<input type="hidden" name="third_kind_name"/>
 					</td>
 					<td rowspan="5" style="text-align: center;">
 					</td>
@@ -98,30 +147,31 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorKindId" class="SELECT_STYLE1" id="majorKind">
-							<option>销售</option>
-							<option>软件开发</option>
+						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind" onchange="fun()" >
+							<option value="0">请选择</option>
+							<c:forEach var="fenleilist" items="${fenleilist }">
+								<option value="${fenleilist.major_kind_id }">${fenleilist.major_kind_name }</option>
+							</c:forEach>
 						</select>
-						<input type="hidden" name="humanFile.humanMajorKindName"/>
+						<input type="hidden" name="human_major_kind_name"/>
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorId" class="SELECT_STYLE1" id="majorName">
-							<option>区域经理</option>
-							<option>总经理</option>
+						<select name="human_major_id" class="SELECT_STYLE1" id="majorName">
+							<option value="0">请选择</option>
 						</select>
-						<input type="hidden" name="humanFile.hunmaMajorName"/>
+						<input type="hidden" name="hunma_major_name"/>
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1">
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+						<select name="human_pro_designation" class="SELECT_STYLE1">
+						<c:forEach var="listzhicheng" items="${listzhicheng }" >
+							<option>${listzhicheng.attribute_name }</option>
+						</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -151,7 +201,7 @@
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_email" id="humanEmail"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -160,21 +210,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_telephone" id="humanTelephone"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_qq" id="humanQq"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_mobilephone" id="humanMobilephone"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -183,14 +233,14 @@
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="human_address"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_postcode"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -209,13 +259,13 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_birthplace"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						<input type="text" name="human_birthday" readonly="readonly"
+						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
 							class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="11%" class="TD_STYLE1">
@@ -255,14 +305,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_id_card" id="humanIdCard"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_society_security_id"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -271,7 +321,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_age" id="humanAge"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						学历
@@ -309,7 +359,7 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_id" class="SELECT_STYLE1">
+						<select name="salary_standard_name" class="SELECT_STYLE1">
 							<option>薪酬标准1</option>
 							<option>薪酬标准2</option>
 						</select>
@@ -319,21 +369,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_bank"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						登记人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="register" value="谢鹏"
-							readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="register" value="${loginUser.user_true_name }"
+							readonly="readonly" class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -342,7 +392,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="regist_time" id="create_time" readonly="readonly"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						特长

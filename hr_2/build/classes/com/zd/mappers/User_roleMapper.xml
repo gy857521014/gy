@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zd.dao.IUser_roleDao">
+	<resultMap type="user_role" id="user_roleMapper">
+		<result property="uroleid" column="uroleid"/>
+		<result property="urole_name" column="urole_name"/>
+		<result property="urole_exp" column="urole_exp"/>
+		<result property="urole_state" column="urole_state"/>
+		
+	</resultMap>
+	<select id="queryByUid" resultMap="user_roleMapper" parameterType="int">
+	select * from user_role r,u_r_conn ur where r.uroleid=ur.r_id and ur.u_id=#{userid}
+	</select>
+</mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.zd.dao.IConfig_file_first_kindDao;
 import com.zd.dao.IConfig_public_charDao;
 import com.zd.dao.IHumman_fileDao;
+import com.zd.dao.ISalary_grantDao;
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
@@ -20,6 +21,9 @@ import com.zd.service.IHumman_fileService;
  */
 @Service
 public class Humman_fileService implements IHumman_fileService {
+	@Autowired
+	private ISalary_grantDao gdao;
+	
 	@Autowired
 	private IHumman_fileDao dao;
 
@@ -70,5 +74,27 @@ public class Humman_fileService implements IHumman_fileService {
 	public List<Config_public_char> listaihao() {
 		return config_public_charDao.listaihao();
 	}
-	
+
+	public List<Config_public_char> listzhaopin(){
+		
+		return config_public_charDao.listzhaopin();
+	}
+	@Override
+	public int sel1all() {
+		return dao.sel1all();
+	}
+	//≤È—Ø÷∞≥∆
+	public List<Config_public_char> listzhicheng() {
+		return config_public_charDao.listzhicheng();
+	}
+	public int selnumz() {
+		return gdao.selnumz();
+	}
+	public int shifa() {
+		return gdao.shifa();
+	}
+	public int zong() {
+		return gdao.zong();
+	}
+
 }

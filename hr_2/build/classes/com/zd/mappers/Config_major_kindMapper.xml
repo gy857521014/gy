@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IConfig_major_kindDao">
+  <resultMap type="major_king" id="majorkind">
+  	<result property="mfk_id" column="mfk_id"/>
+  	<result property="major_kind_id" column="major_kind_id"/>
+  	<result property="major_kind_name" column="major_kind_name"/>
+</resultMap>
+</mapper>

@@ -30,7 +30,7 @@
 			</table>
 					<br> 
 					薪酬总数:${hsum }，
-					总人数:8，基本薪酬总数:141821.0，实发总额:1998.0
+					总人数:${numz }，基本薪酬总数:${zong }，实发总额:${shifa }
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -55,23 +55,42 @@
 						登记
 					</td>
 				</tr>
-						<c:forEach items="${arr }" var="a" varStatus="vs">
-					<tr class="TD_STYLE2">
+				<c:forEach items="${mapList }" var="eachMap" varStatus="vs">
+				<tr class="TD_STYLE2">
 						<td>
 							${vs.count }
 						</td>
-					<td> ${a.first_kind_name }  </td>
-						<td>
-							${sum } 
+						<td> 
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fname' }">
+								${m.value}
+							</c:if>  
+					</c:forEach>
 						</td>
 						<td>
-							1332.0 
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fcount' }">
+								${m.value}
+							</c:if> 
+					</c:forEach>
+						</td>
+						<td>
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fsum' }">
+								<c:if test="${m.value!=0 }">
+									${m.value}
+								</c:if>
+								<c:if test="${m.value == 0 }">
+									0.0
+								</c:if>
+							</c:if>
+					</c:forEach>
 						</td>
 						<td>
 							<a href="register_commit.html">登 记</a>
 						</td>
 					</tr>
-						</c:forEach>
+				</c:forEach>
 				</table>
 			<p>
 				&nbsp;
