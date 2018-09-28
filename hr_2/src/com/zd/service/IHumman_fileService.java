@@ -5,6 +5,7 @@ import java.util.List;
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_standard;
 
 /**
  * 人力资源管理Service
@@ -38,6 +39,10 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listaihao();
 	//查询职称
 	public List<Config_public_char> listzhicheng();
+	//查询薪酬标准
+	public List<Salary_standard> xinchoulist();
+	//添加
+	public void add(Humman_file humman_file);
 	
 	public int shifa();
 	

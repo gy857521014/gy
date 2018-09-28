@@ -3,7 +3,9 @@ package com.zd.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,9 @@ import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
+import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_standard;
+import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
 import com.zd.service.IConfig_majorService;
@@ -37,6 +42,9 @@ public class Humman_fileController {
 	//职位设置
 	@Autowired
 	private IConfig_majorService majorservice;
+	//根据一级机构编号查询一级机构名字
+	@Autowired
+	private IConfig_file_first_kindService config_file_first_kindService;
 	//根据一级机构编号查询二级机构
 	@Autowired
 	private IConfig_file_second_kindService config_file_second_kindService;
@@ -86,6 +94,9 @@ public class Humman_fileController {
 			//查询职称
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
+			//查询薪酬标准
+			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			map.put("listxinchou", listxinchou);
 			return "page/humanResources/human_register";
 		}
 		//根据一级机构编号查询二级机构
@@ -110,4 +121,20 @@ public class Humman_fileController {
 			List<Config_major> majorlist=majorservice.selzhiwei(majorid);
 			return majorlist;
 		}
+		
+		//添加
+		@RequestMapping("/page/add")
+		public String add(Humman_file humman_file,HttpServletRequest request,String first_king_id) {
+			// 单独获取生日
+			String birthday =  request.getParameter("humanFile.humanBirthday");
+			humman_file.setHuman_birthday(birthday);
+			//根据一级机构编号查询一级机构名字
+			Config_file_first_kind config_file_first_kind = 
+					config_file_first_kindService.selcffkid(first_king_id);
+			humman_file.setFirst_king_name(config_file_first_kind.getFirst_kind_name());
+			humman_fileService.add(humman_file);
+			return "forward:human_register";
+		}
+	//根据档案编号查询
+	
 }

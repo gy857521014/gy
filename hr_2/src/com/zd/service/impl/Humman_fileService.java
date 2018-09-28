@@ -12,6 +12,7 @@ import com.zd.dao.ISalary_grantDao;
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_standard;
 import com.zd.service.IHumman_fileService;
 
 /**
@@ -25,7 +26,7 @@ public class Humman_fileService implements IHumman_fileService {
 	private ISalary_grantDao gdao;
 	
 	@Autowired
-	private IHumman_fileDao dao;
+	private IHumman_fileDao humman_fileDao;
 
 	@Autowired
 	private IConfig_file_first_kindDao config_file_first_kindDao;
@@ -78,6 +79,15 @@ public class Humman_fileService implements IHumman_fileService {
 	public List<Config_public_char> listzhicheng() {
 		return config_public_charDao.listzhicheng();
 	}
+	//查询薪酬标准
+	public List<Salary_standard> xinchoulist() {
+		return humman_fileDao.xinchoulist();
+	}
+	//添加
+	public void add(Humman_file humman_file) {
+		humman_fileDao.add(humman_file);
+	}
+	
 	public int selnumz() {
 		return gdao.selnumz();
 	}
@@ -87,6 +97,8 @@ public class Humman_fileService implements IHumman_fileService {
 	public int zong() {
 		return gdao.zong();
 	}
+
+
 
 
 }
