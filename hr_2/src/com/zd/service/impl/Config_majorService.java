@@ -27,4 +27,9 @@ public class Config_majorService implements IConfig_majorService{
 		return major;
 	}
 
+	
+	public List<Config_major> selallzhi() {
+		return majordao.selallzhi();
+		
+	}
 }
