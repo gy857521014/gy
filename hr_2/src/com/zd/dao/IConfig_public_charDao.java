@@ -50,8 +50,13 @@ public interface IConfig_public_charDao {
 	@Select("select * from config_public_char WHERE attribute_kind ='爱好'")
 	@ResultMap("Config_public_char")
 	public List<Config_public_char> listaihao();
+	//查询招聘类型
+	@Select("select * from config_public_char WHERE attribute_kind ='招聘类型'")
+	@ResultMap("Config_public_char")
+	public List<Config_public_char> listzhaopin();
 	//查询职称
 	@Select("select * from config_public_char WHERE attribute_kind ='职称'")
 	@ResultMap("Config_public_char")
 	public List<Config_public_char> listzhicheng();
+
 }

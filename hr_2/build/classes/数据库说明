@@ -229,7 +229,7 @@ check_comment VARCHAR(200),
 remark VARCHAR(200)
 )
 
-<<<<<<< HEAD
+--角色表--
 9.Config_major_kind：职位分类设置
 
  列	类型	描述

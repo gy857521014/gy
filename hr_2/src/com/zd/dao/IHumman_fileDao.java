@@ -17,10 +17,7 @@ import com.zd.entity.Salary_standard;
  *
  */
 public interface IHumman_fileDao {
-	
 	@Select("SELECT COUNT(*) FROM humman_file WHERE first_king_id !=''")
 	public int sel1all();
-	
-	
 }
 

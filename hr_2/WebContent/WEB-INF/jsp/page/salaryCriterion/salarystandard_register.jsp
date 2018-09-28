@@ -17,7 +17,7 @@
 				<td><font color="black">您正在做的业务是：人力资源--薪酬标准管理--薪酬标准登记 </font></td>
 			</tr>
 			<tr>
-				<td align="right"><input type="button" value="提 交"
+				<td align="right"><input type="submit" value="提 交"
 					onclick="check()" class="BUTTON_STYLE1"> <input
 					type="reset" value="返 回" class="BUTTON_STYLE1"></td>
 			</tr>
@@ -46,7 +46,7 @@
 					name="designer" class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">登记人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="register" value="better_admin" readonly="readonly"
+					name="register" value="${loginUser.user_true_name}" readonly="readonly"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">登记时间</td>
 				<td class="TD_STYLE2"><input type="text" id="Tdate"
@@ -103,6 +103,7 @@
 				alert("薪酬标准名称不可为空!!!");
 				return;
 			}
+
 			document.forms[0].submit();
 		}
 		function countMoney(obj, o) {

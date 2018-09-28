@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.Remove;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,9 +80,5 @@ public class UserController {
 		return "page/power/user_list";
 	}
 	
-	//跳转到添加用户界面
-	@RequestMapping("page/toUserAdd")
-	public String toUserAdd() {
-		return "page/power/user_add";
-	}
+	
 }

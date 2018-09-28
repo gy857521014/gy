@@ -19,6 +19,7 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 	@Autowired
 	private IConfig_file_third_kindDao icftkdao;
 	
+	
 	@Override
 	public List<Config_file_third_kind> selcftk() {
 		return icftkdao.selcftk();
@@ -45,4 +46,11 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 	public void updatecftk(Config_file_third_kind config_file_third_kind) {
 		icftkdao.updatecftk(config_file_third_kind);
 	}
+	
+	//根据三级机构id查询名称
+	public Config_file_third_kind selsanjiid(String id) {
+		Config_file_third_kind third=icftkdao.selsanjiid(id);
+		return third;
+	}
+	
 }

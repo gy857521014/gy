@@ -71,35 +71,59 @@
  		</script>
  	<script type="text/javascript">
  	   function mysubmit(){  
- 	   	document.getElementById('deadline').value = document
-				.getElementById('date_start').value;
-				
- 	    if(document.getElementById("firstKindId").value==""){
- 	       alert("请选择一级机构");
- 	       return ;
+ 	   
+ 	   document.getElementById("name").style.display ="none";
+ 	   
+ 		 if(document.getElementById("firstKindId").value.trim()<1||document.getElementById("firstKindId").value.trim().length>20)	
+ 		  {
+ 			 document.getElementById("name").style.display ="";
+ 	       return false;
  	       }
- 	  if(document.getElementById("engageType").value==""){
- 	       alert("请选择招聘类型");
- 	       return ;
+ 		 
+ 		 if(document.getElementById("engageType").value.trim()<1||document.getElementById("engageType").value.trim().length>20)
+ 		  {
+ 			 document.getElementById("name").style.display ="";
+ 	       return false;
  	       } 
- 	  if(document.getElementById("majorKindId").value==""){
- 	       alert("请选择职位分类");
- 	       return ;
- 	       }    
- 	   if(document.getElementById("majorId").value==""){
- 	       alert("请选择职位名称");
- 	       return ;
- 	       }    
- 	  if(document.getElementById("humanAmount").value==""){
- 	   alert("请填写招聘人数");
- 	       return ; 
+ 		 
+ 		 if(document.getElementById("majorKindId").value.trim()<1||document.getElementById("majorKindId").value.trim().length>20)
+ 		 {
+ 			 document.getElementById("name").style.display ="";
+ 	       return false;
+ 	       }  
+ 		 
+ 		  if(document.getElementById("majorId").value.trim()<1||document.getElementById("majorId").value.trim().length>20)
+ 		  {
+ 			  document.getElementById("name").style.display ="";
+ 	       return false;
+ 	       }  
+ 		  
+ 		 if(document.getElementById("humanAmount").value.trim()<1||document.getElementById("humanAmount").value.trim().length>20)
+ 		  {
+ 			 document.getElementById("name").style.display ="";
+ 	       return false; 
  	  }    
- 	  if(document.getElementById("date_start").value==""){
- 	   alert("请选择截止日期");
- 	       return ; 
+ 		 
+ 		 if(document.getElementById("date_start").value.trim()<1||document.getElementById("date_start").value.trim().length>20)	
+ 		  {
+ 			 document.getElementById("name").style.display ="";
+ 	       return false; 
  	  }   
-  
+ 		 
+ 	  if(document.getElementById("zhiwei").value.trim()<1||document.getElementById("zhiwei").value.trim().length>20)
+		{
+			document.getElementById("name").style.display ="";
+			return false;    				
+		}
+ 	  
+	  if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>20)
+		{
+			document.getElementById("name").style.display ="";
+			return false;    				
+		
+			
 		  	document.humanfileForm.submit();
+		  	return true;
 	}
 	
 	 
@@ -126,11 +150,52 @@ function fun(){
 		});
 
 	}
+	
+function fun1(){
+	var id =$("#firstKindId").val();
+	$.ajax({
+		url:'selerji?fsk_id='+id,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#secondKindId");
+			cityselect.empty();
+			cityselect.append("<option>--请选择二级机构--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.second_kind_id;
+				var name=eachCity.second_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		
+		});
 
+	}
+
+function fun2(){
+	var id =$("#secondKindId").val();
+	$.ajax({
+		url:'selsanji?fsk_id='+id,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#thirdKindId");
+			cityselect.empty();
+			cityselect.append("<option>--请选择三级机构--</option>");
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.third_kind_id;
+				var name=eachCity.third_kind_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		
+		});
+
+	}
 </script>
  	</head>
 	<body>
-		<form name="humanfileForm" method="post" action="position_change_update.html" >
+		<form name="humanfileForm" method="post" action="addrelease" >
 			<table width="100%">
 				<tr>
 					<td>
@@ -139,8 +204,8 @@ function fun(){
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="提交" class="BUTTON_STYLE1" 
-						  onclick="mysubmit();">
+						<input type="submit" value="提交" class="BUTTON_STYLE1" 
+						  onclick="return myfunction()">
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
@@ -154,12 +219,12 @@ function fun(){
 					</td>
 					<td width="14%" class="TD_STYLE2">
 						
-						<select name="emajorRelease.firstKindId" id="firstKindId"  class="SELECT_STYLE1"> 
+						<select name="first_kind_id" onchange="fun1()" id="firstKindId"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 					
-					<c:forEach var="flist" items="${firstlist}">					
-						<option value="${flist.first_kind_id}">${flist.first_kind_name}</option>
-					</c:forEach>
+						<c:forEach var="flist" items="${firstlist}">					
+							<option value="${flist.first_kind_id}">${flist.first_kind_name}</option>
+						</c:forEach>
 					 
 					 </select>
 					</td>
@@ -167,7 +232,7 @@ function fun(){
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="emajorRelease.secondKindId" id="secondKindId" class="SELECT_STYLE1"> 
+						<select name="second_kind_id" onchange="fun2()" id="secondKindId" class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -175,7 +240,7 @@ function fun(){
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-						<select name="emajorRelease.thirdKindId" id="thirdKindId" class="SELECT_STYLE1">
+						<select name="third_kind_id" id="thirdKindId" class="SELECT_STYLE1">
 							<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -183,12 +248,12 @@ function fun(){
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1"> 
+					<select name="engage_type" id="engageType" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option> 
 							
-							<option value="校园招聘">校园招聘</option> 
-							
-							<option value="社会招聘">社会招聘</option> 
+							<c:forEach var="zhlist" items="${zhaoplist}">
+								<option value="${zhlist.pbc_id}" selected>${zhlist.attribute_name}</option>  
+							</c:forEach>
 							
 								 </select>
 						 
@@ -199,7 +264,7 @@ function fun(){
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindId" id="majorKindId" onchange="fun()" class="SELECT_STYLE1">
+						<select name="major_kind_id" id="majorKindId" onchange="fun()" class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
 							
 							<c:forEach var="list" items="${kindlist}">
@@ -211,23 +276,23 @@ function fun(){
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorId" id="majorId" class="SELECT_STYLE1"> 
+						<select name="major_id" id="majorId" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option>
-							<option value="11">区域经理</option>
+							
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.humanAmount" id="humanAmount"  class="INPUT_STYLE2">
+						 <input type="text" name="human_amount" id="humanAmount"  class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2">
-							  <input type="text" name="item.str_startTime" readonly
-							  class="INPUT_STYLE2" id="date_start">
+							  <input type="text" name="deadline"
+							  class="INPUT_STYLE2" onclick="aa('deadline')" id="date_start">
 					</td>
 				</tr>
 				<tr>
@@ -235,14 +300,14 @@ function fun(){
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.register" value="admin" class="INPUT_STYLE2">
+						 <input type="text" name="register" value="${loginUser.user_true_name }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						登记时间
 					</td>
 					<td   class="TD_STYLE2">
 					
-							<input type="text" name="emajorRelease.registTime"
+							<input type="text" name="regist_time"
 							  id="nowTime" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -258,7 +323,7 @@ function fun(){
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.majorDescribe" rows="4" cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="major_describe" id="zhiwei" rows="4" cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>
@@ -267,9 +332,14 @@ function fun(){
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.engageRequired" rows="4"  cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="engage_required" id="zhp" rows="4"  cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
+				</tr>
+				<tr>
+					<td colspan="9" align="center">
+						<span style="color:red;display:none" id="name">请完善资料</span>
+					</td>
 				</tr>
 			</table>
 		</form>

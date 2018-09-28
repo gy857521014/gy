@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -55,23 +55,42 @@
 						登记
 					</td>
 				</tr>
-						<c:forEach items="${arr }" var="a" varStatus="vs">
-					<tr class="TD_STYLE2">
+						<c:forEach items="${maplist }" var="eachMap" varStatus="vs">
+				<tr class="TD_STYLE2">
 						<td>
 							${vs.count }
 						</td>
-					<td> ${a.first_kind_name }  </td>
-						<td>
-							2 
+						<td> 
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fname' }">
+								${m.value}
+							</c:if>  
+					</c:forEach>
 						</td>
 						<td>
-							1332.0 
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fcount' }">
+								${m.value}
+							</c:if> 
+					</c:forEach>
+						</td>
+						<td>
+					<c:forEach items="${eachMap }" var="m">
+							<c:if test="${m.key == 'fsum' }">
+								<c:if test="${m.value!=0 }">
+									${m.value}
+								</c:if>
+								<c:if test="${m.value == 0 }">
+									0.0
+								</c:if>
+							</c:if>
+					</c:forEach>
 						</td>
 						<td>
 							<a href="register_commit.html">登 记</a>
 						</td>
 					</tr>
-						</c:forEach>
+				</c:forEach>
 				</table>
 			<p>
 				&nbsp;

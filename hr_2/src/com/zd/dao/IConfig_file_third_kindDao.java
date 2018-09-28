@@ -41,4 +41,8 @@ public interface IConfig_file_third_kindDao {
 		@Select("SELECT * FROM config_file_third_kind WHERE second_kind_id = #{fsk_id}")
 		@ResultMap("cftk")
 		public List<Config_file_third_kind> selsanji(String fsk_id);
+	
+	@Select("select * from Config_file_third_kind where third_kind_id=#{id}")
+	@ResultMap("cftk")
+	public Config_file_third_kind selsanjiid(String id);
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zd.dao.ISalary_standardDao">
+  <resultMap type="Salary_standard" id="Salary_standardMapper">
+  	<result property="ssd_id" column="ssd_id"/>
+  	<result property="standard_id" column="standard_id"/>
+  	<result property="standard_name" column="standard_name"/>
+  	<result property="designer" column="designer"/>
+  	<result property="register" column="register"/>
+  	<result property="checker" column="checker"/>
+  	<result property="changer" column="changer"/>
+  	<result property="regist_time" column="regist_time"/>
+  	<result property="check_time" column="check_time"/>
+  	<result property="change_time" column="change_time"/>
+  	<result property="salary_sum" column="salary_sum"/>
+  	<result property="check_status" column="check_status"/>
+  	<result property="change_status" column="change_status"/>
+  	<result property="check_comment" column="check_comment"/>
+  	<result property="remark" column="remark"/>
+</resultMap>
+
+<select id="selSalary_standard" parameterType="map" resultMap="Salary_standardMapper">
+	SELECT * FROM salary_standard WHERE check_status=2  LIMIT #{start},10
+</select>
+</mapper>
