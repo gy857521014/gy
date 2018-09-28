@@ -14,4 +14,8 @@ public interface ISalary_standardService {
 	public void addSalary_standard(Salary_standard ss);
 	//登记薪酬标准薪酬项目
 	public void addCompensation_item(Map map);
+	//薪酬标准登记复核页面例
+	public int selSalary_standardli();
+	//薪酬标准登记复核页面查询*****
+	public List<Salary_standard> selSalary_standard(int start);
 }

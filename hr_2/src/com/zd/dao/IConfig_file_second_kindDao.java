@@ -24,11 +24,11 @@ public interface IConfig_file_second_kindDao {
 	@Insert("insert into Config_file_second_kind values(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{second_salary_id},#{second_sale_id})")
 	public void addcfsk(Config_file_second_kind config_file_second_kind);
 	//根据id查询用户
-	@Select("select * from Config_file_second_kind where fsk_id=#{fsk_id}")
+	@Select("select * from Config_file_second_kind where second_kind_id=#{second_kind_id}")
 	@ResultMap("cfsk")
-	public Config_file_second_kind  selcfskid(int fsk_id);
+	public Config_file_second_kind  selcfskid(String second_kind_id);
 	//修改用户
-	@Update("update Config_file_second_kind set second_salary_id=#{second_salary_id},second_sale_id=#{second_sale_id} where fsk_id=#{fsk_id}")
+	@Update("update Config_file_second_kind set second_salary_id=#{second_salary_id},second_sale_id=#{second_sale_id} where second_kind_id=#{second_kind_id}")
 	public void updatecfsk(Config_file_second_kind config_file_second_kind);
 	
 	//根据一级机构编号查询二级机构
@@ -42,4 +42,9 @@ public interface IConfig_file_second_kindDao {
 	@Select("SELECT second_kind_name fname, COUNT(*) fcount,SUM(salary_sum) fsum FROM humman_file GROUP BY second_kind_name")
 	@ResultMap("mapmapper")
 	public List<Map> tongjiByFname();
+	
+	//根据二级机构id查询名称
+	@Select("select * from config_file_second_kind where second_kind_id=#{id}")
+	@ResultMap("cfsk")
+	public Config_file_second_kind selerjiid(String id);
 }

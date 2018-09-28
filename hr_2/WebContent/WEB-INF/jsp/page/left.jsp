@@ -159,7 +159,7 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_check_list.html" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
+										<a href="tosalarystandard_check_list" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 								<li>
@@ -239,7 +239,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/profession_design.html" target="mainFrame" style="color:black;">职称设置</a>
+														<a href="selzc" target="mainFrame" style="color:black;">职称设置</a>
 													</span>
 												</li>
 												<li>
@@ -254,7 +254,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/public_char.html" target="mainFrame" style="color:black;">公共属性设置</a>
+														<a href="selcpc" target="mainFrame" style="color:black;">公共属性设置</a>
 													</span>
 												</li>
 									</ul>

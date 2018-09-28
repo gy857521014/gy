@@ -29,4 +29,19 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 		return release;
 	}
 	
+	//修改
+	public void updaterelease(Engage_major_release release) {
+		releasedao.updaterelease(release);
+	}
+	
+	//删除
+	public void deleterelease(int id) {
+		releasedao.deleterelease(id);
+	}
+	
+	//添加招聘信息
+	public void addrelease(Engage_major_release release) {
+		
+		releasedao.addrelease(release);
+	}
 }

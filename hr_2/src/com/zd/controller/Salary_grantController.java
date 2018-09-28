@@ -37,6 +37,8 @@ public class Salary_grantController {
 		Logger log = LoggerFactory.getLogger(Salary_grantController.class);
 		try {
 			if(num==1) {
+				List<Config_file_first_kind> arr = icffkservice.selcffk();
+				map.put("arr", arr);
 				//总人数
 				int numz = hf.selnumz();
 				//总机构

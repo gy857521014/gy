@@ -30,6 +30,16 @@ public class Salary_standardService implements ISalary_standardService{
 		Salary_standardDao.addCompensation_item(map);
 		
 	}
+
+	//薪酬标准登记复核页面例
+	public int selSalary_standardli() {
+		return Salary_standardDao.selSalary_standardli();
+	}
+
+	//薪酬标准登记复核页面查询*****
+	public List<Salary_standard> selSalary_standard(int start) {
+		return Salary_standardDao.selSalary_standard(start);
+	}
 	
 	
 }

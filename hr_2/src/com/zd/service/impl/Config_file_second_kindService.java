@@ -24,8 +24,8 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		icfskdao.addcfsk(config_file_second_kind);
 	}
 	//查询修改
-	public Config_file_second_kind selcfskid(int fsk_id) {
-		Config_file_second_kind cfsk = icfskdao.selcfskid(fsk_id);
+	public Config_file_second_kind selcfskid(String second_kind_id) {
+		Config_file_second_kind cfsk = icfskdao.selcfskid(second_kind_id);
 		return cfsk;
 	}
 	//修改
@@ -46,4 +46,10 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		return icfskdao.tongjiByFname();
 	}
 	
+	//根据二级机构id查询名称
+	public Config_file_second_kind selerjiid(String id) {
+		
+		Config_file_second_kind second=icfskdao.selerjiid(id);
+		return second;
+	}
 }

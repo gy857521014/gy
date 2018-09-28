@@ -71,6 +71,11 @@ public class Humman_fileService implements IHumman_fileService {
 	public List<Config_public_char> listaihao() {
 		return config_public_charDao.listaihao();
 	}
+
+	public List<Config_public_char> listzhaopin(){
+		
+		return config_public_charDao.listzhaopin();
+	}
 	//≤È—Ø÷∞≥∆
 	public List<Config_public_char> listzhicheng() {
 		return config_public_charDao.listzhicheng();
@@ -86,6 +91,5 @@ public class Humman_fileService implements IHumman_fileService {
 	public int zong() {
 		return gdao.zong();
 	}
-
 
 }
