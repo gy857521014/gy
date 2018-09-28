@@ -114,8 +114,17 @@ public class UserController {
 	public String userById(int userid,Map<String, Object> map) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
-		User user = userService.userByid(userid);
-		List<User_role> urList = user_roleService.queryUr();
+		User user = userService.userByid(userid);// 1, 2
+		List<User_role> urList = user_roleService.queryUr();// 1, 2, 3
+		// 判断用户的角色哪些被选中
+		for (User_role user_role : urList) {
+			for (User_role r2 : user.getUrole()) {
+				if(user_role.getUroleid() == r2.getUroleid()) {
+					// 说明user_role这个角色要选中
+					user_role.setCheck(1);
+				}
+			}
+		}
 		map.put("urList", urList);
 		map.put("user", user);
 		}catch (Exception e) {

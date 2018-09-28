@@ -53,10 +53,17 @@
 					<td class="TD_STYLE2">
 					
 						<select name="uroleid" id="powerAction!doModifyUser_users_sysRole_roleId" multiple="multiple">
-						   	<c:forEach items="${urList }" var="ur">
-							    <option value="${ur.uroleid }" selected="selected">${ur.urole_name }</option>
-							    <!-- <option value="2" selected="selected">人事经理</option> -->
-							</c:forEach>
+						   	<!-- 所有角色 -->
+						   	<c:forEach items="${urList }" var="urs">
+						   		<%-- <c:if test="${urs.check == 1 }">
+						   			<option selected="selected"  value="">${urs.urole_name }</option>
+						   		</c:if>
+						   		<c:if test="${urs.check == 0 }">
+						   			<option  value="">${urs.urole_name }</option>
+						   		</c:if> --%>
+						   		
+						   		<option <c:if test="${urs.check == 1 }">selected="selected"</c:if> value="${urs.uroleid }">${urs.urole_name }</option>
+						   	</c:forEach>
 						</select>
 					
 					</td>

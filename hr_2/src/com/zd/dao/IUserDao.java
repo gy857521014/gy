@@ -46,7 +46,12 @@ public interface IUserDao {
 	
 	//查询用户（修改）
 	@Select("select * from user where userid=#{userid}")
+	@ResultMap("userMapper")
 	public User userByid(int userid);
+	//查询当前用户的角色
+	/*@Select("select * from user_role where uroleid=#{r_id}")
+	@ResultMap("userMapper")
+	public List<User_role> userroleByid(int r_id);*/
 	
 	//修改用户信息（修改）
 	@Update("update user set user_name=#{user_name},user_true_name=#{user_true_name},user_password=#{user_password} where userid=#{userid} ")

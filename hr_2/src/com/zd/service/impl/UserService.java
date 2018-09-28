@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.zd.dao.IUserDao;
 import com.zd.dao.IUser_roleDao;
 import com.zd.entity.User;
+import com.zd.entity.User_role;
 import com.zd.service.IUserService;
 
 @Service
@@ -75,6 +76,11 @@ public class UserService implements IUserService {
 		}
 		
 	}
+
+	/*@Override
+	public List<User_role> userroleByid(int r_id) {
+		return userDao.userroleByid(r_id);
+	}*/
 	
 	
 }
