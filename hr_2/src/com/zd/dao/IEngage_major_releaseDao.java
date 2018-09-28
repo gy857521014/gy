@@ -35,7 +35,7 @@ public interface IEngage_major_releaseDao {
 			+ ",#{first_kind_name},#{second_kind_id},#{second_kind_name},"
 			+ "#{third_kind_id},#{third_kind_name},#{major_kind_id},#{major_kind_name},"
 			+ "#{major_id},#{major_name},#{human_amount},#{engage_type},"
-			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required})")
+			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required},1)")
 	public void addrelease(Engage_major_release release);
 	
 }

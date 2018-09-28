@@ -18,4 +18,8 @@ public interface IConfig_majorDao {
 	@Select("select * from Config_major where major_id=#{id}")
 	@ResultMap("major")
 	public Config_major selzhiweiid(int id);
+	
+	@Select("select * from Config_major")
+	@ResultMap("major")
+	public List<Config_major> selallzhi();
 }

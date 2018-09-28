@@ -22,6 +22,7 @@
 	<result property="change_time" column="change_time"/>
 	<result property="major_describe" column="major_describe"/>
 	<result property="engage_required" column="engage_required"/>
+	<result property="state" column="state"/>
 </resultMap>
 
 

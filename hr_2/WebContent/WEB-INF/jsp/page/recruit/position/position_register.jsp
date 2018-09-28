@@ -26,9 +26,7 @@
 		<script type="text/javascript"
 			src="../javascript/locate.js">
 		</script>
-	 <script type="text/javascript"
-			src="../javascript/select.js">
-		</script>
+	
 	
  		<script type="text/javascript">
  			window.onload=check;
@@ -73,11 +71,12 @@
  	   function mysubmit(){  
  	   
  	   document.getElementById("name").style.display ="none";
- 	   
+ 	  document.getElementById("name2").style.display ="none";
  		 if(document.getElementById("firstKindId").value.trim()<1||document.getElementById("firstKindId").value.trim().length>20)	
  		  {
- 			 document.getElementById("name").style.display ="";
- 	       return false;
+ 			 	alert(1);
+ 			 	document.getElementById("name").style.display ="";
+ 	       		return false;
  	       }
  		 
  		 if(document.getElementById("engageType").value.trim()<1||document.getElementById("engageType").value.trim().length>20)
@@ -98,9 +97,9 @@
  	       return false;
  	       }  
  		  
- 		 if(document.getElementById("humanAmount").value.trim()<1||document.getElementById("humanAmount").value.trim().length>20)
+ 		 if(document.getElementById("humanAmount").value<1||document.getElementById("humanAmount").value>10000)
  		  {
- 			 document.getElementById("name").style.display ="";
+ 			 document.getElementById("name2").style.display ="";
  	       return false; 
  	  }    
  		 
@@ -120,12 +119,11 @@
 		{
 			document.getElementById("name").style.display ="";
 			return false;    				
-		
 			
+		}
 		  	document.humanfileForm.submit();
 		  	return true;
-	}
-	
+ 	   }
 	 
 </script> 
 
@@ -138,7 +136,7 @@ function fun(){
 		success:function(data){
 			var cityselect=$("#majorId");
 			cityselect.empty();
-			cityselect.append("<option>--请选择职位名称--</option>");
+			cityselect.append("<option value='0'>--请选择职位名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.major_id;
@@ -159,7 +157,7 @@ function fun1(){
 		success:function(data){
 			var cityselect=$("#secondKindId");
 			cityselect.empty();
-			cityselect.append("<option>--请选择二级机构--</option>");
+			cityselect.append("<option value=''>--请选择二级机构--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.second_kind_id;
@@ -180,7 +178,7 @@ function fun2(){
 		success:function(data){
 			var cityselect=$("#thirdKindId");
 			cityselect.empty();
-			cityselect.append("<option>--请选择三级机构--</option>");
+			cityselect.append("<option value=''>--请选择三级机构--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.third_kind_id;
@@ -204,8 +202,8 @@ function fun2(){
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1" 
-						  onclick="return myfunction()">
+						<input type="button" value="提交" class="BUTTON_STYLE1" 
+						  onclick="return mysubmit()">
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
@@ -252,7 +250,7 @@ function fun2(){
 							<option value="">--请选择--</option> 
 							
 							<c:forEach var="zhlist" items="${zhaoplist}">
-								<option value="${zhlist.pbc_id}" selected>${zhlist.attribute_name}</option>  
+								<option value="${zhlist.pbc_id}">${zhlist.attribute_name}</option>  
 							</c:forEach>
 							
 								 </select>
@@ -339,6 +337,7 @@ function fun2(){
 				<tr>
 					<td colspan="9" align="center">
 						<span style="color:red;display:none" id="name">请完善资料</span>
+						<span style="color:red;display:none" id="name2">请输入正确的人数</span>
 					</td>
 				</tr>
 			</table>
