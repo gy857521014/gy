@@ -28,6 +28,10 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 		return icftkdao.selsanji(fsk_id);
 	}
 	
-
+	//根据三级机构id查询名称
+	public Config_file_third_kind selsanjiid(String id) {
+		Config_file_third_kind third=icftkdao.selsanjiid(id);
+		return third;
+	}
 	
 }

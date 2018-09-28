@@ -15,4 +15,7 @@ public interface IConfig_file_third_kindService {
 
 	//根据二级机构编号查询三级机构
 	public List<Config_file_third_kind> selsanji(String fsk_id);
+	
+	//根据三级机构id查询名称
+	public Config_file_third_kind selsanjiid(String id);
 }

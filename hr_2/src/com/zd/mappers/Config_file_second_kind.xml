@@ -11,4 +11,5 @@
   	<result property="second_salary_id" column="second_salary_id"/>
   	<result property="second_sale_id" column="second_sale_id"/>
 </resultMap>
+<resultMap type="java.util.Map" id="mapmapper"></resultMap>
 </mapper>

@@ -37,6 +37,10 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//查询爱好
 	public List<Config_public_char> listaihao();
+
+	//查询招聘类型
+	public List<Config_public_char> listzhaopin();
+
 	//查询职称
 	public List<Config_public_char> listzhicheng();
 	//查询薪酬标准

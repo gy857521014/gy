@@ -124,7 +124,8 @@ public class Humman_fileController {
 		
 		//添加
 		@RequestMapping("/page/add")
-		public String add(Humman_file humman_file,HttpServletRequest request,String first_king_id) {
+		public String add(Humman_file humman_file,HttpServletRequest request,
+				String first_king_id,String second_kind_id,String third_kind_id,int human_major_kind_id,int human_major_id) {
 			// 单独获取生日
 			String birthday =  request.getParameter("humanFile.humanBirthday");
 			humman_file.setHuman_birthday(birthday);
@@ -132,6 +133,21 @@ public class Humman_fileController {
 			Config_file_first_kind config_file_first_kind = 
 					config_file_first_kindService.selcffkid(first_king_id);
 			humman_file.setFirst_king_name(config_file_first_kind.getFirst_kind_name());
+			//根据二级机构编号查询二级机构名字
+			Config_file_second_kind config_file_second_kind =
+					config_file_second_kindService.selerjiid(second_kind_id);
+			humman_file.setSecond_kind_name(config_file_second_kind.getSecond_kind_name());
+			//根据三级机构编号查询三级机构名字
+			Config_file_third_kind config_file_third_kind = 
+					config_file_third_kindService.selsanjiid(third_kind_id);
+			humman_file.setThird_kind_name(config_file_third_kind.getThird_kind_name());
+			/*//根据分类id查询名称
+			Config_major_kind config_major_kind =
+					config_major_kindService.selmajorkindid(human_major_kind_id);
+			humman_file.setHuman_major_kind_name(config_major_kind.getMajor_kind_name());
+			//根据id查询职位
+			Config_major config_major = majorservice.selzhiweiid(human_major_id);
+			humman_file.setHunma_major_name(config_major.getMajor_name());*/
 			humman_fileService.add(humman_file);
 			return "forward:human_register";
 		}
