@@ -80,7 +80,6 @@ public class Humman_fileService implements IHumman_fileService {
 		
 		return config_public_charDao.listzhaopin();
 	}
-	
 	//≤È—Ø÷∞≥∆
 	public List<Config_public_char> listzhicheng() {
 		return config_public_charDao.listzhicheng();

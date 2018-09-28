@@ -7,12 +7,24 @@ package com.zd.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
 import com.zd.entity.Config_public_char;
 
 public interface IConfig_public_charDao {
+	//查询所有
+	@Select("select * from config_public_char")
+	@ResultMap("Config_public_char")
+	public List<Config_public_char>  selcpc();
+	//添加方法
+	@Insert("insert into config_public_char values(null,#{attribute_kind},#{attribute_name})")
+	public void addcpc(Config_public_char config_public_char);
+	//删除
+	@Delete("delete from config_public_char where pbc_id=#{pbc_id}")
+	public void deletecpc(int pbc_id);
 
 	//查询国籍
 	@Select("select * from config_public_char WHERE attribute_kind ='国籍'")

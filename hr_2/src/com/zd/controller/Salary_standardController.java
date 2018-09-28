@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
 import com.zd.entity.User;
@@ -46,11 +47,13 @@ public class Salary_standardController {
 			Set<String> keySet = map.keySet();
 			for(String key:keySet) {
 				if(key.startsWith("x_")) {
+					String attribute_name = key.split("_")[2];
 					int pbc_id = Integer.parseInt(key.split("_")[1]);
 					double money = Double.parseDouble((String) map.get(key));
 					moneyMap.put("pbc_id", pbc_id);
 					moneyMap.put("money", money);
 					moneyMap.put("standard_id",Standard_id);
+					moneyMap.put("attribute_name", attribute_name);
 					Salary_standardService.addCompensation_item(moneyMap);
 				}
 				
@@ -193,6 +196,17 @@ public class Salary_standardController {
 						logger.error("Ð½³ê±ê×¼µÇ¼Ç¸´ºËÒ³Ìø×ª´íÎó",e);
 					}
 					return "/page/salaryCriterion/salarystandard_check_list";
+				}
+				
+				//Ìø×ªÖÁ¸´ºËÒ³Ãæ
+				@RequestMapping("page/tosalarystandard_check")
+				public String tosalarystandard_check(Map map,String standard_id) {
+					
+					Salary_standard ssd = Salary_standardService.selOneSalary_standard(standard_id);
+					map.put("ssd", ssd);
+					List<Compensation_item> ci = Salary_standardService.selCompensation_item(standard_id);
+					map.put("ci", ci);
+					return "page/salaryCriterion/salarystandard_check";
 				}
 	
 }

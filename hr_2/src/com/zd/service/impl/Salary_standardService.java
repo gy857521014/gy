@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.ISalary_standardDao;
+import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
 import com.zd.service.ISalary_standardService;
@@ -39,6 +40,16 @@ public class Salary_standardService implements ISalary_standardService{
 	//薪酬标准登记复核页面查询*****
 	public List<Salary_standard> selSalary_standard(int start) {
 		return Salary_standardDao.selSalary_standard(start);
+	}
+
+	//单条查询薪酬标准登记
+	public Salary_standard selOneSalary_standard(String standard_id) {
+		return Salary_standardDao.selOneSalary_standard(standard_id);
+	}
+
+	//根据薪酬编号查询薪酬项目名称
+	public List<Compensation_item> selCompensation_item(String standard_id) {
+		return Salary_standardDao.selCompensation_item(standard_id);
 	}
 	
 	

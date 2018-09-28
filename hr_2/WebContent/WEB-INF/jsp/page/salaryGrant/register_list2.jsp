@@ -29,8 +29,8 @@
 				 
 			</table>
 					<br> 
-					薪酬总数:3，
-					总人数:8，基本薪酬总数:141821.0，实发总额:1998.0
+					薪酬总数:${hsumm }，
+					总人数:${numzz }，基本薪酬总数:${zongg }，实发总额:${shifaa }
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">

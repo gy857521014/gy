@@ -13,16 +13,19 @@ import com.zd.entity.Config_file_first_kind;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IHumman_fileService;
+import com.zd.service.ISalary_grantService;
 
 
 @Controller
 public class Salary_grantController {
 	@Autowired
+	private ISalary_grantService isg;
+	@Autowired
 	private IConfig_file_second_kindService fsk;
 	@Autowired
 	private IConfig_file_first_kindService icffkservice;
 	@Autowired
-	public IHumman_fileService hf;
+	private IHumman_fileService hf;
 	
 	@RequestMapping("page/tolo")
 	public String tolo() {
@@ -49,14 +52,20 @@ public class Salary_grantController {
 				map.put("shifa", shifa);
 				map.put("zong", zong);
 				List<Map> mapList = icffkservice.tongjiByFname();
-				// fname=一级机构  fsum=11111  fcount=2
 				map.put("mapList", mapList);
 				return "page/salaryGrant/register_list";
 			}
 			if(num==2) {
+				int numzz = isg.selnumzz();
+				int hsumm = isg.selhumnumm();
+				int shifaa = isg.shifaa();
+				int zongg = isg.zongg();
+				map.put("shifaa", shifaa);
+				map.put("zongg", zongg);
+				map.put("hsumm", hsumm);
+				map.put("numzz", numzz);
 				List<Map> maplist =  fsk.tongjiByFname();
 				map.put("maplist", maplist);
-				System.out.println(map);
 				return "page/salaryGrant/register_list2";
 			}
 			if(num==3) {
@@ -67,6 +76,10 @@ public class Salary_grantController {
 			log.error("错误",e);
 		}
 		return null;
+	}
+	@RequestMapping("page/toregister_commit")
+	public String toregister_commit() {
+		return "page/salaryGrant/register_commit";
 	}
 	
 }

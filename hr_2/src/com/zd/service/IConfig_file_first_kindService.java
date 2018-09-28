@@ -18,7 +18,6 @@ public interface IConfig_file_first_kindService {
 	public void deletecffk(int ffk_id);
 	
 	public int selhumnum();
-	
 	// 通过一级名称统计人数、薪酬
 	public List<Map> tongjiByFname();
 }
