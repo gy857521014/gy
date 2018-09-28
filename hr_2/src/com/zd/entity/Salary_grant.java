@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Salary_grant {
 	private int  sgr_id;
-	private int salary_grant_id;
+	private String salary_grant_id;
 	private int salary_standard_id;
 	private int first_kind_id;
 	private String first_kind_name;
@@ -16,9 +16,9 @@ public class Salary_grant {
 	private double salary_standard_sum;
 	private double salary_paid_sum;
 	private String register;
-	private Date regist_time;
+	private String regist_time;
 	private String checker;
-	private String check_time;
+	private Date check_time;
 	private int check_status;
 	
 	
@@ -27,12 +27,6 @@ public class Salary_grant {
 	}
 	public void setSgr_id(int sgr_id) {
 		this.sgr_id = sgr_id;
-	}
-	public int getSalary_grant_id() {
-		return salary_grant_id;
-	}
-	public void setSalary_grant_id(int salary_grant_id) {
-		this.salary_grant_id = salary_grant_id;
 	}
 	public int getSalary_standard_id() {
 		return salary_standard_id;
@@ -100,23 +94,11 @@ public class Salary_grant {
 	public void setRegister(String register) {
 		this.register = register;
 	}
-	public Date getRegist_time() {
-		return regist_time;
-	}
-	public void setRegist_time(Date regist_time) {
-		this.regist_time = regist_time;
-	}
 	public String getChecker() {
 		return checker;
 	}
 	public void setChecker(String checker) {
 		this.checker = checker;
-	}
-	public String getCheck_time() {
-		return check_time;
-	}
-	public void setCheck_time(String check_time) {
-		this.check_time = check_time;
 	}
 	public int getCheck_status() {
 		return check_status;
@@ -124,7 +106,25 @@ public class Salary_grant {
 	public void setCheck_status(int check_status) {
 		this.check_status = check_status;
 	}
-
+	public String getSalary_grant_id() {
+		return salary_grant_id;
+	}
+	public void setSalary_grant_id(String salary_grant_id) {
+		this.salary_grant_id = salary_grant_id;
+	}
+	public String getRegist_time() {
+		return regist_time;
+	}
+	public void setRegist_time(String regist_time) {
+		this.regist_time = regist_time;
+	}
+	public Date getCheck_time() {
+		return check_time;
+	}
+	public void setCheck_time(Date check_time) {
+		this.check_time = check_time;
+	}
+	
 	
 	
 }

@@ -39,7 +39,6 @@ public interface IHumman_fileService {
 
 	//查询招聘类型
 	public List<Config_public_char> listzhaopin();
-	public int sel1all();
 
 	//查询职称
 	public List<Config_public_char> listzhicheng();

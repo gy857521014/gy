@@ -87,7 +87,7 @@
 					</c:forEach>
 						</td>
 						<td>
-							<a href="register_commit.html">登 记</a>
+							<a href="toregister_commit">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
