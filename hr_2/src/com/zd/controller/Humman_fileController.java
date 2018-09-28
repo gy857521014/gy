@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
@@ -128,7 +130,7 @@ public class Humman_fileController {
 		@RequestMapping("/page/add")
 		public String add(Humman_file humman_file,HttpServletRequest request,
 				String first_king_id,String second_kind_id,String third_kind_id,int human_major_kind_id,int human_major_id,
-				String salary_standard_id) {
+				String salary_standard_id,String human_id,Map map) {
 			// 单独获取生日
 			String birthday =  request.getParameter("humanFile.humanBirthday");
 			humman_file.setHuman_birthday(birthday);
@@ -160,8 +162,11 @@ public class Humman_fileController {
 			//添加应发薪酬总额
 			humman_file.setDemand_salaray_sum(salary_standard.getSalary_sum());
 			humman_fileService.add(humman_file);
-			return "redirect:check_list";
+			//获取档案编号
+			map.put("hf", human_id);
+			return "page/humanResources/register_choose_picture";
 		}
+		//上传图片
 		
 		//人力资源档案复核
 			//查询人力资源档案
@@ -172,7 +177,7 @@ public class Humman_fileController {
 				map.put("humman_fileslist", humman_fileslist);
 				return "page/humanResources/check_list";
 			}
-			////查询根据人力资源表查询单条数据
+			//查询根据人力资源表查询单条数据
 			@RequestMapping("page/human_check")
 			public String human_check(String human_id,Map<String, Object> map){
 				Humman_file humman_file = 
@@ -180,5 +185,5 @@ public class Humman_fileController {
 				map.put("humman_file", humman_file);
 				return "page/humanResources/human_check";
 			}
-	
+			
 }
