@@ -16,7 +16,7 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 	@Autowired
 	private IConfig_file_first_kindDao icffkdao;
 	@Autowired
-	public ISalary_grantDao dao;
+	private ISalary_grantDao dao;
 	
 	//²éÑ¯ËùÓÐ
 	public List<Config_file_first_kind> selcffk() {
