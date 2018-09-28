@@ -45,8 +45,14 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listzhicheng();
 	//查询薪酬标准
 	public List<Salary_standard> xinchoulist();
+	//根据薪酬标注编号查询薪酬标准name
+	public Salary_standard xinchouid(String id);
 	//添加
 	public void add(Humman_file humman_file);
+	//查询人力资源档案表
+	public List<Humman_file> Humman_fileList();
+	//查询根据人力资源表查询单条数据
+	public Humman_file human_check(String human_id);
 	
 	public int shifa();
 	

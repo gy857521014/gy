@@ -85,7 +85,7 @@
 							${c.second_sale_id }
 						</td>
 						<td class="TD_STYLE2">
-							<a href="selcfskid?fsk_id=${c.fsk_id }">变更</a>
+							<a href="selcfskid?second_kind_id=${c.second_kind_id}">变更</a>
 						</td>
 						<td class="TD_STYLE2">
 							<a href="deletecfsk?fsk_id=${c.fsk_id }">删除</a>

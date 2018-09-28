@@ -11,7 +11,7 @@ public interface IConfig_file_second_kindService {
 	//添加
 	public void addcfsk(Config_file_second_kind config_file_second_kind);
 	// 根据id查询（修改）
-	public Config_file_second_kind selcfskid(int fsk_id);
+	public Config_file_second_kind selcfskid(String second_kind_id);
 	// 修改
 	public void updatecfsk(Config_file_second_kind config_file_second_kind);
 	// 删除用户

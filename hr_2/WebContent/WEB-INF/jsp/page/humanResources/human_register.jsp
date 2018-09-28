@@ -70,12 +70,12 @@ function querySecond(){
 function queryThird(){
 	var pid =$("#secondKind").val();
 	$.ajax({
-		url:'selerji?fsk_id='+pid,
+		url:'selsanji?fsk_id='+pid,
 		type:'get',
 		success:function(data){
 			var cityselect=$("#thirdKind");
 			cityselect.empty();
-			cityselect.append("<option>--请选择三级机构名称--</option>");
+			cityselect.append("<option>--请选择二级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.third_kind_id;
@@ -365,7 +365,7 @@ function queryThird(){
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_name" class="SELECT_STYLE1">
+						<select name="salary_standard_id" class="SELECT_STYLE1">
 						<c:forEach items="${listxinchou }" var="listxinchou">
 							<option value="${listxinchou.standard_id }">${listxinchou.standard_name }</option>
 						</c:forEach>

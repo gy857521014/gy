@@ -72,10 +72,10 @@ public class Config_file_second_kindController {
 	}
 	// ²éÑ¯ÐÞ¸Ä
 	@RequestMapping("page/selcfskid")
-	public String selcfskid(Map<String, Object> map,int fsk_id){
+	public String selcfskid(Map<String, Object> map,String second_kind_id){
 		Logger logger = LoggerFactory.getLogger(Config_file_second_kindController.class);
 		try{
-			Config_file_second_kind cfsks = icfskservice.selcfskid(fsk_id);
+			Config_file_second_kind cfsks = icfskservice.selcfskid(second_kind_id);
 		map.put("cfsks", cfsks);
 		}catch (Exception e) {
 			e.printStackTrace();

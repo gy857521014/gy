@@ -112,7 +112,7 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/check_list.html" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
+											<a href="check_list" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
 									</span>
 								</li>
 								<li>
@@ -159,7 +159,7 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_check_list.html" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
+										<a href="tosalarystandard_check_list" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 								<li>
