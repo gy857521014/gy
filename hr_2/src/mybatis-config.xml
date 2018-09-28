@@ -8,7 +8,7 @@
 		<typeAlias type="com.zd.entity.Config_file_second_kind" alias="cfskentity"/>
 		<typeAlias type="com.zd.entity.User" alias="user"/>
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
-		<!-- 公共表字段映射 -->
+		<!-- 公共表字段映射  -->
 		<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 		<typeAlias type="com.zd.entity.Config_major_kind" alias="major_king"/>
 		<typeAlias type="com.zd.entity.Config_major" alias="major"/>
