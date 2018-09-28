@@ -6,6 +6,9 @@
 	<typeAliases>
 		<typeAlias type="com.zd.entity.Config_file_first_kind" alias="cffk"/>
 		<typeAlias type="com.zd.entity.User" alias="user"/>
+		<typeAlias type="com.zd.entity.Salary_standard" alias="Salary_standard"/>
+		<typeAlias type="java.util.Map" alias="map"/>
+		
 		<!-- 公共表字段映射 -->
 		<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 	</typeAliases>
@@ -13,5 +16,6 @@
 		<mapper resource="com/zd/mappers/UserMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_first_kind.xml"/>
 		<mapper resource="com/zd/mappers/Config_public_charMapper.xml"/>
+		<mapper resource="com/zd/mappers/Salary_standardMapper.xml"/>
 	</mappers>
 </configuration>

@@ -14,6 +14,7 @@ public class Config_file_first_kind {
 	public void setFfk_id(int ffk_id) {
 		this.ffk_id = ffk_id;
 	}
+	
 	public String getFirst_kind_id() {
 		return first_kind_id;
 	}

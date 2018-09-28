@@ -34,4 +34,5 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//≤È—Ø∞Æ∫√
 	public List<Config_public_char> listaihao();
+	
 }

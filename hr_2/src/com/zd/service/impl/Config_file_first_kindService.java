@@ -35,4 +35,6 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 	public void deletecffk(int ffk_id) {
 		icffkdao.deletecffk(ffk_id);
 	}
+	
+	
 }

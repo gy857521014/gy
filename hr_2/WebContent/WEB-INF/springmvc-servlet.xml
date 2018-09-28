@@ -12,6 +12,22 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd 
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<bean class="com.zd.interceptor.CheckLogininterceptor">
+				<property name="notUrl">
+					<list>
+						<value>/tologin</value>
+						<value>/login</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<!-- 扫描controller包，让包中的注解生效 -->
 	<!-- base-package指定要扫描的包 -->
 	<context:component-scan base-package="com.zd.controller"/>

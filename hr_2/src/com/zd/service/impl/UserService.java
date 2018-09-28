@@ -15,7 +15,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public User login(User u) {
-		
 		return userDao.login(u);
 	}
 

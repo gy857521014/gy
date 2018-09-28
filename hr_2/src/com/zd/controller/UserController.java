@@ -1,7 +1,9 @@
 package com.zd.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.Remove;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,13 @@ public class UserController {
 	
 	//登陆跳转
 	@RequestMapping("/login")
-	public String login(User u) {
+	public String login(User u,HttpSession session) {
 	Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	try {
 		User user = userService.login(u);
 			if(user != null) {
+				session.setAttribute("loginUser", user);
 				return "page/index";
 			}
 			else {
@@ -41,6 +44,14 @@ public class UserController {
 		}
 	return "redirect:tologin";
 	}
+	
+	//退出
+	@RequestMapping("page/esc")
+	public String esc(HttpSession session){
+		session.removeAttribute("loginUser");
+		return "login";
+	}
+	
 	//跳转页面的方法
 	@RequestMapping({"/page/top","/page/left","/page/main"})
 	public String toPath(HttpServletRequest request) {
