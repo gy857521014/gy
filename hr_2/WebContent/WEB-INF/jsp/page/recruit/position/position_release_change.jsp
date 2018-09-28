@@ -85,7 +85,7 @@
     		
         	document.getElementById("name").style.display ="none";
 
-			if(document.getElementById("renshu").value.trim()<1||document.getElementById("renshu").value.trim().length>10)
+			if(document.getElementById("renshu").value.trim()<1||document.getElementById("renshu").value.trim().length>4)
 			{
 				document.getElementById("name").style.display ="";
 				return false;    				
@@ -105,7 +105,7 @@
 				document.getElementById("name").style.display ="";
 				return false;    				
 			}
-			if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>20)
+			if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>60)
 			{
 				document.getElementById("name").style.display ="";
 				return false;    				
@@ -257,7 +257,12 @@
 					</td>
 					 
 				</tr>
-				<span style="color:red;display:none" id="name">请完善资料</span>
+				<tr>
+					<td colspan="9" align="center">
+						<span style="color:red;display:none;text-align:center" id="name">请完善资料</span>
+					</td>
+				</tr>
+				
 			</table>
 		</form>
 

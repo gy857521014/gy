@@ -46,4 +46,10 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		return icfskdao.tongjiByFname();
 	}
 	
+	//根据二级机构id查询名称
+	public Config_file_second_kind selerjiid(String id) {
+		
+		Config_file_second_kind second=icfskdao.selerjiid(id);
+		return second;
+	}
 }

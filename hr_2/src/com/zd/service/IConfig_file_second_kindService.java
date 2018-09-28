@@ -21,4 +21,7 @@ public interface IConfig_file_second_kindService {
 	
 	
 	public List<Map> tongjiByFname();
+	
+	//根据二级机构id查询名称
+	public Config_file_second_kind selerjiid(String id);
 }

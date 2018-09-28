@@ -39,4 +39,9 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 		releasedao.deleterelease(id);
 	}
 	
+	//ÃÌº”’–∆∏–≈œ¢
+	public void addrelease(Engage_major_release release) {
+		
+		releasedao.addrelease(release);
+	}
 }

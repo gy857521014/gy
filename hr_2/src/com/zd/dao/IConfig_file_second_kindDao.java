@@ -42,4 +42,9 @@ public interface IConfig_file_second_kindDao {
 	@Select("SELECT second_kind_name fname, COUNT(*) fcount,SUM(salary_sum) fsum FROM humman_file GROUP BY second_kind_name")
 	@ResultMap("mapmapper")
 	public List<Map> tongjiByFname();
+	
+	//根据二级机构id查询名称
+	@Select("select * from config_file_second_kind where second_kind_id=#{id}")
+	@ResultMap("cfsk")
+	public Config_file_second_kind selerjiid(String id);
 }

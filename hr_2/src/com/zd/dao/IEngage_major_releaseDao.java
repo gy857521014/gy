@@ -3,6 +3,7 @@ package com.zd.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -28,4 +29,13 @@ public interface IEngage_major_releaseDao {
 	//É¾³ý
 	@Delete("delete from Engage_major_release where mre_id=#{id}")
 	public void deleterelease(int id);
+	
+	//Ìí¼Ó
+	@Insert("insert into Engage_major_release values(null,#{first_kind_id}"
+			+ ",#{first_kind_name},#{second_kind_id},#{second_kind_name},"
+			+ "#{third_kind_id},#{third_kind_name},#{major_kind_id},#{major_kind_name},"
+			+ "#{major_id},#{major_name},#{human_amount},#{engage_type},"
+			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required})")
+	public void addrelease(Engage_major_release release);
+	
 }

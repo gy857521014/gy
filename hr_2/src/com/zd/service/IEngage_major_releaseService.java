@@ -16,4 +16,7 @@ public interface IEngage_major_releaseService {
 	
 	//删除招聘信息
 	public void deleterelease(int id);
+	
+	//添加招聘信息
+	public void addrelease(Engage_major_release release);
 }
