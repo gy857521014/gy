@@ -31,5 +31,6 @@
 		<mapper resource="com/zd/mappers/Config_majorMapper.xml"/>
 		<mapper resource="com/zd/mappers/Engage_major_releaseMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_third_kindMapper.xml" />
+		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
 	</mappers>
 </configuration>
