@@ -34,7 +34,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_release_search.html" target="mainFrame" style="color:black;">职位发布查询</a>
+														<a href="selallrelease2" target="mainFrame" style="color:black;">职位发布查询</a>
 													</span>
 												</li>
 									</ul>
@@ -112,7 +112,7 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/check_list.html" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
+											<a href="check_list" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
 									</span>
 								</li>
 								<li>

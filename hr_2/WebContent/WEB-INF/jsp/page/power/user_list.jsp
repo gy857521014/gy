@@ -11,7 +11,7 @@
 		<script type="text/javascript">
 			function doDelete(id) {
 				if (confirm("确定删除此用户吗？")) {
-					location.href = "success.html?users.userId=" + id;
+					location.href = "userDel?userid=" + id;
 				}
 			}
 		</script>
@@ -59,7 +59,7 @@
 			</tr>
 			
 			<c:forEach items="${userList }" var="user">
-				<tr class="TR_STYLE2">
+				<tr class="TR_STYLE2" id="${user.userid }">
 					<td class="TD_STYLE2">
 						${user.userid }
 					</td>
@@ -77,10 +77,12 @@
 						${ur.urole_name }
 						</c:forEach>
 					</td>
+					<c:if test="${user.userid != loginUser.userid }">
 					<td class="TD_STYLE2">
-						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(9)"/>
+						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
+						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${user.userid })"/>
 					</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 

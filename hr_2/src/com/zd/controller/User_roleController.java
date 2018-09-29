@@ -25,9 +25,8 @@ public class User_roleController {
 		try {
 			List<User_role> urList = user_roleService.queryUr();
 			map.put("urList", urList);
-			System.out.println(map);
 		}catch (Exception e) {
-			logger.error("查询所有角色错误",e);
+			logger.error("添加前查询角色信息错误",e);
 		}
 		return "page/power/user_add";
 	}

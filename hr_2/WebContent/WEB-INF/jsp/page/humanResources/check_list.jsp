@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="../css/table.css" type="text/css"/>
 	</head>
 	<body>
 		<form method="post" action="">
@@ -48,61 +51,34 @@
 						复核
 					</td>
 				</tr>
-				
-				<tr>
+				<c:forEach items="${humman_fileslist }" var="humman_fileslist">
+				<tr id="${humman_fileslist.human_id }">
 					<td class="TD_STYLE2">
-						bt201211190711260800
+						${humman_fileslist.human_id }
 					</td>
 					<td class="TD_STYLE2">
-						姜凯
+						${humman_fileslist.human_name }
 					</td>
 					<td class="TD_STYLE2">
-						男
+						${humman_fileslist.human_sex }
 					</td>
 					<td class="TD_STYLE2">
-						总部
+						${humman_fileslist.first_king_name }
 					</td>
 					<td class="TD_STYLE2">
-						请选择
+						${humman_fileslist.second_kind_name }
 					</td>
 					<td class="TD_STYLE2">
-						请选择
+						${humman_fileslist.third_kind_name }
 					</td>
 					<td class="TD_STYLE2">
-						工程师
+						${humman_fileslist.human_pro_designation }
 					</td>
 					<td class="TD_STYLE2">
-						<a href="human_check.html">复核</a>
-					</td>
-				</tr>
-				
-				<tr>
-					<td class="TD_STYLE2">
-						bt201211190711160488
-					</td>
-					<td class="TD_STYLE2">
-						周奥
-					</td>
-					<td class="TD_STYLE2">
-						男
-					</td>
-					<td class="TD_STYLE2">
-						总部
-					</td>
-					<td class="TD_STYLE2">
-						湖南分校区
-					</td>
-					<td class="TD_STYLE2">
-						长沙分校区1
-					</td>
-					<td class="TD_STYLE2">
-						工程师
-					</td>
-					<td class="TD_STYLE2">
-						<a href="human_check.html">复核</a>
+						<a href="human_check?human_id=${humman_fileslist.human_id }">复核</a>
 					</td>
 				</tr>
-				
+				</c:forEach>
 			</table>
 			<p style="text-align: center;">
 				

@@ -11,7 +11,7 @@
 		<typeAlias type="java.util.Map" alias="map"/>
 		
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
-		<!-- 公共表字段映射 -->
+		<!-- 公共表字段映射  -->
 		<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 		<typeAlias type="com.zd.entity.Config_major_kind" alias="major_king"/>
 		<typeAlias type="com.zd.entity.Config_major" alias="major"/>
@@ -19,6 +19,8 @@
 		<!-- 三级机构映射 -->
 		<typeAlias type="com.zd.entity.Config_file_third_kind" alias="cftkentity"/>
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
+		<!-- 人力资源表映射 -->
+		<typeAlias type="com.zd.entity.Humman_file" alias="Humman_file"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/User_roleMapper.xml"/>
@@ -32,5 +34,7 @@
 		<mapper resource="com/zd/mappers/Engage_major_releaseMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_third_kindMapper.xml" />
 		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
+		<!-- 人力资源表映射 -->
+		<mapper resource="com/zd/mappers/Humman_fileMapper.xml" />
 	</mappers>
 </configuration>

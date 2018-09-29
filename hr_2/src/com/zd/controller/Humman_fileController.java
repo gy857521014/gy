@@ -3,11 +3,15 @@ package com.zd.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
@@ -15,6 +19,9 @@ import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
+import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_standard;
+import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
 import com.zd.service.IConfig_majorService;
@@ -37,13 +44,18 @@ public class Humman_fileController {
 	//职位设置
 	@Autowired
 	private IConfig_majorService majorservice;
+	//根据一级机构编号查询一级机构名字
+	@Autowired
+	private IConfig_file_first_kindService config_file_first_kindService;
 	//根据一级机构编号查询二级机构
 	@Autowired
 	private IConfig_file_second_kindService config_file_second_kindService;
 	//根据二级机构编号查询三级机构
 	@Autowired
 	private IConfig_file_third_kindService config_file_third_kindService;
-	//机构三级联动
+	
+	//人力资源登记
+		//机构三级联动
 		//查询一级机构
 		@RequestMapping("page/human_register")
 		public String human_register(Map<String, Object> map){
@@ -86,6 +98,9 @@ public class Humman_fileController {
 			//查询职称
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
+			//查询薪酬标准
+			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			map.put("listxinchou", listxinchou);
 			return "page/humanResources/human_register";
 		}
 		//根据一级机构编号查询二级机构
@@ -96,13 +111,14 @@ public class Humman_fileController {
 						config_file_second_kindService.selerji(fsk_id);
 				return erjilist;
 			}
-			//根据二级编号查询三级机构
-				@RequestMapping("/page/selsanji")
-				@ResponseBody
-				public List<Config_file_third_kind> selsanji(String fsk_id){
-					List<Config_file_third_kind> sanjilist = config_file_third_kindService.selsanji(fsk_id);
-					return sanjilist;
-				}
+			//根据二级机构编号查询三级机构
+			@RequestMapping("/page/selsanji")
+			@ResponseBody
+			public List<Config_file_third_kind> sanji(String fsk_id){
+				List<Config_file_third_kind> sanjilist = 
+						config_file_third_kindService.selsanji(fsk_id);
+				return sanjilist;
+			}
 		//1.1职位设置联动
 		@RequestMapping("/page/selectzhiwei")
 		@ResponseBody
@@ -110,4 +126,64 @@ public class Humman_fileController {
 			List<Config_major> majorlist=majorservice.selzhiwei(majorid);
 			return majorlist;
 		}
+		//添加
+		@RequestMapping("/page/add")
+		public String add(Humman_file humman_file,HttpServletRequest request,
+				String first_king_id,String second_kind_id,String third_kind_id,int human_major_kind_id,int human_major_id,
+				String salary_standard_id,String human_id,Map map) {
+			// 单独获取生日
+			String birthday =  request.getParameter("humanFile.humanBirthday");
+			humman_file.setHuman_birthday(birthday);
+			//根据一级机构编号查询一级机构名字
+			Config_file_first_kind config_file_first_kind = 
+					config_file_first_kindService.selcffkid(first_king_id);
+			humman_file.setFirst_king_name(config_file_first_kind.getFirst_kind_name());
+			//根据二级机构编号查询二级机构名字
+			Config_file_second_kind config_file_second_kind =
+					config_file_second_kindService.selerjiid(second_kind_id);
+			humman_file.setSecond_kind_name(config_file_second_kind.getSecond_kind_name());
+			//根据三级机构编号查询三级机构名字
+			Config_file_third_kind config_file_third_kind = 
+					config_file_third_kindService.selsanjiid(third_kind_id);
+			humman_file.setThird_kind_name(config_file_third_kind.getThird_kind_name());
+			//根据分类id查询名称
+			Config_major_kind config_major_kind =
+					config_major_kindService.selmajorkindid(human_major_kind_id);
+			humman_file.setHuman_major_kind_name(config_major_kind.getMajor_kind_name());
+			/*//根据id查询职位
+			Config_major config_major = majorservice.selzhiweiid(human_major_id);
+			humman_file.setHunma_major_name(config_major.getMajor_name());*/
+			//根据薪酬编号查询薪酬标准name
+			Salary_standard salary_standard = humman_fileService.xinchouid(salary_standard_id);
+			//添加name属性
+			humman_file.setSalary_standard_name(salary_standard.getStandard_name());
+			//添加基本薪酬总额
+			humman_file.setSalary_sum(salary_standard.getSalary_sum());
+			//添加应发薪酬总额
+			humman_file.setDemand_salaray_sum(salary_standard.getSalary_sum());
+			humman_fileService.add(humman_file);
+			//获取档案编号
+			map.put("hf", human_id);
+			return "page/humanResources/register_choose_picture";
+		}
+		//上传图片
+		
+		//人力资源档案复核
+			//查询人力资源档案
+			@RequestMapping("page/check_list")
+			public String check_list(Map<String, Object> map) {
+				List<Humman_file> humman_fileslist = 
+						humman_fileService.Humman_fileList();
+				map.put("humman_fileslist", humman_fileslist);
+				return "page/humanResources/check_list";
+			}
+			//查询根据人力资源表查询单条数据
+			@RequestMapping("page/human_check")
+			public String human_check(String human_id,Map<String, Object> map){
+				Humman_file humman_file = 
+						humman_fileService.human_check(human_id);
+				map.put("humman_file", humman_file);
+				return "page/humanResources/human_check";
+			}
+			
 }
