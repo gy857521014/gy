@@ -18,8 +18,11 @@ public interface IConfig_file_second_kindDao {
 	@ResultMap("cfsk")
 	public List<Config_file_second_kind>  selcfsk();
 	//删除
-	@Delete("delete from Config_file_second_kind where fsk_id=#{fsk_id}")
-	public void deletecfsk(int fsk_id);
+	@Delete("delete from Config_file_second_kind where second_kind_id=#{second_kind_id}")
+	public void deletecfsk(String second_kind_id);
+	//根据一级编号删除
+	@Delete("delete from Config_file_second_kind where first_kind_id=#{first_kind_id}")
+	public void deletebh(String first_kind_id);
 	//添加
 	@Insert("insert into Config_file_second_kind values(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{second_salary_id},#{second_sale_id})")
 	public void addcfsk(Config_file_second_kind config_file_second_kind);

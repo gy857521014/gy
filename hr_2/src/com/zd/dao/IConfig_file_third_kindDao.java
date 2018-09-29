@@ -27,6 +27,12 @@ public interface IConfig_file_third_kindDao {
 	//删除
 		@Delete("delete from Config_file_third_kind where ftk_id=#{ftk_id}")
 		public void deletecftk(int ftk_id);
+	//根据一级编号删除
+		@Delete("delete from Config_file_third_kind where first_kind_id=#{first_kind_id}")
+		public void deletebh(String first_kind_id);
+	//根据二级编号删除
+		@Delete("delete from Config_file_third_kind where second_kind_id=#{second_kind_id}")
+		public void deleteej(String second_kind_id);
 	//添加
 		@Insert("insert into Config_file_third_kind values(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{third_kind_sale_id},#{third_kind_is_retail})")
 		public void addcftk(Config_file_third_kind config_file_third_kind);

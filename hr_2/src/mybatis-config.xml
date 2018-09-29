@@ -33,6 +33,7 @@
 		<mapper resource="com/zd/mappers/Config_majorMapper.xml"/>
 		<mapper resource="com/zd/mappers/Engage_major_releaseMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_third_kindMapper.xml" />
+		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
 		<!-- 人力资源表映射 -->
 		<mapper resource="com/zd/mappers/Humman_fileMapper.xml" />
 	</mappers>

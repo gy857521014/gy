@@ -244,7 +244,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/major_kind.html" target="mainFrame" style="color:black;">职位分类设置</a>
+														<a href="selcmk" target="mainFrame" style="color:black;">职位分类设置</a>
 													</span>
 												</li>
 												<li>

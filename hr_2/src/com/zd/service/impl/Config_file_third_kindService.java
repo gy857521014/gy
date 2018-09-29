@@ -52,5 +52,13 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 		Config_file_third_kind third=icftkdao.selsanjiid(id);
 		return third;
 	}
+	//根据一级编号删除
+	public void deletebh(String first_kind_id) {
+		icftkdao.deletebh(first_kind_id);
+	}
+	//根据二级编号删除
+	public void deleteej(String second_kind_id) {
+		icftkdao.deleteej(second_kind_id);
+	}
 	
 }

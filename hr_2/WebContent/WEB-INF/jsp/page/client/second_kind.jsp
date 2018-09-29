@@ -4,27 +4,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../css/table.css"
-			type="text/css"></link>
-		<script type="text/javascript"
-			src="../javascript/comm/comm.js">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+		function ajaxDelete(second_kind_id){
+				 if(confirm("删除二级级机构会同时删除下所属分公司、人员等....是否删除？"))
+				     {
+				 $.ajax({
+				url:'deletecfsk?second_kind_id='+second_kind_id,
+				type:'get',
+				success:function(data){
+				if(data=="1"){
+				$("#"+second_kind_id).remove();
+						}
+					}
+				});
+					 window.location.href("tosdelete");
+				     }
+				     else  {
+				    	 window.location.href("selcfsk");
+				     }
+				}
 		</script>
 	</head>
-
-<script type="text/javascript">
-	
-		function submission(){
-			document.forms[0].submit();
-		}
-		
-		function page(currentPage){
-			document.getElementById("pid").value=currentPage;
-			document.forms[0].submit();
-		}
-</script>
-
-
 	<body>
 	<form action="tosadd" method="post">
 			<table width="100%">
@@ -88,7 +92,7 @@
 							<a href="selcfskid?second_kind_id=${c.second_kind_id}">变更</a>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="deletecfsk?fsk_id=${c.fsk_id }">删除</a>
+							<a href="javascript:ajaxDelete(${c.second_kind_id })">删除</a>
 						</td>
 					</tr>
 					</c:forEach>

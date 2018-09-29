@@ -15,7 +15,9 @@ public interface IConfig_file_second_kindService {
 	// 修改
 	public void updatecfsk(Config_file_second_kind config_file_second_kind);
 	// 删除用户
-	public void deletecfsk(int fsk_id);
+	public void deletecfsk(String second_kind_id);
+	// 根据一级编号删除用户
+	public void deletebh(String first_kind_id);
 	//根据一级机构编号查询二级机构
 	public List<Config_file_second_kind> selerji(String fsk_id);
 	
