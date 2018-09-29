@@ -27,8 +27,8 @@ public interface IConfig_file_first_kindDao {
 	@Update("update Config_file_first_kind set first_kind_salary_id=#{first_kind_salary_id},first_kind_sale_id=#{first_kind_sale_id} where first_kind_id=#{first_kind_id}")
 	public void updatecffk(Config_file_first_kind config_file_first_kind);
 	//删除
-	@Delete("delete from Config_file_first_kind where ffk_id=#{ffk_id}")
-	public void deletecffk(int ffk_id);
+	@Delete("delete from Config_file_first_kind where first_kind_id=#{first_kind_id}")
+	public void deletecffk(String first_kind_id);
 	
 	// 通过一级名称统计人数、薪酬
 	@Select("SELECT first_king_name fname, COUNT(*) fcount,SUM(salary_sum) fsum FROM humman_file GROUP BY first_king_name")

@@ -36,8 +36,8 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 		icffkdao.updatecffk(config_file_first_kind);
 	}
 	//É¾³ý
-	public void deletecffk(int ffk_id) {
-		icffkdao.deletecffk(ffk_id);
+	public void deletecffk(String first_kind_id) {
+		icffkdao.deletecffk(first_kind_id);
 	}
 	public int selhumnum() {
 		return dao.selhumnum();

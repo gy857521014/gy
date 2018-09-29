@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
+import com.zd.service.IConfig_file_third_kindService;
 
 @Controller
 public class Config_file_second_kindController {
@@ -20,6 +22,8 @@ public class Config_file_second_kindController {
 	private IConfig_file_second_kindService icfskservice;
 	@Autowired
 	private IConfig_file_first_kindService icffkservice;
+	@Autowired
+	private IConfig_file_third_kindService icftkservice;
 	
 	//查询所有
 	@RequestMapping("page/selcfsk")
@@ -92,14 +96,20 @@ public class Config_file_second_kindController {
 	}
 	//删除
 	@RequestMapping("page/deletecfsk")
-	public String deletecfsk(int fsk_id) {
+	@ResponseBody
+	public String deletecfsk(String second_kind_id) {
 		Logger logger = LoggerFactory.getLogger(Config_file_second_kindController.class);
 		try{
-		icfskservice.deletecfsk(fsk_id);
+		icfskservice.deletecfsk(second_kind_id);
+		icftkservice.deleteej(second_kind_id);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("删除信息错误",e);
 				}
+		return "1";
+	}
+	@RequestMapping("page/tosdelete")
+	public String todelete(){
 		return "/page/client/second_delete_success";
 	}
 }

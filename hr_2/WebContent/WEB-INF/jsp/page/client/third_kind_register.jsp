@@ -57,7 +57,7 @@
 					<td align="right">
 						<input type="button" value="提交" class="BUTTON_STYLE1" onclick="check()">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back();">
+							onclick="location.href='selcftk'">
 					</td>
 				</tr>
 			</table>

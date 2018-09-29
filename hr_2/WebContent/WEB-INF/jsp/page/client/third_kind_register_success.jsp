@@ -18,7 +18,7 @@
 </script>
 
 <body>
-<form action="addcftk" method="post">
+<form action="totadd" method="post">
 <table width="100%" >
   <tr>
     <td colspan="2"> 
@@ -27,8 +27,10 @@
   <tr>
     <td width="49%"> 录入成功。</td>
     <td width="51%" align="right">  
-	<input type="submit" value="继续录入" class="BUTTON_STYLE1" onclick="window.location.href='third_kind_register.html'">
-    <input type="button" value="返回" class="BUTTON_STYLE1" onclick="location.href='selcftk'"></td></tr>
+	<input type="submit" value="继续录入" class="BUTTON_STYLE1" >
+    <input type="button" value="返回" class="BUTTON_STYLE1" onclick="location.href='selcftk'">
+    </td>
+   </tr>
   </table>
 </form>
 </body>
