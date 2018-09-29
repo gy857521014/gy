@@ -37,10 +37,8 @@ public interface IHumman_fileService {
 	public List<Config_public_char> listtechang();
 	//查询爱好
 	public List<Config_public_char> listaihao();
-
 	//查询招聘类型
 	public List<Config_public_char> listzhaopin();
-
 	//查询职称
 	public List<Config_public_char> listzhicheng();
 	//查询薪酬标准
@@ -53,6 +51,8 @@ public interface IHumman_fileService {
 	public List<Humman_file> Humman_fileList();
 	//查询根据人力资源表查询单条数据
 	public Humman_file human_check(String human_id);
+	//修改人力资源表
+	public void humman_chack_update(Humman_file humman_file);
 	
 	public int shifa();
 	

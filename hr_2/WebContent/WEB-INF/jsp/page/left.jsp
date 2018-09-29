@@ -117,7 +117,7 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/query_locate.html" target="mainFrame" style="color:black;">人力资源档案查询</a>
+											<a href="query_locate" target="mainFrame" style="color:black;">人力资源档案查询</a>
 									</span>
 								</li>
 								<li>

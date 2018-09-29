@@ -104,6 +104,10 @@ public class Humman_fileService implements IHumman_fileService {
 	public Humman_file human_check(String human_id) {
 		return humman_fileDao.human_check(human_id);
 	}
+	//修改人力资源档案
+	public void humman_chack_update(Humman_file humman_file) {
+		humman_fileDao.humman_chack_update(humman_file);
+	}
 	
 	public int selnumz() {
 		return gdao.selnumz();
@@ -114,6 +118,7 @@ public class Humman_fileService implements IHumman_fileService {
 	public int zong() {
 		return gdao.zong();
 	}
+
 
 
 

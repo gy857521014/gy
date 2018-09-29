@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -24,7 +25,8 @@
 	</head>
 	<body>
 
-		<form action="register_choose_picture.html" method="post" enctype="multipart/form-data">
+		<form action="humman_chack_update" method="post">
+		<input type="hidden" name="human_id" value="${humman_file.human_id }"/>
 			<table width="100%">
 				<tr>
 					<td>
@@ -91,9 +93,16 @@
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select class="SELECT_STYLE1">
-							<option>经理</option>
-							<option>经理</option>
+						<select class="SELECT_STYLE1" name="human_pro_designation">
+						<c:forEach var="listzhicheng" items="${listzhicheng }" >
+						<c:if test="${listzhicheng.attribute_name==humman_file.human_pro_designation }">
+							<option value="${listzhicheng.attribute_name }" selected>${listzhicheng.attribute_name }</option>
+						</c:if>
+						
+						<c:if test="${listzhicheng.attribute_name!=humman_file.human_pro_designation }">
+							<option value="${listzhicheng.attribute_name }">${listzhicheng.attribute_name }</option>
+						</c:if>
+						</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -102,23 +111,23 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="humanFile.humanName" value="${humman_file.human_name }"
-							class="INPUT_STYLE2">
+						<input type="text" id="humanName" name="human_name" value="${humman_file.human_name }"
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
-					<td class="TD_STYLE2">
-						<select class="SELECT_STYLE1">
-							<option>男</option>
-							<option>女</option>
+					<td class="TD_STYLE2" >
+						<select class="SELECT_STYLE1" name="human_sex">
+							<option value="男">男</option>
+							<option value="女">女</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanEmail" value="${humman_file.human_email }"
+						<input type="text" name="human_email" value="${humman_file.human_email }"
 							class="INPUT_STYLE2" id="humanEmail">
 					</td>
 				</tr>
@@ -127,21 +136,21 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanTelephone" value="${humman_file.human_telephone }"
+						<input type="text" name="human_telephone" value="${humman_file.human_telephone }"
 							class="INPUT_STYLE2" id="humanTelephone">
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanQq" value="${humman_file.human_qq }"
+						<input type="text" name="human_qq" value="${humman_file.human_qq }"
 							class="INPUT_STYLE2" id="humanQq">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanMobilephone" id="humanMobilephone"
+						<input type="text" name="human_mobilephone" id="humanMobilephone"
 							value="${humman_file.human_mobilephone }" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -150,14 +159,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAddress" value="${humman_file.human_address }"
+						<input type="text" name="human_address" value="${humman_file.human_address }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanPostcode" value="${humman_file.human_postcode }"
+						<input type="text" name="human_postcode" value="${humman_file.human_postcode }"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -166,16 +175,22 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanNationality" class="SELECT_STYLE1">
-							<option>中国</option>
-							<option>美国</option>
+						<select name="human_nationality" class="SELECT_STYLE1">
+							<c:forEach var="listguoji" items="${listguoji }">
+							<c:if test="${listguoji.attribute_name==humman_file.human_nationality }">
+								<option value="${listguoji.attribute_name }" selected>${listguoji.attribute_name }</option>
+							</c:if>
+							<c:if test="${listguoji.attribute_name!=humman_file.human_nationality }">
+								<option value="${listguoji.attribute_name }">${listguoji.attribute_name }</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBirthplace" value="${humman_file.human_birthplace }"
+						<input type="text" name="human_birthplace" value="${humman_file.human_birthplace }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -189,9 +204,15 @@
 						民族
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanRace" class="SELECT_STYLE1">
-							<option>汉族</option>
-							<option>回族</option>
+						<select name="human_race" class="SELECT_STYLE1">
+						<c:forEach var="listmingzu" items="${listmingzu }">
+							<c:if test="${listmingzu.attribute_name==humman_file.human_race }">
+								<option value="${listmingzu.attribute_name }" selected>${listmingzu.attribute_name }</option>
+							</c:if>
+							<c:if test="${listmingzu.attribute_name!=humman_file.human_race }">
+								<option value="${listmingzu.attribute_name }">${listmingzu.attribute_name }</option>
+							</c:if>
+						</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -200,32 +221,44 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanReligion" class="SELECT_STYLE1">
-							<option>无</option>
-							<option>佛教</option>
+						<select name="human_religion" class="SELECT_STYLE1">
+						<c:forEach items="${listzongjiao }" var="listzongjiao">
+							<c:if test="${listzongjiao.attribute_name==humman_file.human_religion }">
+								<option value="${listzongjiao.attribute_name }" selected>${listzongjiao.attribute_name }</option>
+							</c:if>
+							<c:if test="${listzongjiao.attribute_name!=humman_file.human_religion }">
+								<option value="${listzongjiao.attribute_name }">${listzongjiao.attribute_name }</option>
+							</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanParty" class="SELECT_STYLE1">
-							<option>群众</option>
-							<option>党员</option>
+						<select name="human_party" class="SELECT_STYLE1">
+						<c:forEach var="listzhengzhi" items="${listzhengzhi }">
+							<c:if test="${listzhengzhi.attribute_name==humman_file.human_party }">
+								<option value="${listzhengzhi.attribute_name }" selected>${listzhengzhi.attribute_name }</option>
+							</c:if>
+							<c:if test="${listzhengzhi.attribute_name!=humman_file.human_party }">
+								<option value="${listzhengzhi.attribute_name }">${listzhengzhi.attribute_name }</option>
+							</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanIdCard" id="humanIdCard"
+						<input type="text" name="human_id_card" id="humanIdCard"
 							value="${humman_file.human_id_card }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="${humman_file.human_society_security_id }" value="4353423"
+						<input type="text" name="human_society_security_id" value="${humman_file.human_society_security_id }"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -234,35 +267,52 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAge" value="${humman_file.human_age }"
+						<input type="text" name="human_age" value="${humman_file.human_age }"
 							class="INPUT_STYLE2" id="humanAge">
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedDegree" class="SELECT_STYLE1">
-							<option>高中</option>
-							<option>本科</option>
-							<option>大专</option>
+						<select name="human_educated_degree" class="SELECT_STYLE1">
+							<c:forEach var="listxueli" items="${listxueli }">
+							<c:if test="${listxueli.attribute_name==humman_file.human_educated_degree }">
+								<option value="${listxueli.attribute_name }" selected>${listxueli.attribute_name }</option>
+							</c:if>
+							<c:if test="${listxueli.attribute_name!=humman_file.human_educated_degree }">
+								<option value="${listxueli.attribute_name }">${listxueli.attribute_name }</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedYears" class="SELECT_STYLE1">
-							<option>12</option>
-							<option>16</option>
+						<select name="human_educated_years" class="SELECT_STYLE1">
+						<c:forEach items="${listjiaoyu }" var="listjiaoyu">
+						<c:if test="${listjiaoyu.attribute_name==humman_file.human_educated_years }">
+							<option value="${listjiaoyu.attribute_name }" selected>${listjiaoyu.attribute_name }</option>
+						</c:if>
+						<c:if test="${listjiaoyu.attribute_name!=humman_file.human_educated_years }">
+							<option value="${listjiaoyu.attribute_name }">${listjiaoyu.attribute_name }</option>
+						</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedMajor" class="SELECT_STYLE1">
-							<option>生物工程</option>
-							<option>计算机</option>
+						<select name="human_educated_major" class="SELECT_STYLE1">
+							<c:forEach var="listzhuanye" items="${listzhuanye }">
+							<c:if test="${listzhuanye.attribute_name==humman_file.human_educated_major }">
+								<option value="${listzhuanye.attribute_name }" selected>${listzhuanye.attribute_name }</option>
+							</c:if>
+							<c:if test="${listzhuanye.attribute_name!=humman_file.human_educated_major }">
+								<option value="${listzhuanye.attribute_name }">${listzhuanye.attribute_name }</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -271,30 +321,36 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.salaryStandardId" class="SELECT_STYLE1">
-							<option>薪酬标准1</option>
-							<option>薪酬标准2</option>
+						<select name="salary_standard_id" class="SELECT_STYLE1">
+						<c:forEach items="${listxinchou }" var="listxinchou">
+						<c:if test="${listxinchou.standard_id==humman_file.salary_standard_id }">
+							<option value="${listxinchou.standard_id }" selected>${listxinchou.standard_name }</option>
+						</c:if>
+						<c:if test="${listxinchou.standard_id!=humman_file.salary_standard_id }">
+							<option value="${listxinchou.standard_id }">${listxinchou.standard_name }</option>
+						</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBank" value="${humman_file.human_bank }"
+						<input type="text" name="human_bank" value="${humman_file.human_bank }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
-						帐号
+						银行帐号
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAccount"
+						<input type="text" name="human_account"
 							value="${humman_file.human_account }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checker" value="${loginUser.user_true_name }"
+						<input type="text" name="checker" value="${loginUser.user_true_name }"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -303,7 +359,7 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checkTime"
+						<input type="text" name="check_time"
 							id="create_time" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -311,18 +367,30 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanSpeciality" class="SELECT_STYLE1">
-							<option>java</option>
-							<option>数据库</option>
+						<select name="human_speciality" class="SELECT_STYLE1">
+						<c:forEach var="listtechang" items="${listtechang }">
+							<c:if test="${listtechang.attribute_name==humman_file.human_speciality }">
+								<option value="${listtechang.attribute_name }" selected>${listtechang.attribute_name }</option>
+							</c:if>
+							<c:if test="${listtechang.attribute_name!=humman_file.human_speciality }">
+								<option value="${listtechang.attribute_name }">${listtechang.attribute_name }</option>
+							</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanHobby" class="SELECT_STYLE1">
-							<option>篮球</option>
-							<option>跳舞</option>
+						<select name="human_hobby" class="SELECT_STYLE1">
+						<c:forEach items="${listaihao }" var="listaihao">
+							<c:if test="${listaihao.attribute_name==humman_file.human_hobby }">
+								<option value="${listaihao.attribute_name }" selected>${listaihao.attribute_name }</option>
+							</c:if>
+							<c:if test="${listaihao.attribute_name!=humman_file.human_hobby }">
+								<option value="${listaihao.attribute_name }">${listaihao.attribute_name }</option>
+							</c:if>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -345,7 +413,7 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.humanHistroyRecords" rows="4"
+						<textarea name="human_histroy_records" rows="4"
 							class="TEXTAREA_STYLE1">${humman_file.human_histroy_records }</textarea>
 					</td>
 				</tr>
@@ -354,7 +422,7 @@
 						家庭关系信息
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.humanFamilyMembership" rows="4"
+						<textarea name="human_family_membership" rows="4"
 							class="TEXTAREA_STYLE1">${humman_file.human_family_membership }</textarea>
 					</td>
 				</tr>
@@ -363,7 +431,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1">${humman_file.remark }</textarea>
 					</td>
 				</tr>
 			</table>

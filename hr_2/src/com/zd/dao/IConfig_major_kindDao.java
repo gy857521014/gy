@@ -20,5 +20,5 @@ public interface IConfig_major_kindDao {
 	//根据职位分类id查询名称major_kind_id
 	@Select("select * from Config_major_kind where major_kind_id=#{id}")
 	@ResultMap("majorkind")
-	public Config_major_kind selmajorkindid(int id);
+	public Config_major_kind selmajorkindid(String id);
 }

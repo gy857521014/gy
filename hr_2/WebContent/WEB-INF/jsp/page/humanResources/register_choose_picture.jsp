@@ -21,7 +21,7 @@
 				<tr>
 					<td width="59%">
 						提交成功，如有照片，请选择上传照片(.jpg、.gif文件)
-						<input type="file" class="FILE_STYLE1" name="picFile" width="100%"/>
+						<input type="file" class="FILE_STYLE1" name="file1" width="100%"/>
 					</td>
 					<td width="41%" align="right">
 						<input value="${hf}" type="hidden" name="human_picture"/>

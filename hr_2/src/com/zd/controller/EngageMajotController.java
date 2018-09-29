@@ -66,7 +66,7 @@ public class EngageMajotController {
 	//1.1职位联动
 	@RequestMapping("/page/selzhiwei")
 	@ResponseBody
-	public List<Config_major> selzhiwei(int majorid) {
+	public List<Config_major> selzhiwei(String majorid) {
 		List<Config_major> majorlist=majorservice.selzhiwei(majorid);
 		return majorlist;
 	}
