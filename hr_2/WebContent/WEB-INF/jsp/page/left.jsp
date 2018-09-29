@@ -249,7 +249,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/major.html" target="mainFrame" style="color:black;">职位设置</a>
+														<a href="selcm" target="mainFrame" style="color:black;">职位设置</a>
 													</span>
 												</li>
 												<li>
