@@ -69,6 +69,16 @@ public class Salary_grantController {
 				return "page/salaryGrant/register_list2";
 			}
 			if(num==3) {
+				int numzzz = isg.selnumzzz();
+				int hsummm = isg.selhumnummm();
+				int shifaaa = isg.shifaaa();
+				int zonggg = isg.zonggg();
+				map.put("numzzz", numzzz);
+				map.put("hsummm", hsummm);
+				map.put("shifaaa", shifaaa);
+				map.put("zonggg", zonggg);
+				List<Map> maplist = isg.tongjiByFname();
+				map.put("maplist", maplist);
 				return "page/salaryGrant/register_list3";
 			}
 			

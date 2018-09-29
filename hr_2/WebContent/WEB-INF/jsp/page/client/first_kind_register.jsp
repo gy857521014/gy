@@ -18,7 +18,6 @@
 					$("#errorSpan").html("<font color='red'>请输入I级机构名称</font>");
 					return;
 				}
-				
 				if(document.getElementById("zrrbh").value==''){
 					$("#errorSpanzrrbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
 					return;

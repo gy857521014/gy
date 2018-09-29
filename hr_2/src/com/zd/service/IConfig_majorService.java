@@ -12,4 +12,6 @@ public interface IConfig_majorService {
 	//根据id查询职位
 	public Config_major selzhiweiid(int id);
 	
+	
+	public List<Config_major> selallzhi();
 }

@@ -1,32 +1,25 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
-		<link rel="stylesheet"
-			href="../../css/cwcalendar.css" type="text/css">
-		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"/>
+		<script type="text/javascript" src="../javascript/comm/comm.js">
 		</script>
-		<script language="javascript"
-			src="../../javascript/winopen/winopenm.js">
+		<script language="javascript" src="../javascript/winopen/winopenm.js">
 		</script>
-		<script type="text/javascript"
-			src="../../javascript/calendar-ch.js">
+		<script type="text/javascript" src="../javascript/calendar-ch.js">
 		</script>
-		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js">
 		</script>
-		<script type="text/javascript"
-			src="../../javascript/jquery.messager.js">
+		<script type="text/javascript" src="../javascript/jquery.messager.js">
 		</script>
-		<script src="../../javascript/time.js"></script>
-		<script type="text/javascript"
-			src="../../javascript/human_check.js">
+		<script src="../javascript/time.js"></script>
+		<script type="text/javascript" src="../javascript/human_check.js">
 		</script>
-		<script type="text/javascript"
-			src="../../javascript/human_input_check.js">
+		<script type="text/javascript" src="../javascript/human_input_check.js">
 		</script>
 	</head>
 	<body>
@@ -55,7 +48,7 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						bt23232098345
+						${humman_file.human_id }
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
 						<img src="../../images/regular.jpg"  style="width:120px;height:150px;"/>
@@ -66,19 +59,19 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						集团
+						${humman_file.first_king_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						湖南分校
+						${humman_file.second_kind_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-
+						${humman_file.third_kind_name }
 					</td>
 				</tr>
 				<tr>
@@ -86,13 +79,13 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						软件开发
+						${humman_file.human_major_kind_name }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						区域经理
+						${humman_file.hunma_major_name }
 					</td>
 					<td class="TD_STYLE1">
 						职称
@@ -109,7 +102,7 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="humanFile.humanName" value="谢鹏"
+						<input type="text" id="humanName" name="humanFile.humanName" value="${humman_file.human_name }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -125,7 +118,7 @@
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanEmail" value="569065574@qq.com"
+						<input type="text" name="humanFile.humanEmail" value="${humman_file.human_email }"
 							class="INPUT_STYLE2" id="humanEmail">
 					</td>
 				</tr>
@@ -134,14 +127,14 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanTelephone" value="0731-1111111"
+						<input type="text" name="humanFile.humanTelephone" value="${humman_file.human_telephone }"
 							class="INPUT_STYLE2" id="humanTelephone">
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanQq" value="569065574"
+						<input type="text" name="humanFile.humanQq" value="${humman_file.human_qq }"
 							class="INPUT_STYLE2" id="humanQq">
 					</td>
 					<td class="TD_STYLE1">
@@ -149,7 +142,7 @@
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanMobilephone" id="humanMobilephone"
-							value="13838383838" class="INPUT_STYLE2">
+							value="${humman_file.human_mobilephone }" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -157,14 +150,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAddress" value="湖南"
+						<input type="text" name="humanFile.humanAddress" value="${humman_file.human_address }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanPostcode" value="421800"
+						<input type="text" name="humanFile.humanPostcode" value="${humman_file.human_postcode }"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -182,7 +175,7 @@
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBirthplace" value="湖南"
+						<input type="text" name="humanFile.humanBirthplace" value="${humman_file.human_birthplace }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -190,7 +183,7 @@
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
-							value="1993-12-08" class="INPUT_STYLE2" id="birthday">
+							value="${humman_file.human_birthday }" class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
@@ -226,13 +219,13 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanFile.humanIdCard" id="humanIdCard"
-							value="111111111111111111" class="INPUT_STYLE2">
+							value="${humman_file.human_id_card }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanSocietySecurityId" value="4353423"
+						<input type="text" name="${humman_file.human_society_security_id }" value="4353423"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -241,7 +234,7 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAge" value="19"
+						<input type="text" name="humanFile.humanAge" value="${humman_file.human_age }"
 							class="INPUT_STYLE2" id="humanAge">
 					</td>
 					<td class="TD_STYLE1">
@@ -287,7 +280,7 @@
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBank" value="建设银行"
+						<input type="text" name="humanFile.humanBank" value="${humman_file.human_bank }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -295,13 +288,13 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanFile.humanAccount"
-							value="6227002951240189402" class="INPUT_STYLE2">
+							value="${humman_file.human_account }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checker" value="谢鹏"
+						<input type="text" name="humanFile.checker" value="${loginUser.user_true_name }"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -353,7 +346,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="humanFile.humanHistroyRecords" rows="4"
-							class="TEXTAREA_STYLE1">上岛咖啡</textarea>
+							class="TEXTAREA_STYLE1">${humman_file.human_histroy_records }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -362,7 +355,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="humanFile.humanFamilyMembership" rows="4"
-							class="TEXTAREA_STYLE1">你猜</textarea>
+							class="TEXTAREA_STYLE1">${humman_file.human_family_membership }</textarea>
 					</td>
 				</tr>
 				<tr>

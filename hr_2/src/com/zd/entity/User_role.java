@@ -12,6 +12,8 @@ public class User_role {
 	private String urole_name;
 	private String urole_exp;
 	private int urole_state;
+	// 定义属性表示角色是否被选中, 1-选中 0-不选中
+	private int check = 0;
 	
 	//用户表
 	private List<User> user;
@@ -45,6 +47,12 @@ public class User_role {
 	}
 	public void setUrole_state(int urole_state) {
 		this.urole_state = urole_state;
+	}
+	public int getCheck() {
+		return check;
+	}
+	public void setCheck(int check) {
+		this.check = check;
 	}
 	
 	

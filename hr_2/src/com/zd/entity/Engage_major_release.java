@@ -21,6 +21,7 @@ public class Engage_major_release {
 	private String change_time;//变更时间
 	private String major_describe;//职位描述
 	private String engage_required;//招聘要求
+	private int state;//状态列
 	public int getMre_id() {
 		return mre_id;
 	}
@@ -148,11 +149,17 @@ public class Engage_major_release {
 	public void setThird_kind_id(String third_kind_id) {
 		this.third_kind_id = third_kind_id;
 	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public Engage_major_release(int mre_id, String first_kind_id, String first_kind_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, int major_kind_id,
 			String major_kind_name, int major_id, String major_name, int human_amount, String engage_type,
 			String deadline, String register, String changer, String regist_time, String change_time,
-			String major_describe, String engage_required) {
+			String major_describe, String engage_required, int state) {
 		super();
 		this.mre_id = mre_id;
 		this.first_kind_id = first_kind_id;
@@ -174,18 +181,10 @@ public class Engage_major_release {
 		this.change_time = change_time;
 		this.major_describe = major_describe;
 		this.engage_required = engage_required;
+		this.state = state;
 	}
-	@Override
-	public String toString() {
-		return "Engage_major_release [mre_id=" + mre_id + ", first_kind_id=" + first_kind_id + ", first_kind_name="
-				+ first_kind_name + ", second_kind_id=" + second_kind_id + ", second_kind_name=" + second_kind_name
-				+ ", third_kind_id=" + third_kind_id + ", third_kind_name=" + third_kind_name + ", major_kind_id="
-				+ major_kind_id + ", major_kind_name=" + major_kind_name + ", major_id=" + major_id + ", major_name="
-				+ major_name + ", human_amount=" + human_amount + ", engage_type=" + engage_type + ", deadline="
-				+ deadline + ", register=" + register + ", changer=" + changer + ", regist_time=" + regist_time
-				+ ", change_time=" + change_time + ", major_describe=" + major_describe + ", engage_required="
-				+ engage_required + "]";
-	}
+	
+	
 
 	
 	

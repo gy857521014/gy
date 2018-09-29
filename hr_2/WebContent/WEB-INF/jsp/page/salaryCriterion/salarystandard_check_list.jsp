@@ -49,7 +49,7 @@
 					<td>${ss.designer}</td>
 					<td>${ss.regist_time}</td>
 					<td>&nbsp; ${ss.salary_sum}</td>
-					<td><a href="salarystandard_check.html">复 核</a></td>
+					<td><a href="tosalarystandard_check?standard_id=${ss.standard_id}">复 核</a></td>
 				</tr>
 			</c:forEach>
 

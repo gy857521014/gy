@@ -27,7 +27,7 @@ $(function(){
  	data: "firstKind="+$("#firstKindId").val() + "&secondId="+$(this).val(),
  	dataType:"xml",
  	type :"POST",
- 	error : function(){alert("awewe");},
+ 	error : function(){},
  	success : function(data){
  			var items = $(data).find("item");
  			var thirdKind = $("#thirdKindId");
