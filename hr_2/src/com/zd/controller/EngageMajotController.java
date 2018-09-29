@@ -144,7 +144,7 @@ public class EngageMajotController {
 		return "page/recruit/position/position_release_search";
 	}
 	
-	//1.3
+	//1.3查询机构，职位分类
 		@RequestMapping("/page/selidrelease2")
 		public String selidrelease2(int mre_id,Map map) {
 			Engage_major_release release=releaseservice.selidrelease(mre_id);
@@ -162,5 +162,23 @@ public class EngageMajotController {
 			map.put("kindlist", kindlist);
 			map.put("majorlist", majorlist);
 			return "page/recruit/position/position_release_details";
+		}
+		
+		@RequestMapping("/page/shenqing")
+		public String shenqing(Engage_major_release release) {
+			//根据一级机构id查名称
+			release.setFirst_kind_name(firstservice.selcffkid(release.getFirst_kind_id()).getFirst_kind_name());
+			//根据二级机构id查名称
+			release.setSecond_kind_name(secondservice.selerjiid(release.getSecond_kind_id()).getSecond_kind_name());
+			//根据三级机构id查名称
+			release.setThird_kind_name(thirdservice.selsanjiid(release.getThird_kind_id()).getThird_kind_name());
+			//根据职位分类id查名称
+			release.setMajor_kind_name(kindservice.selmajorkindid(release.getMajor_kind_id()).getMajor_kind_name());
+			//根据职位id查名称
+			release.setMajor_name(majorservice.selzhiweiid(release.getMajor_id()).getMajor_name());
+			
+			releaseservice.updatejigou(release);
+			
+			return "redirect:/page/selallrelease2";
 		}
 }

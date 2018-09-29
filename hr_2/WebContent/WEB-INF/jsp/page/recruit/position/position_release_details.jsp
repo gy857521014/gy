@@ -29,13 +29,10 @@
 	 <script type="text/javascript"
 			src="../javascript/select.js">
 		</script>
+		<script type="text/javascript"
+			src="../javascript/comm/time.js">
+			</script>
 		
-		<script type="text/javascript">
-		function search(id){ 
-		 // document.fm.submit();		
- 		window.location.href="/HR_Fist/recruit/recruitAction!register?id="+id;
-		}
-		</script>
    <script>
 function fun(){
 	var pid =$("#majorKindId").val();
@@ -106,8 +103,8 @@ function fun2(){
  		
  	</head>
 	<body>
-		<form id="recruitAction!toRegister" name="fm" action="/HR_Fist/recruit/recruitAction!toRegister" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="emajorRelease.mreId" value="531" />
+		<form id="recruitAction!toRegister" name="fm" action="shenqing" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="mre_id" value="${release.mre_id }" />
 			<table width="100%"> 
 				<tr>
 					<td>
@@ -116,7 +113,7 @@ function fun2(){
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="确认申请" onclick="search('531')" class="BUTTON_STYLE1" />
+						<input type="submit" value="确认申请"  class="BUTTON_STYLE1" />
 						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back();">
 					</td>
 				</tr>
@@ -129,7 +126,7 @@ function fun2(){
 						I级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-					<select name="emajorRelease.firstKindName" id="firstKindId" onchange="fun1()">
+					<select name="first_kind_id" id="firstKindId" onchange="fun1()">
 					<c:forEach items="${firstlist}" var="flist">
 						<c:if test="${release.first_kind_id==flist.first_kind_id }">
 							<option value="${flist.first_kind_id}" selected>${flist.first_kind_name }</option>
@@ -144,7 +141,7 @@ function fun2(){
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-					<select name="emajorRelease.secondKindName" onchange="fun2()" id="secondKindId">
+					<select name="second_kind_id" onchange="fun2()" id="secondKindId">
 					<c:forEach items="${erlist}" var="erlist">
 						<c:if test="${release.first_kind_id==erlist.first_kind_id }">
 							<c:if test="${release.second_kind_id==erlist.second_kind_id }">
@@ -161,7 +158,7 @@ function fun2(){
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-						<select name="emajorRelease.thirdKindId" id="thirdKindId">
+						<select name="third_kind_id" id="thirdKindId">
 					<c:forEach items="${sanlist}" var="slist">
 						<c:if test="${release.second_kind_id==slist.second_kind_id }">
 							<c:if test="${release.third_kind_id==slist.third_kind_id }">
@@ -178,7 +175,7 @@ function fun2(){
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="emajorRelease.engageType"  class="SELECT_STYLE1">
+						<select name="engage_type"  class="SELECT_STYLE1">
 						<c:forEach items="${zhaoplist}" var="zhlist">
 							<c:if test="${release.engage_type==zhlist.attribute_name }">
 								<option value="${zhlist.attribute_name }" selected>${zhlist.attribute_name }</option>
@@ -195,7 +192,7 @@ function fun2(){
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindName" id="majorKindId" onchange="fun()">
+						<select name="major_kind_id" id="majorKindId" onchange="fun()">
 					<c:forEach items="${kindlist }" var="klist">
 				
 							<c:if test="${release.major_kind_id==klist.major_kind_id }">
@@ -212,7 +209,7 @@ function fun2(){
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorName" id="majorId">
+						<select name="major_id" id="majorId">
 					<c:forEach items="${majorlist }" var="mlist">
 						<c:if test="${release.major_kind_id==mlist.major_kind_id }">
 							<c:if test="${release.major_name==mlist.major_name }">
@@ -229,15 +226,15 @@ function fun2(){
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.humanAmount" value="2 " class="INPUT_STYLE2">
+						 <input type="text" name="human_amount" value="${release.human_amount }" class="INPUT_STYLE2">
 				
 						</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2"> 
-							  <input type="text" name="emajorRelease.deadline" readonly
-							class="INPUT_STYLE2" value="2012-11-15 12:00:00">
+							  <input type="text" name="deadline" 
+							class="INPUT_STYLE2" onclick="aa('deadline')" value="${release.deadline }">
 					</td>
 				</tr>
 				<tr>
@@ -245,22 +242,35 @@ function fun2(){
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.register" value="&#26446;&#22235;" class="INPUT_STYLE2">
+						 <input type="text" name="register" value="${release.register }" class="INPUT_STYLE2" readonly="readonly">
+						
 					</td>
 					<td class="TD_STYLE1">
 						登记时间
 					</td>
 					<td   class="TD_STYLE2">
-					<input type="text" name="emajorRelease.registTime"
-							value="2012-08-02 12:00:00" readonly="readonly"
+					<input type="text" name="regist_time"
+							value="${release.regist_time }" readonly="readonly"
 							class="INPUT_STYLE2">
 					  
 						</td>
 					
-					<td>&nbsp; </td>
-					<td>&nbsp; </td>
-					<td>&nbsp; </td>
-					<td>&nbsp; </td>
+					<td class="TD_STYLE1">
+						变更人
+					</td>
+					<td  class="TD_STYLE2">
+						 <input type="hidden" name="register" value="${loginUser.user_true_name }" class="INPUT_STYLE2" readonly="readonly">
+						
+					</td>
+					<td class="TD_STYLE1">
+						变更时间
+					</td>
+					<td   class="TD_STYLE2">
+					<input type="hidden" name="regist_time"
+							value="${release.change_time }" readonly="readonly"
+							class="INPUT_STYLE2">
+					  
+					</td>
 					
 				</tr>
 				<tr>
@@ -268,7 +278,7 @@ function fun2(){
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.majorDescribe" rows="4" cols="100%" class="TEXTAREA_STYLE1" readonly="readonly" >&#19982;&#26102;&#20465;&#36827;</textarea>
+						<textarea name="major_describe" rows="4" cols="100%" class="TEXTAREA_STYLE1" >${release.major_describe }</textarea>
 					</td>
 					 
 				</tr>
@@ -277,7 +287,7 @@ function fun2(){
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.engageRequired" rows="4"  cols="100%" class="TEXTAREA_STYLE1"  readonly="readonly" >&#20570;&#20107;&#32454;&#24515;</textarea>
+						<textarea name="engage_required" rows="4"  cols="100%" class="TEXTAREA_STYLE1" >${release.engage_required }</textarea>
 					</td>
 					 
 				</tr>
