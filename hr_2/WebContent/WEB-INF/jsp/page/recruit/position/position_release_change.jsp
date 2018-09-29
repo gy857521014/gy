@@ -222,7 +222,7 @@
 						变更人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" id="bgr" name="changer" value="${release.changer }" class="INPUT_STYLE2">
+						 <input type="text" id="bgr" name="changer" value="${release.changer }" class="INPUT_STYLE2" readonly>
 					</td>
 					<td class="TD_STYLE1">
 						变更时间
