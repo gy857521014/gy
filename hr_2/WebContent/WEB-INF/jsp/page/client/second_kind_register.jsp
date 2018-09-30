@@ -19,10 +19,14 @@
 			if(document.getElementById("yiji").value=='0'){
 				$("#errorSpan").html("<font color='red'>请选择I级机构</font>");
 				return;
+			}else{
+				$("#errorSpan").html("");
 			}
 			if(document.getElementById("erjiname").value==''){
 				$("#errorSpanerji").html("<font color='red'>请输入II级机构名称</font>");
 				return;
+			}else{
+				$("#errorSpanerji").html("");
 			}
 			if(document.getElementById("xcbh").value==''){
 				$("#errorSpanxcbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
@@ -33,6 +37,8 @@
 				if(!b){
 					$("#errorSpanxcbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxcbh").html("");
 				}
 			}
 			if(document.getElementById("xsbh").value==''){
@@ -44,6 +50,8 @@
 				if(!b){
 					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxsbh").html("");
 				}
 			}
 			$("#document").submit();

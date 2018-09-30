@@ -12,6 +12,8 @@
 					if (document.getElementById("zwmc").value==""){
 						$("#errorSpan").html("<font color='red'>请输入职位分类名称</font>");
 						return;
+					}else{
+						$("#errorSpan").html("");
 					}
 					$("#cc").submit();
 				}	
