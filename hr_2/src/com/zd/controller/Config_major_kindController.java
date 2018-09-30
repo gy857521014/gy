@@ -15,12 +15,15 @@ import com.zd.entity.Config_major_kind;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
+import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
 
 @Controller
 public class Config_major_kindController {
 	@Autowired
 	private IConfig_major_kindService icmkservice;
+	@Autowired
+	private IConfig_majorService icmservice;
 	//查询所有
 	@RequestMapping("page/selcmk")
 	public  String selcmk(Map<String, Object> map) {
@@ -63,14 +66,16 @@ public class Config_major_kindController {
 	}
 	//删除
 	@RequestMapping("page/deletecmk")
+	@ResponseBody
 	public String deletecmk(String major_kind_id) {
 		Logger logger = LoggerFactory.getLogger(Config_major_kindController.class);
 		try{
 		icmkservice.deletecmk(major_kind_id);
+		icmservice.deletecm(major_kind_id);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("删除信息错误",e);
 				}
-		return null;
+		return "1";
 	}
 }
