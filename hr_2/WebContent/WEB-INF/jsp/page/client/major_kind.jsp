@@ -10,12 +10,20 @@
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
 			function deleteMajor(major_kind_id){
+				 if(confirm("删除职位分类会同时删除下所属职位等....是否删除？"))
+			     {
 			$.ajax({
 				url:'deletecmk?major_kind_id='+major_kind_id,
 				type:'get',
-				success:
-					$("#"+major_kind_id).remove()
+				success:function(data){
+					if(data=="1"){
+					$("#"+major_kind_id).remove();
+					}
+				}
 			});
+			}else  {
+		    	 window.location.href("selcmk");
+		     }
 			}
 		</script>
 	</head>
