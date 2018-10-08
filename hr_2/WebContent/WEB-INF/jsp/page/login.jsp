@@ -122,7 +122,8 @@
 																登 录 名：
 															</td>
 															<td style="height: 28px" width=150>
-																<input id="userName" name="user_name" style="width: 130px" onkeyup="checkNameOrPhone()" />
+																
+																<input id="userName" name="user_phone" style="width: 130px" onkeyup="checkNameOrPhone()" />
 																<input type="hidden" id="count"/>
 															</td>
 															<td></td>

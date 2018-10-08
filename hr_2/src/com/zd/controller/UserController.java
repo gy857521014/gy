@@ -43,20 +43,17 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(User u,HttpSession session,String ucode) {
 	Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	
 	try {
-			if(ucode == null || "".equals(ucode)) {
+			if("".equals(ucode)) {
 				User user = userService.login(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
 					return "page/index";
 				}else {
-					System.out.println("µÇÂ½Ê§°Ü");
 					return "redirect:tologin";
 				}
-			}
-			if(ucode != null &&  !"".equals(ucode)) {
+			}  
+			if(!"".equals(ucode)) {
 				User user = userService.loginByphone(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
