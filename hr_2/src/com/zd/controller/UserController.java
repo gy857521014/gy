@@ -18,6 +18,7 @@ import com.zd.entity.User;
 import com.zd.entity.User_role;
 import com.zd.service.IUserService;
 import com.zd.service.IUser_roleService;
+import com.zd.sms.SendSms;
 
 
 @Controller
@@ -181,6 +182,20 @@ public class UserController {
 		return "redirect:/page/queryAll";
 	}
 	
+	//注册获取验证码
+	@RequestMapping("page/upSms")
+	@ResponseBody
+	public String upSms(String user_phone) {
+		String code = SendSms.send(user_phone);
+		return code;
+	}
+	//登陆获取验证码
+	@RequestMapping("/upCode")
+	@ResponseBody
+	public String upCode(String user_phone) {
+		String code = SendSms.send(user_phone);
+		return code;
+	}
 	
 	//绑定手机号
 	@RequestMapping("page/phoneUpdate")
