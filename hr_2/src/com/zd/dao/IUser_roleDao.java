@@ -15,4 +15,6 @@ public interface IUser_roleDao {
 	@Select("select * from user_role where urole_state = 1")
 	@ResultMap("user_roleMapper")
 	public List<User_role> queryUr();
+	
+	//²éÑ¯ËùÓĞ
 }
