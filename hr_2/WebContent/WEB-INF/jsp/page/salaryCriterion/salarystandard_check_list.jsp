@@ -57,76 +57,77 @@
 
 
 		</table>
+	</form>
+
+		
 
 
-		<html>
-<head>
-</head>
-<body>
 	<p>
 		<div align="center" style="font-size: 18px; color: gray">
+		<form id="queryForm" action="tosalarystandard_check_list" method="post">
+		<input name="start" value="${start}" type="hidden" id="starty"/>
+		</form>
 			&nbsp;&nbsp;总数： <font style="color: maroon;font-weight: bold;">${li}</font>
 			例 &nbsp;&nbsp;&nbsp; 每页显示 <font
 				style="color: maroon;font-weight: bold;">10</font> 条
-			&nbsp;&nbsp;&nbsp; 当前第 <font style="color: maroon;font-weight: bold;">${start}</font>
+			&nbsp;&nbsp;&nbsp; 当前第 <font style="color: maroon;font-weight: bold;">${starttrue}</font>
 			页 &nbsp;&nbsp;&nbsp;共 <font style="color: maroon;font-weight: bold;">${total}</font>
 			页 <a style="color: navy; font-weight: bold"
-				href="tosalarystandard_check_list">首页</a> <a
-				style="color: navy; font-weight: bold" href="javascript:doPageup(${start})">上一页</a>
+				href="javascript:doPagesy(0)">首页</a> <a
+				style="color: navy; font-weight: bold" href="javascript:doPagesy(${start-1})">上一页</a>
 
-			<a style="color: navy; font-weight: bold" href="javascript:doPagedown(${start})">下一页</a>
+			<a style="color: navy; font-weight: bold" href="javascript:doPagesy(${start+1})">下一页</a>
 
-			<a style="color: navy; font-weight: bold" href="tosalarystandard_check_listwy">末页</a>
-			&nbsp;&nbsp;&nbsp;跳到第 <input id="page" type=text value="${start}" class=input1
+			<a style="color: navy; font-weight: bold" href="javascript:doPagesy(${total-1})">末页</a>
+			&nbsp;&nbsp;&nbsp;跳到第 <input id="page" type=text value="${starttrue}" class=input1
 				size=1 name="pages" > 页&nbsp;&nbsp; <input type="image"
 				onclick="dopagebybutton(${total})" src="../images/go.bmp" width=18 height=18
 				border=0 > <input type="hidden" 
-					id="startpage" value="1">
+					id="startpage" value="${starttrue}">
 		</div>
 		<script type="text/javascript">
 			function dopagebybutton(totalPage) {
 				var inputPage = document.getElementById("page").value;
+				var myform = document.getElementById("queryForm");
 				var reg = /^[0-9]*[1-9][0-9]*$/;
 				if (reg.test(document.getElementById("page").value)&&(inputPage<(totalPage+1))&&(inputPage!=0)) {
 					document.getElementById("startpage").value = document
 							.getElementById("page").value;
+					document.getElementById("starty").value = document
+					.getElementById("page").value-1;
+					
 				} else {
 					alert("您的输入有误");
 					document.getElementById("page").value = document
 							.getElementById("startpage").value;
+					return;
 				}
-				document.forms[0].submit();
+				myform.submit();
 
 			}
-			function doPageup(startsize) {
-				document.getElementById("startpage").value = startsize;
-				document.forms[0].submit();
-				if(${start!=1}){
-					location.href="tosalarystandard_check_listup?start="+${start}
-				}else{
-					alert("已经是首页");
-					location.href="tosalarystandard_check_list";
-				}
-			}
-			
-			function doPagedown(startsize) {
-				document.getElementById("startpage").value = startsize;
-				document.forms[0].submit();
-				if(${start}!=${total}){
-					location.href="tosalarystandard_check_listdown?start="+${start}
-				}else{
+		
+			//首页
+			function doPagesy(startsize) {
+				document.getElementById("starty").value = startsize;
+				var myform = document.getElementById("queryForm");
+				if(startsize==${total}){
 					alert("已经是末页");
-					location.href="tosalarystandard_check_listwy";
+					return;
 				}
+				if(startsize<0){
+					alert("已经是首页");
+					return;
+				}
+				myform.submit();
+				//location.href="selLikeSalary_standardsy?start="+${start}
 			}
-			
 			
 		</script>
 </body>
-		</html>
+	
 
 
-	</form>
+	
 
 </body>
 </html>

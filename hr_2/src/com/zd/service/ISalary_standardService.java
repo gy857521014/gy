@@ -23,4 +23,14 @@ public interface ISalary_standardService {
 	public Salary_standard selOneSalary_standard(String standard_id);
 	//根据薪酬编号查询薪酬项目名称
 	public List<Compensation_item> selCompensation_item(String standard_id);
+	//根据薪酬编号修改薪酬标准
+	public void updSalary_standard(Salary_standard ss);
+	//根据项目id修改项目金额
+	public void updcompensation_item(Map map);
+	//添加薪酬标准单详细信息
+	public void addSalary_standard_details(Map map);
+	//薪酬标准模糊查询
+	public List<Salary_standard> selLikeSalary_standard(Map map);
+	//模糊查询薪酬标准例
+	public int selLikeSalary_standardli(Map map);
 }
