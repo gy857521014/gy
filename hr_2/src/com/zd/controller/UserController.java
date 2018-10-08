@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zd.entity.User;
 import com.zd.entity.User_role;
 import com.zd.service.IUserService;
 import com.zd.service.IUser_roleService;
+import com.zd.sms.SendSms;
+
 
 @Controller
 public class UserController {
@@ -36,24 +39,45 @@ public class UserController {
 		return "page/login";
 	}
 	
-	//登陆跳转
+	//用户名密码登陆登陆
 	@RequestMapping("/login")
-	public String login(User u,HttpSession session) {
+	public String login(User u,HttpSession session,String ucode) {
 	Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	
 	try {
-		User user = userService.login(u);
-			if(user != null) {
-				session.setAttribute("loginUser", user);
-				return "page/index";
+			if(ucode == null || "".equals(ucode)) {
+				User user = userService.login(u);
+				if(user != null) {
+					session.setAttribute("loginUser", user);
+					return "page/index";
+				}else {
+					System.out.println("登陆失败");
+					return "redirect:tologin";
+				}
 			}
-			else {
-				return "redirect:tologin";
+			if(ucode != null &&  !"".equals(ucode)) {
+				User user = userService.loginByphone(u);
+				if(user != null) {
+					session.setAttribute("loginUser", user);
+					return "page/index";
+				}else {
+					System.out.println("登陆失败");
+					return "redirect:tologin";
+				}
 			}
 		}catch (Exception e) {
-			logger.error("登陆失败",e);
+			logger.error("手机号码登陆错误",e);
 		}
-	return "redirect:/tologin";
+		return "redirect:/tologin";
+	}
+	
+	//判断手机号是否存在
+	@RequestMapping("/byuser_phone")
+	@ResponseBody
+	public int byuser_phone(String user_phone) {
+		int count = userService.byuser_phone(user_phone);
+		return count;
 	}
 	
 	//退出
@@ -114,30 +138,74 @@ public class UserController {
 	public String userById(int userid,Map<String, Object> map) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
-		User user = userService.userByid(userid);// 1, 2
-		List<User_role> urList = user_roleService.queryUr();// 1, 2, 3
-		// 判断用户的角色哪些被选中
-		for (User_role user_role : urList) {
-			for (User_role r2 : user.getUrole()) {
-				if(user_role.getUroleid() == r2.getUroleid()) {
-					// 说明user_role这个角色要选中
-					user_role.setCheck(1);
+			User user = userService.userByid(userid);// 1, 2
+			List<User_role> urList = user_roleService.queryUr();// 1, 2, 3
+			// 判断用户的角色哪些被选中
+			for (User_role user_role : urList) {
+				for (User_role r2 : user.getUrole()) {
+					if(user_role.getUroleid() == r2.getUroleid()) {
+						// 说明user_role这个角色要选中
+						user_role.setCheck(1);
+					}
 				}
 			}
-		}
-		map.put("urList", urList);
-		map.put("user", user);
+			map.put("urList", urList);
+			map.put("user", user);
 		}catch (Exception e) {
 			logger.error("修改前查询信息错误",e);
 		}
 		return "page/power/user_edit";
 	}
 
+	//注册手机前查询用户的id和用户名
+	@RequestMapping("page/phoneByid")
+	public String phoneByid(int userid,Map<String, Object> map) {
+		Logger logger = LoggerFactory.getLogger(UserController.class);
+		try{
+			User user = userService.userByid(userid);
+			map.put("user", user);
+		}catch (Exception e) {
+			logger.error("注册手机前查询用户的id和用户名错误",e);
+		}
+		return "page/power/user_phone";
+	}
+	
 	//修改用户信息
 	@RequestMapping("page/userUpdate")
 	public String userUpdate(User user,@RequestParam List<Integer> uroleid) {
-		userService.userUpdate(user, uroleid);
+		Logger logger = LoggerFactory.getLogger(UserController.class);
+		try {
+			userService.userUpdate(user, uroleid);
+		}catch (Exception e) {
+			logger.error("修改用户信息错误",e);
+		}
 		return "redirect:/page/queryAll";
 	}
 	
+	//注册获取验证码
+	@RequestMapping("page/upSms")
+	@ResponseBody
+	public String upSms(String user_phone) {
+		String code = SendSms.send(user_phone);
+		return code;
+	}
+	//登陆获取验证码
+	@RequestMapping("/upCode")
+	@ResponseBody
+	public String upCode(String user_phone) {
+		String code = SendSms.send(user_phone);
+		return code;
+	}
+	
+	//绑定手机号
+	@RequestMapping("page/phoneUpdate")
+	public String phoneUpdate(User user) {
+		Logger logger = LoggerFactory.getLogger(UserController.class);
+		try {
+		userService.phoneUpdate(user);
+		}catch (Exception e) {
+			logger.error("绑定手机号错误",e);
+		}
+		return "redirect:/page/queryAll";
+	}
 }

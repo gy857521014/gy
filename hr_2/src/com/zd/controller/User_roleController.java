@@ -30,4 +30,6 @@ public class User_roleController {
 		}
 		return "page/power/user_add";
 	}
+	
+	//查询所有角色转发到角色管理界面
 }

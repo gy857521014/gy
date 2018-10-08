@@ -12,6 +12,7 @@ public class User {
 	private String user_name; //
 	private String user_true_name;// VARCHAR(60),
 	private String user_password;// VARCHAR(60)
+	private String user_phone;
 	
 	//½ÇÉ«±í
 	private List<User_role> urole;
@@ -47,6 +48,15 @@ public class User {
 	public void setUser_password(String user_password) {
 		this.user_password = user_password;
 	}
-	
+	public String getUser_phone() {
+		return user_phone;
+	}
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
+	@Override
+	public String toString() {
+		return "User [user_phone=" + user_phone + "]";
+	}
 	
 }
