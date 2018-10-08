@@ -26,6 +26,7 @@ import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
@@ -104,7 +105,7 @@ public class Humman_fileController {
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
 			//查询薪酬标准
-			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 			map.put("listxinchou", listxinchou);
 			return "page/humanResources/human_register";
 		}
@@ -246,7 +247,7 @@ public class Humman_fileController {
 				List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 				map.put("listzhicheng", listzhicheng);
 				//查询薪酬标准
-				List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+				List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 				map.put("listxinchou", listxinchou);
 				return "page/humanResources/human_check";
 			}
@@ -397,7 +398,7 @@ public class Humman_fileController {
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
 			//查询薪酬标准
-			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 			map.put("listxinchou", listxinchou);
 			return "page/humanResources/change_list_information";
 		}
@@ -484,7 +485,7 @@ public class Humman_fileController {
 					List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 					map.put("listzhicheng", listzhicheng);
 					//查询薪酬标准
-					List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+					List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 					map.put("listxinchou", listxinchou);
 					return "page/humanResources/delete_list_information";
 				}
@@ -560,7 +561,7 @@ public class Humman_fileController {
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
 			//查询薪酬标准
-			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 			map.put("listxinchou", listxinchou);
 			return "page/humanResources/recovery_list_information";
 		}

@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 
 
 /**
@@ -25,8 +26,8 @@ public interface IHumman_fileDao {
 	public int sel1all();
 	
 	//查询薪资标准
-	@Select("SELECT * FROM salary_standard")
-	public List<Salary_standard> xinchoulist();
+	@Select("SELECT * FROM salary_standard_details")
+	public List<Salary_standard_details> xinchoulist();
 	//根据薪酬标注编号查询薪酬标准name
 	@Select("select * from salary_standard where standard_id=#{id}")
 	public Salary_standard xinchouid(String id);

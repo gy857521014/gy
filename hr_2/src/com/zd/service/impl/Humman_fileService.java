@@ -14,6 +14,7 @@ import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IHumman_fileService;
 
 /**
@@ -86,7 +87,7 @@ public class Humman_fileService implements IHumman_fileService {
 		return config_public_charDao.listzhicheng();
 	}
 	//查询薪酬标准
-	public List<Salary_standard> xinchoulist() {
+	public List<Salary_standard_details> xinchoulist() {
 		return humman_fileDao.xinchoulist();
 	}
 	//根据薪酬标注编号查询薪酬标准name

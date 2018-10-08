@@ -7,6 +7,7 @@ import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 
 /**
  * 人力资源管理Service
@@ -43,7 +44,7 @@ public interface IHumman_fileService {
 	//查询职称
 	public List<Config_public_char> listzhicheng();
 	//查询薪酬标准
-	public List<Salary_standard> xinchoulist();
+	public List<Salary_standard_details> xinchoulist();
 	//根据薪酬标注编号查询薪酬标准name
 	public Salary_standard xinchouid(String id);
 	//添加
