@@ -64,6 +64,22 @@
 	<result property="recovery_time" column="recovery_time"/>
 	<result property="human_file_status" column="human_file_status"/>
 </resultMap>
-
-
+<!-- 多条件查询 -->
+<select id="query_list" parameterType="java.util.Map" resultMap="Humman_file">
+		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id}
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+	</select>
+<!-- 多条件查询人力资源删除 -->
+<select id="delete_list" parameterType="java.util.Map" resultMap="Humman_file">
+		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id} and check_status = 1 and human_file_status = 2
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+	</select>
+<!-- 多条件查询人力资源恢复 -->
+<select id="recovery_list" parameterType="java.util.Map" resultMap="Humman_file">
+		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id} and human_file_status = 3
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+	</select>
 </mapper>

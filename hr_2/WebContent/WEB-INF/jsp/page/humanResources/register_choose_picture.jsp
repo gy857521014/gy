@@ -12,6 +12,7 @@
 	</head>
 	<body>
 		<form method="post" action="updsuccess" enctype="multipart/form-data">
+		<input value="${hf}" type="hidden" name="hf"/>
 			<table width="100%">
 				<tr>
 					<td colspan="2">
@@ -24,7 +25,6 @@
 						<input type="file" class="FILE_STYLE1" name="file1" width="100%"/>
 					</td>
 					<td width="41%" align="right">
-						<input value="${hf}" type="hidden" name="human_picture"/>
 						<input type="button" value="上传附件" class="BUTTON_STYLE1" onclick="location.href='register_choose_attachment.html'"/>
 						<input type="submit" value="完成" class="BUTTON_STYLE1"/>
 					</td>

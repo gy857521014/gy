@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<td>
-						当前等待复核的人力资源档案总数： 2 例
+						当前等待复核的人力资源档案总数： ${humman_fileslist_size } 例
 					</td>
 				</tr>
 			</table>
@@ -81,18 +81,8 @@
 				</c:forEach>
 			</table>
 			<p style="text-align: center;">
-				
 					<a href="check_list.html" style="color:black;">首页</a>
-					
-					
-						 
-							 
 							    <font style="color:red;">1</font> 
-							 
-							 
-						 
-					
-					 
      				<a href="check_list.html" style="color:black;">尾页</a> 
 				
 			</p>

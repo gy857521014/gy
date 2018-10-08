@@ -24,6 +24,26 @@
 		<script type="text/javascript"
 			src="../javascript/locate.js">
 		</script>
+<!-- 职位二级联动 -->
+<script type="text/javascript">
+function fun(){
+	var pid =$("#majorKind").val();
+	$.ajax({
+		url:'selectzhiwei1?majorid='+pid,
+		type:'get',
+		success:function(data){
+			var cityselect=$("#majorName");
+			cityselect.empty();
+			for(var i=0;i<data.length;i++){
+				var eachCity=data[i];
+				var id=eachCity.major_id;
+				var name=eachCity.major_name;
+				cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+				}
+			}
+		});
+	}
+</script>
 <!-- 机构的二级联动 -->
 <script type="text/javascript">
 function querySecond(){
@@ -67,7 +87,7 @@ function queryThird(){
 	</head>
 
 	<body>
-		<form method="post" action="query_list.html">
+		<form method="post" action="query_list">
 			<table width="100%">
 				<tr>
 					<td>
@@ -91,7 +111,7 @@ function queryThird(){
 						请选择员工所在I级机构
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="first_kind_id" size="5" id="firstKind" onchange="querySecond()" 
+						<select name="first_king_id" size="5" id="firstKind" onchange="querySecond()" 
 						class="SELECT_STYLE2">
 							<option value="0" selected="selected">全部</option>
 							<c:forEach var="firstList" items="${FirstList }">
@@ -130,19 +150,14 @@ function queryThird(){
 						请选择职位分类
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.humanMajorKindId" size="5" id="majorKind"
+						<select name="human_major_kind_id" size="5" id="majorKind" onchange="fun()" 
 							class="SELECT_STYLE2">
-							<option value="" selected="selected">
+							<option value="0" selected="selected">
 								全部
 							</option>
-							
-								<option value="01">销售</option>
-							
-								<option value="02">软件开发</option>
-							
-								<option value="03">人力资源</option>
-							
-								<option value="04">生产部</option>
+							<c:forEach var="fenleilist" items="${fenleilist }">
+								<option value="${fenleilist.major_kind_id }">${fenleilist.major_kind_name }</option>
+							</c:forEach>
 							
 						</select>
 					</td>
@@ -152,27 +167,10 @@ function queryThird(){
 						请选择职位名称
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.humanMajorId" size="5" class="SELECT_STYLE2" id="majorName">
-							<option value="" selected="selected">
+						<select name="human_major_id" size="5" class="SELECT_STYLE2" id="majorName">
+							<option value="0" selected="selected">
 								全部
 							</option>
-							
-								<option value="01">区域经理</option>
-							
-								<option value="02">总经理</option>
-							
-								<option value="01">项目经理</option>
-							
-								<option value="02">程序员</option>
-							
-								<option value="01">人事经理</option>
-							
-								<option value="02">专员</option>
-							
-								<option value="01">主任</option>
-							
-								<option value="02">技术工人</option>
-							
 						</select>
 					</td>
 				</tr>

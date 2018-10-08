@@ -53,7 +53,7 @@
 						${humman_file.human_id }
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="../../images/regular.jpg"  style="width:120px;height:150px;"/>
+						<img src="../upload/${humman_file.human_picture }"  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -119,8 +119,14 @@
 					</td>
 					<td class="TD_STYLE2" >
 						<select class="SELECT_STYLE1" name="human_sex">
+							<c:if test="${humman_file.human_sex == '男' }">
 							<option value="男">男</option>
 							<option value="女">女</option>
+							</c:if>
+							<c:if test="${humman_file.human_sex == '女' }">
+							<option value="女">女</option>
+							<option value="男">男</option>
+							</c:if>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
