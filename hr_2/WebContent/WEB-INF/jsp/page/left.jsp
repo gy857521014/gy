@@ -159,12 +159,12 @@
 								</li>
 								<li>
 									<span>
-										<a href="tosalarystandard_check_list" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
+										<a href="tosalarystandard_check_list?start=0" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_query_locate.html" target="mainFrame" style="color:black;">薪酬标准查询</a>
+										<a href="tosalarystandard_query_locate" target="mainFrame" style="color:black;">薪酬标准查询</a>
 									</span>
 								</li>
 								<li>

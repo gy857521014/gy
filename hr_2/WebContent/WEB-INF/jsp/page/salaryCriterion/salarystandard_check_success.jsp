@@ -19,7 +19,7 @@
 				<td width="49%">复核成功！</td>
 				<td width="51%" align="right"><input type="button"
 					class="BUTTON_STYLE1"
-					onclick="javascript:window.location='salarystandard_check_list.html';"
+					onclick="javascript:window.location='tosalarystandard_check_list';"
 					value="返回" /></td>
 
 

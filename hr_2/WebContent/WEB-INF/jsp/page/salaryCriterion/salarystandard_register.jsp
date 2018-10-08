@@ -17,7 +17,7 @@
 				<td><font color="black">您正在做的业务是：人力资源--薪酬标准管理--薪酬标准登记 </font></td>
 			</tr>
 			<tr>
-				<td align="right"><input type="submit" value="提 交"
+				<td align="right"><input type="button" value="提 交"
 					onclick="check()" class="BUTTON_STYLE1"> <input
 					type="reset" value="返 回" class="BUTTON_STYLE1"></td>
 			</tr>
@@ -71,15 +71,15 @@
 			
 				<c:forEach items="${xm }" var="xm" varStatus="vs">
 					<tr class="TD_STYLE2">
-					<td align="center">${xm.pbc_id } <input type="hidden"
-						name="${xm.pbc_id }" value="${vs.count}">
+					<td align="center">${vs.count}<input type="hidden"
+						name="${xm.pbc_id }" value="${xm.pbc_id }">
 					</td>
 					<td colspan="3">${xm.attribute_name }<input type="hidden" id="details6"
 						name="${xm.attribute_name }" value="${xm.attribute_name }">
 					</td>
 					<td>
-						<input type="text" id="salary${xm.pbc_id }" value="0.00" name="x_${xm.pbc_id }_${xm.attribute_name }" 
-						onkeyup="countMoney('6','salary${xm.pbc_id }')" class="INPUT_STYLE2">
+						<input type="text" id="salary${vs.count}" value="0.00" name="x_${xm.pbc_id }_${xm.attribute_name }" 
+						onkeyup="countMoney('${xmsize }','salary${vs.count}')" class="INPUT_STYLE2">
 					</td>
 					<td colspan="3">&nbsp;</td>
 				</tr>

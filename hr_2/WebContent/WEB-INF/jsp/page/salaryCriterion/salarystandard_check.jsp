@@ -12,7 +12,7 @@
 
 <body>
 
-	<form method="post" action="salarystandard_check_success.html">
+	<form method="post" action="tosalarystandard_check_success">
 
 		<input type="hidden" name="standard.ssdId" value="1259">
 
@@ -38,14 +38,14 @@
 			<tr>
 				<td width="12%" class="TD_STYLE1">薪酬编号</td>
 				<td width="15%" class="TD_STYLE2"><input type="text"
-					name="standard.standardId" value="${ssd.standard_id }" readonly="readonly"/></td>
+					name="standard_id" value="${ssd.standard_id }" readonly="readonly"/></td>
 				<td width="12%" class="TD_STYLE1">薪酬标准名称</td>
 				<td width="11%" class="TD_STYLE2"><input type="text"
-					name="standard.standardName" id="standardName" value="${ssd.standard_name }"
+					name="standard_name" id="standardName" value="${ssd.standard_name }"
 					class="INPUT_STYLE2"></td>
 				<td width="11%" class="TD_STYLE1">薪酬总额</td>
 				<td width="17%" class="TD_STYLE2"><input type="text"
-					name="standard.salarySum" value="${ssd.salary_sum }" id="sumSalary"
+					name="salary_sum" value="${ssd.salary_sum }" id="sumSalary" readonly="readonly"
 					class="INPUT_STYLE2"></td>
 				<td width="12%" class="TD_STYLE1">&nbsp;</td>
 				<td width="10%" class="TD_STYLE2">&nbsp;</td>
@@ -53,15 +53,15 @@
 			<tr>
 				<td class="TD_STYLE1">制定人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.designer" id="designer" value="${ssd.designer}"
+					name="designer" id="designer" value="${ssd.designer}"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">复核人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.checker" value="" class="INPUT_STYLE2">
+					name="checker" value="" class="INPUT_STYLE2">
 				</td>
 				<td class="TD_STYLE1">复核时间</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.checkTime" id="Tdate" class="INPUT_STYLE2">
+					name="check_time" id="Tdate" class="INPUT_STYLE2">
 				</td>
 				<td class="TD_STYLE1">&nbsp;</td>
 				<td class="TD_STYLE2">&nbsp;</td>
@@ -69,7 +69,7 @@
 			<tr>
 				<td class="TD_STYLE1">复核意见</td>
 				<td colspan="7" class="TD_STYLE2"><textarea
-						name="standard.checkComment" rows="4" class="INPUT_STYLE2"></textarea>
+						name="check_comment" rows="4" class="INPUT_STYLE2"></textarea>
 
 				</td>
 			</tr>
@@ -85,11 +85,11 @@
 					value="1265" /> <input type="hidden" name="details[5].itemId"
 					value="${ci.pbc_id}" />${vs.count}</td>
 				<td colspan="3"><input type="hidden"
-					name="details[5].standardId" value="1353320184280" /> <input
-					type="hidden" name="details[5].standardName" value="薪酬标准3" /> <input
-					type="hidden" name="details[5].itemName" value="误餐补助" />${ci.attribute_name }</td>
-				<td><input type="text" id="salary6" value="${ci.money}"
-					name="details[5].salary" onkeyup="countMoney('6','salary6')"
+					name="details[5].standardId" value="${ssd.standard_id }" /> <input
+					type="hidden" name="details[5].standardName" value="${ssd.standard_name }" /> <input
+					type="hidden" name="details[5].itemName" value="${ci.attribute_name }" />${ci.attribute_name }</td>
+				<td><input type="text" id="salary${vs.count}" value="${ci.money}"
+					name="x_${ci.pbc_id}_${ci.attribute_name }" onkeyup="countMoney('${cisize }','salary${vs.count}')"
 					class="INPUT_STYLE2"></td>
 				<td colspan="3">&nbsp;</td>
 			</tr>
