@@ -3,6 +3,7 @@ package com.zd.service;
 import java.util.List;
 
 import com.zd.entity.Config_major;
+import com.zd.entity.Config_major_kind;
 
 public interface IConfig_majorService {
 	
@@ -14,4 +15,8 @@ public interface IConfig_majorService {
 	
 	
 	public List<Config_major> selallzhi();
+	//Ìí¼Ó
+	public void addcm(Config_major config_major);
+	// É¾³ýÓÃ»§
+	public void deletecm(String major_kind_id);
 }

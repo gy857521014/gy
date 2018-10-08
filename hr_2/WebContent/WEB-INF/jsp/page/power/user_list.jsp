@@ -31,6 +31,7 @@
 			<tr>
 				<td align="right">
 					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='queryUr'">
+					<input type="button" value="绑定手机" class="BUTTON_STYLE1" onclick="location.href='phoneByid?userid='+${loginUser.userid }"></input>
 				</td>
 			</tr>
 		</table>
@@ -52,6 +53,9 @@
 				</td>
 				<td class="TD_STYLE1">
 					用户身份
+				</td>
+				<td class="TD_STYLE1">
+					手机号码
 				</td>
 				<td class="TD_STYLE1">
 					操作
@@ -77,12 +81,16 @@
 						${ur.urole_name }
 						</c:forEach>
 					</td>
-					<c:if test="${user.userid != loginUser.userid }">
 					<td class="TD_STYLE2">
-						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
-						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${user.userid })"/>
+						${user.user_phone }
 					</td>
-					</c:if>
+					<td class="TD_STYLE2">
+							<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
+						<c:if test="${user.userid != loginUser.userid }">
+							<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${user.userid })"/>
+						</c:if>
+					</td>
+					
 				</tr>
 			</c:forEach>
 

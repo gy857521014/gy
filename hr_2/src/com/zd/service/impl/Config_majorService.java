@@ -32,4 +32,14 @@ public class Config_majorService implements IConfig_majorService{
 		return majordao.selallzhi();
 		
 	}
+
+	//Ìí¼Ó
+	public void addcm(Config_major config_major) {
+		majordao.addcm(config_major);
+	}
+
+	//É¾³ý
+	public void deletecm(String major_kind_id) {
+		majordao.deletecm(major_kind_id);
+	}
 }

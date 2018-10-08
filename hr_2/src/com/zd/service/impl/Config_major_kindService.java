@@ -31,6 +31,11 @@ public class Config_major_kindService implements IConfig_major_kindService{
 		Config_major_kind majorkind=majorkinddao.selmajorkindid(id);
 		return majorkind;
 	}
+	//根据分类id查询名称
+	public Config_major_kind selcmkid(String major_kind_id) {
+		Config_major_kind selid=majorkinddao.selcmkid(major_kind_id);
+		return selid;
+	}
 	//删除
 	public void deletecmk(String major_kind_id) {
 		majorkinddao.deletecmk(major_kind_id);

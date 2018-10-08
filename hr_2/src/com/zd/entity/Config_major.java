@@ -6,7 +6,7 @@ public class Config_major {
 	private String major_kind_name;//	职位分类名称 
 	private String major_id;//	 职位编号
 	private String major_name;//	职位名称
-	private int test_amount;//	题套数量
+	//private int test_amount;
 	public int getMak_id() {
 		return mak_id;
 	}
@@ -37,21 +37,15 @@ public class Config_major {
 	public void setMajor_name(String major_name) {
 		this.major_name = major_name;
 	}
-	public int getTest_amount() {
-		return test_amount;
-	}
-	public void setTest_amount(int test_amount) {
-		this.test_amount = test_amount;
-	}
-	public Config_major(int mak_id, String major_kind_id, String major_kind_name, String major_id, String major_name,
-			int test_amount) {
+	
+	
+	public Config_major(int mak_id, String major_kind_id, String major_kind_name, String major_id, String major_name) {
 		super();
 		this.mak_id = mak_id;
 		this.major_kind_id = major_kind_id;
 		this.major_kind_name = major_kind_name;
 		this.major_id = major_id;
 		this.major_name = major_name;
-		this.test_amount = test_amount;
 	}
 	public Config_major() {
 		super();

@@ -95,7 +95,21 @@
 							${rlist.deadline } 
 						</td>
 						<td class="TD_STYLE2">
+						<c:if test="${rlist.state==1 }">
 							<a href="selidrelease2?mre_id=${rlist.mre_id}">申请该职位</a>
+						</c:if>
+						
+						<c:if test="${rlist.state==2 }">
+							<a href="selidrelease2?mre_id=${rlist.mre_id}">已提交申请</a>
+						</c:if>
+						
+						<c:if test="${rlist.state==3 }">
+							<a href="selidrelease2?mre_id=${rlist.mre_id}">申请成功</a>
+						</c:if>
+						
+						<c:if test="${rlist.state==4 }">
+							<a href="selidrelease2?mre_id=${rlist.mre_id}">申请失败</a>
+						</c:if>
 						</td>
 						 
 					</tr>

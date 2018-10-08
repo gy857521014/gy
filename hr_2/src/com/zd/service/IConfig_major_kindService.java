@@ -13,6 +13,8 @@ public interface IConfig_major_kindService {
 	public void addcmk(Config_major_kind config_major_kind);
 	//根据分类id查询名称
 	public Config_major_kind selmajorkindid(String id);
+	//根据分类id查询名称
+	public Config_major_kind selcmkid(String major_kind_id);
 	// 删除用户
 	public void deletecmk(String major_kind_id);
 }

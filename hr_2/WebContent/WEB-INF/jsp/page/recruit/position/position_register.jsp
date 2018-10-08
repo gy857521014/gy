@@ -26,7 +26,10 @@
 		<script type="text/javascript"
 			src="../javascript/locate.js">
 		</script>
-	
+		</script>
+			<script type="text/javascript"
+			src="../javascript/comm/time.js">
+			</script>
 	
  		<script type="text/javascript">
  			window.onload=check;
@@ -298,7 +301,7 @@ function fun2(){
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="register" value="${loginUser.user_true_name }" class="INPUT_STYLE2">
+						 <input type="text" name="register" value="${loginUser.user_true_name }" class="INPUT_STYLE2" readonly>
 					</td>
 					<td class="TD_STYLE1">
 						登记时间

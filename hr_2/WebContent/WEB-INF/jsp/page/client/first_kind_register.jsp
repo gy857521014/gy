@@ -17,6 +17,8 @@
 				if(document.getElementById("jgmc").value==''){
 					$("#errorSpan").html("<font color='red'>请输入I级机构名称</font>");
 					return;
+				}else{
+					$("#errorSpan").html("");
 				}
 				if(document.getElementById("zrrbh").value==''){
 					$("#errorSpanzrrbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
@@ -27,6 +29,8 @@
 					if(!b){
 						$("#errorSpanzrrbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 						return;
+					}else{
+						$("#errorSpanzrrbh").html("");
 					}
 				}
 				
@@ -39,6 +43,8 @@
 					if(!b){
 						$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 						return;
+					}else{
+						$("#errorSpanxsbh").html("");
 					}
 				}
 				$("#cc").submit();
