@@ -22,4 +22,45 @@
 <select id="selSalary_standard" parameterType="map" resultMap="Salary_standardMapper">
 	SELECT * FROM salary_standard WHERE check_status=2  LIMIT #{start},10
 </select>
+
+<!-- 模糊查询 -->
+<select id="selLikeSalary_standard" parameterType="map" resultMap="Salary_standardMapper">
+	select * from salary_standard 
+	where check_status=2  
+		<if test="standard_id!=null and standard_id!=''">
+			and standard_id like '%${standard_id}%'
+		</if>
+		<if test="Keyword!=null and Keyword!=''">
+			and standard_name like '%${Keyword}%' or designer like '%${Keyword}%' or checker like '%${Keyword}%' or changer like '%${Keyword}%'
+		</if>
+		<if test="startDate!= null and startDate!='' ">
+				and regist_time >= #{startDate}
+		</if>
+		<if test="endDate!= null and endDate!='' ">
+			<![CDATA[and regist_time <= #{endDate}]]>
+		</if>
+
+	LIMIT #{start},10
+</select>
+
+
+<!-- 模糊查询例 -->
+<select id="selLikeSalary_standardli" parameterType="map" resultType="int">
+	SELECT COUNT(*) FROM salary_standard
+	<where>
+		check_status=2
+		<if test="standard_id!=null and standard_id!=''">
+			and standard_id like '%${standard_id}%'
+		</if>
+		<if test="Keyword!=null and Keyword!=''">
+			and standard_name like '%${Keyword}%' or designer like '%${Keyword}%' or checker like '%${Keyword}%' or changer like '%${Keyword}%'
+		</if>
+		<if test="startDate!= null and startDate!='' ">
+				and regist_time >= #{startDate}
+		</if>
+		<if test="endDate!= null and endDate!='' ">
+			<![CDATA[and regist_time <= #{endDate}]]>
+		</if>
+	</where>
+</select>
 </mapper>

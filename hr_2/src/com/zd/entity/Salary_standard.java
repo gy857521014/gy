@@ -130,6 +130,11 @@ public class Salary_standard {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Salary_standard [standard_id=" + standard_id + ", standard_name=" + standard_name + ", remark=" + remark
+				+ "]";
+	}
 	
 	
 	
