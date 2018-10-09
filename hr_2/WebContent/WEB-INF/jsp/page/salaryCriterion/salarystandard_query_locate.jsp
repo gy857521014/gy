@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-		<form method="post" action="salarystandard_query_list.html">
+		<form method="post" action="selLikeSalary_standardsy" id="queryForm">
 			<input type="hidden" name="page.startPage" value="0">
 			<table width="100%">
 				<tr>
@@ -31,7 +31,8 @@
 				<tr>
 					<td>
 						<div align="right">
-							<input type="submit" value="查询" class="BUTTON_STYLE1"/>
+							<input type="button" value="查询" class="BUTTON_STYLE1" onclick="time()"/>
+							<input type="hidden" name="start" value="0"/>
 						</div>
 					</td>
 				</tr>
@@ -44,7 +45,7 @@
 						请输入薪酬标准编号
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="standard.standardId" value=""
+						<input type="text" name="standard_id" value=""
 							class="INPUT_STYLE1">
 					</td>
 				</tr>
@@ -53,7 +54,7 @@
 						请输入关键字
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="utilbean.primarKey" class="INPUT_STYLE1">
+						<input type="text" name="Keyword" class="INPUT_STYLE1">
 					</td>
 				</tr>
 				<tr>
@@ -61,13 +62,30 @@
 						请输入建档时间
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<input name="utilbean.startDate" onclick="aa('utilbean.startDate')" type="text" class="INPUT_STYLE2" id="date_start" style="width:24% " value="" size="30">
-						至 <input type="text" name="utilbean.endDate" onclick="aa('utilbean.endDate')" value="" style="width:24% " class="INPUT_STYLE2" id="date_end">
+						<input name="startDate" onclick="aa('utilbean.startDate')" type="text" class="INPUT_STYLE2" id="date_start" style="width:24% " value="" size="30">
+						至 <input type="text" name="endDate" onclick="aa('utilbean.endDate')" value="" style="width:24% " class="INPUT_STYLE2" id="date_end">
 						（YYYY-MM-DD）
 					</td>
 				</tr>
 			</table>
 		</form>
+		
+		<script type="text/javascript">
+			function time(){
+				var myform = document.getElementById("queryForm");
+				var startDate = document.getElementById("date_start").value;
+				var endDate = document.getElementById("date_end").value;
+				if(startDate!=null&&startDate!=""&&endDate!=null&&endDate!=""){
+					if(startDate>endDate){
+						alert("您的输入日期有误");
+						document.getElementById("date_start").value=null;
+						document.getElementById("date_end").value=null;
+						return;
+					}
+				}
+				myform.submit();
+			}
+		</script>
 	</body>
 	 
 </html>

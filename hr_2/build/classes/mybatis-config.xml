@@ -21,6 +21,7 @@
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
 		<!-- 人力资源表映射 -->
 		<typeAlias type="com.zd.entity.Humman_file" alias="Humman_file"/>
+		<typeAlias type="com.zd.entity.e_mail" alias="email"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/zd/mappers/User_roleMapper.xml"/>
@@ -36,5 +37,6 @@
 		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
 		<!-- 人力资源表映射 -->
 		<mapper resource="com/zd/mappers/Humman_fileMapper.xml" />
+		<mapper resource="com/zd/mappers/EmailMapper.xml" />
 	</mappers>
 </configuration>
