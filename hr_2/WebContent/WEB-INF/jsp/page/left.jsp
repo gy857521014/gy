@@ -266,24 +266,19 @@
 									<ul>
 												<li>
 													<span>
-														<a href="client/salary_item.html" target="mainFrame" style="color:black;">薪酬项目设置</a>
-													</span>
-												</li>
-												<li>
-													<span>
-														<a href="client/salary_grant_mode.html" target="mainFrame" style="color:black;">薪酬发放方式设置</a>
+														<a href="selxc" target="mainFrame" style="color:black;">薪酬项目设置</a>
 													</span>
 												</li>
 									</ul>
 								</li>
 								<li state="closed">
 									<span>
-										其他设置
+										邮箱管理设置
 									</span>
 									<ul>
 												<li>
 													<span>
-														<a href="client/primary_key.html" target="mainFrame" style="color:black;">关键字查询设置</a>
+														<a href="selm" target="mainFrame" style="color:black;">邮箱设置</a>
 													</span>
 												</li>
 									</ul>
