@@ -1,14 +1,31 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet"
-			href="../css/table.css" type="text/css">
-		<script type="text/javascript"
-			src="../javascript/comm/comm.js">
+		<link rel="stylesheet" href="../css/table.css" type="text/css">
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+		function ajaxDelete(first_kind_id){
+				 if(confirm("删除一级机构会同时删除下所属分公司、人员等....是否删除？"))
+				     {
+				 $.ajax({
+				url:'deletecffk?first_kind_id='+first_kind_id,
+				type:'get',
+				success:function(data){
+				if(data=="1"){
+				$("#"+first_kind_id).remove();
+						}
+					}
+				});
+					 window.location.href("todelete");
+				     }
+				     else  {
+				    	 window.location.href("selcffk");
+				     }
+				}
 		</script>
 	</head>
 	<body>
@@ -69,13 +86,10 @@
 						<a href="selcffkid?first_kind_id=${c.first_kind_id }">变更</a>
 					</td>
 					<td class="TD_STYLE2">
-						<a href="deletecffk?ffk_id=${c.ffk_id }">删除</a>
-					</td>
-				</tr>
+						<a href="javascript:ajaxDelete(${c.first_kind_id })">删除</a>
+					</tr>
 				</c:forEach>
 			</table>
-			<p>
-				 
 		</form>
 	</body>
 </html>

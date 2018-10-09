@@ -9,15 +9,16 @@ public class Humman_file {
 	public Humman_file() {
 		super();
 	}
-	public Humman_file(int hfd_id, String human_id, String first_kind_id, String first_kind_name, String second_kind_id,
+	
+	public Humman_file(int hfd_id, String human_id, String first_king_id, String first_king_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
-			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
-			String human_major_kind_name, int human_major_id, String hunma_major_name, String human_telephone,
-			String human_mobilephone, String human_bank, String human_account, int human_qq, String human_email,
+			String human_address, int human_postcode, String human_pro_designation, String human_major_kind_id,
+			String human_major_kind_name, String human_major_id, String hunma_major_name, String human_telephone,
+			String human_mobilephone, String human_bank, String human_account, String human_qq, String human_email,
 			String human_hobby, String human_speciality, String human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, String human_birthday, String human_birthplace, int human_age,
 			String human_educated_degree, double human_educated_years, String human_educated_major,
-			int human_society_security_id, String human_id_card, String remark, int salary_standard_id,
+			int human_society_security_id, String human_id_card, String remark, String salary_standard_id,
 			String salary_standard_name, double salary_sum, double demand_salaray_sum, double paid_salary_sum,
 			int major_change_amount, int bonus_amount, int training_amount, int file_chang_amount,
 			String human_histroy_records, String human_family_membership, String human_picture, String attachment_name,
@@ -27,8 +28,8 @@ public class Humman_file {
 		super();
 		this.hfd_id = hfd_id;
 		this.human_id = human_id;
-		this.first_kind_id = first_kind_id;
-		this.first_kind_name = first_kind_name;
+		this.first_king_id = first_king_id;
+		this.first_king_name = first_king_name;
 		this.second_kind_id = second_kind_id;
 		this.second_kind_name = second_kind_name;
 		this.third_kind_id = third_kind_id;
@@ -88,10 +89,11 @@ public class Humman_file {
 		this.recovery_time = recovery_time;
 		this.human_file_status = human_file_status;
 	}
+
 	private int hfd_id;//人力资源档案的id
 	private String human_id;//档案编号
-	private String first_kind_id;//一级机构编号
-	private String first_kind_name;//一级机构名称
+	private String first_king_id;//一级机构编号
+	private String first_king_name;//一级机构名称
 	private String second_kind_id;//二级机构编号
 	private String second_kind_name;//二级机构名称
 	private String third_kind_id;//三级机构编号
@@ -100,15 +102,15 @@ public class Humman_file {
 	private String human_address;//地址
 	private int human_postcode;//邮政编码
 	private String human_pro_designation;//职称
-	private int human_major_kind_id;//职位分类编号
+	private String human_major_kind_id;//职位分类编号
 	private String human_major_kind_name;//职位分类名称
-	private int human_major_id;//职位编号
+	private String human_major_id;//职位编号
 	private String hunma_major_name;//职位名称
 	private String human_telephone;//电话 
 	private String human_mobilephone;//手机号码
 	private String human_bank;//开户银行
 	private String human_account;//银行帐号
-	private int human_qq;//QQ号码
+	private String human_qq;//QQ号码
 	private String human_email;//电子邮件
 	private String human_hobby;//爱好
 	private String human_speciality;//特长
@@ -126,7 +128,7 @@ public class Humman_file {
 	private int human_society_security_id;//社会保障号
 	private String human_id_card;//身份证号
 	private String remark;//备注
-	private int salary_standard_id;//薪酬标准编号
+	private String salary_standard_id;//薪酬标准编号
 	private String salary_standard_name;//薪酬标准名称
 	private double salary_sum;//基本薪酬总额
 	private double demand_salaray_sum;//应发薪酬总额
@@ -150,7 +152,6 @@ public class Humman_file {
 	private String delete_time;//档案删除时间
 	private String recovery_time;//档案恢复时间
 	private int human_file_status;//档案状态 (1：待复核 2：正常 3：已删除)
-	
 	public int getHfd_id() {
 		return hfd_id;
 	}
@@ -163,17 +164,17 @@ public class Humman_file {
 	public void setHuman_id(String human_id) {
 		this.human_id = human_id;
 	}
-	public String getFirst_kind_id() {
-		return first_kind_id;
+	public String getFirst_king_id() {
+		return first_king_id;
 	}
-	public void setFirst_kind_id(String first_kind_id) {
-		this.first_kind_id = first_kind_id;
+	public void setFirst_king_id(String first_king_id) {
+		this.first_king_id = first_king_id;
 	}
-	public String getFirst_kind_name() {
-		return first_kind_name;
+	public String getFirst_king_name() {
+		return first_king_name;
 	}
-	public void setFirst_kind_name(String first_kind_name) {
-		this.first_kind_name = first_kind_name;
+	public void setFirst_king_name(String first_king_name) {
+		this.first_king_name = first_king_name;
 	}
 	public String getSecond_kind_id() {
 		return second_kind_id;
@@ -223,10 +224,10 @@ public class Humman_file {
 	public void setHuman_pro_designation(String human_pro_designation) {
 		this.human_pro_designation = human_pro_designation;
 	}
-	public int getHuman_major_kind_id() {
+	public String getHuman_major_kind_id() {
 		return human_major_kind_id;
 	}
-	public void setHuman_major_kind_id(int human_major_kind_id) {
+	public void setHuman_major_kind_id(String human_major_kind_id) {
 		this.human_major_kind_id = human_major_kind_id;
 	}
 	public String getHuman_major_kind_name() {
@@ -235,10 +236,10 @@ public class Humman_file {
 	public void setHuman_major_kind_name(String human_major_kind_name) {
 		this.human_major_kind_name = human_major_kind_name;
 	}
-	public int getHuman_major_id() {
+	public String getHuman_major_id() {
 		return human_major_id;
 	}
-	public void setHuman_major_id(int human_major_id) {
+	public void setHuman_major_id(String human_major_id) {
 		this.human_major_id = human_major_id;
 	}
 	public String getHunma_major_name() {
@@ -271,10 +272,10 @@ public class Humman_file {
 	public void setHuman_account(String human_account) {
 		this.human_account = human_account;
 	}
-	public int getHuman_qq() {
+	public String getHuman_qq() {
 		return human_qq;
 	}
-	public void setHuman_qq(int human_qq) {
+	public void setHuman_qq(String human_qq) {
 		this.human_qq = human_qq;
 	}
 	public String getHuman_email() {
@@ -379,10 +380,10 @@ public class Humman_file {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public int getSalary_standard_id() {
+	public String getSalary_standard_id() {
 		return salary_standard_id;
 	}
-	public void setSalary_standard_id(int salary_standard_id) {
+	public void setSalary_standard_id(String salary_standard_id) {
 		this.salary_standard_id = salary_standard_id;
 	}
 	public String getSalary_standard_name() {

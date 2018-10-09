@@ -4,6 +4,7 @@ public class Compensation_item {
 	private String standard_id;
 	private int pbc_id;
 	private double money;
+	private String attribute_name;
 	public String getStandard_id() {
 		return standard_id;
 	}
@@ -22,11 +23,18 @@ public class Compensation_item {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	public Compensation_item(String standard_id, int pbc_id, double money) {
+	public String getAttribute_name() {
+		return attribute_name;
+	}
+	public void setAttribute_name(String attribute_name) {
+		this.attribute_name = attribute_name;
+	}
+	public Compensation_item(String standard_id, int pbc_id, double money, String attribute_name) {
 		super();
 		this.standard_id = standard_id;
 		this.pbc_id = pbc_id;
 		this.money = money;
+		this.attribute_name = attribute_name;
 	}
 	public Compensation_item() {
 		super();

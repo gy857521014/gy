@@ -70,12 +70,12 @@ function querySecond(){
 function queryThird(){
 	var pid =$("#secondKind").val();
 	$.ajax({
-		url:'selerji?fsk_id='+pid,
+		url:'selsanji?fsk_id='+pid,
 		type:'get',
 		success:function(data){
 			var cityselect=$("#thirdKind");
 			cityselect.empty();
-			cityselect.append("<option>--请选择三级机构名称--</option>");
+			cityselect.append("<option>--请选择二级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.third_kind_id;
@@ -93,6 +93,12 @@ function queryThird(){
 				<tr>
 					<td>
 						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案登记 </font>
+					</td>
+				</tr>
+			<tr>
+					<td align="right">
+						<input type="submit" value="提交" class="BUTTON_STYLE1"/>
+						<input type="reset" value="清除" class="BUTTON_STYLE1"/>
 					</td>
 				</tr>
 				
@@ -113,7 +119,7 @@ function queryThird(){
 						I级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="first_kind_id" class="SELECT_STYLE1" id="firstKind" onchange="querySecond()">
+						<select name="first_king_id" class="SELECT_STYLE1" id="firstKind" onchange="querySecond()">
 							<option value="0">请选择</option>
 							<c:forEach var="firstList" items="${FirstList }">
 								<option value="${firstList.first_kind_id }">${firstList.first_kind_name }</option>
@@ -250,7 +256,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_nationality" class="SELECT_STYLE1">
 						<c:forEach var="listguoji" items="${listguoji }">
-							<option value="${listguoji.pbc_id }">${listguoji.attribute_name }</option>
+							<option value="${listguoji.attribute_name }">${listguoji.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -274,7 +280,7 @@ function queryThird(){
 					<td class="TD_STYLE2" width="14%">
 						<select name="human_race" class="SELECT_STYLE1">
 						<c:forEach var="listmingzu" items="${listmingzu }">
-							<option value="${listmingzu.pbc_id }">${listmingzu.attribute_name }</option>
+							<option value="${listmingzu.attribute_name }">${listmingzu.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -286,7 +292,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_religion" class="SELECT_STYLE1">
 						<c:forEach items="${listzongjiao }" var="listzongjiao">
-							<option value="${listzongjiao.pbc_id }">${listzongjiao.attribute_name }</option>
+							<option value="${listzongjiao.attribute_name }">${listzongjiao.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -296,7 +302,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_party" class="SELECT_STYLE1">
 						<c:forEach var="listzhengzhi" items="${listzhengzhi }">
-							<option value="${listzhengzhi.pbc_id }">${listzhengzhi.attribute_name }</option>
+							<option value="${listzhengzhi.attribute_name }">${listzhengzhi.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -329,7 +335,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_educated_degree" class="SELECT_STYLE1">
 						<c:forEach var="listxueli" items="${listxueli }">
-							<option value="${listxueli.pbc_id }">${listxueli.attribute_name }</option>
+							<option value="${listxueli.attribute_name }">${listxueli.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -339,7 +345,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_educated_years" class="SELECT_STYLE1">
 						<c:forEach items="${listjiaoyu }" var="listjiaoyu">
-							<option value="${listjiaoyu.pbc_id }">${listjiaoyu.attribute_name }</option>
+							<option value="${listjiaoyu.attribute_name }">${listjiaoyu.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -349,7 +355,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_educated_major" class="SELECT_STYLE1">
 						<c:forEach var="listzhuanye" items="${listzhuanye }">
-							<option value="${listzhuanye.pbc_id }">${listzhuanye.attribute_name }</option>
+							<option value="${listzhuanye.attribute_name }">${listzhuanye.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -359,9 +365,10 @@ function queryThird(){
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_name" class="SELECT_STYLE1">
-							<option>薪酬标准1</option>
-							<option>薪酬标准2</option>
+						<select name="salary_standard_id" class="SELECT_STYLE1">
+						<c:forEach items="${listxinchou }" var="listxinchou">
+							<option value="${listxinchou.standard_id }">${listxinchou.standard_name }</option>
+						</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -372,7 +379,7 @@ function queryThird(){
 							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
-						帐号
+						银行帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
@@ -400,7 +407,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_speciality" class="SELECT_STYLE1">
 						<c:forEach var="listtechang" items="${listtechang }">
-							<option value="${listtechang.pbc_id }">${listtechang.attribute_name }</option>
+							<option value="${listtechang.attribute_name }">${listtechang.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -410,7 +417,7 @@ function queryThird(){
 					<td class="TD_STYLE2">
 						<select name="human_hobby" class="SELECT_STYLE1">
 						<c:forEach items="${listaihao }" var="listaihao">
-							<option value="${listaihao.pbc_id }">${listaihao.attribute_name }</option>
+							<option value="${listaihao.attribute_name }">${listaihao.attribute_name }</option>
 						</c:forEach>
 						</select>
 					</td>
@@ -448,12 +455,6 @@ function queryThird(){
 					</td>
 				</tr>
 			</table>
-			<tr>
-					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1"/>
-						<input type="reset" value="清除" class="BUTTON_STYLE1"/>
-					</td>
-				</tr>
 			</table>
 		</form>
 	</body>

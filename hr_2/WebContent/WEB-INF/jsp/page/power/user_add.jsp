@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="../javascript/user_add.js"></script>
 	</head>
 	<body>
-		<form method="post" action="success.html">
+		<form method="post" action="userAdd">
 			<table width="100%">
 				<tr>
 					<td>
@@ -35,23 +35,23 @@
 				<tr>
 					<td class="TD_STYLE1">用户名称</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="userName" name="users.userName"/>
+						<input type="text" id="userName" name="user_name"/>
 					</td>
 					<td class="TD_STYLE1">用户密码</td>
 					<td class="TD_STYLE2">
-						<input type="password" id="userPassword" name="users.userPassword"/>
+						<input type="text" id="userPassword" name="user_password"/>
 					</td>
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">真实姓名</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="userTrueName" name="users.userTrueName"/>
+						<input type="text" id="userTrueName" name="user_true_name"/>
 					</td>
 					<td class="TD_STYLE1">用户身份</td>
 					<td class="TD_STYLE2">
-						<select name="users.sysRole.roleId" multiple="multiple">
+						<select name="userIds" multiple="multiple">
 							<c:forEach items="${urList }" var="ur">
-								<option value="1">${ur.urole_name }</option>
+								<option value="${ur.uroleid }">${ur.urole_name }-${ur.uroleid }</option>
 							</c:forEach>	
 						</select>
 					</td>

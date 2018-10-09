@@ -17,10 +17,10 @@
 				$("#errorSpanxcbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
 				return;
 			}else{
-				var reg = /^\d{1,}$/;
+				var reg = /^\d{1,5}$/;
 				var b = reg.test(xcbh);
 				if(!b){
-					$("#errorSpanxcbh").html("<font color='red'>请填写数字编号</font>");
+					$("#errorSpanxcbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
 				}
 			}
@@ -28,10 +28,10 @@
 				$("#errorSpanxsbh").html("<font color='red'>请输入销售责任人编号</font>");
 				return;
 			}else{
-				var reg = /^\d{1,}$/;
+				var reg = /^\d{1,5}$/;
 				var b = reg.test(xsbh);
 				if(!b){
-					$("#errorSpanxsbh").html("<font color='red'>请填写数字编号</font>");
+					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
 				}
 			}
@@ -41,7 +41,7 @@
 	</head>
 	<body>
 
-		<form action="updatecfsk?fsk_id=${cfsks.fsk_id}" method="post" id="document">
+		<form action="updatecfsk" method="post" id="document">
 			
 			<table width="100%">
 				<tr>

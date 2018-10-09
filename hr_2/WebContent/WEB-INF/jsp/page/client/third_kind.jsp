@@ -5,46 +5,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css"
-			type="text/css"></link>
-		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
-		</script>
-		
-		<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
-		
-		<script type="text/javascript">
-			function deleteThirdKind(id){
-				$.ajax({
-				
-					url:"/HR_Fist/customiz/customizAction!doDeleteThirdKind",
-					data:"cftk.ftkId="+id,
-					dataType:"text",
-					success:function (){
-						alert("删除成功！");
-						location.reload();
-					},
-					type:"post"
-				});
-			}
-		</script>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 	</head>
-
-<script type="text/javascript">
-	
-		function submission(){
-			document.forms[0].submit();
-		}
-		
-		function page(currentPage){
-			document.getElementById("pid").value=currentPage;
-			document.forms[0].submit();
-		}
-		
-</script>
-
 	<body>
-		<form action="../customiz/customizAction!findThirdKind" method="post">
+		<form action="totadd" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -54,7 +19,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="添加" class="BUTTON_STYLE1"
+						<input type="submit" value="添加" class="BUTTON_STYLE1"
 							onclick="window.location.href='third_kind_register.html'" />
 					</td>
 				</tr>
@@ -106,13 +71,18 @@
 						${c.third_kind_sale_id }
 						</td>
 						<td class="TD_STYLE2">
-						${c.third_kind_is_retail }
+						<c:if test="${c.third_kind_is_retail==1 }">
+						是
+						</c:if>
+						<c:if test="${c.third_kind_is_retail==2 }">
+						否
+						</c:if>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="third_kind_change.html">变更</a>
+							<a href="selcftkid?third_kind_id=${c.third_kind_id }">变更</a>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="third_delete_success.html">删除</a>
+							<a href="deletecftk?ftk_id=${c.ftk_id }">删除</a>
 						</td>
 					</tr>
 					</c:forEach>

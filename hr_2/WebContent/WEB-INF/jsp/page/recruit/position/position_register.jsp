@@ -77,7 +77,6 @@
  	  document.getElementById("name2").style.display ="none";
  		 if(document.getElementById("firstKindId").value.trim()<1||document.getElementById("firstKindId").value.trim().length>20)	
  		  {
- 			 	alert(1);
  			 	document.getElementById("name").style.display ="";
  	       		return false;
  	       }
