@@ -180,10 +180,10 @@ function queryThird(){
 					</td>
 					<td width="84%" class="TD_STYLE2">
 						<input type="text" name="utilBean.startDate" readonly
-							style="width: 14%" class="INPUT_STYLE2" id="date_start">
+							style="width: 14%" class="INPUT_STYLE2" id="date_start"/>
 						至
 						<input type="text" name="utilBean.endDate" readonly="readonly"
-							style="width: 14%" class="INPUT_STYLE2" id="date_end">
+							style="width: 14%" class="INPUT_STYLE2" id="date_end"/>
 						<input type="hidden" name="utilBean.datePropertyName" value="registTime"/>
 					</td>
 				</tr>

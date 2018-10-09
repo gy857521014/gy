@@ -66,20 +66,85 @@
 </resultMap>
 <!-- 多条件查询 -->
 <select id="query_list" parameterType="java.util.Map" resultMap="Humman_file">
-		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id}
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
-	</select>
+select * from humman_file
+	<where>
+		<if test="first_king_id!=null and first_king_id!=0">
+			and first_king_id=#{first_king_id}
+		</if>
+		<if test="second_kind_id!=null and second_kind_id!=0">
+			and second_kind_id=#{second_kind_id}
+		</if>
+		<if test="third_kind_id!=null and third_kind_id!=0">
+			and third_kind_id=#{third_kind_id}
+		</if>
+		<if test="human_major_kind_id!=null and human_major_kind_id!=0">
+			and human_major_kind_id=#{human_major_kind_id}
+		</if>
+		<if test="human_major_id!=null and human_major_id!=0">
+			and human_major_id=#{human_major_id}
+		</if>
+		<if test="startDateStr!=null and startDateStr!=''">
+			<![CDATA[and regist_time >=DATE_FORMAT(#{startDateStr},'%Y-%m-%d') ]]>
+		</if>
+		<if test="endDateStr!=null and endDateStr!=''">
+			<![CDATA[and regist_time<=DATE_FORMAT(#{endDateStr},'%Y-%m-%d') ]]>
+		</if>
+	</where>
+</select>
 <!-- 多条件查询人力资源删除 -->
 <select id="delete_list" parameterType="java.util.Map" resultMap="Humman_file">
-		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id} and check_status = 1 and human_file_status = 2
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+		select * from humman_file 
+		<where>
+		<if test="first_king_id!=null and first_king_id!=0">
+			and first_king_id=#{first_king_id}
+		</if>
+		<if test="second_kind_id!=null and second_kind_id!=0">
+			and second_kind_id=#{second_kind_id}
+		</if>
+		<if test="third_kind_id!=null and third_kind_id!=0">
+			and third_kind_id=#{third_kind_id}
+		</if>
+		<if test="human_major_kind_id!=null and human_major_kind_id!=0">
+			and human_major_kind_id=#{human_major_kind_id}
+		</if>
+		<if test="human_major_id!=null and human_major_id!=0">
+			and human_major_id=#{human_major_id}
+		</if>
+		<if test="startDateStr!=null and startDateStr!=''">
+			<![CDATA[and regist_time >=DATE_FORMAT(#{startDateStr},'%Y-%m-%d') ]]>
+		</if>
+		<if test="endDateStr!=null and endDateStr!=''">
+			<![CDATA[and regist_time<=DATE_FORMAT(#{endDateStr},'%Y-%m-%d') ]]>
+		</if>
+		 and check_status = 1 and human_file_status = 2
+		</where>
 	</select>
 <!-- 多条件查询人力资源恢复 -->
 <select id="recovery_list" parameterType="java.util.Map" resultMap="Humman_file">
-		select * from humman_file where first_king_id=#{first_king_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id} and human_file_status = 3
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
-		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+		select * from humman_file
+		<where>
+		<if test="first_king_id!=null and first_king_id!=0">
+			and first_king_id=#{first_king_id}
+		</if>
+		<if test="second_kind_id!=null and second_kind_id!=0">
+			and second_kind_id=#{second_kind_id}
+		</if>
+		<if test="third_kind_id!=null and third_kind_id!=0">
+			and third_kind_id=#{third_kind_id}
+		</if>
+		<if test="human_major_kind_id!=null and human_major_kind_id!=0">
+			and human_major_kind_id=#{human_major_kind_id}
+		</if>
+		<if test="human_major_id!=null and human_major_id!=0">
+			and human_major_id=#{human_major_id}
+		</if>
+		<if test="startDateStr!=null and startDateStr!=''">
+			<![CDATA[and regist_time >=DATE_FORMAT(#{startDateStr},'%Y-%m-%d') ]]>
+		</if>
+		<if test="endDateStr!=null and endDateStr!=''">
+			<![CDATA[and regist_time<=DATE_FORMAT(#{endDateStr},'%Y-%m-%d') ]]>
+		</if>
+		  and human_file_status = 3
+		</where>
 	</select>
 </mapper>

@@ -313,11 +313,8 @@ public class Humman_fileController {
 		String startDate = (String) map.get("utilBean.startDate");
 		//获取结束时间
 		String endDate = (String) map.get("utilBean.endDate");
-		SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-		Date startDate1 = aDate.parse(startDate);
-		Date endDate1 = aDate.parse(endDate);
-		map.put("startDate", startDate1);
-		map.put("endDate", endDate1);
+		map.put("startDateStr", startDate);
+		map.put("endDateStr", endDate);
 		
 		List<Humman_file> query_list = humman_fileService.query_list(map);
 		map1.put("query_list", query_list);
@@ -351,11 +348,8 @@ public class Humman_fileController {
 			String startDate = (String) map.get("utilBean.startDate");
 			//获取结束时间
 			String endDate = (String) map.get("utilBean.endDate");
-			SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-			Date startDate1 = aDate.parse(startDate);
-			Date endDate1 = aDate.parse(endDate);
-			map.put("startDate", startDate1);
-			map.put("endDate", endDate1);
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
 			
 			List<Humman_file> query_list = humman_fileService.query_list(map);
 			map1.put("query_list", query_list);
@@ -437,11 +431,8 @@ public class Humman_fileController {
 					String startDate = (String) map.get("utilBean.startDate");
 					//获取结束时间
 					String endDate = (String) map.get("utilBean.endDate");
-					SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-					Date startDate1 = aDate.parse(startDate);
-					Date endDate1 = aDate.parse(endDate);
-					map.put("startDate", startDate1);
-					map.put("endDate", endDate1);
+					map.put("startDateStr", startDate);
+					map.put("endDateStr", endDate);
 					
 					List<Humman_file> query_list = humman_fileService.delete_list(map);
 					map1.put("query_list", query_list);
@@ -514,11 +505,8 @@ public class Humman_fileController {
 			String startDate = (String) map.get("utilBean.startDate");
 			//获取结束时间
 			String endDate = (String) map.get("utilBean.endDate");
-			SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-			Date startDate1 = aDate.parse(startDate);
-			Date endDate1 = aDate.parse(endDate);
-			map.put("startDate", startDate1);
-			map.put("endDate", endDate1);
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
 			
 			List<Humman_file> query_list = humman_fileService.recovery_list(map);
 			map1.put("query_list", query_list);
