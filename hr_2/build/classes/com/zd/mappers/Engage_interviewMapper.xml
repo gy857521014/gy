@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IEngage_interviewDao">
+	<resultMap type="interview" id="Engage_interviewmapper">
+		<result column="ein_id" property="ein_id"/>
+		<result column="human_name" property="human_name"/>
+		<result column="interview_amount" property="interview_amount"/>
+		<result column="human_major_kind_id" property="human_major_kind_id"/>
+		<result column="human_major_kind_name" property="human_major_kind_name"/>
+		<result column="human_major_id" property="human_major_id"/>
+		<result column="human_major_name" property="human_major_name"/>
+		<result column="image_degree" property="image_degree"/>
+		<result column="native_language_degree" property="native_language_degree"/>
+		<result column="foreign_language_degree" property="foreign_language_degree"/>
+		<result column="response_speed_degree" property="response_speed_degree"/>
+		<result column="EQ_degree" property="eQ_degree"/>
+		<result column="IQ_degree" property="iQ_degree"/>
+		<result column="multi_quality_degree" property="multi_quality_degree"/>
+		<result column="register" property="register"/>
+		<result column="checker" property="checker"/>
+		<result column="registe_time" property="registe_time"/>
+		<result column="check_time" property="check_time"/>
+		<result column="resume_id" property="resume_id"/>
+		<result column="result" property="result"/>
+		<result column="interview_comment" property="interview_comment"/>
+		<result column="check_comment" property="check_comment"/>
+		<result column="interview_status" property="interview_status"/>
+		<result column="check_status" property="check_status"/>
+		<association select="com.zd.dao.IEngage_resumeDao.selresumeid" 
+					column="resume_id" 
+					property="engage_resume"></association>
+	</resultMap>
+	<select id="selresume" resultMap="Engage_interviewmapper" parameterType="map">
+	 select * from Engage_interview 
+	 <where>
+			<if test="mindate!=null and mindate!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{mindate},'%Y-%m-%d') ]]>
+			</if>
+			<if test="maxdate!=null and maxdate!=''">
+			<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')<=DATE_FORMAT(#{maxdate},'%Y-%m-%d') ]]>
+			</if>
+			<if test="primarKey!=null and primarKey!=''">
+				and ( human_name like '${primarKey}%' or human_telephone like '${primarKey}%' or human_idcard like '${primarKey}%' or human_history_records like '${primarKey}%' ) 
+			</if>
+			<if test="majorKindId!=null and majorKindId!=''">
+				and human_major_kind_id=#{majorKindId}
+			</if>
+			<if test="majorId!=null and majorId!=''">
+				and human_major_id =#{majorId}
+			</if>
+		</where>
+	</select>
+</mapper>
+
