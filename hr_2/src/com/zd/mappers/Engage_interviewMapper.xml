@@ -35,10 +35,10 @@
 	 select * from Engage_interview 
 	 <where>
 			<if test="mindate!=null and mindate!=''">
-				<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{mindate},'%Y-%m-%d') ]]>
+				<![CDATA[and DATE_FORMAT(check_time,'%Y-%m-%d')>=DATE_FORMAT(#{mindate},'%Y-%m-%d') ]]>
 			</if>
 			<if test="maxdate!=null and maxdate!=''">
-			<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')<=DATE_FORMAT(#{maxdate},'%Y-%m-%d') ]]>
+			<![CDATA[and DATE_FORMAT(check_time,'%Y-%m-%d')<=DATE_FORMAT(#{maxdate},'%Y-%m-%d') ]]>
 			</if>
 			<if test="primarKey!=null and primarKey!=''">
 				and ( human_name like '${primarKey}%' or human_telephone like '${primarKey}%' or human_idcard like '${primarKey}%' or human_history_records like '${primarKey}%' ) 
