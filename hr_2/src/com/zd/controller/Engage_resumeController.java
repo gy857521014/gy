@@ -1,27 +1,27 @@
 package com.zd.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Engage_resume;
-import com.zd.service.IConfig_file_first_kindService;
-import com.zd.service.IConfig_file_second_kindService;
-import com.zd.service.IConfig_file_third_kindService;
+import com.zd.entity.e_mail;
+import com.zd.entity.sendemail;
 import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
-import com.zd.service.IEngage_major_releaseService;
+import com.zd.service.IEmailService;
 import com.zd.service.IEngage_resumeService;
 import com.zd.service.IHumman_fileService;
 
@@ -39,6 +39,13 @@ public class Engage_resumeController {
 	
 	@Autowired
 	private IEngage_resumeService resumeservice;
+	
+	@Autowired
+	private IEmailService emailservice;
+	
+	@Autowired
+	private JavaMailSender mailSender;
+
 	
 	@RequestMapping("/page/seltype")
 	public String seltype(Map map) {
@@ -191,5 +198,39 @@ public class Engage_resumeController {
 		Engage_resume resume=resumeservice.selresumeid(res_id);
 		map.put("resume", resume);
 		return "page/recruit/resume/resume_select";
+	}
+	
+	//发送邮箱，查询邮件模板
+	@RequestMapping("/page/selemail")
+	private String E_mailQueryMa(Map map,int id){
+		List<e_mail> elist = emailservice.selm();
+		Engage_resume resume = resumeservice.selresumeid(id);
+		map.put("elist", elist);
+		map.put("resume", resume);
+		return "/page/recruit/resume/resume_email";
+	}
+	
+	//发送邮件
+	@RequestMapping("/page/sendEmailMa")
+	public String sendEmailMa(sendemail mai,int emailTitle) throws Exception {
+			e_mail email = emailservice.emailselid(emailTitle);
+			// 1、通过发送者创建电子邮件对象-MimeMessage
+			MimeMessage mm = mailSender.createMimeMessage();
+			// 2、创建发送电子邮件的帮助者对象-MimeMessageHelper
+			MimeMessageHelper helper = new MimeMessageHelper(mm, "UTF-8");
+			// 3、设置发送电子邮件的相关信息
+			// 3-1 指定发件人
+			helper.setFrom(mai.getSenderEmail());
+			// 3-2 指定收件人
+			helper.setTo(mai.getHuman_email());
+			// 3-3 指定邮件主题
+			helper.setSubject(email.getMhead());
+			// 3-4 指定邮件内容,上了true表示支持html
+			helper.setText(mai.getEidaa(), true);
+			// 4、通过邮件发送者发送电子邮件
+			mailSender.send(mm);
+			return "redirect:list_query"; 
+
+
 	}
 }

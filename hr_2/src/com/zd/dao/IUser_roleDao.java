@@ -11,8 +11,10 @@ public interface IUser_roleDao {
 	
 	public List<User_role> queryByUid(int userid);
 	
-	//查询所有角色
-	@Select("select * from user_role")
+	//查询状态值为1的所有角色
+	@Select("select * from user_role where urole_state = 1")
 	@ResultMap("user_roleMapper")
 	public List<User_role> queryUr();
+	
+	//查询所有
 }

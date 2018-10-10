@@ -22,6 +22,8 @@
 				if(!b){
 					$("#errorSpanxcbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxcbh").html("");
 				}
 			}
 			if(document.getElementById("xsbh").value==''){
@@ -33,6 +35,8 @@
 				if(!b){
 					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxsbh").html("");
 				}
 			}
 			$("#document").submit();

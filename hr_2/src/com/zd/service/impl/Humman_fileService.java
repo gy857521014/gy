@@ -1,6 +1,7 @@
 package com.zd.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IHumman_fileService;
 
 /**
@@ -85,7 +87,7 @@ public class Humman_fileService implements IHumman_fileService {
 		return config_public_charDao.listzhicheng();
 	}
 	//查询薪酬标准
-	public List<Salary_standard> xinchoulist() {
+	public List<Salary_standard_details> xinchoulist() {
 		return humman_fileDao.xinchoulist();
 	}
 	//根据薪酬标注编号查询薪酬标准name
@@ -95,6 +97,10 @@ public class Humman_fileService implements IHumman_fileService {
 	//添加
 	public void add(Humman_file humman_file) {
 		humman_fileDao.add(humman_file);
+	}
+	//修改上传图片路径
+	public void uploadUpdate(Map map) {
+		humman_fileDao.uploadUpdate(map);
 	}
 	//查询人力资源档案表
 	public List<Humman_file> Humman_fileList() {
@@ -108,7 +114,38 @@ public class Humman_fileService implements IHumman_fileService {
 	public void humman_chack_update(Humman_file humman_file) {
 		humman_fileDao.humman_chack_update(humman_file);
 	}
-	
+	//条件查询
+	public List<Humman_file> query_list(Map map) {
+		return humman_fileDao.query_list(map);
+	}
+	//人力资源变更修改
+	public void register_choose_picture_update(Humman_file humman_file) {
+		humman_fileDao.register_choose_picture_update(humman_file);
+	}
+	//多条件查询人力资源删除
+	public List<Humman_file> delete_list(Map map) {
+		return humman_fileDao.delete_list(map);
+	}
+	//人力资源删除修改
+	public void success_update(Humman_file humman_file) {
+		humman_fileDao.success_update(humman_file);
+	}
+	//人力资源恢复条件查询
+	public List<Humman_file> recovery_list(Map map) {
+		return humman_fileDao.recovery_list(map);
+	}
+	//人力资源恢复修改
+	public void success_update1(Humman_file humman_file) {
+		humman_fileDao.success_update1(humman_file);
+	}
+	//人力资源删除查询
+	public List<Humman_file> Humman_fileList1() {
+		return humman_fileDao.Humman_fileList1();
+	}
+	//人力资源删除
+	public void Delete(String human_id) {
+		humman_fileDao.Delete(human_id);
+	}
 	public int selnumz() {
 		return gdao.selnumz();
 	}
@@ -118,6 +155,11 @@ public class Humman_fileService implements IHumman_fileService {
 	public int zong() {
 		return gdao.zong();
 	}
+
+
+
+
+
 
 
 

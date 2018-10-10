@@ -1,16 +1,20 @@
 package com.zd.controller;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +26,7 @@ import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
@@ -100,7 +105,7 @@ public class Humman_fileController {
 			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 			map.put("listzhicheng", listzhicheng);
 			//查询薪酬标准
-			List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 			map.put("listxinchou", listxinchou);
 			return "page/humanResources/human_register";
 		}
@@ -130,7 +135,7 @@ public class Humman_fileController {
 		//添加
 		@RequestMapping("/page/add")
 		public String add(Humman_file humman_file,HttpServletRequest request,
-				String first_king_id,String second_kind_id,String third_kind_id,String human_major_kind_id,int human_major_id,
+				String first_king_id,String second_kind_id,String third_kind_id,String human_major_kind_id,String human_major_id,
 				String salary_standard_id,String human_id,Map map) {
 			// 单独获取生日
 			String birthday =  request.getParameter("humanFile.humanBirthday");
@@ -169,7 +174,7 @@ public class Humman_fileController {
 		}
 		//上传图片
 		@RequestMapping("page/updsuccess")
-		public String upload(MultipartFile file1,HttpSession session){
+		public String upload(MultipartFile file1,HttpSession session,String hf){
 			// 获取上传文件的文件名
 			String fname = file1.getOriginalFilename();
 			// 获取到要上传到文件的路径
@@ -186,10 +191,14 @@ public class Humman_fileController {
 				// 做上传
 				file1.transferTo(file);
 				// 将上传数据保存在表中
+				Map map = new HashMap<>();
+				map.put("human_id", hf);
+				map.put("fnewname", fnewname);
+				humman_fileService.uploadUpdate(map);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-			return "redirect:queryUpload";
+			return "page/humanResources/success";
 		}
 		//人力资源档案复核
 			//查询人力资源档案
@@ -198,6 +207,7 @@ public class Humman_fileController {
 				List<Humman_file> humman_fileslist = 
 							humman_fileService.Humman_fileList();
 				map.put("humman_fileslist", humman_fileslist);
+				map.put("humman_fileslist_size", humman_fileslist.size());
 				return "page/humanResources/check_list";
 			}
 			//查询根据人力资源表查询单条数据
@@ -237,7 +247,7 @@ public class Humman_fileController {
 				List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
 				map.put("listzhicheng", listzhicheng);
 				//查询薪酬标准
-				List<Salary_standard> listxinchou = humman_fileService.xinchoulist();
+				List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
 				map.put("listxinchou", listxinchou);
 				return "page/humanResources/human_check";
 			}
@@ -256,9 +266,10 @@ public class Humman_fileController {
 				//添加应发薪酬总额
 				humman_file.setDemand_salaray_sum(salary_standard.getSalary_sum());
 				humman_fileService.humman_chack_update(humman_file);
-				return "page/register_choose_picture";
+				return "redirect:check_list";
 			}
 		
+			
 	//人力资源档案管理
 	@RequestMapping("page/query_locate")
 	public String query_locate(Map<String, Object> map) {
@@ -286,4 +297,280 @@ public class Humman_fileController {
 				config_file_third_kindService.selsanji(fsk_id);
 		return sanjilist;
 	}
+	//根据职位分类编号查询职位名称
+	//1.1职位设置联动
+	@RequestMapping("/page/selectzhiwei1")
+	@ResponseBody
+	public List<Config_major> selectzhiwei1(String majorid) {
+		List<Config_major> majorlist=majorservice.selzhiwei(majorid);
+		return majorlist;
+	}
+	
+	//条件查询
+	@RequestMapping("page/query_list")
+	public String query_list(@RequestParam Map map,Map map1) throws ParseException {
+		//获取起始时间
+		String startDate = (String) map.get("utilBean.startDate");
+		//获取结束时间
+		String endDate = (String) map.get("utilBean.endDate");
+		map.put("startDateStr", startDate);
+		map.put("endDateStr", endDate);
+		
+		List<Humman_file> query_list = humman_fileService.query_list(map);
+		map1.put("query_list", query_list);
+		map1.put("query_list_size", query_list.size());
+		return "page/humanResources/query_list";
+	}
+	
+	//根据档案编号查询单条
+	@RequestMapping("page/query_list_information")
+	public String query_list_information(String human_id,Map<String, Object> map) {
+		Humman_file humman_file =  humman_fileService.human_check(human_id);
+		map.put("humman_file", humman_file);
+		return "page/humanResources/query_list_information";
+	}
+	
+	//人力资源档案变更
+	@RequestMapping("page/change_locate")
+	public String change_locate(Map<String, Object> map) {
+		//一级机构所有
+		List<Config_file_first_kind> FirstList = humman_fileService.selcffk();
+		map.put("FirstList", FirstList);
+		//职位分类查询所有
+		List<Config_major_kind> fenleilist = config_major_kindService.selconfigmajor();
+		map.put("fenleilist", fenleilist);
+		return "page/humanResources/change_locate";
+	}
+	//条件查询人力资源变更
+		@RequestMapping("page/change_list")
+		public String change_list(@RequestParam Map map,Map map1) throws ParseException {
+			//获取起始时间
+			String startDate = (String) map.get("utilBean.startDate");
+			//获取结束时间
+			String endDate = (String) map.get("utilBean.endDate");
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
+			
+			List<Humman_file> query_list = humman_fileService.query_list(map);
+			map1.put("query_list", query_list);
+			map1.put("query_list_size", query_list.size());
+			return "page/humanResources/change_list";
+		}
+		//根据档案编号查询单条人力资源变更
+		@RequestMapping("page/change_list_information")
+		public String change_list_information(String human_id,Map<String, Object> map) {
+			Humman_file humman_file =  humman_fileService.human_check(human_id);
+			map.put("humman_file", humman_file);
+			//查询国籍
+			List<Config_public_char> listguoji = humman_fileService.listguoji();
+			map.put("listguoji", listguoji);
+			//查询民族
+			List<Config_public_char> listmingzu = humman_fileService.listmingzu();
+			map.put("listmingzu", listmingzu);
+			//查询宗教信仰
+			List<Config_public_char> listzongjiao = humman_fileService.listzongjiao();
+			map.put("listzongjiao",listzongjiao);
+			//查询政治面貌
+			List<Config_public_char> listzhengzhi = humman_fileService.listzhengzhi();
+			map.put("listzhengzhi", listzhengzhi);
+			//查询学历
+			List<Config_public_char> listxueli = humman_fileService.listxueli();
+			map.put("listxueli", listxueli);
+			//查询教育年限
+			List<Config_public_char> listjiaoyu = humman_fileService.listjiaoyu();
+			map.put("listjiaoyu", listjiaoyu);
+			//查询学历专业
+			List<Config_public_char> listzhuanye = humman_fileService.listzhuanye();
+			map.put("listzhuanye", listzhuanye);
+			//查询特长
+			List<Config_public_char> listtechang = humman_fileService.listtechang();
+			map.put("listtechang", listtechang);
+			//查询爱好
+			List<Config_public_char> listaihao = humman_fileService.listaihao();
+			map.put("listaihao", listaihao);
+			//查询职称
+			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
+			map.put("listzhicheng", listzhicheng);
+			//查询薪酬标准
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
+			map.put("listxinchou", listxinchou);
+			return "page/humanResources/change_list_information";
+		}
+		//人力资源变更修改
+		@RequestMapping("page/register_choose_picture_update")
+		public String register_choose_picture_update(Humman_file humman_file,HttpServletRequest request,String salary_standard_id) {
+			//获取生日
+			String birthday = request.getParameter("humanFile.humanBirthday");
+			humman_file.setHuman_birthday(birthday);
+			//根据薪酬编号查询薪酬标准name
+			Salary_standard salary_standard = humman_fileService.xinchouid(salary_standard_id);
+			//添加name属性
+			humman_file.setSalary_standard_name(salary_standard.getStandard_name());
+			//添加基本薪酬总额
+			humman_file.setSalary_sum(salary_standard.getSalary_sum());
+			//添加应发薪酬总额
+			humman_file.setDemand_salaray_sum(salary_standard.getSalary_sum());
+			humman_fileService.register_choose_picture_update(humman_file);
+			return "redirect:change_locate";
+		}
+				//人力资源档案删除
+				@RequestMapping("page/delete_locate")
+				public String delete_locate(Map<String, Object> map) {
+					//一级机构所有
+					List<Config_file_first_kind> FirstList = humman_fileService.selcffk();
+					map.put("FirstList", FirstList);
+					//职位分类查询所有
+					List<Config_major_kind> fenleilist = config_major_kindService.selconfigmajor();
+					map.put("fenleilist", fenleilist);
+					return "page/humanResources/delete_locate";
+				}
+				//条件查询人力资源删除
+				@RequestMapping("page/delete_list")
+				public String delete_list(@RequestParam Map map,Map map1) throws ParseException {
+					//获取起始时间
+					String startDate = (String) map.get("utilBean.startDate");
+					//获取结束时间
+					String endDate = (String) map.get("utilBean.endDate");
+					map.put("startDateStr", startDate);
+					map.put("endDateStr", endDate);
+					
+					List<Humman_file> query_list = humman_fileService.delete_list(map);
+					map1.put("query_list", query_list);
+					map1.put("query_list_size", query_list.size());
+					return "page/humanResources/delete_list";
+				}
+				
+				//根据档案编号查询单条人力资源删除
+				@RequestMapping("page/delete_list_information")
+				public String delete_list_information(String human_id,Map<String, Object> map) {
+					Humman_file humman_file =  humman_fileService.human_check(human_id);
+					map.put("humman_file", humman_file);
+					//查询国籍
+					List<Config_public_char> listguoji = humman_fileService.listguoji();
+					map.put("listguoji", listguoji);
+					//查询民族
+					List<Config_public_char> listmingzu = humman_fileService.listmingzu();
+					map.put("listmingzu", listmingzu);
+					//查询宗教信仰
+					List<Config_public_char> listzongjiao = humman_fileService.listzongjiao();
+					map.put("listzongjiao",listzongjiao);
+					//查询政治面貌
+					List<Config_public_char> listzhengzhi = humman_fileService.listzhengzhi();
+					map.put("listzhengzhi", listzhengzhi);
+					//查询学历
+					List<Config_public_char> listxueli = humman_fileService.listxueli();
+					map.put("listxueli", listxueli);
+					//查询教育年限
+					List<Config_public_char> listjiaoyu = humman_fileService.listjiaoyu();
+					map.put("listjiaoyu", listjiaoyu);
+					//查询学历专业
+					List<Config_public_char> listzhuanye = humman_fileService.listzhuanye();
+					map.put("listzhuanye", listzhuanye);
+					//查询特长
+					List<Config_public_char> listtechang = humman_fileService.listtechang();
+					map.put("listtechang", listtechang);
+					//查询爱好
+					List<Config_public_char> listaihao = humman_fileService.listaihao();
+					map.put("listaihao", listaihao);
+					//查询职称
+					List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
+					map.put("listzhicheng", listzhicheng);
+					//查询薪酬标准
+					List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
+					map.put("listxinchou", listxinchou);
+					return "page/humanResources/delete_list_information";
+				}
+				//人力资源删除修改
+				@RequestMapping("page/success_update")
+				public String success_update(Humman_file humman_file) {
+					humman_fileService.success_update(humman_file);
+					return "page/humanResources/success";
+				}
+				
+		//人力资源档案恢复
+		@RequestMapping("page/recovery_locate")
+		public String recovery_locate(Map<String, Object> map) {
+			//一级机构所有
+			List<Config_file_first_kind> FirstList = humman_fileService.selcffk();
+			map.put("FirstList", FirstList);
+			//职位分类查询所有
+			List<Config_major_kind> fenleilist = config_major_kindService.selconfigmajor();
+			map.put("fenleilist", fenleilist);
+			return "page/humanResources/recovery_locate";
+		}
+		//人力资源档案恢复条件查询
+		@RequestMapping("page/recovery_list")
+		public String recovery_list(@RequestParam Map map,Map map1) throws ParseException {
+			//获取起始时间
+			String startDate = (String) map.get("utilBean.startDate");
+			//获取结束时间
+			String endDate = (String) map.get("utilBean.endDate");
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
+			
+			List<Humman_file> query_list = humman_fileService.recovery_list(map);
+			map1.put("query_list", query_list);
+			map1.put("query_list_size", query_list.size());
+			return "page/humanResources/recovery_list";
+		}
+		//人力资源恢复
+		@RequestMapping("page/recovery_list_information")
+		public String recovery_list_information(String human_id,Map<String, Object> map) {
+			Humman_file humman_file =  humman_fileService.human_check(human_id);
+			map.put("humman_file", humman_file);
+			//查询国籍
+			List<Config_public_char> listguoji = humman_fileService.listguoji();
+			map.put("listguoji", listguoji);
+			//查询民族
+			List<Config_public_char> listmingzu = humman_fileService.listmingzu();
+			map.put("listmingzu", listmingzu);
+			//查询宗教信仰
+			List<Config_public_char> listzongjiao = humman_fileService.listzongjiao();
+			map.put("listzongjiao",listzongjiao);
+			//查询政治面貌
+			List<Config_public_char> listzhengzhi = humman_fileService.listzhengzhi();
+			map.put("listzhengzhi", listzhengzhi);
+			//查询学历
+			List<Config_public_char> listxueli = humman_fileService.listxueli();
+			map.put("listxueli", listxueli);
+			//查询教育年限
+			List<Config_public_char> listjiaoyu = humman_fileService.listjiaoyu();
+			map.put("listjiaoyu", listjiaoyu);
+			//查询学历专业
+			List<Config_public_char> listzhuanye = humman_fileService.listzhuanye();
+			map.put("listzhuanye", listzhuanye);
+			//查询特长
+			List<Config_public_char> listtechang = humman_fileService.listtechang();
+			map.put("listtechang", listtechang);
+			//查询爱好
+			List<Config_public_char> listaihao = humman_fileService.listaihao();
+			map.put("listaihao", listaihao);
+			//查询职称
+			List<Config_public_char> listzhicheng = humman_fileService.listzhicheng();
+			map.put("listzhicheng", listzhicheng);
+			//查询薪酬标准
+			List<Salary_standard_details> listxinchou = humman_fileService.xinchoulist();
+			map.put("listxinchou", listxinchou);
+			return "page/humanResources/recovery_list_information";
+		}
+		//人力资源删除修改
+		@RequestMapping("page/success_update1")
+		public String success_update1(Humman_file humman_file) {
+			humman_fileService.success_update1(humman_file);
+			return "page/humanResources/success";
+		}
+		//人力资源删除查询
+		@RequestMapping("page/delete_forever_list")
+		public String delete_forever_list(Map map) {
+			List<Humman_file> humman_fileslist = humman_fileService.Humman_fileList1();
+			map.put("humman_fileslist", humman_fileslist);
+			map.put("humman_fileslist_size", humman_fileslist.size());
+			return "page/humanResources/delete_forever_list";
+		}
+		//人力资源删除
+		@RequestMapping("page/Delete")
+		public String Delete(String human_id) {
+			humman_fileService.Delete(human_id);
+			return "page/humanResources/success";
+		}
 }

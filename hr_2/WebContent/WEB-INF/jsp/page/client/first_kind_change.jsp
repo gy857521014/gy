@@ -22,6 +22,8 @@
 				if(!b){
 					$("#errorSpanzrrbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanzrrbh").html("");
 				}
 			}
 			
@@ -34,6 +36,8 @@
 				if(!b){
 					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxsbh").html("");
 				}
 			}
 			$("#cc").submit();

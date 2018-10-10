@@ -74,6 +74,9 @@
 					<td width="10%" class="TD_STYLE1">
 						面试状态
 					</td>
+					<td width="10%" class="TD_STYLE1">
+						发送邮箱
+					</td>
 				</tr>
 				
 				<c:forEach items="${relist }" var="list">
@@ -105,14 +108,21 @@
 								已通过
 							</c:if>
 						</td>
-						<td class="TD_STYLE2">
+						
 							 <c:if test="${list.check_status==1 }">
-								不可以面试
+							 	<td class="TD_STYLE2">
+									不可以面试
+								</td>
 							</c:if>
 							<c:if test="${list.check_status==2 }">
-								可以面试
+								<td class="TD_STYLE2">
+									可以面试
+								</td>
+								<td class="TD_STYLE2">
+									<a href="selemail?id=${list.res_id }">${list.human_email }</a>
+								</td>								
 							</c:if>
-						</td>
+						
 					</tr>
 					</c:forEach>
 					

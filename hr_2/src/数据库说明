@@ -217,7 +217,7 @@ standard_id VARCHAR(60),
 standard_name VARCHAR(60),
 designer VARCHAR(60),
 register VARCHAR(60),
-checker VARCHAR(60),4
+checker VARCHAR(60),
 changer VARCHAR(60),
 regist_time DATE,
 check_time DATE,
