@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 		<!--
@@ -31,8 +32,8 @@
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align: left" >
-					薪酬单编号：HS1353753198460
-					<input type="hidden" name="salaryGrant.salaryGrantId" value="HS1353753198460">
+					薪酬单编号：${sg.salary_grant_id }
+					<input type="hidden" name="salaryGrant.salaryGrantId" value="${sg.salary_grant_id }">
 					</td>					
 				</tr>
 				<tr>
@@ -41,25 +42,23 @@
 				
 					
 					
-					Ⅰ级结构  
+					${sg.first_kind_name } 
 				
 					</td>					
 				</tr>
 				<tr>
 					<td style="text-align: left">
-					本机构总人数:5
-					<input type="hidden" name="salaryGrant.humanAmount" value="5">
-					，基本薪酬总数:139823.0<input type="hidden" name="salaryGrant.salaryStandardSum" value="139823.0"/>
-					，实发总额:<span id="salarySum_sum">139823.0</span>
-					<input type="hidden" id="salaryPaidSum" name="salaryGrant.salaryPaidSum" value="139823.0"/>
-					<input type="hidden"  name="salaryGrant.register" value="better_admin"/>
-					<input type="hidden"  name="salaryGrant.registTime" value="2012-11-24 18:33:46.0"/>
+					本机构总人数:${sg.human_amount }
+					<input type="hidden" name="" value="${sg.human_amount }">
+					，基本薪酬总数:${sg.salary_standard_sum }<input type="hidden" name="" value="${sg.salary_standard_sum }"/>
+					，实发总额:<span id="salarySum_sum">${sg.salary_paid_sum }</span>
+					<input type="hidden" id="salaryPaidSum" name="" value="${sg.salary_paid_sum }"/>
 					</td>
 					<td   style="text-align: right">
 					 
-						复核人:<input type="text" name="salaryGrant.checker" value="better_admin" size="8" readonly="readonly">
+						复核人:<input type="text" name="" value="${u.user_true_name }" size="8" readonly="readonly">
 						复核时间：<span id="Tdate"></span>
-						<input type="hidden" name="salaryGrant.checkTime" id="Tdate2" >
+						<input type="hidden" name="" id="Tdate2" >
 					</td>
 				</tr>
 			</table>
@@ -76,31 +75,11 @@
 					<td class="TD_STYLE1">
 						<span>姓名</span>
 					</td>
-					
+					<c:forEach items="${plist }" var="p">
 						<td class="TD_STYLE1">
-							出差补助
+							${p.attribute_name }
 						</td>		
-						
-						<td class="TD_STYLE1">
-							交通补贴
-						</td>		
-						
-						<td class="TD_STYLE1">
-							住房补贴
-						</td>		
-						
-						<td class="TD_STYLE1">
-							基本工资
-						</td>		
-						
-						<td class="TD_STYLE1">
-							年终奖
-						</td>		
-						
-						<td class="TD_STYLE1">
-							误餐补助
-						</td>		
-							
+					</c:forEach>	
 					<td class="TD_STYLE1" width="7%">
 						奖励金额
 					</td>
@@ -149,9 +128,6 @@
 							222.0
 						</td>
 											
-						<td> 							
-							222.0
-						</td>
 											
 						<td> 							
 							222.0
@@ -192,9 +168,6 @@
 							 
 							 
 											
-						<td> 							
-							111.0
-						</td>
 											
 						<td> 							
 							111.0
@@ -251,9 +224,6 @@
 							 
 							 
 											
-						<td> 							
-							111.0
-						</td>
 											
 						<td> 							
 							111.0
@@ -310,9 +280,6 @@
 							 
 							 
 											
-						<td> 							
-							123.0
-						</td>
 											
 						<td> 							
 							12312.0
@@ -369,9 +336,6 @@
 							 
 							 
 											
-						<td> 							
-							222.0
-						</td>
 											
 						<td> 							
 							222.0
@@ -495,4 +459,6 @@
 		</SCRIPT>
 	</body>
 </html>
+
+
 

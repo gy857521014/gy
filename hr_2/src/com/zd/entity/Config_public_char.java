@@ -32,5 +32,10 @@ public class Config_public_char {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Config_public_char [pbc_id=" + pbc_id + ", attribute_kind=" + attribute_kind + ", attribute_name="
+				+ attribute_name + "]";
+	}
 	
 }

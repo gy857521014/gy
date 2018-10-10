@@ -106,7 +106,7 @@
 								${rlist.second_kind_name }
 							</c:if>
 							
-							<c:if test="${empty rlist.third_kind_name or empty rlist.second_kind_name}">
+							<c:if test="${empty rlist.third_kind_name and empty rlist.second_kind_name}">
 								${rlist.first_kind_name}
 							</c:if>
 						</td>

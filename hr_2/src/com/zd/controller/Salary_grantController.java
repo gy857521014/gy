@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zd.entity.Config_file_first_kind;
+import com.zd.entity.Config_file_second_kind;
+import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_grant;
 import com.zd.entity.Salary_grant_details;
 import com.zd.entity.Salary_standard_details;
 import com.zd.entity.User;
@@ -114,47 +117,109 @@ public class Salary_grantController {
 		map.put("hum", hum);
 		List<Config_public_char> plist = isg.selpubulic();
 		map.put("plist", plist);
-		
+		Config_file_first_kind selfname = isg.selall(fname);
+		map.put("fname", selfname);
 		long timer = System.currentTimeMillis();
 		map.put("timer", timer);
 		return "page/salaryGrant/register_commit";
 	}
 	@RequestMapping("page/toregister_success")
-	public String toregister_success(@RequestParam List<String> salary_grant_id,@RequestParam List<String> human_name,@RequestParam List<String> human_id,@RequestParam List<Double> bouns_sum,@RequestParam List<Double> sale_sum,@RequestParam List<Double> deduct_sum,@RequestParam List<Double> salary_standard_sum,@RequestParam List<Double> salary_paid_sum) {
-		System.out.println(human_id);
+	public String toregister_success(@RequestParam double salarystandardsum,@RequestParam double salarypaidsum,Salary_grant sg, @RequestParam List<String> salary_grant_id,@RequestParam List<String> human_name,@RequestParam List<String> human_id,@RequestParam List<Double> bouns_sum,@RequestParam List<Double> sale_sum,@RequestParam List<Double> deduct_sum,@RequestParam List<Double> salary_standard_sum,@RequestParam List<Double> salary_paid_sum,@RequestParam List<String> salary_standard_id) {
 		Salary_grant_details sgd = new Salary_grant_details();
-		List<Salary_grant_details> sgdlist = new ArrayList<>();
-		for (String s : salary_grant_id) {
-			sgd.setSalary_grant_id(s);
+		//Salary_grant sg = new Salary_grant();
+		for(int index = 0; index < human_name.size(); index++) {
+			sgd.setSalary_grant_id(salary_grant_id.get(0));//id
+			sgd.setHuman_name(human_name.get(index));// name
+			sgd.setHuman_id(human_id.get(index));
+			sgd.setBouns_sum(bouns_sum.get(index));
+			sgd.setSale_sum(sale_sum.get(index));
+			sgd.setDeduct_sum(deduct_sum.get(index));
+			sgd.setSalary_standard_sum(salary_standard_sum.get(index));
+			sgd.setSalary_paid_sum(salary_paid_sum.get(index));
+			isg.add(sgd);
+			
+			sg.setSalary_grant_id(salary_grant_id.get(0));//id
+			sg.setSalary_standard_id(salary_standard_id.get(index));
+			sg.setSalary_standard_sum(salarystandardsum);
+			sg.setSalary_paid_sum(salarypaidsum);
 		}
-		for (String s : human_name) {
-			sgd.setHuman_name(s);
-		}
-		for (String s : human_id) {
-			sgd.setHuman_id(s);
-		}
-		for (double s : bouns_sum) {
-			sgd.setBouns_sum(s);
-		}
-		for (double s : sale_sum) {
-			sgd.setSale_sum(s);
-		}
-		for (double s : deduct_sum) {
-			sgd.setDeduct_sum(s);
-		}
-		for (double s : salary_standard_sum) {
-			sgd.setSalary_standard_sum(s);
-		}
-		for (double s : salary_paid_sum) {
-			sgd.setSalary_paid_sum(s);
-		}
-		System.out.println(sgd);
-		isg.add(sgd);
+		isg.addsg(sg);
 		return "page/salaryGrant/register_success";
 	}
 	@RequestMapping("page/tocheck_list")
-	public String tocheck_list() {
+	public String tocheck_list(Map map) {
+		List<Salary_grant> sglist = isg.selallsg();
+		map.put("sglist", sglist);
 		return "page/salaryGrant/check_list";
+	}
+	@RequestMapping("page/toregister_commit2")
+	public String toregister_commit2(Map map,String fname,HttpSession session) {
+		User u = (User)session.getAttribute("loginUser");
+		map.put("u", u);
+		List<Humman_file> mmlist = isg.selhuman2(fname);
+		for (Humman_file humman_file : mmlist) {
+			String ssid = humman_file.getSalary_standard_id();
+			// 查询每个人的薪酬项目--List
+			List<Salary_standard_details> list1= isg.selBySSD(ssid);
+			humman_file.setSsdList(list1);
+		}
+		map.put("mmlist", mmlist);
+		int sum = isg.selsum2(fname);
+		map.put("sum", sum);
+		int hum2 = isg.selhum2(fname);
+		map.put("hum", hum2);
+		List<Config_public_char> plist = isg.selpubulic();
+		map.put("plist", plist);
+		Config_file_second_kind selfname = isg.selall2(fname);
+		map.put("fname", selfname);
+		long timer = System.currentTimeMillis();
+		map.put("timer", timer);
+		return "page/salaryGrant/register_commit2";
+	}
+	@RequestMapping("page/toregister_commit3")
+	public String toregister_commit3(Map map,String fname,HttpSession session) {
+		User u = (User)session.getAttribute("loginUser");
+		map.put("u", u);
+		List<Humman_file> mmlist = isg.selhuman3(fname);
+		for (Humman_file humman_file : mmlist) {
+			String ssid = humman_file.getSalary_standard_id();
+			// 查询每个人的薪酬项目--List
+			List<Salary_standard_details> list1= isg.selBySSD(ssid);
+			humman_file.setSsdList(list1);
+		}
+		map.put("mmlist", mmlist);
+		int sum = isg.selsum3(fname);
+		map.put("sum", sum);
+		int hum2 = isg.selhum3(fname);
+		map.put("hum", hum2);
+		List<Config_public_char> plist = isg.selpubulic();
+		map.put("plist", plist);
+		Config_file_third_kind selfname = isg.selall3(fname);
+		map.put("fname", selfname);
+		long timer = System.currentTimeMillis();
+		map.put("timer", timer);
+		return "page/salaryGrant/register_commit3";
+	}
+	@RequestMapping("page/tocheck")
+	public String tocheck(Map map,HttpSession session,String salary_grant_id) {
+		User u = (User)session.getAttribute("loginUser");
+		map.put("u", u);
+		
+		Salary_grant sg = isg.selone(salary_grant_id);
+		map.put("sg", sg);
+		
+		/*List<Salary_grant_details> sgdlist = isg.selsgdall();
+		for (Salary_grant_details salary_grant_details : sgdlist) {
+			String ssid = humman_file.getSalary_standard_id();
+			 查询每个人的薪酬项目--List
+			List<Salary_standard_details> list1= isg.selBySSD(ssid);
+			humman_file.setSsdList(list1);
+		}
+		map.put("sgdlist", sgdlist);*/
+		
+		List<Config_public_char> plist = isg.selpubulic();
+		map.put("plist", plist);
+		return "page/salaryGrant/check";
 	}
 	
 }

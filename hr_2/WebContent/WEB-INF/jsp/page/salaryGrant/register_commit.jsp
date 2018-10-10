@@ -40,22 +40,25 @@ td {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: left">机构： Ⅰ级机构</td>
+				<td colspan="2" style="text-align: left">机构：${fname.first_kind_name }
+				<input type="hidden" name="first_kind_id" value="${fname.first_kind_id }"/>
+				<input type="hidden" name="first_kind_name" value="${fname.first_kind_name }"/>
+				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left">
 					本机构总人数:${hum } 
-					<input type="hidden" name="salaryGrant.humanAmount" value="${hum }" id="sizeInp"> ，
+					<input type="hidden" name="human_amount" value="${hum}" id="sizeInp"> ，
 					基本薪酬总数:${sum }
-					<input type="hidden" name="salary_standard_sum" value="${sum }" /> ，
+					<input type="hidden" name="salarystandardsum" value="${sum }" /> ，
 					实发总额:
 					<span id="salarySum_sum">${sum }</span>
-					<input type="hidden" id="salaryPaidSum" name="salary_paid_sum" value="${sum }" />
+					<input type="hidden" id="salaryPaidSum" name="salarypaidsum" value="${sum }" />
 				</td>
-				<td style="text-align: right;">登记人:<input type="text" name="salaryGrant.register"
+				<td style="text-align: right;">登记人:<input type="text" name="register"
 				 	value="${u.user_true_name }" size="8" readonly="readonly"> 
 				 	登记时间：
-				 	<span id="Tdate"></span> <input type="hidden" name="salaryGrant.registTime" id="Tdate2">
+				 	<span id="Tdate"></span> <input type="hidden" name="regist_time" id="Tdate2">
 				 </td>
 			</tr>
 		</table>
@@ -79,7 +82,7 @@ td {
 			</tr>
 
 				<c:forEach items="${mmlist }" var="human" varStatus="vs">
-			<input type="hidden" name="grantDetails[${vs.index }].salaryGrantId"
+			<input type="hidden" name="salary_grant_id"
 				value="${timer }"> <input type="hidden"
 				id="salaryStandardSum${vs.count }" name="grantDetails[${vs.index }].salaryStandardSum"
 				value="${human.salary_sum }" />
@@ -90,6 +93,8 @@ td {
 						${human.human_id }
 					 <input type="hidden"
 						name="human_id" value="${human.human_id }"/>
+					 <input type="hidden" 
+					 	name="salary_standard_id" value="${human.salary_standard_id }"/>
 					</td>
 					<td>
 						${human.human_name }
@@ -113,7 +118,9 @@ td {
 					<td><input type="text" name="deduct_sum"
 						id="deductSum${vs.count }" onkeyup="onKeyPress('${vs.count }')" class="INPUT_STYLE2" value="0"/>
 					</td>
-					<td><input type="text" name="grantDetails[${vs.index }].salaryPaidSum"
+					<td>
+					<input type="hidden" name="salary_standard_sum" value="${human.salary_sum }"/>
+					<input type="text" name="salary_paid_sum"
 						readonly="readonly" id="salaryPaidSum${vs.count }" value="${human.salary_sum }"
 						class="INPUT_STYLE2" /></td>
 				</tr>

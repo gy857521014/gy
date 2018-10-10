@@ -1,35 +1,38 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'filter_result.jsp' starting page</title>
  	  <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="../css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 	
 </script> 
 	 
@@ -73,41 +76,60 @@
 					<td class="TD_STYLE1">
 						查询
 					</td>
+					<td class="TD_STYLE1">
+						发送邮件
+					</td>
 				</tr>
 				
+				 <c:forEach items="${eil }" var="eil">
 				 
+				 <c:if test="${eil.engage_resume.pass_passComment!=null }">
+									
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
-							张飒
+							${eil.human_name }
 						</td>
 						<td class="TD_STYLE2">
-							男
+							${eil.engage_resume.human_sex }
 						</td>
 						<td class="TD_STYLE2">
-							20
+							${eil.engage_resume.human_age }
 						</td>
 						<td class="TD_STYLE2">
-							软件开发
+							${eil.human_major_kind_name }
 						</td>
 						<td class="TD_STYLE2">
-							程序员
+							${eil.human_major_name }
 						</td>
 						<td class="TD_STYLE2">
-							长沙理工
+							${eil.engage_resume.human_college }
 						</td>
 						<td class="TD_STYLE2">
-							计算机
+							${eil.engage_resume.human_educated_major }
 						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toDetails?id=542">查询</a>
-						</td>
+						    <c:if test="${eil.engage_resume.pass_passComment=='通过,通过' }">
+								<td class="TD_STYLE2">
+									<a href="details_queryDan?id=${eil.ein_id }">通过&nbsp;&nbsp;查询</a>
+								</td>
+							</c:if>
+							
+							<c:if test="${eil.engage_resume.pass_passComment=='不通过,不通过' }">
+								<td class="TD_STYLE2">
+									<a href="details_queryDan?id=${eil.ein_id }">不通过&nbsp;&nbsp;查询</a>
+								</td>
+							</c:if>
+							<td class="TD_STYLE2">
+								<a href="selemail2?id=${eil.engage_resume.res_id }">${eil.engage_resume.human_email }</a>
+							</td>
+						
 					</tr>
-					
+				 </c:if>
+					</c:forEach>
 					 
 			</table>
 			<p>&nbsp;&nbsp;总数：2 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
@@ -135,6 +157,5 @@
 	     document.fm.submit();
 	 	}
 		</script>
-	</body>
+</body>
 </html>
-

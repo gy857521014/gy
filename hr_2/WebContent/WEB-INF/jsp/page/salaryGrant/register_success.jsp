@@ -4,8 +4,8 @@
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../css/table.css" type="text/css">
-<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
+<link rel="stylesheet" href="../css/table.css" type="text/css">
+<script type="text/javascript" src="../javascript/comm/comm.js"></script>
  
 
 </head>
@@ -22,8 +22,8 @@
     <td width="51%" align="right">
 			<input type="button" 
 			class="BUTTON_STYLE1" 
-			onclick="javascript:window.location='register_list.html';" 
-			value="返回" />
+			onclick="javascript:window.location='tocheck_list';" 
+			value="复核" />
 		</td>
 		
 		

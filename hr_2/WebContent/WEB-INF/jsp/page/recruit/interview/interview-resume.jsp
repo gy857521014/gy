@@ -1,39 +1,38 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-resume.jsp' starting page</title>
      	<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="../css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
-	
-</script>
-		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/locate.js">
 	
 </script>
 	<script type="text/javascript"
-			src="../../../javascript/comm/time.js">
+			src="../javascript/comm/time.js">
 			</script>
 <script type="text/javascript">
 function search() {
@@ -41,12 +40,32 @@ function search() {
 		document.interviewForm.submit();
 	}
 </script>
-
-
+<script>
+		function fun(){
+			var pid =$("#majorKindId").val();
+			$.ajax({
+				url:'selzhiwei?majorid='+pid,
+				type:'get',
+				success:function(data){
+					var cityselect=$("#majorId");
+					cityselect.empty();
+					cityselect.append("<option value='0'>--请选择职位名称--</option>");
+					for(var i=0;i<data.length;i++){
+						var eachCity=data[i];
+						var id=eachCity.major_id;
+						var name=eachCity.major_name;
+						cityselect.append("<option value='"+id+"'>"+name+"</option>");		
+						}
+					}
+				
+				});
+		
+			}
+	</script>
 	</head>
 
 	<body>
-		<form name="interviewForm" method="post" action="/HR_Fist/recruit/recruitAction!findInterviewByUtilBean" >
+		<form name="interviewForm" method="post" action="selinterview" >
 			<input type="hidden" name="engageResume.humanMajorKindName"
 				id="majorKindName" value="" />
 			<input type="hidden" name="engageResume.humanMajorName"
@@ -61,7 +80,7 @@ function search() {
 				<tr>
 					<td align="right">
 						 
-						<input type="button" value="开始"
+						<input type="submit" value="开始"
 							class="BUTTON_STYLE1" onclick="search();">
 					</td>
 				</tr>
@@ -76,25 +95,19 @@ function search() {
 					</td>
 					<td  class="TD_STYLE2" width="30%">
 					 
-					<select name="engageResume.humanMajorKindId" multiple="multiple" style="width: 290;height: 100"
+					<select name="majorKindId" onchange="fun()"  multiple="multiple" style="width: 290;height: 100"
 							 id="majorKindId"  class="SELECT_STYLE2"> 
 						<option value="0">--请选择--</option>
 					
-					<option value="01">销售</option>
-					
-					<option value="02">软件开发</option>
-					
-					<option value="03">人力资源</option>
-					
-					<option value="04">生产部</option>
+					<c:forEach items="${major}" var="major">
+						<option value="${major.major_kind_id }">${major.major_kind_name }</option>
+						</c:forEach>
 					
 					 </select>
-						<select name="engageResume.humanMajorId"  multiple="multiple"  style="width: 290;height: 100"
-							 id="majorId" size="5"
+						<select name="majorId" id="majorId"  multiple="multiple"  style="width: 290;height: 100"
+							  size="5"
 							class="SELECT_STYLE2">
-							<option>
-								--请选择--
-							</option>
+							
 						</select>
 					  
 					</td>
@@ -105,7 +118,7 @@ function search() {
 						请输入关键字
 					</td>
 					<td width="84%" >
-						<input type="text" name="utilBean.primarKey" value=""
+						<input type="text" name="primarKey" 
 							class="INPUT_STYLE2" />
 					</td>
 				</tr>
@@ -115,18 +128,17 @@ function search() {
 						请输入登记时间
 					</td>
 					<td width="84%" class="TD_STYLE2" >
-					<input type="hidden" name="utilBean.datePropertyName" value="registTime"/>
+					<input type="hidden" name="mindate"/>
 					 
 					<input type="text" name="utilBean.startDate"   onclick="aa('utilBean.startDate')" 
 							style="width: 14%" class="INPUT_STYLE2">
 						至
-						<input type="text" name="utilBean.endDate" 
+						<input type="text" name="maxdate" 
 							style="width: 14%" class="INPUT_STYLE2" onclick="aa('utilBean.endDate')">
 						（YYYY-MM-DD）
 					</td>
 				</tr>
 			</table>
 		</form>
-	</body>
-	 
+</body>
 </html>
