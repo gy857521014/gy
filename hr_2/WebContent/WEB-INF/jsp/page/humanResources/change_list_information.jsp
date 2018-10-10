@@ -417,14 +417,6 @@
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						档案附件
-					</td>
-					<td colspan="7" class="TD_STYLE2">
-						<a href="javascript:winopenm('query.jsp?filename=')">a.doc</a>
-					</td>
-				</tr>
-				<tr>
-					<td class="TD_STYLE1">
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">

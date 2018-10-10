@@ -98,7 +98,7 @@ function queryThird(){
 					<td align="right"> 
 						<input type="submit" value="查询" class="BUTTON_STYLE1"/>
 						<input type="button" value="搜索" class="BUTTON_STYLE1"
-							onclick="location.href='recovery_keywords.html'">
+							onclick="location.href='recovery_keywords'">
 					</td>
 				</tr>
 			</table>
