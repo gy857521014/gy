@@ -2,4 +2,76 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zd.dao.ISalary_grantDao">
 <resultMap type="map" id="mapMapper"></resultMap>
+
+<resultMap type="com.zd.entity.Config_public_char" id="Config_public_char">
+  	<result property="pbc_id" column="pbc_id"/>
+  	<result property="attribute_kind" column="attribute_kind"/>
+  	<result property="attribute_name" column="attribute_name"/>
+</resultMap>
+
+<resultMap type="com.zd.entity.Humman_file" id="selhumanmapper">
+	<result property="human_id" column="human_id"/>
+	<result property="first_king_id" column="first_king_id"/>
+	<result property="first_king_name" column="first_king_name"/>
+	<result property="second_kind_id" column="second_kind_id"/>
+	<result property="second_kind_name" column="second_kind_name"/>
+	<result property="third_kind_id" column="third_kind_id"/>
+	<result property="third_kind_name" column="third_kind_name"/>
+	<result property="human_name" column="human_name"/>
+	<result property="human_address" column="human_address"/>
+	<result property="human_postcode" column="human_postcode"/>
+	<result property="human_pro_designation" column="human_pro_designation"/>
+	<result property="human_major_kind_id" column="human_major_kind_id"/>
+	<result property="human_major_kind_name" column="human_major_kind_name"/>
+	<result property="human_major_id" column="human_major_id"/>
+	<result property="hunma_major_name" column="hunma_major_name"/>
+	<result property="human_telephone" column="human_telephone"/>
+	<result property="human_mobilephone" column="human_mobilephone"/>
+	<result property="human_bank" column="human_bank"/>
+	<result property="human_account" column="human_account"/>
+	<result property="human_qq" column="human_qq"/>
+	<result property="human_email" column="human_email"/>
+	<result property="human_hobby" column="human_hobby"/>
+	<result property="human_speciality" column="human_speciality"/>
+	<result property="human_sex" column="human_sex"/>
+	<result property="human_religion" column="human_religion"/>
+	<result property="human_party" column="human_party"/>
+	<result property="human_nationality" column="human_nationality"/>
+	<result property="human_race" column="human_race"/>
+	<result property="human_birthday" column="human_birthday"/>
+	<result property="human_birthplace" column="human_birthplace"/>
+	<result property="human_age" column="human_age"/>
+	<result property="human_educated_degree" column="human_educated_degree"/>
+	<result property="human_educated_years" column="human_educated_years"/>
+	<result property="human_educated_major" column="human_educated_major"/>
+	<result property="human_society_security_id" column="human_society_security_id"/>
+	<result property="human_id_card" column="human_id_card"/>
+	<result property="remark" column="remark"/>
+	<result property="salary_standard_id" column="salary_standard_id"/>
+	<result property="salary_standard_name" column="salary_standard_name"/>
+	<result property="salary_sum" column="salary_sum"/>
+	<result property="demand_salaray_sum" column="demand_salaray_sum"/>
+	<result property="paid_salary_sum" column="paid_salary_sum"/>
+	<result property="major_change_amount" column="major_change_amount"/>
+	<result property="bonus_amount" column="bonus_amount"/>
+	<result property="training_amount" column="training_amount"/>
+	<result property="file_chang_amount" column="file_chang_amount"/>
+	<result property="human_histroy_records" column="human_histroy_records"/>
+	<result property="human_family_membership" column="human_family_membership"/>
+	<result property="human_picture" column="human_picture"/>
+	<result property="attachment_name" column="attachment_name"/>
+	<result property="check_status" column="check_status"/>
+	<result property="register" column="register"/>
+	<result property="checker" column="checker"/>
+	<result property="changer" column="changer"/>
+	<result property="regist_time" column="regist_time"/>
+	<result property="check_time" column="check_time"/>
+	<result property="change_time" column="change_time"/>
+	<result property="lastly_change_time" column="lastly_change_time"/>
+	<result property="delete_time" column="delete_time"/>
+	<result property="recovery_time" column="recovery_time"/>
+	<result property="human_file_status" column="human_file_status"/>
+</resultMap>
+
+<resultMap type="map" id="ssdmapper"></resultMap>
 </mapper>

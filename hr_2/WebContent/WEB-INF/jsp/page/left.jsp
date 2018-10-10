@@ -315,7 +315,7 @@
 								</li>
 								<li>
 									<span>
-											<a href="power/right_list.html" target="mainFrame" style="color:black;">角色管理</a>
+											<a href="user_roleAll" target="mainFrame" style="color:black;">角色管理</a>
 									</span>
 								</li>
 						</ul>

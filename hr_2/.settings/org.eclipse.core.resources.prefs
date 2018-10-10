@@ -2,7 +2,11 @@
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/gy857521014/gy.git
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//WebContent/WEB-INF/jsp/page/power/success2.jsp=UTF-8
+=======
 encoding//WebContent/WEB-INF/jsp/page/humanResources/delete_keywords.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 encoding//WebContent/WEB-INF/jsp/page/power/user_phone.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/page/salaryGrant/register_list.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/page/salaryGrant/register_locate.jsp=UTF-8

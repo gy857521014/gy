@@ -1,4 +1,7 @@
 package com.zd.entity;
+
+import java.util.List;
+
 /**
  * 人力资源实体类
  * @author 周泽旭
@@ -152,6 +155,21 @@ public class Humman_file {
 	private String delete_time;//档案删除时间
 	private String recovery_time;//档案恢复时间
 	private int human_file_status;//档案状态 (1：待复核 2：正常 3：已删除)
+	
+	private Salary_standard_details ssd;
+	
+	// 为了更好的获取人对应的薪酬项目
+	private List<Salary_standard_details> ssdList;
+	
+	
+	public Salary_standard_details getSsd() {
+		return ssd;
+	}
+
+	public void setSsd(Salary_standard_details ssd) {
+		this.ssd = ssd;
+	}
+
 	public int getHfd_id() {
 		return hfd_id;
 	}
@@ -524,5 +542,46 @@ public class Humman_file {
 	public void setHuman_file_status(int human_file_status) {
 		this.human_file_status = human_file_status;
 	}
+
+	
+	public List<Salary_standard_details> getSsdList() {
+		return ssdList;
+	}
+
+	public void setSsdList(List<Salary_standard_details> ssdList) {
+		this.ssdList = ssdList;
+	}
+
+	@Override
+	public String toString() {
+		return "Humman_file [hfd_id=" + hfd_id + ", human_id=" + human_id + ", first_king_id=" + first_king_id
+				+ ", first_king_name=" + first_king_name + ", second_kind_id=" + second_kind_id + ", second_kind_name="
+				+ second_kind_name + ", third_kind_id=" + third_kind_id + ", third_kind_name=" + third_kind_name
+				+ ", human_name=" + human_name + ", human_address=" + human_address + ", human_postcode="
+				+ human_postcode + ", human_pro_designation=" + human_pro_designation + ", human_major_kind_id="
+				+ human_major_kind_id + ", human_major_kind_name=" + human_major_kind_name + ", human_major_id="
+				+ human_major_id + ", hunma_major_name=" + hunma_major_name + ", human_telephone=" + human_telephone
+				+ ", human_mobilephone=" + human_mobilephone + ", human_bank=" + human_bank + ", human_account="
+				+ human_account + ", human_qq=" + human_qq + ", human_email=" + human_email + ", human_hobby="
+				+ human_hobby + ", human_speciality=" + human_speciality + ", human_sex=" + human_sex
+				+ ", human_religion=" + human_religion + ", human_party=" + human_party + ", human_nationality="
+				+ human_nationality + ", human_race=" + human_race + ", human_birthday=" + human_birthday
+				+ ", human_birthplace=" + human_birthplace + ", human_age=" + human_age + ", human_educated_degree="
+				+ human_educated_degree + ", human_educated_years=" + human_educated_years + ", human_educated_major="
+				+ human_educated_major + ", human_society_security_id=" + human_society_security_id + ", human_id_card="
+				+ human_id_card + ", remark=" + remark + ", salary_standard_id=" + salary_standard_id
+				+ ", salary_standard_name=" + salary_standard_name + ", salary_sum=" + salary_sum
+				+ ", demand_salaray_sum=" + demand_salaray_sum + ", paid_salary_sum=" + paid_salary_sum
+				+ ", major_change_amount=" + major_change_amount + ", bonus_amount=" + bonus_amount
+				+ ", training_amount=" + training_amount + ", file_chang_amount=" + file_chang_amount
+				+ ", human_histroy_records=" + human_histroy_records + ", human_family_membership="
+				+ human_family_membership + ", human_picture=" + human_picture + ", attachment_name=" + attachment_name
+				+ ", check_status=" + check_status + ", register=" + register + ", checker=" + checker + ", changer="
+				+ changer + ", regist_time=" + regist_time + ", check_time=" + check_time + ", change_time="
+				+ change_time + ", lastly_change_time=" + lastly_change_time + ", delete_time=" + delete_time
+				+ ", recovery_time=" + recovery_time + ", human_file_status=" + human_file_status + ", ssd=" + ssd
+				+ "]";
+	}
+	
 	
 }
