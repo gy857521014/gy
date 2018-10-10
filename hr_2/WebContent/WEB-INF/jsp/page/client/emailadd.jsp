@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 			function checkeServiceName(){
 				// 获取机构名称
@@ -14,20 +15,17 @@
 				var zrrbh = $("#zw").val();
 				//在判断是否为空
 				if(document.getElementById("bt").value==''){
-					$("#errorSpan").html("<font color='red'>请输入标题</font>");
+					$.messager.show("消息提示", "请输入标题！", 2000);
 					return;
-				}else{
-					$("#errorSpan").html("");
 				}
 				if(document.getElementById("zw").value==''){
-					$("#errorSpanzw").html("<font color='red'>请输入正文</font>");
+					$.messager.show("消息提示", "请输入正文！", 2000);
 					return;
-				}else{
-					$("#errorSpanzrrbh").html("");
 				}
 				$("#aa").submit();
 			}
 	</script>
+	
 	</head>
 	<body>
 		<form id="aa" method="post"
@@ -57,7 +55,6 @@
 					</td>
 					<td width="81%" class="TD_STYLE2">
 					<input id="bt" type="text" name="mhead" value="" class="INPUT_STYLE1">
-					<span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +64,6 @@
 					<td class="TD_STYLE2">
 						<textarea id="zw" name="mcontent" rows="15"
 							class="TEXTAREA_STYLE1"></textarea>
-							<span id="errorSpanzw"></span>
 					</td>
 				</tr>
 				<tr>

@@ -3,26 +3,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../css/table.css" type="text/css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 		function check(){
 			// 获取机构名称
 			var sxzl = $("#sxzl").val();
 			var sxname = $("#sxname").val();
 			if (document.getElementById("sxzl").value==""){
-				$("#errorSpan").html("<font color='red'>请输入属性种类</font>");
+				$.messager.show("消息提示", "请输入属性种类！", 2000);
 				return;
-			}else{
-				$("#errorSpan").html("");
 			}
 			if (document.getElementById("sxname").value==""){
-				$("#errorSpanname").html("<font color='red'>请输入属性名称</font>");
+				$.messager.show("消息提示", "请输入属性名称！", 2000);
 				return;
-			}else{
-				$("#errorSpanname").html("");
 			}
 			$("#document").submit();
 		}	
@@ -55,7 +52,6 @@
 					</td>
 					<td class="TD_STYLE2" width="81%">
 						<input id="sxzl" type="text" class="INPUT_STYLE1" name="attribute_kind" />
-						<span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +60,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input id="sxname" type="text" class="INPUT_STYLE1" name="attribute_name" />
-						<span id="errorSpanname"></span>
 					</td>
 				</tr>
 			</table>
