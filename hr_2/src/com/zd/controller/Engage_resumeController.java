@@ -202,12 +202,21 @@ public class Engage_resumeController {
 	
 	//发送邮箱，查询邮件模板
 	@RequestMapping("/page/selemail")
-	private String E_mailQueryMa(Map map,int id){
+	private String selemail(Map map,int id){
 		List<e_mail> elist = emailservice.selm();
 		Engage_resume resume = resumeservice.selresumeid(id);
 		map.put("elist", elist);
 		map.put("resume", resume);
 		return "/page/recruit/resume/resume_email";
+	}
+	
+	@RequestMapping("/page/selemail2")
+	private String selemail2(Map map,int id){
+		List<e_mail> elist = emailservice.selm();
+		Engage_resume resume = resumeservice.selresumeid(id);
+		map.put("elist", elist);
+		map.put("resume", resume);
+		return "/page/recruit/employ/register_email";
 	}
 	
 	//发送邮件
@@ -229,8 +238,28 @@ public class Engage_resumeController {
 			helper.setText(mai.getEidaa(), true);
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
+			
 			return "redirect:/page/selresume"; 
-
-
+	}
+	
+	@RequestMapping("/page/sendEmailMa2")
+	public String sendEmailMa2(sendemail mai,int emailTitle) throws Exception {
+			e_mail email = emailservice.emailselid(emailTitle);
+			// 1、通过发送者创建电子邮件对象-MimeMessage
+			MimeMessage mm = mailSender.createMimeMessage();
+			// 2、创建发送电子邮件的帮助者对象-MimeMessageHelper
+			MimeMessageHelper helper = new MimeMessageHelper(mm, "UTF-8");
+			// 3、设置发送电子邮件的相关信息
+			// 3-1 指定发件人
+			helper.setFrom(mai.getSenderEmail());
+			// 3-2 指定收件人
+			helper.setTo(mai.getHuman_email());
+			// 3-3 指定邮件主题
+			helper.setSubject(email.getMhead());
+			// 3-4 指定邮件内容,上了true表示支持html
+			helper.setText(mai.getEidaa(), true);
+			// 4、通过邮件发送者发送电子邮件
+			mailSender.send(mm);
+			return "redirect:/page/selresume2"; 
 	}
 }

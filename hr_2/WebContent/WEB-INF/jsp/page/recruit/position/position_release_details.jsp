@@ -142,6 +142,7 @@ function fun2(){
 					</td>
 					<td width="14%" class="TD_STYLE2">
 					<select name="second_kind_id" onchange="fun2()" id="secondKindId">
+					<option>请选择二级机构</option>
 					<c:forEach items="${erlist}" var="erlist">
 						<c:if test="${release.first_kind_id==erlist.first_kind_id }">
 							<c:if test="${release.second_kind_id==erlist.second_kind_id }">
@@ -159,6 +160,7 @@ function fun2(){
 					</td>
 					<td class="TD_STYLE2"  >
 						<select name="third_kind_id" id="thirdKindId">
+						<option>请选择三级级机构</option>
 					<c:forEach items="${sanlist}" var="slist">
 						<c:if test="${release.second_kind_id==slist.second_kind_id }">
 							<c:if test="${release.third_kind_id==slist.third_kind_id }">
@@ -210,16 +212,16 @@ function fun2(){
 					</td>
 					<td class="TD_STYLE2">
 						<select name="major_id" id="majorId">
-					<c:forEach items="${majorlist }" var="mlist">
-						<c:if test="${release.major_kind_id==mlist.major_kind_id }">
-							<c:if test="${release.major_name==mlist.major_name }">
-								<option value="${mlist.major_id }" selected>${mlist.major_name }</option>
-							</c:if>
-							<c:if test="${release.major_name!=mlist.major_name }">
-								<option value="${mlist.major_id }">${mlist.major_name }</option>
-							</c:if>
-						</c:if>
-					</c:forEach>
+							<c:forEach items="${majorlist }" var="mlist">
+								<c:if test="${release.major_id==mlist.major_id }">
+									<c:if test="${release.major_name==mlist.major_name }">
+										<option value="${mlist.major_id }" selected>${mlist.major_name }</option>
+									</c:if>
+									<c:if test="${release.major_name!=mlist.major_name}">
+										<option value="${mlist.major_id }">${mlist.major_name }</option>
+									</c:if>
+								</c:if>
+							</c:forEach>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
