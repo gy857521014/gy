@@ -48,6 +48,8 @@ public class UserController {
 				User user = userService.login(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
+					//保存pojo到session
+					
 					return "page/index";
 				}else {
 					return "redirect:tologin";
@@ -73,6 +75,20 @@ public class UserController {
 	@ResponseBody
 	public int byuser_phone(String user_phone) {
 		int count = userService.byuser_phone(user_phone);
+		return count;
+	}
+	//判断手机号是否存在
+	@RequestMapping("page/by_phone")
+	@ResponseBody
+	public int by_phone(String user_phone) {
+		int count = userService.byuser_phone(user_phone);
+		return count;
+	}
+	//判断用户名是否存在
+	@RequestMapping("page/by_name")
+	@ResponseBody
+	public int by_name(String user_name) {
+		int count = userService.byuser_name(user_name);
 		return count;
 	}
 	

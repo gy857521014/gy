@@ -13,4 +13,7 @@ public interface IR_q_connDao {
 	@Select("select * from r_q_conn where r_id=#{uroleid}")
 	@ResultMap("r_q_connMapper")
 	public List<R_q_conn> rqconnAll(int uroleid);
+	
+	//查询角色权限
+	public List<R_q_conn> queryByUid(int userid);
 }

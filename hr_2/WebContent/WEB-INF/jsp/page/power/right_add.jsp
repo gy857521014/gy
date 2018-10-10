@@ -12,9 +12,40 @@
 		<script type="text/javascript"
 			src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript" src="../javascript/right_add.js"></script>
+		<script type="text/javascript">
+		function byName() {
+			//判断手机号
+			var roleName = $("#roleName").val();
+			var uroleExp = $("#uroleExp").val();
+			
+			if(uroleExp==""){
+				$.messager.show("消息提示", "角色说明不能为空!", 2000);
+			}
+			if(uroleExp!=""){
+				alert(roleName)
+			$.ajax({
+				url:"byurole_name?urole_name=" + roleName,
+				type:'post',
+				data:{'map.roleName':roleName},
+				/*dataType:"json",
+				scriptCharset:"utf-8", */
+				success:function(data){
+					$("#count").val(data);
+					if(data!=0){
+						$.messager.show("消息提示", "该角色名以存在!", 2000);
+					}
+					if(data==0){
+						$("#bc").submit();
+					}
+				}
+			});
+		}
+	}
+		
+		</script>
 	</head>
 	<body>
-		<form method="post" action="user_roleAdd">
+		<form method="post" action="user_roleAdd" id="bc">
 			<table width="100%">
 				<tr>
 					<td>
@@ -23,7 +54,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="保存" class="BUTTON_STYLE1"/>
+						<input type="button" value="保存" class="BUTTON_STYLE1" onclick="byName()"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
@@ -39,7 +70,7 @@
 					</td>
 					<td class="TD_STYLE1">角色说明</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="urole_exp"/>
+						<input type="text" name="urole_exp" id="uroleExp"/>
 					</td>
 				</tr>
 				<tr>
@@ -52,6 +83,7 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" id="count"  />
 		</form>
 	</body>
 </html>

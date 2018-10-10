@@ -6,5 +6,8 @@
 	<result property="q_id" column="q_id"/>
 	
 </resultMap>
+	<select id="queryByUid" resultMap="r_q_connMapper" parameterType="int">
+	SELECT * FROM r_q_conn WHERE r_id = (SELECT r_id FROM user_role r,u_r_conn ur WHERE r.uroleid=ur.r_id AND ur.u_id=#{userid})
+	</select>
 
 </mapper>

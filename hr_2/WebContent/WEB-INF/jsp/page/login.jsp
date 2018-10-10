@@ -54,7 +54,6 @@
 					url:"byuser_phone?user_phone=" + userName,
 					type:'get',
 					success:function(data){
-						// data就是生成的验证码
 						$("#count").val(data);
 						if(data==0){
 							$.messager.show("消息提示", "该手机号未绑定!请重新输入", 2000);

@@ -41,8 +41,8 @@ public interface IUserDao {
 	public void userAdd(User user);
 	
 	//查询用户名是否重复
-	//@Select("SELECT COUNT(*) FROM USER WHERE user_name=#{user_name}")
-	//public int byuser_name(String user_name);
+	@Select("SELECT COUNT(*) FROM USER WHERE user_name=#{user_name}")
+	public int byuser_name(String user_name);
 	
 	//添加用户关系
 	@Insert("INSERT INTO u_r_conn VALUES(#{u_id},#{r_id})")
@@ -62,7 +62,7 @@ public interface IUserDao {
 	public User userByid(int userid);
 	
 	//修改用户信息（修改）
-	@Update("update user set user_name=#{user_name},user_true_name=#{user_true_name},user_password=#{user_password} where userid=#{userid} ")
+	@Update("update user set user_true_name=#{user_true_name},user_password=#{user_password} where userid=#{userid} ")
 	public void userUpdate(User user);
 	
 	//绑定手机号

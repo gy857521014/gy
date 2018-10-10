@@ -12,6 +12,8 @@ public interface IUserService {
 	
 	//判断手机号是否存在
 	public int byuser_phone(String user_phone);
+	//判断用户名是否存在
+	public int byuser_name(String user_name);
 	//手机号码登陆
 	public User loginByphone(User u);
 	

@@ -25,4 +25,7 @@ public interface IUser_roleService {
 	
 	//修改角色信息
 	public void user_roleUpdate(User_role ur,List<Integer> q_id);
+	
+	//判断角色名名是否存在
+	public int byurole_name(String urole_name);
 }

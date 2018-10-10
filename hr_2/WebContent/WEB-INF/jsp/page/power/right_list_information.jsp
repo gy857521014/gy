@@ -9,7 +9,26 @@
 		<link rel="stylesheet"
 			href="../css/table.css" type="text/css"/>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript" src="../javascript/right_list_information.js"></script>
+		<script type="text/javascript">
+		function byName() {
+			var uroleExp = $("#uroleExp").val();
+			var un = $("un").val;
+			if(uroleExp==""){
+				$.messager.show("消息提示", "角色说明不能为空!", 2000);
+			}
+			if(un==""){
+				$.messager.show("消息提示", "角色名不能为空!", 2000);
+			}
+			if(uroleExp!=""){
+			
+				$("#bc").submit();
+			}
+		}
+		
+		</script>
 		<style type="text/css">
 			.parent {
 				margin-left: 50px;
@@ -20,7 +39,7 @@
 		</style>
 	</head>
 	<body>
-		<form id="powerAction!doModifyRight" name="powerAction!doModifyRight" action="user_roleUpdate?uroleid=${ur.uroleid }" method="post">
+		<form id="bc" name="powerAction!doModifyRight" action="user_roleUpdate?uroleid=${ur.uroleid }" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -29,7 +48,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" id="powerAction!doModifyRight_0" value="&#20445;&#23384;" class="BUTTON_STYLE1"/>
+						<input type="button" id="powerAction!doModifyRight_0" value="&#20445;&#23384;" class="BUTTON_STYLE1" onclick="byName()"/>
 
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
@@ -44,7 +63,7 @@
 					<td class="TD_STYLE2">${ur.uroleid }</td>
 					<td class="TD_STYLE1">角色名称</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE2" value="${ur.urole_name }"
+						<input id="un" type="text" class="INPUT_STYLE2" value="${ur.urole_name }"
 							name="urole_name"/>
 						<input type="hidden" name="uroleid" value="${ur.uroleid }"/>
 					</td>
@@ -52,7 +71,7 @@
 				<tr>
 					<td class="TD_STYLE1">角色说明</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE2" value="${ur.urole_exp }"
+						<input id="uroleExp" type="text" class="INPUT_STYLE2" value="${ur.urole_exp }"
 							name="urole_exp"/>
 					</td>
 					<td class="TD_STYLE1">角色是否可用</td>
@@ -490,57 +509,25 @@
 <input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060201" /> 
 																	&#34218;&#37228;&#39033;&#30446;&#35774;&#32622;
 																</td>
-																<td>
-																	<input type="checkbox" name="q_id" value="60202" id="powerAction!doModifyRight_rightCodes60202" class="children_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060202" /> 
-																	&#34218;&#37228;&#21457;&#25918;&#26041;&#24335;&#35774;&#32622;
-																</td>
-																<td>
-																	<input type="checkbox" name="q_id" value="60203" id="powerAction!doModifyRight_rightCodes60203" class="children_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060203" /> 
-																	&#35746;&#21333;&#38144;&#21806;&#32489;&#25928;&#35745;&#31639;&#26041;&#24335;
-																</td>
-																<td>
-																	<input type="checkbox" name="q_id" value="60204" id="powerAction!doModifyRight_rightCodes60204" class="children_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060204" /> 
-																	&#38646;&#21806;&#32489;&#25928;&#35745;&#31639;&#26041;&#24335;
-																</td>
+																
 													</tr>
 												</table>
 											</td>
 										</tr>
 										<tr>
-											<td>
-												<input type="checkbox" name="q_id" value="603" id="powerAction!doModifyRight_rightCodes603" class="parent_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L0603" /> 
-												&#39064;&#24211;&#31649;&#29702;&#35774;&#32622;
-												<table class="children">
-													<tr>
-																<td>
-																	<input type="checkbox" name="q_id" value="60301" id="powerAction!doModifyRight_rightCodes60301" class="children_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060301" /> 
-																	&#35797;&#39064;&#8544;&#32423;&#20998;&#31867;&#35774;&#32622;
-																</td>
-																<td>
-																	<input type="checkbox" name="q_id" value="60302" id="powerAction!doModifyRight_rightCodes60302" class="children_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060302" /> 
-																	&#35797;&#39064;&#8545;&#32423;&#20998;&#31867;&#35774;&#32622;
-																</td>
-													</tr>
-												</table>
-											</td>
+											
 										</tr>
 										<tr>
 											<td>
 												<input type="checkbox" name="q_id" value="604" id="powerAction!doModifyRight_rightCodes604" class="parent_ck"/>
 <input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L0604" /> 
-												&#20854;&#20182;&#35774;&#32622;
+												邮箱管理设置
 												<table class="children">
 													<tr>
 																<td>
 																	<input type="checkbox" name="q_id" value="60401" id="powerAction!doModifyRight_rightCodes60401" class="children_ck"/>
 <input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L060401" /> 
-																	&#20851;&#38190;&#23383;&#26597;&#35810;&#35774;&#32622;
+																	邮箱设置
 																</td>
 													</tr>
 												</table>
@@ -581,6 +568,7 @@
 													<tr>
 													</tr>
 												</table>
+												<input type="hidden" checked="checked" name="q_id" value="9"/>
 											</td>
 										</tr>
 							</table>
@@ -601,7 +589,10 @@
 	<script type="text/javascript">
 		function byDefault(){
 				// 所有权限
-				var arr=new Array("1","101","10101","10102","10103","102","10201","10202","10203","103","10301","10302","106","10601","10602","10603",
+				var arr=new Array("1","101","10101","10102","10103",
+						              "102","10201","10202","10203",
+						              "103","10301","10302",
+						              "106","10601","10602","10603",
 								  "2","201",
 								  	  "202",
 								  	  "203",
@@ -611,11 +602,14 @@
 								  	  "302",
 								  	  "303",
 								  	  "304",
-								  "4","401","402","403",
-								  "5","501","502","503",
+								  "4","401",
+								  	  "402",
+								  	  "403",
+								  "5","501",
+								  	  "502",
+								  	  "503",
 								  "6","601","60101","60102","60103","60104","60105","60106","60107",
-								  	  "602","60201","60202","60203","60204",
-								  	  "603","60301","60302",
+								  	  "602","60201",
 								  	  "604","60401",
 								  "8","801",
 								     "802");

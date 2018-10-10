@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zd.entity.R_q_conn;
 import com.zd.entity.User_role;
@@ -104,5 +105,14 @@ public class User_roleController {
 			logger.error("修改角色信息错误",e);
 		}
 		return "redirect:/page/user_roleAll";
+	}
+	
+	//判断手机号是否存在
+	@RequestMapping("page/byurole_name")
+	@ResponseBody
+	public int byurole_name(String urole_name) {
+	int count = user_roleService.byurole_name(urole_name);
+	System.out.println(urole_name);
+	return count;
 	}
 }

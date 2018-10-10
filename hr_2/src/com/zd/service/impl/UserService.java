@@ -93,5 +93,11 @@ public class UserService implements IUserService {
 		userDao.phoneUpdate(user);
 	}
 
+	//判断用户名是否存在
+	@Override
+	public int byuser_name(String user_name) {
+		return userDao.byuser_name(user_name);
+	}
+
 	
 }

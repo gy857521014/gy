@@ -12,9 +12,34 @@
 		<script type="text/javascript"
 			src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript" src="../javascript/user_add.js"></script>
+		<script type="text/javascript">
+		function byName() {
+			//判断手机号
+			var userName = $("#userName").val();
+			var uroleid = $("#uroleid").val();
+			if(uroleid==null){
+				$.messager.show("消息提示", "请选择角色!", 2000);
+			}
+			if(uroleid!=null){
+			$.ajax({
+				url:"by_name?user_name=" + userName,
+				type:'get',
+				success:function(data){
+					$("#count").val(data);
+					if(data!=0){
+						$.messager.show("消息提示", "该用户名以存在!", 2000);
+					}
+					if(data==0){
+						$("#bc").submit();
+					}
+				}
+			});
+		}
+	}
+		</script>
 	</head>
 	<body>
-		<form method="post" action="userAdd">
+		<form method="post" action="userAdd" id="bc">
 			<table width="100%">
 				<tr>
 					<td>
@@ -23,7 +48,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="保存" class="BUTTON_STYLE1"/>
+						<input type="button" value="保存" class="BUTTON_STYLE1" onclick="byName()"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
@@ -49,7 +74,7 @@
 					</td>
 					<td class="TD_STYLE1">用户身份</td>
 					<td class="TD_STYLE2">
-						<select name="userIds" multiple="multiple">
+						<select name="userIds" multiple="multiple" id="uroleid">
 							<c:forEach items="${urList }" var="ur">
 								<option value="${ur.uroleid }">${ur.urole_name }-${ur.uroleid }</option>
 							</c:forEach>	
@@ -57,6 +82,7 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" id="count"  />
 		</form>
 	</body>
 </html>
