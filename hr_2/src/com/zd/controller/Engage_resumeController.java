@@ -229,7 +229,7 @@ public class Engage_resumeController {
 			helper.setText(mai.getEidaa(), true);
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
-			return "redirect:list_query"; 
+			return "redirect:/page/selresume"; 
 
 
 	}
