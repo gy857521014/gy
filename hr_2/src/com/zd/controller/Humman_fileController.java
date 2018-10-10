@@ -305,7 +305,20 @@ public class Humman_fileController {
 		List<Config_major> majorlist=majorservice.selzhiwei(majorid);
 		return majorlist;
 	}
-	
+	//人力资源模糊查询跳转页面
+	@RequestMapping("/page/query_keywords")
+	public String query_keywords() {
+		return "page/humanResources/query_keywords";
+	}
+	//人力资源模糊查询
+	@RequestMapping("/page/query_list_key")
+	public String query_list_key(@RequestParam Map map,Map map1) {
+		String primarKey = (String)map.get("primarKey");
+		map.put("primarKey", primarKey);
+		List<Humman_file> query_list = humman_fileService.query_list_key(map);
+		map1.put("query_list", query_list);
+		return "page/humanResources/query_list";
+	}
 	//条件查询
 	@RequestMapping("page/query_list")
 	public String query_list(@RequestParam Map map,Map map1) throws ParseException {
@@ -313,11 +326,8 @@ public class Humman_fileController {
 		String startDate = (String) map.get("utilBean.startDate");
 		//获取结束时间
 		String endDate = (String) map.get("utilBean.endDate");
-		SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-		Date startDate1 = aDate.parse(startDate);
-		Date endDate1 = aDate.parse(endDate);
-		map.put("startDate", startDate1);
-		map.put("endDate", endDate1);
+		map.put("startDateStr", startDate);
+		map.put("endDateStr", endDate);
 		
 		List<Humman_file> query_list = humman_fileService.query_list(map);
 		map1.put("query_list", query_list);
@@ -332,7 +342,6 @@ public class Humman_fileController {
 		map.put("humman_file", humman_file);
 		return "page/humanResources/query_list_information";
 	}
-	
 	//人力资源档案变更
 	@RequestMapping("page/change_locate")
 	public String change_locate(Map<String, Object> map) {
@@ -344,6 +353,7 @@ public class Humman_fileController {
 		map.put("fenleilist", fenleilist);
 		return "page/humanResources/change_locate";
 	}
+		
 	//条件查询人力资源变更
 		@RequestMapping("page/change_list")
 		public String change_list(@RequestParam Map map,Map map1) throws ParseException {
@@ -351,11 +361,8 @@ public class Humman_fileController {
 			String startDate = (String) map.get("utilBean.startDate");
 			//获取结束时间
 			String endDate = (String) map.get("utilBean.endDate");
-			SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-			Date startDate1 = aDate.parse(startDate);
-			Date endDate1 = aDate.parse(endDate);
-			map.put("startDate", startDate1);
-			map.put("endDate", endDate1);
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
 			
 			List<Humman_file> query_list = humman_fileService.query_list(map);
 			map1.put("query_list", query_list);
@@ -430,6 +437,20 @@ public class Humman_fileController {
 					map.put("fenleilist", fenleilist);
 					return "page/humanResources/delete_locate";
 				}
+				//模糊查询人力资源删除（跳转页面）
+				@RequestMapping("page/delete_keywords")
+				public String delete_keywords() {
+					return "page/humanResources/delete_keywords";
+				}
+				//模糊查询人力资源删除
+				@RequestMapping("page/delete_list_key")
+				public String delete_list_key(@RequestParam Map map,Map map1) {
+					String primarKey = (String)map.get("primarKey");
+					map.put("primarKey", primarKey);
+					List<Humman_file> query_list = humman_fileService.delete_list_key(map);
+					map1.put("query_list", query_list);
+					return "page/humanResources/delete_list";
+				}
 				//条件查询人力资源删除
 				@RequestMapping("page/delete_list")
 				public String delete_list(@RequestParam Map map,Map map1) throws ParseException {
@@ -437,11 +458,8 @@ public class Humman_fileController {
 					String startDate = (String) map.get("utilBean.startDate");
 					//获取结束时间
 					String endDate = (String) map.get("utilBean.endDate");
-					SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-					Date startDate1 = aDate.parse(startDate);
-					Date endDate1 = aDate.parse(endDate);
-					map.put("startDate", startDate1);
-					map.put("endDate", endDate1);
+					map.put("startDateStr", startDate);
+					map.put("endDateStr", endDate);
 					
 					List<Humman_file> query_list = humman_fileService.delete_list(map);
 					map1.put("query_list", query_list);
@@ -507,6 +525,20 @@ public class Humman_fileController {
 			map.put("fenleilist", fenleilist);
 			return "page/humanResources/recovery_locate";
 		}
+		//人力资源档案恢复（跳页面）
+		@RequestMapping("page/recovery_keywords")
+		public String recovery_keywords() {
+			return "page/humanResources/recovery_keywords";
+		}
+		//模糊查询人力资源恢复
+		@RequestMapping("page/recovery_list_key")
+		public String recovery_list_key(@RequestParam Map map,Map map1) {
+			String primarKey = (String)map.get("primarKey");
+			map.put("primarKey", primarKey);
+			List<Humman_file> query_list = humman_fileService.recovery_list_key(map);
+			map1.put("query_list", query_list);
+			return "page/humanResources/recovery_list";
+		}
 		//人力资源档案恢复条件查询
 		@RequestMapping("page/recovery_list")
 		public String recovery_list(@RequestParam Map map,Map map1) throws ParseException {
@@ -514,11 +546,8 @@ public class Humman_fileController {
 			String startDate = (String) map.get("utilBean.startDate");
 			//获取结束时间
 			String endDate = (String) map.get("utilBean.endDate");
-			SimpleDateFormat aDate = new SimpleDateFormat("yyyy-mm-dd");
-			Date startDate1 = aDate.parse(startDate);
-			Date endDate1 = aDate.parse(endDate);
-			map.put("startDate", startDate1);
-			map.put("endDate", endDate1);
+			map.put("startDateStr", startDate);
+			map.put("endDateStr", endDate);
 			
 			List<Humman_file> query_list = humman_fileService.recovery_list(map);
 			map1.put("query_list", query_list);
@@ -571,7 +600,7 @@ public class Humman_fileController {
 			humman_fileService.success_update1(humman_file);
 			return "page/humanResources/success";
 		}
-		//人力资源删除查询
+		//人力资源永久删除查询
 		@RequestMapping("page/delete_forever_list")
 		public String delete_forever_list(Map map) {
 			List<Humman_file> humman_fileslist = humman_fileService.Humman_fileList1();
@@ -579,10 +608,12 @@ public class Humman_fileController {
 			map.put("humman_fileslist_size", humman_fileslist.size());
 			return "page/humanResources/delete_forever_list";
 		}
-		//人力资源删除
+		//人力资源永久删除
 		@RequestMapping("page/Delete")
-		public String Delete(String human_id) {
+		@ResponseBody
+		public int Delete(String human_id) {
 			humman_fileService.Delete(human_id);
-			return "page/humanResources/success";
+			return 1;
 		}
+		
 }

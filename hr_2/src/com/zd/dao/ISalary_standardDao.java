@@ -42,7 +42,7 @@ public interface ISalary_standardDao {
 	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},salary_sum=#{salary_sum},checker=#{checker},check_time=#{check_time},check_comment=#{check_comment},check_status=1 WHERE standard_id=#{standard_id}")
 	public void updSalary_standard(Salary_standard ss);
 	//根据项目id修改项目金额
-	@Update("UPDATE compensation_item set money=#{money} where pbc_id=${pbc_id} and standard_id=#{standard_id}")
+	@Update("UPDATE compensation_item set money=#{money} where pbc_id=#{pbc_id} and standard_id=#{standard_id}")
 	public void updcompensation_item(Map map);
 	//添加薪酬标准单详细信息
 	@Insert("insert into Salary_standard_details values(null,#{standard_id},#{standard_name},#{item_id},#{item_name},#{salary})")
@@ -51,4 +51,13 @@ public interface ISalary_standardDao {
 	public List<Salary_standard> selLikeSalary_standard(Map map);
 	//模糊查询薪酬标准例
 	public int selLikeSalary_standardli(Map map);
+	//根据薪酬编号修改薪酬标准(变更)
+	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},salary_sum=#{salary_sum},changer=#{changer},change_time=#{change_time},remark=#{remark} WHERE standard_id=#{standard_id}")
+	public void updSalary_standardbg(Salary_standard ss);
+	//修改薪酬标准单详细信息(变更)
+	@Update("UPDATE salary_standard_details SET standard_name=#{standard_name},salary=#{salary} where standard_id=#{standard_id} and item_id=#{item_id}")
+	public void updSalary_standard_details(Map map);
+	//根据项目id修改项目金额(变更)
+	@Update("UPDATE compensation_item set money=#{money} where pbc_id=#{pbc_id} and standard_id=#{standard_id}")
+	public void updcompensation_itembg(Map map);
 }

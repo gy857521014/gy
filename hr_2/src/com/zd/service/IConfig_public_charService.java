@@ -11,4 +11,6 @@ public interface IConfig_public_charService {
 	public void addcpc(Config_public_char config_public_char);
 	// É¾³ýÓÃ»§
 	public void deletecpc(int pbc_id);
+	//Ìí¼ÓÐ½³ê
+	public void addxc(Config_public_char config_public_char);
 }

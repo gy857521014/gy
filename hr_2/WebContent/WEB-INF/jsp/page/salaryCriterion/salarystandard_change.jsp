@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-	<form action="salarystandard_change_success.html" method="post">
+	<form action="updsalarystandard_change_success" method="post">
 
 		<table width="100%">
 			<tr>
@@ -33,15 +34,15 @@
 			<tr>
 				<td width="12%" class="TD_STYLE1">薪酬编号</td>
 				<td width="15%" class="TD_STYLE2"><input type="hidden"
-					name="standard.standardId" value="1353320112255">
-					1353320112255</td>
+					name="standard_id" value="${ssd.standard_id }">
+					${ssd.standard_id }</td>
 				<td width="12%" class="TD_STYLE1">薪酬标准名称</td>
 				<td width="11%" class="TD_STYLE2"><input type="text"
-					name="standard.standardName" id="standardName" value="董事长"
+					name="standard_name" id="standardName" value="${ssd.standard_name }"
 					class="INPUT_STYLE2"></td>
 				<td width="11%" class="TD_STYLE1">薪酬总额</td>
 				<td width="17%" class="TD_STYLE2"><input type="text"
-					name="standard.salarySum" id="sumSalary" value="135827.0"
+					name="salary_sum" id="sumSalary" value="${ssd.salary_sum }"
 					class="INPUT_STYLE2" readonly="readonly"></td>
 				<td width="12%" class="TD_STYLE1">&nbsp;</td>
 				<td width="10%" class="TD_STYLE2">&nbsp;</td>
@@ -49,15 +50,15 @@
 			<tr>
 				<td class="TD_STYLE1">制定人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.designer" id="designer" value="杨阳"
+					name="designer" id="designer" value="${ssd.designer}"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">变更人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.changer" value="better_admin" readonly="readonly"
+					name="changer" value="${loginUser.user_true_name}" readonly="readonly"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">变更时间</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="standard.changeTime" id="Tdate" readonly="readonly"
+					name="change_time" id="Tdate" readonly="readonly"
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">&nbsp;</td>
 				<td class="TD_STYLE2">&nbsp;</td>
@@ -65,7 +66,7 @@
 			<tr>
 				<td class="TD_STYLE1">备注</td>
 				<td colspan="7" class="TD_STYLE2"><textarea
-						name="standard.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						name="remark" rows="4" class="TEXTAREA_STYLE1">${ssd.remark}</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -74,91 +75,24 @@
 				<td colspan="4" class="TD_STYLE1">金额</td>
 			</tr>
 
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[0].sdtId"
-					value="1239" /> <input type="hidden" name="details[0].itemId"
-					value="63" /> 63</td>
-				<td colspan="3"><input type="hidden"
-					name="details[0].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[0].standardName" value="董事长" /> <input
-					type="hidden" name="details[0].itemName" value="出差补助" /> 出差补助</td>
-				<td><input type="text" id="salary1" value="123.0"
-					name="details[0].salary" onkeyup="countMoney('6','salary1')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[1].sdtId"
-					value="1240" /> <input type="hidden" name="details[1].itemId"
-					value="64" /> 64</td>
-				<td colspan="3"><input type="hidden"
-					name="details[1].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[1].standardName" value="董事长" /> <input
-					type="hidden" name="details[1].itemName" value="交通补贴" /> 交通补贴</td>
-				<td><input type="text" id="salary2" value="12312.0"
-					name="details[1].salary" onkeyup="countMoney('6','salary2')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[2].sdtId"
-					value="1241" /> <input type="hidden" name="details[2].itemId"
-					value="65" /> 65</td>
-				<td colspan="3"><input type="hidden"
-					name="details[2].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[2].standardName" value="董事长" /> <input
-					type="hidden" name="details[2].itemName" value="住房补贴" /> 住房补贴</td>
-				<td><input type="text" id="salary3" value="123123.0"
-					name="details[2].salary" onkeyup="countMoney('6','salary3')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[3].sdtId"
-					value="1242" /> <input type="hidden" name="details[3].itemId"
-					value="66" /> 66</td>
-				<td colspan="3"><input type="hidden"
-					name="details[3].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[3].standardName" value="董事长" /> <input
-					type="hidden" name="details[3].itemName" value="基本工资" /> 基本工资</td>
-				<td><input type="text" id="salary4" value="123.0"
-					name="details[3].salary" onkeyup="countMoney('6','salary4')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[4].sdtId"
-					value="1243" /> <input type="hidden" name="details[4].itemId"
-					value="67" /> 67</td>
-				<td colspan="3"><input type="hidden"
-					name="details[4].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[4].standardName" value="董事长" /> <input
-					type="hidden" name="details[4].itemName" value="年终奖" /> 年终奖</td>
-				<td><input type="text" id="salary5" value="123.0"
-					name="details[4].salary" onkeyup="countMoney('6','salary5')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-			<tr class="TD_STYLE2">
-				<td align="center"><input type="hidden" name="details[5].sdtId"
-					value="1244" /> <input type="hidden" name="details[5].itemId"
-					value="68" /> 68</td>
-				<td colspan="3"><input type="hidden"
-					name="details[5].standardId" value="1353320112255" /> <input
-					type="hidden" name="details[5].standardName" value="董事长" /> <input
-					type="hidden" name="details[5].itemName" value="误餐补助" /> 误餐补助</td>
-				<td><input type="text" id="salary6" value="23.0"
-					name="details[5].salary" onkeyup="countMoney('6','salary6')"
-					class="INPUT_STYLE2"></td>
-				<td colspan="3">&nbsp;</td>
-			</tr>
-
-
+			
+			<c:forEach items="${ci}" var="ci" varStatus="vs">
+					<tr class="TD_STYLE2">
+						<td align="center"><input type="hidden"
+							name="details[5].sdtId" value="1265" /> <input type="hidden"
+							name="details[5].itemId" value="${ci.pbc_id}" />${vs.count}</td>
+						<td colspan="3"><input type="hidden"
+							name="details[5].standardId" value="${ssd.standard_id }" /> <input
+							type="hidden" name="details[5].standardName"
+							value="${ssd.standard_name }" /> <input type="hidden"
+							name="details[5].itemName" value="${ci.attribute_name }" />${ci.attribute_name }</td>
+						<td><input type="text" id="salary${vs.count}"
+							value="${ci.money}" name="x_${ci.pbc_id}_${ci.attribute_name }"
+							onkeyup="countMoney('${cisize }','salary${vs.count}')"
+							class="INPUT_STYLE2"></td>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+				</c:forEach>
 		</table>
 	</form>
 	<script type="text/javascript">

@@ -19,7 +19,7 @@
 			<tr>
 				<td align="right"><input type="button" value="提 交"
 					onclick="check()" class="BUTTON_STYLE1"> <input
-					type="reset" value="返 回" class="BUTTON_STYLE1"></td>
+					type="reset" value="重置" class="BUTTON_STYLE1"></td>
 			</tr>
 		</table>
 		<table id="stable" width="100%" border="1" cellpadding=0 cellspacing=1

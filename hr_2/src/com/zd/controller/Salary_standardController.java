@@ -7,7 +7,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
-import com.zd.entity.User;
 import com.zd.service.ISalary_standardService;
 
 @Controller
@@ -82,10 +80,15 @@ public class Salary_standardController {
 				//总条数 / 每页显示的条数+1
 				map.put("total",total);
 			}
-			map.put("starttrue", start+1);
-			map.put("start", start);
-			List<Salary_standard> ss = Salary_standardService.selSalary_standard(start*10);
-			map.put("ss", ss);
+			if(li==0) {
+				map.put("starttrue", 0);
+			}else {
+				map.put("starttrue", start+1);
+				map.put("start", start);
+				List<Salary_standard> ss = Salary_standardService.selSalary_standard(start*10);
+				map.put("ss", ss);
+			}
+			
 			return "/page/salaryCriterion/salarystandard_check_list";
 		}
 	
@@ -160,21 +163,124 @@ public class Salary_standardController {
 						smp.put("total", total);
 					}
 					smp.put("li", li);
+					if(li==0) {
+						map.put("starttrue", 0);
+					}else {
 					startmap.put("starttrue", startInt+1);//实际页数
 					List<Salary_standard> ss = Salary_standardService.selLikeSalary_standard(map);
 					smp.put("ss", ss);
+					}
 					return "page/salaryCriterion/salarystandard_query_list";
 				}
 				//单击薪酬标准编号
 				@RequestMapping("page/selsalarystandard_query")
-				public String selsalarystandard_query(Map map,String standard_id) {
-					Salary_standard ssd = Salary_standardService.selOneSalary_standard(standard_id);
+				public String selsalarystandard_query(Map map,String standardid,@RequestParam Map fmap) {
+					if(standardid != null && standardid.endsWith(",")) {
+						standardid = standardid.substring(0, standardid.indexOf(","));
+					}
+					if(standardid!=null && standardid.contains(",") && !standardid.endsWith(",")) {
+						standardid = standardid.substring(0, standardid.indexOf(","));
+					}
+					Salary_standard ssd = Salary_standardService.selOneSalary_standard(standardid);
 					map.put("ssd", ssd);
-					List<Compensation_item> ci = Salary_standardService.selCompensation_item(standard_id);
+					List<Compensation_item> ci = Salary_standardService.selCompensation_item(standardid);
 					map.put("ci", ci);
 					map.put("cisize", ci.size());
+					map.put("Keyword", fmap.get("Keyword"));
+					map.put("startDate", fmap.get("startDate"));
+					map.put("endDate", fmap.get("endDate"));
+					map.put("standard_id", fmap.get("standard_id"));
+					map.put("start", fmap.get("start"));
 					return "page/salaryCriterion/salarystandard_query";
 				}
+				//薪酬标准变更(查询界面)
+				@RequestMapping("page/tosalarystandard_change_locate")
+				public String tosalarystandard_change_locate() {
+					return "page/salaryCriterion/salarystandard_change_locate";
+				}
+				//薪酬标准变更查询(模糊查询)
+				@RequestMapping("page/selsalarystandard_change_list")
+				public String selsalarystandard_change_list(@RequestParam Map map,Map smp,Map startmap) {
+					int total = 0;
+					smp.put("startDate", map.get("startDate"));
+					smp.put("endDate", map.get("endDate"));
+					smp.put("standard_id", map.get("standard_id"));
+					smp.put("Keyword", map.get("Keyword"));
+					smp.put("start",map.get("start"));
+					String startStr = (String)map.get("start");
+					int startInt = Integer.parseInt(startStr);//参与查询页数
+					map.put("start", startInt*10);
+					int li = Salary_standardService.selLikeSalary_standardli(map);
+					if(li % 10 == 0) {
+						total = li/10;
+						//总条数 / 每页显示的条数
+						smp.put("total", total);
+					} else {
+						total = li/10+1;
+						//总条数 / 每页显示的条数+1
+						smp.put("total", total);
+					}
+					smp.put("li", li);
+					if(li==0) {
+						map.put("starttrue", 0);
+					}else {
+					startmap.put("starttrue", startInt+1);//实际页数
+					List<Salary_standard> ss = Salary_standardService.selLikeSalary_standard(map);
+					smp.put("ss", ss);
+					}
+					return "page/salaryCriterion/salarystandard_change_list";
+				}
 				
-	
+				//变更按钮
+				@RequestMapping("page/selsalarystandard_change")
+				public String selsalarystandard_change(Map map,String standardid,@RequestParam Map fmap) {
+					if(standardid != null && standardid.endsWith(",")) {
+						standardid = standardid.substring(0, standardid.indexOf(","));
+					}
+					if(standardid!=null && standardid.contains(",") && !standardid.endsWith(",")) {
+						standardid = standardid.substring(0, standardid.indexOf(","));
+					}
+					Salary_standard ssd = Salary_standardService.selOneSalary_standard(standardid);
+					map.put("ssd", ssd);
+					List<Compensation_item> ci = Salary_standardService.selCompensation_item(standardid);
+					map.put("ci", ci);
+					map.put("cisize", ci.size());
+					map.put("Keyword", fmap.get("Keyword"));
+					map.put("startDate", fmap.get("startDate"));
+					map.put("endDate", fmap.get("endDate"));
+					map.put("standard_id", fmap.get("standard_id"));
+					map.put("start", fmap.get("start"));
+					return "page/salaryCriterion/salarystandard_change";
+				}
+				//变更修改
+				@RequestMapping("page/updsalarystandard_change_success")
+				public String updsalarystandard_change_success(Salary_standard ss,@RequestParam Map map) {
+					Salary_standardService.updSalary_standardbg(ss);
+					Map moneyMap = new HashMap<>();
+					Map ssdMap = new HashMap<>();
+					String Standard_id = ss.getStandard_id();
+					String standard_name = ss.getStandard_name();
+					Set<String> keySet = map.keySet();
+					for(String key:keySet) {
+						if(key.startsWith("x_")) {
+							String attribute_name = key.split("_")[2];
+							int pbc_id = Integer.parseInt(key.split("_")[1]);
+							double money = Double.parseDouble((String) map.get(key));
+							moneyMap.put("pbc_id", pbc_id);
+							moneyMap.put("money", money);
+							moneyMap.put("standard_id",Standard_id);
+							//moneyMap.put("item_name", attribute_name);
+							Salary_standardService.updcompensation_itembg(moneyMap);
+							ssdMap.put("standard_id", Standard_id);
+							ssdMap.put("standard_name",standard_name);
+							ssdMap.put("item_id", pbc_id);
+							//ssdMap.put("item_name", attribute_name);
+							ssdMap.put("salary", money);
+							Salary_standardService.updSalary_standard_details(ssdMap);
+						}
+						}
+					return "page/salaryCriterion/salarystandard_change_success";
+					
+					
+				}
 }

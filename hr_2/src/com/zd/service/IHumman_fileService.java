@@ -59,14 +59,20 @@ public interface IHumman_fileService {
 	public void humman_chack_update(Humman_file humman_file);
 	//条件查询
 	public List<Humman_file> query_list(Map map);
+	//人力资源模糊查询
+	public List<Humman_file> query_list_key(Map map);
 	//人力资源变更修改
 	public void register_choose_picture_update(Humman_file humman_file);
 	//多条件查询人力资源删除
 	public List<Humman_file> delete_list(Map map);
+	//模糊查询人力资源删除
+	public List<Humman_file> delete_list_key(Map map);
 	//人力资源删除修改
 	public void success_update(Humman_file humman_file);
 	//人力资源恢复条件查询
 	public List<Humman_file> recovery_list(Map map);
+	//人力资源恢复模糊查询
+	public List<Humman_file> recovery_list_key(Map map);
 	//人力资源恢复修改
 	public void success_update1(Humman_file humman_file);
 	//人力资源删除查询
