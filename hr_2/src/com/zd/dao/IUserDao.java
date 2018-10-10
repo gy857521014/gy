@@ -14,7 +14,7 @@ import com.zd.entity.User;
 
 public interface IUserDao {
 	//ÓÃ»§ÃûÃÜÂëµÇÂ½µÇÂ½
-	@Select("select * from user where user_name=#{user_name} and user_password=#{user_password}")
+	@Select("select * from user where user_name=#{user_phone} and user_password=#{user_password}")
 	@ResultMap("userMapper")
 	public User login(User u);
 

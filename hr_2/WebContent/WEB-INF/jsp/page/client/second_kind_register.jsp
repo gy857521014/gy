@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 		function check(){
 			// 获取机构名称
@@ -17,41 +18,33 @@
 			var xsbh = $("#xsbh").val();
 			//在判断是否为空
 			if(document.getElementById("yiji").value=='0'){
-				$("#errorSpan").html("<font color='red'>请选择I级机构</font>");
+				$.messager.show("消息提示", "请选择I级机构！", 2000);
 				return;
-			}else{
-				$("#errorSpan").html("");
 			}
 			if(document.getElementById("erjiname").value==''){
-				$("#errorSpanerji").html("<font color='red'>请输入II级机构名称</font>");
+				$.messager.show("消息提示", "请输入II级机构名称！", 2000);
 				return;
-			}else{
-				$("#errorSpanerji").html("");
 			}
 			if(document.getElementById("xcbh").value==''){
-				$("#errorSpanxcbh").html("<font color='red'>请输入薪酬发放责任人编号</font>");
+				$.messager.show("消息提示", "请输入薪酬发放责任人编号！", 2000);
 				return;
 			}else{
 				var reg = /^\d{1,5}$/;
 				var b = reg.test(xcbh);
 				if(!b){
-					$("#errorSpanxcbh").html("<font color='red'>请填写小于5位的数字编号</font>");
+					$.messager.show("消息提示", "请填写小于5位的薪酬发放责任人数字编号！", 2000);
 					return;
-				}else{
-					$("#errorSpanxcbh").html("");
 				}
 			}
 			if(document.getElementById("xsbh").value==''){
-				$("#errorSpanxsbh").html("<font color='red'>请输入销售责任人编号</font>");
+				$.messager.show("消息提示", "请输入销售责任人编号！", 2000);
 				return;
 			}else{
 				var reg = /^\d{1,5}$/;
 				var b = reg.test(xsbh);
 				if(!b){
-					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
+					$.messager.show("消息提示", "请填写小于5位的销售责任人数字编号！", 2000);
 					return;
-				}else{
-					$("#errorSpanxsbh").html("");
 				}
 			}
 			$("#document").submit();
@@ -93,7 +86,6 @@
 							<option value="${c.first_kind_id }">${c.first_kind_name }</option>
 						</c:forEach>
 					</select>
-					<span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -110,7 +102,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input id="erjiname" type="text" class="INPUT_STYLE1" name="second_kind_name" value=""/>
-						<span id="errorSpanerji"></span>
 					</td>
 				</tr>
 				<tr>
@@ -119,7 +110,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="xcbh" rows="4" cols="" class="TEXTAREA_STYLE1" name="second_salary_id"></textarea>
-						<span id="errorSpanxcbh"></span>
 					</td>
 				</tr>
 				<tr>
@@ -128,7 +118,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="xsbh" rows="4" cols="" class="TEXTAREA_STYLE1" name="second_sale_id" ></textarea>
-						<span id="errorSpanxsbh"></span>
 					</td>
 				</tr>
 			</table>

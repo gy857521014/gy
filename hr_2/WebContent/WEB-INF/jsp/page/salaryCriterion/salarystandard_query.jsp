@@ -59,7 +59,7 @@
 }
 </style>
 </head>
-<script type="text/javascript" src="../../javascript/jquery-1.7.2.js">
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js">
 	
 </script>
 <SCRIPT type="text/javascript">
@@ -93,9 +93,13 @@
 
 <body>
 	<form
-		action="/HR_Fist/salaryCriterion/salaryCriterionAction!printsalarystandard.action"
-		method="post">
-		<input type="hidden" name="standard.standardId" value="1353320112255">
+		action="selLikeSalary_standardsy"
+		method="post" id="cform">
+		<input type="hidden" name="Keyword" value="${Keyword}">
+		<input name="startDate" value="${startDate}" type="hidden"/>
+		<input name="endDate" value="${endDate}" type="hidden"/>
+		<input name="standard_id" value="${standard_id}" type="hidden"/>
+		<input name="start" value="${start}" type="hidden" id="starty"/>
 
 			<div id="d"></div>
 			<div id="parent">
@@ -115,9 +119,8 @@
 				<tr>
 					<td>
 						<div align="right">
-							<input type="button" value="打印" id="button1"
-								class="BUTTON_STYLE1"> <input type="button" value="返回"
-								onclick="javascript:windows.location='/HR_Fist/salaryCriterion/salaryCriterionAction!querysalarystandardByPage?page.startPage=1'"
+							 <input type="button" value="返回"
+								onclick="javascript:cform()"
 								class="BUTTON_STYLE1">
 						</div>
 					</td>
@@ -169,7 +172,7 @@
 						<td><input type="text" id="salary${vs.count}"
 							value="${ci.money}" name="x_${ci.pbc_id}_${ci.attribute_name }"
 							onkeyup="countMoney('${cisize }','salary${vs.count}')"
-							class="INPUT_STYLE2"></td>
+							class="INPUT_STYLE2" readonly="readonly"></td>
 						<td colspan="3">&nbsp;</td>
 					</tr>
 				</c:forEach>
@@ -178,5 +181,11 @@
 
 			</table>
 	</form>
+	<script type="text/javascript">
+	function cform(){
+		var myform = document.getElementById("cform");
+		myform.submit();
+	 }
+	</script>
 </body>
 </html>

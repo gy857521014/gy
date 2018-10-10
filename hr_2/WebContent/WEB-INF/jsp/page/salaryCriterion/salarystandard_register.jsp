@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/table.css" type="text/css" />
 <script type="text/javascript" src="../javascript/comm/comm.js"></script>
 <script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
+
 </head>
 <body>
 	<form method="post" action="addSalary_standard">
@@ -19,7 +21,7 @@
 			<tr>
 				<td align="right"><input type="button" value="提 交"
 					onclick="check()" class="BUTTON_STYLE1"> <input
-					type="reset" value="返 回" class="BUTTON_STYLE1"></td>
+					type="reset" value="重置" class="BUTTON_STYLE1"></td>
 			</tr>
 		</table>
 		<table id="stable" width="100%" border="1" cellpadding=0 cellspacing=1
@@ -31,7 +33,8 @@
 					readonly="readonly" class="INPUT_STYLE2"></td>
 				<td width="83" class="TD_STYLE1">薪酬标准名称</td>
 				<td width="171" class="TD_STYLE2"><input type="text"
-					name="standard_name" id="standardName" class="INPUT_STYLE2">
+					name="standard_name" id="standardName" class="INPUT_STYLE2" 
+					onkeydown="if(event.keyCode==32) return false">
 				</td>
 				<td width="170" class="TD_STYLE1">薪酬总额</td>
 				<td width="138" class="TD_STYLE2"><input type="text"
@@ -43,7 +46,8 @@
 			<tr>
 				<td class="TD_STYLE1">制定人</td>
 				<td class="TD_STYLE2"><input type="text" id="designer"
-					name="designer" class="INPUT_STYLE2"></td>
+					name="designer" class="INPUT_STYLE2" value="${loginUser.user_true_name}" 
+					onkeydown="if(event.keyCode==32) return false"></td>
 				<td class="TD_STYLE1">登记人</td>
 				<td class="TD_STYLE2"><input type="text"
 					name="register" value="${loginUser.user_true_name}" readonly="readonly"
@@ -79,7 +83,8 @@
 					</td>
 					<td>
 						<input type="text" id="salary${vs.count}" value="0.00" name="x_${xm.pbc_id }_${xm.attribute_name }" 
-						onkeyup="countMoney('${xmsize }','salary${vs.count}')" class="INPUT_STYLE2">
+						onkeyup="countMoney('${xmsize }','salary${vs.count}')" class="INPUT_STYLE2" 
+						onkeydown="if(event.keyCode==32) return false">
 					</td>
 					<td colspan="3">&nbsp;</td>
 				</tr>
@@ -90,17 +95,18 @@
 		</table>
 		<p>&nbsp;</p>
 	</form>
+	
 	<script type="text/javascript">
 		function check() {
 
 			var designer = document.getElementById("designer");
 			var standardName = document.getElementById("standardName");
 			if (designer.value.length <= 0) {
-				alert("制定人不可为空!!!");
+				$.messager.show("错误提示", "制定人不可为空!!!请重新输入", 2000);
 				return;
 			}
 			if (standardName.value.length <= 0) {
-				alert("薪酬标准名称不可为空!!!");
+				$.messager.show("错误提示", "薪酬标准名称不可为空!!!请重新输入", 2000);
 				return;
 			}
 
@@ -110,7 +116,7 @@
 
 			if (isNaN(document.getElementById(o).value)
 					|| document.getElementById(o).value < 0) {
-				alert("金额填写错误!");
+				$.messager.show("错误提示", "金额填写错误!请重新输入", 2000);
 				document.getElementById(o).value = "0.00";
 				return;
 			}

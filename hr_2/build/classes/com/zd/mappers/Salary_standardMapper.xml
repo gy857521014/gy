@@ -26,7 +26,7 @@
 <!-- 模糊查询 -->
 <select id="selLikeSalary_standard" parameterType="map" resultMap="Salary_standardMapper">
 	select * from salary_standard 
-	where check_status=2  
+	where check_status=1  
 		<if test="standard_id!=null and standard_id!=''">
 			and standard_id like '%${standard_id}%'
 		</if>
@@ -48,7 +48,7 @@
 <select id="selLikeSalary_standardli" parameterType="map" resultType="int">
 	SELECT COUNT(*) FROM salary_standard
 	<where>
-		check_status=2
+		check_status=1
 		<if test="standard_id!=null and standard_id!=''">
 			and standard_id like '%${standard_id}%'
 		</if>

@@ -7,11 +7,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>角色管理</title>
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="../css/table.css" type="text/css"/>
 		<script type="text/javascript">
 			function doDelete(id) {
 				if (confirm("确定删除此角色吗？")) {
-					location.href = "success.html?sysRole.roleId=" + id;
+					location.href = "user_roleDel?uroleid=" + id;
 				}
 			}
 		</script>
@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td align="right">
-					<input type="button" value="添加角色" class="BUTTON_STYLE1" onclick="location.href='right_add.html'">
+					<input type="button" value="添加角色" class="BUTTON_STYLE1" onclick="location.href='toright_add'">
 				</td>
 			</tr>
 		</table>
@@ -54,147 +54,33 @@
 					操作
 				</td>
 			</tr>
-			
-				<tr class="TR_STYLE2">
+			<c:forEach items="${urList }" var="us">
+				<tr class="TR_STYLE2" id="${us.uroleid }">
 					<td class="TD_STYLE2">
-						1
+						${us.uroleid }
 					</td>
 					<td class="TD_STYLE2">
-						人事专员
+						${us.urole_name }
 					</td>
 					<td class="TD_STYLE2">
-						
+						${us.urole_exp }
 					</td>
+					<c:if test="${us.urole_state == 1 }">
+						<td class="TD_STYLE2">
+							是
+						</td>
+					</c:if>
+					<c:if test="${us.urole_state == 2 }">
+						<td class="TD_STYLE2">
+							否
+						</td>
+					</c:if>
 					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						人事经理
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(2)"/>
+						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_roleByid?uroleid='+${us.uroleid }"/>
+						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${us.uroleid })"/>
 					</td>
 				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						3
-					</td>
-					<td class="TD_STYLE2">
-						薪酬专员
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(3)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						4
-					</td>
-					<td class="TD_STYLE2">
-						薪酬经理
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(4)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						5
-					</td>
-					<td class="TD_STYLE2">
-						招聘专员
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(5)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						6
-					</td>
-					<td class="TD_STYLE2">
-						招聘经理
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						是
-						
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(6)"/>
-					</td>
-				</tr>
-			
-				<tr class="TR_STYLE2">
-					<td class="TD_STYLE2">
-						7
-					</td>
-					<td class="TD_STYLE2">
-						应聘者
-					</td>
-					<td class="TD_STYLE2">
-						
-					</td>
-					<td class="TD_STYLE2">
-						
-						否
-					</td>
-					<td class="TD_STYLE2">
-						<img src="../../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='right_list_information.html'"/>
-						<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(7)"/>
-					</td>
-				</tr>
-			
+			</c:forEach>
 		</table>
 		<p style="text-align:center;">
 			

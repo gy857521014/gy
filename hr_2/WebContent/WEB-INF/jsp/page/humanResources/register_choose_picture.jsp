@@ -25,7 +25,6 @@
 						<input type="file" class="FILE_STYLE1" name="file1" width="100%"/>
 					</td>
 					<td width="41%" align="right">
-						<input type="button" value="上传附件" class="BUTTON_STYLE1" onclick="location.href='register_choose_attachment.html'"/>
 						<input type="submit" value="完成" class="BUTTON_STYLE1"/>
 					</td>
 				</tr>

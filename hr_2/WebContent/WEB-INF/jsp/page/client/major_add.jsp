@@ -8,19 +8,16 @@
 		<link rel="stylesheet"href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript"src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 		function check(){
 			if(document.getElementById("mkid").value=='0'){
-				$("#errorSpan").html("<font color='red'>请选择职位分类名称</font>");
+				$.messager.show("消息提示", "请选择职位分类名称！", 2000);
 				return;
-			}else{
-				$("#errorSpan").html("");
 			}
 			if(document.getElementById("mname").value==''){
-				$("#errorSpanm").html("<font color='red'>请输入职位名称</font>");
+				$.messager.show("消息提示", "请输入职位名称！", 2000);
 				return;
-			}else{
-				$("#errorSpanm").html("");
 			}
 			$("#document").submit();
 		}
@@ -59,7 +56,6 @@
 							<option value="${c.major_kind_id }">${c.major_kind_name }</option>
 						</c:forEach>
 					</select>
-					<span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +72,6 @@
 					</td>
 					<td class="TD_STYLE2" width="81%">
 						<input id="mname" type="text" class="INPUT_STYLE1"name="major_name" />
-						<span id="errorSpanm"></span>
 					</td>
 				</tr>
 			</table>

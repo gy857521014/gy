@@ -1,17 +1,19 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="../css/table.css" type="text/css"/>
 	</head>
 
 	<body>
-		<form action="recovery_list.html" method="post">
+		<form action="delete_list_key" method="post">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案恢复查询</font>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案删除查询</font>
 					</td>
 				</tr>
 				<tr>
@@ -30,7 +32,7 @@
 						请输入关键字
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<input type="text" name="utilBean.primarKey" class="INPUT_STYLE1">
+						<input type="text" name="primarKey" class="INPUT_STYLE1">
 					</td>
 				</tr>
 			</table>

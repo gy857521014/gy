@@ -22,10 +22,71 @@
 		</script>
 		<script type="text/javascript" src="../javascript/human_input_check.js">
 		</script>
+<script type="text/javascript">
+function pd(){
+						//职称
+						if($("#majorinName").val() != 0){
+							//姓名
+							if($("#humanName1").val() != null && $("#humanName1").val().trim() != ""){
+								//email
+								if($("#humanEmail").val() != null && $("#humanEmail").val().trim() != ""){
+									//电话
+									if($("#humanTelephone").val() != null && $("#humanTelephone").val().trim() != ""){
+										//QQ
+										if($("#humanQq").val() != null && $("#humanQq").val().trim() != ""){
+											//手机
+											if($("#humanMobilephone").val() != null && $("#humanMobilephone").val().trim() != ""){
+												//住址
+												if($("#humanaddress").val() != null && $("#humanaddress").val().trim() != ""){
+													//邮编
+													if($("#humanpostcode").val() != null && $("#humanpostcode").val().trim() != ""){
+														//出生地
+														if($("#humanbirthplace").val() != null && $("#humanbirthplace").val().trim() != ""){
+															//生日
+															if($("#birthday").val() != null && $("#birthday").val().trim() != ""){
+																//社会保障号码
+																if($("#humansocietysecurityid").val() != null && $("#humansocietysecurityid").val().trim() != ""){
+																	//年龄
+																	if($("#humanAge").val() != null && $("#humanAge").val().trim() != ""){
+																		//开户行
+																		if($("#humanbank").val() != null && $("#humanbank").val().trim() != ""){
+																			//银行账户
+																			if($("#humanaccount").val() != null && $("#humanaccount").val().trim() != ""){
+																				$("#tijiao").submit();
+																			}else
+																				$.messager.show("消息提示", "请填写你的银行账户", 2000);
+																		}else
+																			$.messager.show("消息提示", "请填写你的开户行", 2000);
+																	}else
+																		$.messager.show("消息提示", "请填写你的年龄", 2000);
+																}else
+																	$.messager.show("消息提示", "请填写你的社会保障号码", 2000);
+															}else
+																$.messager.show("消息提示", "请填写你的生日", 2000);
+														}else
+															$.messager.show("消息提示", "请填写你的出生地", 2000);
+													}else
+														$.messager.show("消息提示", "请填写你的邮编", 2000);
+												}else
+													$.messager.show("消息提示", "请填写你的住址", 2000);
+											}else
+												$.messager.show("消息提示", "请填写你的手机", 2000);
+										}else
+											$.messager.show("消息提示", "请填写你的QQ", 2000);
+									}else
+										$.messager.show("消息提示", "请填写你的电话，如：123-12345678", 2000);
+								}else
+									$.messager.show("消息提示", "请填写你的电子邮件", 2000);
+							}else
+								$.messager.show("消息提示", "请填写你的姓名", 2000);
+						}else
+							$.messager.show("消息提示", "请选择你的职称", 2000);
+}
+</script>
 	</head>
 	<body>
 
-		<form action="humman_chack_update" method="post">
+		<form action="humman_chack_update" method="post" id="tijiao">
 		<input type="hidden" name="human_id" value="${humman_file.human_id }"/>
 			<table width="100%">
 				<tr>
@@ -35,7 +96,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="复核通过" class="BUTTON_STYLE1"/>
+						<input type="button" value="复核通过" onclick="pd()" class="BUTTON_STYLE1"/>
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
@@ -111,7 +172,7 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="human_name" value="${humman_file.human_name }"
+						<input type="text" id="humanName1" name="human_name" value="${humman_file.human_name }"
 							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
@@ -166,14 +227,14 @@
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="human_address" value="${humman_file.human_address }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanaddress">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_postcode" value="${humman_file.human_postcode }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanpostcode">
 					</td>
 				</tr>
 				<tr>
@@ -197,7 +258,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_birthplace" value="${humman_file.human_birthplace }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanbirthplace">
 					</td>
 					<td class="TD_STYLE1">
 						生日
@@ -265,7 +326,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_society_security_id" value="${humman_file.human_society_security_id }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humansocietysecurityid">
 					</td>
 				</tr>
 				<tr>
@@ -343,14 +404,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_bank" value="${humman_file.human_bank }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanbank">
 					</td>
 					<td class="TD_STYLE1">
 						银行帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
-							value="${humman_file.human_account }" class="INPUT_STYLE2">
+							value="${humman_file.human_account }" class="INPUT_STYLE2" id="humanaccount">
 					</td>
 					<td class="TD_STYLE1">
 						复核人
@@ -404,14 +465,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td class="TD_STYLE1">
-						档案附件
-					</td>
-					<td colspan="7" class="TD_STYLE2">
-						<a href="javascript:winopenm('query.jsp?filename=')">a.doc</a>
 					</td>
 				</tr>
 				<tr>

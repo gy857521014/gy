@@ -87,7 +87,8 @@
 					</c:forEach>
 						</td>
 						<td>
-							<a href="toregister_commit">登 记</a>
+						
+							<a href="javascript:submitMyForm('<c:forEach items='${eachMap }' var='m'><c:if test="${m.key == 'fname' }">${m.value}</c:if></c:forEach>')">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -95,6 +96,17 @@
 			<p>
 				&nbsp;
 			</p>
+			
+			<form action="toregister_commit" method="post" id="myfrom">
+				<input type="hidden" name="fname" id="fnameid"/>
+			</form>
+			
+			<script type="text/javascript">
+				function submitMyForm(fname){
+					document.getElementById("fnameid").value = fname;
+					$("#myfrom").submit();
+				}
+			</script>
 		 
 	</body>
 </html>
