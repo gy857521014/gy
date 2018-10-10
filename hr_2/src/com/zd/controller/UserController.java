@@ -59,7 +59,6 @@ public class UserController {
 					session.setAttribute("loginUser", user);
 					return "page/index";
 				}else {
-					System.out.println("µÇÂ½Ê§°Ü");
 					return "redirect:tologin";
 				}
 			}
