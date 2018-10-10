@@ -41,7 +41,7 @@
 				</tr>
 			 
 			</table>
-			当前可变更是职位发布总数：2例
+			当前可变更是职位发布总数：例
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -81,7 +81,7 @@
 								${rlist.second_kind_name }
 							</c:if>
 							
-							<c:if test="${empty rlist.third_kind_name or empty rlist.second_kind_name}">
+							<c:if test="${empty rlist.third_kind_name and empty rlist.second_kind_name}">
 								${rlist.first_kind_name}
 							</c:if>
 						</td>
@@ -100,15 +100,15 @@
 						</c:if>
 						
 						<c:if test="${rlist.state==2 }">
-							<a href="selidrelease2?mre_id=${rlist.mre_id}">已提交申请</a>
+							<a href="#">已提交申请</a>
 						</c:if>
 						
 						<c:if test="${rlist.state==3 }">
-							<a href="selidrelease2?mre_id=${rlist.mre_id}">申请成功</a>
+							<a href="#">申请成功</a>
 						</c:if>
 						
 						<c:if test="${rlist.state==4 }">
-							<a href="selidrelease2?mre_id=${rlist.mre_id}">申请失败</a>
+							<a href="#">申请失败</a>
 						</c:if>
 						</td>
 						 

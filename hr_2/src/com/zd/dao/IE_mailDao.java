@@ -21,4 +21,9 @@ public interface IE_mailDao {
 	//添加
 		@Insert("insert into e_mail values(null,#{mhead},#{mcontent},#{mtype})")
 		public void adde(e_mail e_mail);
+		
+		//查询单条
+		@Select("select * from e_mail where mid=#{id}")
+		@ResultMap("email")
+		public e_mail emailselid(int id);
 }

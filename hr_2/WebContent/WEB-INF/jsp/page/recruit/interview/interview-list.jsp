@@ -1,35 +1,38 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-list.jsp' starting page</title>
 		<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="../css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 	
 </script>
      </head>
@@ -81,37 +84,42 @@
 				</tr>
 				
 				
-				
-					<tr>
-						<td class="TD_STYLE2">
-							542
-						</td>
-						<td class="TD_STYLE2">
-							&#24352;&#39122;
-						</td>
-						<td class="TD_STYLE2">
-						&#30007;
-						</td>
-						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
-						</td>
-						<td class="TD_STYLE2">
-						&#31243;&#24207;&#21592;
-						</td>
-						<td class="TD_STYLE2">
-						 84802802</td>
-						<td class="TD_STYLE2">
-							 待面试
-						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toInterviewRegister?id=542">登记</a>
-						</td>
-					</tr>
+				<c:forEach items="${relist }" var="relist">
+					<c:if test="${relist.interview_status ==1 }">
+						<tr>
+							<td class="TD_STYLE2">
+								${relist.res_id }
+							</td>
+							<td class="TD_STYLE2">
+								${relist.human_name }
+							</td>
+							<td class="TD_STYLE2">
+							${relist.human_sex }
+							</td>
+							<td class="TD_STYLE2">
+							${relist.human_major_kind_name }
+							</td>
+							<td class="TD_STYLE2">
+							${relist.human_major_name }
+							</td>
+							<td class="TD_STYLE2">
+							 ${relist.human_telephone }</td>
+							 <c:if test="${relist.interview_status ==1 }">
+							<td class="TD_STYLE2">
+								 待面试
+							</td>
+							</c:if>
+							<td class="TD_STYLE2">
+								<a href="dengji?id=${relist.res_id }">登记</a>
+							</td>
+						</tr>
+						</c:if>
+					</c:forEach>
 				
 			</table>
 				<p>&nbsp;&nbsp;总数：1 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
@@ -139,5 +147,5 @@
 	     document.fm.submit();
 	 	}
 		</script>
-	</body>
+</body>
 </html>

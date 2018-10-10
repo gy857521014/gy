@@ -33,7 +33,7 @@ public interface IEngage_major_releaseDao {
 	@Delete("delete from Engage_major_release where mre_id=#{id}")
 	public void deleterelease(int id);
 	
-	//添加
+	//添加1全部
 	@Insert("insert into Engage_major_release values(null,#{first_kind_id}"
 			+ ",#{first_kind_name},#{second_kind_id},#{second_kind_name},"
 			+ "#{third_kind_id},#{third_kind_name},#{major_kind_id},#{major_kind_name},"
@@ -41,6 +41,24 @@ public interface IEngage_major_releaseDao {
 			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},"
 			+ "#{engage_required},1)")
 	public void addrelease(Engage_major_release release);
+	
+	//添加2只添加一级 ignore
+	@Insert("insert into Engage_major_release values(null,#{first_kind_id}"
+			+ ",#{first_kind_name},null,null,"
+			+ "null,null,#{major_kind_id},#{major_kind_name},"
+			+ "#{major_id},#{major_name},#{human_amount},#{engage_type},"
+			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},"
+			+ "#{engage_required},1)")
+	public void addrelease2(Engage_major_release release);
+		
+	//添加3只添加一二级机构
+	@Insert("insert into Engage_major_release values(null,#{first_kind_id}"
+			+ ",#{first_kind_name},#{second_kind_id},#{second_kind_name},"
+			+ "null,null,#{major_kind_id},#{major_kind_name},"
+			+ "#{major_id},#{major_name},#{human_amount},#{engage_type},"
+			+ "#{deadline},#{register},null,#{regist_time},null,#{major_describe},"
+			+ "#{engage_required},1)")
+	public void addrelease3(Engage_major_release release);
 	
 	
 	//修改机构,职位
@@ -54,4 +72,5 @@ public interface IEngage_major_releaseDao {
 			+ "changer=#{changer},change_time=now(),major_describe=#{major_describe},"
 			+ "engage_required=#{engage_required},deadline=#{deadline} where mre_id=#{mre_id}")
 	public void updatejigou(Engage_major_release release);
+	
 }
