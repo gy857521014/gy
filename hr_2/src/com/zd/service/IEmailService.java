@@ -12,4 +12,5 @@ public interface IEmailService {
 	//Ìí¼Ó	
 	public void adde(e_mail e_mail);
 	
+	public e_mail emailselid(int id);
 }

@@ -16,6 +16,8 @@
 		<typeAlias type="com.zd.entity.Config_major_kind" alias="major_king"/>
 		<typeAlias type="com.zd.entity.Config_major" alias="major"/>
 		<typeAlias type="com.zd.entity.Engage_major_release" alias="release"/>
+		<typeAlias type="com.zd.entity.Engage_resume" alias="resume"/>
+		<typeAlias type="com.zd.entity.Engage_interview" alias="interview"/>
 		<!-- 三级机构映射 -->
 		<typeAlias type="com.zd.entity.Config_file_third_kind" alias="cftkentity"/>
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
@@ -36,6 +38,8 @@
 		<mapper resource="com/zd/mappers/Config_major_kindMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_majorMapper.xml"/>
 		<mapper resource="com/zd/mappers/Engage_major_releaseMapper.xml"/>
+		<mapper resource="com/zd/mappers/Engage_resumeMapper.xml"/>
+		<mapper resource="com/zd/mappers/Engage_interviewMapper.xml"/>
 		<mapper resource="com/zd/mappers/Config_file_third_kindMapper.xml" />
 		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
 		<!-- 人力资源表映射 -->

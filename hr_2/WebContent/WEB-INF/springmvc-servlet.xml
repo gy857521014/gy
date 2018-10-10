@@ -48,4 +48,27 @@
 	<!-- 配置springmvc文件上传解析器 -->
 	<!--  -->
 	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"></bean>
+
+	
+<!-- 配置springmvc发送电子邮件的发送者对象 -->
+    <bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="javaMailSender">
+	<!-- 指定发送电子邮箱的主机号 -->
+	<property value="smtp.qq.com" name="host"/>
+	<!-- 指定发送电子邮件的相关属性 -->
+	<property name="javaMailProperties">
+	<props>
+	<!-- 是否要进行身份验证，通常写true -->
+	<prop key="mail.smtp.auth">true</prop>
+	<!-- 连接服务器超时时间，单位为毫秒 -->
+	<prop key="mail.smtp.timeout">5000</prop>
+	</props>
+	</property>
+	<!-- 指定用户名-发件人的电子邮件 -->
+	<property value="2644736006@qq.com" name="username"/>
+	<!-- 指定密码-就是发件人的授权码 -->
+	<property value="gstjzprujjkgdiff" name="password"/>
+	<!-- 指定字符编码 -->
+	<property value="UTF-8" name="defaultEncoding"/>
+</bean>
+
 </beans>

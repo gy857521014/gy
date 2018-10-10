@@ -19,6 +19,8 @@ public interface IEngage_major_releaseService {
 	
 	//ÃÌº”’–∆∏–≈œ¢
 	public void addrelease(Engage_major_release release);
+	public void addrelease2(Engage_major_release release);
+	public void addrelease3(Engage_major_release release);
 	
 	public void updatejigou(Engage_major_release release);
 }
