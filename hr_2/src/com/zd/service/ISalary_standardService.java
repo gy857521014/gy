@@ -6,6 +6,7 @@ import java.util.Map;
 import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 
 public interface ISalary_standardService {
 	
@@ -39,4 +40,7 @@ public interface ISalary_standardService {
 	public void updSalary_standard_details(Map map);
 	//根据项目id修改项目金额(变更)
 	public void updcompensation_itembg(Map map);
+	//单条查询薪酬标准单详细信息
+	public Salary_standard_details sonedelSalary_standard_details(Map map);
+	
 }
