@@ -46,17 +46,17 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/resume/register.html" target="mainFrame" style="color:black;">简历登记</a>
+														<a href="seltype" target="mainFrame" style="color:black;">简历登记</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/resume/resume-choose.html" target="mainFrame" style="color:black;">简历筛选</a>
+														<a href="shaixuan" target="mainFrame" style="color:black;">简历筛选</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/resume/valid-resume.html" target="mainFrame" style="color:black;">有效简历查询</a>
+														<a href="shaixuan2" target="mainFrame" style="color:black;">有效简历查询</a>
 													</span>
 												</li>
 									</ul>
@@ -68,12 +68,12 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/interview/interview-list.html" target="mainFrame" style="color:black;">面试结果登记</a>
+														<a href="selmianshi" target="mainFrame" style="color:black;">面试结果登记</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/interview/sift-list.html" target="mainFrame" style="color:black;">面试筛选</a>
+														<a href="mshisel" target="mainFrame" style="color:black;">面试筛选</a>
 													</span>
 												</li>
 									</ul>
@@ -85,17 +85,17 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/employ/register_list.html" target="mainFrame" style="color:black;">录用申请</a>
+														<a href="Engage_interview_query" target="mainFrame" style="color:black;">录用申请</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/employ/check_list.html" target="mainFrame" style="color:black;">录用审批</a>
+														<a href="check_list_query" target="mainFrame" style="color:black;">录用审批</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/employ/list.html" target="mainFrame" style="color:black;">录用查询</a>
+														<a href="list_query" target="mainFrame" style="color:black;">录用查询</a>
 													</span>
 												</li>
 									</ul>
@@ -195,26 +195,6 @@
 					</ul>
 				</li>
 				<li>
-					<span>调动管理</span>
-					<ul>
-								<li>
-									<span>
-										<a href="transfer/register_locate.html" target="mainFrame" style="color:black;">调动登记</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="transfer/check_list.html" target="mainFrame" style="color:black;">调动审核</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="transfer/locate.html" target="mainFrame" style="color:black;">调动查询</a>
-									</span>
-								</li>
-					</ul>
-				</li>
-				<li>
 					<span>客户化设置</span>
 					<ul>
 								<li state="closed">
@@ -284,26 +264,6 @@
 									</ul>
 								</li>
 					</ul>
-				</li>
-				<li>
-					<span>标准数据报表</span>
-					<ul>
-								<li>
-									<span>
-											<a href="criterionData/excel_locate.html" target="mainFrame" style="color:black;">Excel标准数据报表</a>
-									</span>
-								</li>
-								<li>
-									<span>
-											<a href="criterionData/pdf_locate.html" target="mainFrame" style="color:black;">Pdf标准数据报表</a>
-									</span>
-								</li>
-								<li>
-									<span>
-											<a href="criterionData/xml_locate.html" target="mainFrame" style="color:black;">Xml标准数据报表</a>
-									</span>
-								</li>
-						</ul>
 				</li>
 				<li>
 						<span>权限管理</span>
