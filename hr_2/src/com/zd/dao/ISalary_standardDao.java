@@ -3,6 +3,7 @@ package com.zd.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
@@ -52,12 +53,18 @@ public interface ISalary_standardDao {
 	//模糊查询薪酬标准例
 	public int selLikeSalary_standardli(Map map);
 	//根据薪酬编号修改薪酬标准(变更)
-	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},salary_sum=#{salary_sum},changer=#{changer},change_time=#{change_time},remark=#{remark} WHERE standard_id=#{standard_id}")
+	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},salary_sum=#{salary_sum},changer=#{changer},change_time=#{change_time},remark=#{remark},check_status=2 WHERE standard_id=#{standard_id}")
 	public void updSalary_standardbg(Salary_standard ss);
-	//修改薪酬标准单详细信息(变更)
+	//修改薪酬标准单详细信息(变更)**
 	@Update("UPDATE salary_standard_details SET standard_name=#{standard_name},salary=#{salary} where standard_id=#{standard_id} and item_id=#{item_id}")
 	public void updSalary_standard_details(Map map);
 	//根据项目id修改项目金额(变更)
 	@Update("UPDATE compensation_item set money=#{money} where pbc_id=#{pbc_id} and standard_id=#{standard_id}")
 	public void updcompensation_itembg(Map map);
+	//删除薪酬标准单详细信息(变更)**
+	@Delete("delete * from salary_standard_details where standard_id=#{standard_id}")
+	public void delSalary_standard_details(Map map);
+	//单条查询薪酬标准单详细信息
+	@Select("select * from Salary_standard_details where standard_id=#{standard_id} and item_id=#{item_id}")
+	public Salary_standard_details sonedelSalary_standard_details(Map map);
 }

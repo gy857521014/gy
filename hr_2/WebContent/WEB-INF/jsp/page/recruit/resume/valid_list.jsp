@@ -1,29 +1,32 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'valid-list.jsp' starting page</title>
 		 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="../css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 		</script>
      </head>
 
@@ -71,100 +74,63 @@
 					<td width="10%" class="TD_STYLE1">
 						面试状态
 					</td>
+					<td width="10%" class="TD_STYLE1">
+						发送邮箱
+					</td>
 				</tr>
 				
-				
+				<c:forEach items="${relist }" var="list">
 					<tr>
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=542">
-								542</a>
+							<a href="selresumeid?res_id=${list.res_id }">
+								${list.res_id}</a>
 						</td>
 						<td class="TD_STYLE2">
-							&#24352;&#39122;
+							${list.human_name}
 						</td>
 						<td class="TD_STYLE2">
-							&#30007;
+							${list.human_sex}
 						</td>
 						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
+						${list.human_major_kind_name}
 						</td>
 						<td class="TD_STYLE2">
-						&#31243;&#24207;&#21592;
+						${list.human_major_name}
 						</td>
 						<td class="TD_STYLE2">
-						84802802
+						${list.human_telephone}
 						</td>
 						<td class="TD_STYLE2">
-							
-							通过
+							<c:if test="${list.check_status==1 }">
+								未通过
+							</c:if>
+							<c:if test="${list.check_status==2 }">
+								已通过
+							</c:if>
 						</td>
-						<td class="TD_STYLE2">
-							 待面试 
-						</td>
+						
+							 <c:if test="${list.check_status==1 }">
+							 	<td class="TD_STYLE2">
+									不可以面试
+								</td>
+							</c:if>
+							<c:if test="${list.check_status==2 }">
+								<td class="TD_STYLE2">
+									可以面试
+								</td>
+								<td class="TD_STYLE2">
+									<a href="selemail?id=${list.res_id }">${list.human_email }</a>
+								</td>								
+							</c:if>
+						
 					</tr>
+					</c:forEach>
 					
-					<tr>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=532">
-								532</a>
-						</td>
-						<td class="TD_STYLE2">
-							&#24352;&#19977;
-						</td>
-						<td class="TD_STYLE2">
-							&#30007;
-						</td>
-						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
-						</td>
-						<td class="TD_STYLE2">
-						&#39033;&#30446;&#32463;&#29702;
-						</td>
-						<td class="TD_STYLE2">
-						18493728493
-						</td>
-						<td class="TD_STYLE2">
-							
-							通过
-						</td>
-						<td class="TD_STYLE2">
-							 待面试 
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=533">
-								533</a>
-						</td>
-						<td class="TD_STYLE2">
-							&#26446;&#22235;
-						</td>
-						<td class="TD_STYLE2">
-							&#22899;
-						</td>
-						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
-						</td>
-						<td class="TD_STYLE2">
-						&#31243;&#24207;&#21592;
-						</td>
-						<td class="TD_STYLE2">
-						13782749375
-						</td>
-						<td class="TD_STYLE2">
-							
-							通过
-						</td>
-						<td class="TD_STYLE2">
-							 待面试 
-						</td>
-					</tr>
 					
 			</table>
 			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  

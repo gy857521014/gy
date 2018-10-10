@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 <title>无标题文档</title>
 
 <style type="text/css">
@@ -101,7 +103,7 @@
 					.getElementById("page").value-1;
 					
 				} else {
-					alert("您的输入有误");
+					$.messager.show("错误提示", "您的输入页数有误", 2000);
 					document.getElementById("page").value = document
 							.getElementById("startpage").value;
 					return;
@@ -121,15 +123,15 @@
 				//document.forms[0].submit();
 				var myform = document.getElementById("queryForm");
 				if(${li}==0){
-					alert("当前没有结果");
+					$.messager.show("错误提示", "当前没有结果", 2000);
 					return false;
 				}else{
 					if(startsize==${total}){
-						alert("已经是末页");
+						$.messager.show("错误提示", "已经是末页", 2000);
 						return;
 					}
 					if(startsize<0){
-						alert("已经是首页");
+						$.messager.show("错误提示", "已经是首页", 2000);
 						return;
 					}
 				}

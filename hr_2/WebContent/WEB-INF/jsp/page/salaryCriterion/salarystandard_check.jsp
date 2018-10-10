@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 <title>无标题文档</title>
 
 </head>
@@ -42,7 +44,7 @@
 				<td width="12%" class="TD_STYLE1">薪酬标准名称</td>
 				<td width="11%" class="TD_STYLE2"><input type="text"
 					name="standard_name" id="standardName" value="${ssd.standard_name }"
-					class="INPUT_STYLE2"></td>
+					class="INPUT_STYLE2" onkeydown="if(event.keyCode==32) return false"></td>
 				<td width="11%" class="TD_STYLE1">薪酬总额</td>
 				<td width="17%" class="TD_STYLE2"><input type="text"
 					name="salary_sum" value="${ssd.salary_sum }" id="sumSalary" readonly="readonly"
@@ -54,10 +56,11 @@
 				<td class="TD_STYLE1">制定人</td>
 				<td class="TD_STYLE2"><input type="text"
 					name="designer" id="designer" value="${ssd.designer}"
-					class="INPUT_STYLE2"></td>
+					class="INPUT_STYLE2" onkeydown="if(event.keyCode==32) return false"></td>
 				<td class="TD_STYLE1">复核人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="checker" value="" class="INPUT_STYLE2" id="checker">
+					name="checker" value="${loginUser.user_true_name}" class="INPUT_STYLE2" id="checker"
+					onkeydown="if(event.keyCode==32) return false">
 				</td>
 				<td class="TD_STYLE1">复核时间</td>
 				<td class="TD_STYLE2"><input type="text"
@@ -90,7 +93,7 @@
 					type="hidden" name="details[5].itemName" value="${ci.attribute_name }" />${ci.attribute_name }</td>
 				<td><input type="text" id="salary${vs.count}" value="${ci.money}"
 					name="x_${ci.pbc_id}_${ci.attribute_name }" onkeyup="countMoney('${cisize }','salary${vs.count}')"
-					class="INPUT_STYLE2"></td>
+					class="INPUT_STYLE2" onkeydown="if(event.keyCode==32) return false"></td>
 				<td colspan="3">&nbsp;</td>
 			</tr>
 			</c:forEach>
@@ -111,15 +114,15 @@
 			var standardName = document.getElementById("standardName");
 			var checker = document.getElementById("checker");
 			if (designer.value.length <= 0) {
-				alert("制定人不可为空!!!");
+				$.messager.show("错误提示", "制定人不可为空!!!请重新输入", 2000);
 				return;
 			}
 			if (standardName.value.length <= 0) {
-				alert("薪酬标准名称不可为空!!!");
+				$.messager.show("错误提示", "薪酬标准名称不可为空!!!请重新输入", 2000);
 				return;
 			}
 			if (checker.value.length <= 0) {
-				alert("复核人不可为空!!!");
+				$.messager.show("错误提示", "复核人不可为空!!!请重新输入", 2000);
 				return;
 			}
 			document.forms[0].submit();
@@ -128,7 +131,7 @@
 
 			if (isNaN(document.getElementById(o).value)
 					|| document.getElementById(o).value < 0) {
-				alert("金额填写错误!");
+				$.messager.show("错误提示", "金额填写错误!请重新输入", 2000);
 				document.getElementById(o).value = "0.00";
 				return;
 			}

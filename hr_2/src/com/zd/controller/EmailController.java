@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zd.entity.Config_public_char;
 import com.zd.entity.e_mail;
 import com.zd.service.IEmailService;
 
@@ -71,5 +71,12 @@ public class EmailController {
 					logger.error("Ìí¼Ó´íÎó",e);
 				}
 			return "redirect:selm";
+		}
+		
+		@RequestMapping("/page/emailselid")
+		@ResponseBody
+		private e_mail emailselid(int id){
+			e_mail email = iemservice.emailselid(id);
+			return email;
 		}
 }

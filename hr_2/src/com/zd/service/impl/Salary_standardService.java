@@ -10,6 +10,7 @@ import com.zd.dao.ISalary_standardDao;
 import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.ISalary_standardService;
 
 @Service
@@ -96,5 +97,14 @@ public class Salary_standardService implements ISalary_standardService{
 		Salary_standardDao.updcompensation_itembg(map);
 		
 	}
+
+	//单条查询薪酬标准单详细信息
+	public Salary_standard_details sonedelSalary_standard_details(Map map) {
+		return Salary_standardDao.sonedelSalary_standard_details(map);
+	}
+
+	
+
+	
 	
 }
