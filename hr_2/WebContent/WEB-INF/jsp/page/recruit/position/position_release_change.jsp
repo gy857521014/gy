@@ -222,7 +222,13 @@
 						变更人
 					</td>
 					<td  class="TD_STYLE2">
+						<c:if test="${release.changer==null }">
+						 <input type="text" id="bgr" name="changer" value="${loginUser.user_true_name }" class="INPUT_STYLE2" readonly>
+						</c:if>
+						
+						<c:if test="${release.changer!=null }">
 						 <input type="text" id="bgr" name="changer" value="${release.changer }" class="INPUT_STYLE2" readonly>
+						</c:if>
 					</td>
 					<td class="TD_STYLE1">
 						变更时间

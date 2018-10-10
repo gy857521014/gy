@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zd.dao.IEngage_resumeDao">
+<resultMap type="resume" id="resumeMapper">
+		<result column="res_id" property="res_id"/>
+		<result column="human_name" property="human_name"/>
+		<result column="engage_type" property="engage_type"/>
+		<result column="human_address" property="human_address"/>
+		<result column="human_postcode" property="human_postcode"/>
+		<result column="human_major_kind_id" property="human_major_kind_id"/>
+		<result column="human_major_kind_name" property="human_major_kind_name"/>
+		<result column="human_major_id" property="human_major_id"/>
+		<result column="human_major_name" property="human_major_name"/>
+		<result column="human_telephone" property="human_telephone"/>
+		<result column="human_homephone" property="human_homephone"/>
+		<result column="human_mobilephone" property="human_mobilephone"/>
+		<result column="human_email" property="human_email"/>
+		<result column="human_hobby" property="human_hobby"/>
+		<result column="human_specility" property="human_specility"/>
+		<result column="human_sex" property="human_sex"/>
+		<result column="human_religion" property="human_religion"/>
+		<result column="human_party" property="human_party"/>
+		<result column="human_nationality" property="human_nationality"/>
+		<result column="human_race" property="human_race"/>
+		<result column="human_birthday" property="human_birthday"/>
+		<result column="human_age" property="human_age"/>
+		<result column="human_educated_degree" property="human_educated_degree"/>
+		<result column="human_educated_years" property="human_educated_years"/>
+		<result column="human_educated_major" property="human_educated_major"/>
+		<result column="human_college" property="human_college"/>
+		<result column="human_idcard" property="human_idcard"/>
+		<result column="human_birthplace" property="human_birthplace"/>
+		<result column="demand_salary_standard" property="demand_salary_standard"/>
+		<result column="human_history_records" property="human_history_records"/>
+		<result column="remark" property="remark"/>
+		<result column="recomandation" property="recomandation"/>
+		<result column="human_picture" property="human_picture"/>
+		<result column="attachment_name" property="attachment_name"/>
+		<result column="check_status" property="check_status"/>
+		<result column="register" property="register"/>
+		<result column="regist_time" property="regist_time"/>
+		<result column="checker" property="checker"/>
+		<result column="check_time" property="check_time"/>
+		<result column="interview_status" property="interview_status"/>
+		<result column="total_points" property="total_points"/>
+		<result column="test_amount" property="test_amount"/>
+		<result column="test_checker" property="test_checker"/>
+		<result column="test_check_time" property="test_check_time"/>
+		<result column="pass_register" property="pass_register"/>
+		<result column="pass_regist_time" property="pass_regist_time"/>
+		<result column="pass_checker" property="pass_checker"/>
+		<result column="pass_check_time" property="pass_check_time"/>
+		<result column="pass_check_status" property="pass_check_status"/>
+		<result column="pass_checkComment" property="pass_checkComment"/>
+		<result column="pass_passComment" property="pass_passComment"/>
+	
+</resultMap>
+	
+	<select id="selresume" parameterType="map" resultMap="resumeMapper">
+		select * from Engage_resume 
+		<where>
+			
+			<if test="startDate!=null and startDate!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate!=null and endDate!=''">
+			<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')<=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+			</if>
+			<if test="primarKey!=null and primarKey!=''">
+				and (human_name like '%${primarKey}%' or human_telephone like '%${primarKey}%' or human_idcard like '%${primarKey}%' or human_history_records like '%${primarKey}%')
+			</if>
+			<if test="majorkind!=null and majorkind!=''">
+				and human_major_kind_id=#{majorkind}
+			</if>
+			<if test="major!=null and major!=''">
+				and human_major_id=#{major}
+			</if>
+		</where>
+		
+	</select>
+	<select id="selresumeid" resultMap="resumeMapper" parameterType="int">
+		select * from Engage_resume where res_id=#{id}
+	</select>
+</mapper>

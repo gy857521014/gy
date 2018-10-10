@@ -1,36 +1,39 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'sift-list.jsp' starting page</title>
     
 	<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="../css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="../javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="../javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="../javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="../javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="../javascript/select.js">
 	
 </script>
 </head>
@@ -82,97 +85,41 @@
 				</tr>
 				
 				
-				
-					<tr>
-						<td class="TD_STYLE2">
-							543
-						</td>
-						<td class="TD_STYLE2">
-							张飒
-						</td>
-						<td class="TD_STYLE2">
-							软件开发
-						</td>
-						<td class="TD_STYLE2">
-						    程序员
-						</td>
-						<td class="TD_STYLE2">
-							1
-						</td>
-						<td class="TD_STYLE2">
-							2012-11-25 00:00:00.0
-						</td>
-						<td class="TD_STYLE2">
-							A
-						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toInterviewSift?id=543">筛选</a>
-						</td>
-					</tr>
-				
-				
-				
-					<tr>
-						<td class="TD_STYLE2">
-							534
-						</td>
-						<td class="TD_STYLE2">
-							三
-						</td>
-						<td class="TD_STYLE2">
-							软件公司
-						</td>
-						<td class="TD_STYLE2">
-						    项目经理
-						</td>
-						<td class="TD_STYLE2">
-							2
-						</td>
-						<td class="TD_STYLE2">
-							2012-08-01 00:00:00.0
-						</td>
-						<td class="TD_STYLE2">
-							B
-						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toInterviewSift?id=534">筛选</a>
-						</td>
-					</tr>
-				
-				
-				
-					<tr>
-						<td class="TD_STYLE2">
-							535
-						</td>
-						<td class="TD_STYLE2">
-							四
-						</td>
-						<td class="TD_STYLE2">
-							软件公司
-						</td>
-						<td class="TD_STYLE2">
-						    程序员
-						</td>
-						<td class="TD_STYLE2">
-							1
-						</td>
-						<td class="TD_STYLE2">
-							2012-05-01 00:00:00.0
-						</td>
-						<td class="TD_STYLE2">
-							A
-						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toInterviewSift?id=535">筛选</a>
-						</td>
-					</tr>
-				
+				<c:forEach items="${inlist }" var="inlist">
+					<c:if test="${inlist.check_status==0 }">
+						<tr>
+							<td class="TD_STYLE2">
+								${inlist.ein_id }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.human_name }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.human_major_kind_name }
+							</td>
+							<td class="TD_STYLE2">
+							    ${inlist.human_major_name }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.interview_amount }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.registe_time }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.multi_quality_degree }
+							</td>
+							<td class="TD_STYLE2">
+								<a href="Engage_interview_queryDan?id=${inlist.ein_id }">筛选</a>
+							</td>
+						</tr>
+					</c:if>	
+				</c:forEach>
 				
 			</table>
 			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
@@ -200,6 +147,5 @@
 	     document.fm.submit();
 	 	}
 		</script>
-	</body>
+</body>
 </html>
-  

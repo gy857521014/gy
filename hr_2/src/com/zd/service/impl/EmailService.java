@@ -24,4 +24,8 @@ public class EmailService implements IEmailService{
 	public void adde(e_mail e_mail) {
 		imdao.adde(e_mail);
 	}
+	//²éÑ¯µ¥Ìõ
+	public e_mail emailselid(int id) {
+		return imdao.emailselid(id);
+	}
 }
