@@ -379,7 +379,7 @@ function queryThird(){
 							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
-						帐号
+						银行帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"

@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 	</head>
 
 	<body>
@@ -16,7 +19,7 @@
 				</tr>
 				<tr>
 					<td>
-						符合条件的人力资源档案总数：1例
+						符合条件的人力资源档案总数：${query_list_size }例
 					</td>
 				</tr>
 			</table>
@@ -49,49 +52,38 @@
 						职位名称
 					</td>
 				</tr>
-				
+				<c:forEach var="query_list" items="${query_list }">
 					<tr class="TR_STYLE2">
-						<td width="16%" class="TD_STYLE2">
-							<a href="recovery_list_information.html">bt201211190618510076</a>
-						</td>
-						<td width="13%" class="TD_STYLE2">
-							杨阳
-						</td>
-						<td width="8%" class="TD_STYLE2">
-							男
-						</td>
-						<td width="14%" class="TD_STYLE2">
-							Ⅰ级结构
-						</td>
-						<td width="14%" class="TD_STYLE2">
-							
-						</td>
-						<td width="14%" class="TD_STYLE2">
-							
-						</td>
-						<td width="14%" class="TD_STYLE2">
-							销售
-						</td>
-						<td width="7%" class="TD_STYLE2">
-							区域经理
-						</td>
+							<td width="16%" class="TD_STYLE2">
+								<a href="recovery_list_information?human_id=${query_list.human_id }">${query_list.human_id }</a>
+							</td>
+							<td width="13%" class="TD_STYLE2">
+								${query_list.human_name }
+							</td>
+							<td width="8%" class="TD_STYLE2">
+								${query_list.human_sex }
+							</td>
+							<td width="14%" class="TD_STYLE2">
+								${query_list.first_king_name }
+							</td>
+							<td width="14%" class="TD_STYLE2">
+								${query_list.second_kind_name }
+							</td>
+							<td width="14%" class="TD_STYLE2">
+								${query_list.third_kind_name }
+							</td>
+							<td width="14%" class="TD_STYLE2">
+								${query_list.human_major_kind_name }
+							</td>
+							<td width="7%" class="TD_STYLE2">
+								${query_list.hunma_major_name }
+							</td>
 					</tr>
-				
+						</c:forEach>
 			</table>
 			<p style="text-align: center;">
-				
-					
 					<a href="recovery_list.html" style="color:black;">首页</a>
-					
-					
-						 
-							 
 							    <font color="red">1</font> 
-							 
-							 
-						 
-					
-					 
      				<a href="recovery_list.html" style="color:black;">尾页</a> 
 				
 			</p>

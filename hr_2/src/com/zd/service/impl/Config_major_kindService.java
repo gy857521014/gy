@@ -27,7 +27,7 @@ public class Config_major_kindService implements IConfig_major_kindService{
 	}
 
 	//根据分类id查询名称
-	public Config_major_kind selmajorkindid(int id) {
+	public Config_major_kind selmajorkindid(String id) {
 		Config_major_kind majorkind=majorkinddao.selmajorkindid(id);
 		return majorkind;
 	}

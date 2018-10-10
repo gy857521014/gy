@@ -1,27 +1,31 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html public "-//w3c//dtd html 4.01 transitional//en"
+"http://www.w3.org/tr/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 		</script>
 		<script language="javascript"
-			src="../../javascript/winopen/winopenm.js">
+			src="../javascript/winopen/winopenm.js">
 		</script>
 	</head>
 	<body>
-		<form method="post" action="success.html">
+
+		<form name="humanfileForm" method="post" action="/hr/humanfile.do">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案删除 </font>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案查看 </font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="删除" class="BUTTON_STYLE1"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
@@ -35,12 +39,10 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						bt201211190646190086
+						${humman_file.human_id }
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						
-							<img src="../../images/regular.jpg"  style="width:120px;height:150px;"/>
-						
+						<img src="../upload/${humman_file.human_picture }"  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -48,19 +50,19 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						总部
+						${humman_file.first_king_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						
+						${humman_file.second_kind_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-						
+						${humman_file.third_kind_name }
 					</td>
 				</tr>
 				<tr>
@@ -68,19 +70,19 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						销售
+						${humman_file.human_major_kind_name }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						区域经理
+						${humman_file.hunma_major_name }
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						工程师
+						${humman_file.human_pro_designation }
 					</td>
 				</tr>
 				<tr>
@@ -88,19 +90,19 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						周？？
+						${humman_file.human_name }
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						男
+						${humman_file.human_sex }
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${humman_file.human_email }
 					</td>
 				</tr>
 				<tr>
@@ -108,19 +110,19 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_telephone }
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_qq }
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${humman_file.human_mobilephone }
 					</td>
 				</tr>
 				<tr>
@@ -128,13 +130,13 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						
+						${humman_file.human_address }
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${humman_file.human_postcode }
 					</td>
 				</tr>
 				<tr>
@@ -142,25 +144,25 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						中国
+						${humman_file.human_nationality }
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_birthplace }
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						
+						${humman_file.human_birthday }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2">
-						汉族
+						${humman_file.human_race }
 					</td>
 				</tr>
 				<tr>
@@ -168,25 +170,25 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						无
+						${humman_file.human_religion }
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						党员
+						${humman_file.human_party }
 					</td>
 					<td class="TD_STYLE1">
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						123456789123456789
+						${humman_file.human_id_card }
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_society_security_id }
 					</td>
 				</tr>
 				<tr>
@@ -194,25 +196,25 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_age }
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						本科
+						${humman_file.human_educated_degree }
 					</td>
 					<td class="TD_STYLE1">
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						12
+						${humman_file.human_educated_years }
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						生物工程
+						${humman_file.human_educated_major }
 					</td>
 				</tr>
 				<tr>
@@ -220,25 +222,25 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						666.0
+						${humman_file.salary_sum }
 					</td>
 					<td class="TD_STYLE1">
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_bank }
 					</td>
 					<td class="TD_STYLE1">
-						帐号
+						银行帐号
 					</td>
 					<td class="TD_STYLE2">
-						
+						${humman_file.human_account }
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						manager
+						${loginUser.user_true_name }
 					</td>
 				</tr>
 				<tr>
@@ -246,33 +248,25 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						2012-11-19 18:47:53.0
+						${humman_file.check_time }
 					</td>
 					<td class="TD_STYLE1">
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						数据库
+						${humman_file.human_speciality }
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						篮球
+						${humman_file.human_hobby }
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;
 					</td>
 					<td class="TD_STYLE2">
 						&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td class="TD_STYLE1">
-						档案附件
-					</td>
-					<td colspan="7" class="TD_STYLE2">
-						<a href="#"></a>
 					</td>
 				</tr>
 				<tr>
@@ -280,8 +274,8 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+						<textarea name="human_histroy_records" rows="4"
+							class="TEXTAREA_STYLE1" readonly="readonly">${humman_file.human_histroy_records }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -289,8 +283,8 @@
 						家庭关系信息
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+						<textarea name="human_family_membership" rows="4"
+							class="TEXTAREA_STYLE1" readonly="readonly">${humman_file.human_family_membership }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -298,7 +292,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea rows="4" class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly">${humman_file.remark }</textarea>
 					</td>
 				</tr>
 			</table>
