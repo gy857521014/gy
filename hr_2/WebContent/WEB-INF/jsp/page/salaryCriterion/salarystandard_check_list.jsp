@@ -110,14 +110,22 @@
 			function doPagesy(startsize) {
 				document.getElementById("starty").value = startsize;
 				var myform = document.getElementById("queryForm");
-				if(startsize==${total}){
-					alert("已经是末页");
-					return;
+				if(${li}==0){
+					alert("当前没有结果");
+					return false;
+				}else{
+					if(startsize==${total}){
+						alert("已经是末页");
+						return;
+					}
+					if(startsize<0){
+						alert("已经是首页");
+						return;
+					}
 				}
-				if(startsize<0){
-					alert("已经是首页");
-					return;
-				}
+				
+				
+				
 				myform.submit();
 				//location.href="selLikeSalary_standardsy?start="+${start}
 			}

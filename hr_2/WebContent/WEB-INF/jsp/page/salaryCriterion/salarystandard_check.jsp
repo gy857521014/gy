@@ -25,8 +25,8 @@
 				<td>
 					<div align="right">
 						<input type="button" value="复核通过" class="BUTTON_STYLE1"
-							onclick="check();"> <input type="button" value="返回"
-							onclick="history.back();" class="BUTTON_STYLE1">
+							onclick="check();"><input type="button" value="返回"
+							onclick="history.back();" class="BUTTON_STYLE1">		
 					</div>
 				</td>
 			</tr>
@@ -57,7 +57,7 @@
 					class="INPUT_STYLE2"></td>
 				<td class="TD_STYLE1">复核人</td>
 				<td class="TD_STYLE2"><input type="text"
-					name="checker" value="" class="INPUT_STYLE2">
+					name="checker" value="" class="INPUT_STYLE2" id="checker">
 				</td>
 				<td class="TD_STYLE1">复核时间</td>
 				<td class="TD_STYLE2"><input type="text"
@@ -100,16 +100,26 @@
 		</table>
 	</form>
 	<script type="text/javascript">
+		function myback(){
+			window.location.href="tosalarystandard_check_list?start=0";
+		}
+	
+	
 		function check() {
 
 			var designer = document.getElementById("designer");
 			var standardName = document.getElementById("standardName");
+			var checker = document.getElementById("checker");
 			if (designer.value.length <= 0) {
 				alert("制定人不可为空!!!");
 				return;
 			}
 			if (standardName.value.length <= 0) {
 				alert("薪酬标准名称不可为空!!!");
+				return;
+			}
+			if (checker.value.length <= 0) {
+				alert("复核人不可为空!!!");
 				return;
 			}
 			document.forms[0].submit();

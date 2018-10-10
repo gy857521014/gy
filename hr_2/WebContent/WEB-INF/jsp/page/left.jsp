@@ -169,7 +169,7 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_change_locate.html" target="mainFrame" style="color:black;">薪酬标准变更</a>
+										<a href="tosalarystandard_change_locate" target="mainFrame" style="color:black;">薪酬标准变更</a>
 									</span>
 								</li>
 					</ul>
