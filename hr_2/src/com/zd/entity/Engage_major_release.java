@@ -8,9 +8,9 @@ public class Engage_major_release {
 	private String second_kind_name;//二级机构名称
 	private String third_kind_id;//三级机构编号
 	private String third_kind_name;//三级机构名称
-	private int major_kind_id;//职位分类编号
+	private String major_kind_id;//职位分类编号
 	private String major_kind_name;//三级机构名称
-	private int major_id;//职位编号
+	private String major_id;//职位编号
 	private String major_name;//职位名称
 	private int human_amount;//招聘人数
 	private String engage_type;//招聘类型
@@ -49,10 +49,10 @@ public class Engage_major_release {
 	public void setThird_kind_name(String third_kind_name) {
 		this.third_kind_name = third_kind_name;
 	}
-	public int getMajor_kind_id() {
+	public String getMajor_kind_id() {
 		return major_kind_id;
 	}
-	public void setMajor_kind_id(int major_kind_id) {
+	public void setMajor_kind_id(String major_kind_id) {
 		this.major_kind_id = major_kind_id;
 	}
 	public String getMajor_kind_name() {
@@ -61,10 +61,10 @@ public class Engage_major_release {
 	public void setMajor_kind_name(String major_kind_name) {
 		this.major_kind_name = major_kind_name;
 	}
-	public int getMajor_id() {
+	public String getMajor_id() {
 		return major_id;
 	}
-	public void setMajor_id(int major_id) {
+	public void setMajor_id(String major_id) {
 		this.major_id = major_id;
 	}
 	public String getMajor_name() {
@@ -156,8 +156,8 @@ public class Engage_major_release {
 		this.state = state;
 	}
 	public Engage_major_release(int mre_id, String first_kind_id, String first_kind_name, String second_kind_id,
-			String second_kind_name, String third_kind_id, String third_kind_name, int major_kind_id,
-			String major_kind_name, int major_id, String major_name, int human_amount, String engage_type,
+			String second_kind_name, String third_kind_id, String third_kind_name, String major_kind_id,
+			String major_kind_name, String major_id, String major_name, int human_amount, String engage_type,
 			String deadline, String register, String changer, String regist_time, String change_time,
 			String major_describe, String engage_required, int state) {
 		super();

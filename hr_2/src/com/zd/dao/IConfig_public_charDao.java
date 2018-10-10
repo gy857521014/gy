@@ -25,7 +25,9 @@ public interface IConfig_public_charDao {
 	//删除
 	@Delete("delete from config_public_char where pbc_id=#{pbc_id}")
 	public void deletecpc(int pbc_id);
-
+	//添加薪酬方法
+	@Insert("insert into config_public_char values(null,'薪酬设置',#{attribute_name})")
+	public void addxc(Config_public_char config_public_char);
 	//查询国籍
 	@Select("select * from config_public_char WHERE attribute_kind ='国籍'")
 	@ResultMap("Config_public_char")

@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.IUserDao;
-import com.zd.dao.IUser_roleDao;
 import com.zd.entity.User;
-import com.zd.entity.User_role;
 import com.zd.service.IUserService;
 
 @Service
@@ -20,11 +18,23 @@ public class UserService implements IUserService {
 	private IUserDao userDao;
 	
 
-	//登陆
+	//用户名密码登陆登陆
 	@Override
 	public User login(User u) {
 		return userDao.login(u);
 	}
+
+	//手机号码登陆
+	@Override
+	public User loginByphone(User u) {
+		return userDao.loginByphone(u);
+	}
+	//判断手机号是否存在
+	@Override
+	public int byuser_phone(String user_phone) {
+		return userDao.byuser_phone(user_phone);
+	}
+
 
 	//查询所有用户信息
 	@Override
@@ -77,10 +87,11 @@ public class UserService implements IUserService {
 		
 	}
 
-	/*@Override
-	public List<User_role> userroleByid(int r_id) {
-		return userDao.userroleByid(r_id);
-	}*/
-	
+	//绑定手机号
+	@Override
+	public void phoneUpdate(User user) {
+		userDao.phoneUpdate(user);
+	}
+
 	
 }

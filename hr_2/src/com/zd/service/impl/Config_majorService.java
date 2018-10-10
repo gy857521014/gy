@@ -16,13 +16,13 @@ public class Config_majorService implements IConfig_majorService{
 	private IConfig_majorDao majordao;
 	
 	//查询职位分类下对应的职位
-	public List<Config_major> selzhiwei(int majorid) {
+	public List<Config_major> selzhiwei(String majorid) {
 		List<Config_major> list=majordao.selzhiwei(majorid);
 		return list;
 	}
 
 	//查询职位id对应的名称
-	public Config_major selzhiweiid(int id) {
+	public Config_major selzhiweiid(String id) {
 		Config_major major=majordao.selzhiweiid(id);
 		return major;
 	}

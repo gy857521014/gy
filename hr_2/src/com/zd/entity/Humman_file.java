@@ -15,8 +15,8 @@ public class Humman_file {
 	
 	public Humman_file(int hfd_id, String human_id, String first_king_id, String first_king_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
-			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
-			String human_major_kind_name, int human_major_id, String hunma_major_name, String human_telephone,
+			String human_address, int human_postcode, String human_pro_designation, String human_major_kind_id,
+			String human_major_kind_name, String human_major_id, String hunma_major_name, String human_telephone,
 			String human_mobilephone, String human_bank, String human_account, String human_qq, String human_email,
 			String human_hobby, String human_speciality, String human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, String human_birthday, String human_birthplace, int human_age,
@@ -105,9 +105,9 @@ public class Humman_file {
 	private String human_address;//地址
 	private int human_postcode;//邮政编码
 	private String human_pro_designation;//职称
-	private int human_major_kind_id;//职位分类编号
+	private String human_major_kind_id;//职位分类编号
 	private String human_major_kind_name;//职位分类名称
-	private int human_major_id;//职位编号
+	private String human_major_id;//职位编号
 	private String hunma_major_name;//职位名称
 	private String human_telephone;//电话 
 	private String human_mobilephone;//手机号码
@@ -242,10 +242,10 @@ public class Humman_file {
 	public void setHuman_pro_designation(String human_pro_designation) {
 		this.human_pro_designation = human_pro_designation;
 	}
-	public int getHuman_major_kind_id() {
+	public String getHuman_major_kind_id() {
 		return human_major_kind_id;
 	}
-	public void setHuman_major_kind_id(int human_major_kind_id) {
+	public void setHuman_major_kind_id(String human_major_kind_id) {
 		this.human_major_kind_id = human_major_kind_id;
 	}
 	public String getHuman_major_kind_name() {
@@ -254,10 +254,10 @@ public class Humman_file {
 	public void setHuman_major_kind_name(String human_major_kind_name) {
 		this.human_major_kind_name = human_major_kind_name;
 	}
-	public int getHuman_major_id() {
+	public String getHuman_major_id() {
 		return human_major_id;
 	}
-	public void setHuman_major_id(int human_major_id) {
+	public void setHuman_major_id(String human_major_id) {
 		this.human_major_id = human_major_id;
 	}
 	public String getHunma_major_name() {

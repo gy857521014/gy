@@ -10,7 +10,6 @@ public class Config_major_kind {
 	public void setMfk_id(int mfk_id) {
 		this.mfk_id = mfk_id;
 	}
-	
 	public String getMajor_kind_id() {
 		return major_kind_id;
 	}
