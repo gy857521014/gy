@@ -195,26 +195,6 @@
 					</ul>
 				</li>
 				<li>
-					<span>调动管理</span>
-					<ul>
-								<li>
-									<span>
-										<a href="transfer/register_locate.html" target="mainFrame" style="color:black;">调动登记</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="transfer/check_list.html" target="mainFrame" style="color:black;">调动审核</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="transfer/locate.html" target="mainFrame" style="color:black;">调动查询</a>
-									</span>
-								</li>
-					</ul>
-				</li>
-				<li>
 					<span>客户化设置</span>
 					<ul>
 								<li state="closed">
@@ -284,26 +264,6 @@
 									</ul>
 								</li>
 					</ul>
-				</li>
-				<li>
-					<span>标准数据报表</span>
-					<ul>
-								<li>
-									<span>
-											<a href="criterionData/excel_locate.html" target="mainFrame" style="color:black;">Excel标准数据报表</a>
-									</span>
-								</li>
-								<li>
-									<span>
-											<a href="criterionData/pdf_locate.html" target="mainFrame" style="color:black;">Pdf标准数据报表</a>
-									</span>
-								</li>
-								<li>
-									<span>
-											<a href="criterionData/xml_locate.html" target="mainFrame" style="color:black;">Xml标准数据报表</a>
-									</span>
-								</li>
-						</ul>
 				</li>
 				<li>
 						<span>权限管理</span>
