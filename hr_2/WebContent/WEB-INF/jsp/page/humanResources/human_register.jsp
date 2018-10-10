@@ -53,6 +53,9 @@ function querySecond(){
 		type:'get',
 		success:function(data){
 			var cityselect=$("#secondKind");
+			var cityselect1=$("#thirdKind");
+			cityselect1.empty();
+			cityselect1.append("<option>--请选择三级机构名称--</option>");
 			cityselect.empty();
 			cityselect.append("<option>--请选择二级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
@@ -75,7 +78,7 @@ function queryThird(){
 		success:function(data){
 			var cityselect=$("#thirdKind");
 			cityselect.empty();
-			cityselect.append("<option>--请选择二级机构名称--</option>");
+			cityselect.append("<option>--请选择三级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.third_kind_id;
@@ -272,7 +275,7 @@ function queryThird(){
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
-							class="INPUT_STYLE2" id="birthday">
+							class="INPUT_STYLE2" id="birthday"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						民族
