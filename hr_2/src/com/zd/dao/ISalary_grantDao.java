@@ -8,8 +8,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
+import com.zd.entity.Config_file_first_kind;
+import com.zd.entity.Config_file_second_kind;
+import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Humman_file;
+import com.zd.entity.Salary_grant;
 import com.zd.entity.Salary_grant_details;
 import com.zd.entity.Salary_standard_details;
 
@@ -59,15 +63,41 @@ public interface ISalary_grantDao {
 	@ResultMap("Config_public_char")
 	public List<Config_public_char> selpubulic();
 	
-	@Select("SELECT human_id,human_name,salary_standard_id,salary_sum FROM humman_file WHERE first_king_name=#{first_king_name}")
+	@Select("SELECT human_id,human_name,salary_standard_id,salary_sum,salary_standard_id FROM humman_file WHERE first_king_name=#{first_king_name}")
 	@ResultMap("selhumanmapper")
 	public List<Humman_file> selhuman(String first_king_name);
+	@Select("SELECT human_id,human_name,salary_standard_id,salary_sum,salary_standard_id FROM humman_file WHERE second_kind_name=#{second_kind_name}")
+	@ResultMap("selhumanmapper")
+	public List<Humman_file> selhuman2(String second_kind_name);
+	@Select("SELECT human_id,human_name,salary_standard_id,salary_sum,salary_standard_id FROM humman_file WHERE third_kind_name=#{third_kind_name}")
+	@ResultMap("selhumanmapper")
+	public List<Humman_file> selhuman3(String third_kind_name);
 	
 	@Select("SELECT SUM(salary_sum) FROM humman_file WHERE first_king_name=#{first_king_name}")
 	public int selsum(String first_king_name);
+	@Select("SELECT SUM(salary_sum) FROM humman_file WHERE second_kind_name=#{second_kind_name}")
+	public int selsum2(String second_kind_name);
+	@Select("SELECT SUM(salary_sum) FROM humman_file WHERE third_kind_name=#{third_kind_name}")
+	public int selsum3(String third_kind_name);
 	
 	@Select("SELECT COUNT(*) FROM humman_file WHERE first_king_name=#{first_king_name}")
 	public int selhum(String first_king_name);
+	@Select("SELECT COUNT(*) FROM humman_file WHERE second_kind_name=#{second_kind_name}")
+	public int selhum2(String second_kind_name);
+	@Select("SELECT COUNT(*) FROM humman_file WHERE third_kind_name=#{third_kind_name}")
+	public int selhum3(String third_kind_name);
+	
+	@Select("SELECT * FROM Config_file_first_kind WHERE first_kind_name=#{first_kind_name}")
+	@ResultMap("cffk")
+	public Config_file_first_kind selall(String fname);
+	
+	@Select("SELECT * FROM Config_file_second_kind WHERE second_kind_name=#{second_kind_name}")
+	@ResultMap("cfsk")
+	public Config_file_second_kind selall2(String fname);
+	
+	@Select("SELECT * FROM Config_file_third_kind WHERE third_kind_name=#{third_kind_name}")
+	@ResultMap("cftk")
+	public Config_file_third_kind selall3(String fname);
 	
 	@Select("SELECT * FROM Salary_standard_details WHERE standard_id=#{ssd}")
 	@ResultMap("ssdmapper")
@@ -76,4 +106,18 @@ public interface ISalary_grantDao {
 	@Insert("INSERT INTO salary_grant_details VALUES(NULL,#{salary_grant_id},#{human_id},#{human_name},#{bouns_sum},#{sale_sum},#{deduct_sum},#{salary_standard_sum},#{salary_paid_sum})")
 	public void add(Salary_grant_details sgd);
 	
+	@Insert("INSERT INTO salary_grant VALUES(NULL,#{salary_grant_id},#{salary_standard_id},#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{human_amount},#{salary_standard_sum},#{salary_paid_sum},#{register},#{regist_time},'','',0)")
+	public void addsg(Salary_grant sg);
+
+	@Select("select * from Salary_grant")
+	@ResultMap("sgmapper")
+	public List<Salary_grant> selallsg();
+	
+	@Select("SELECT * FROM Salary_grant WHERE salary_grant_id=#{salary_grant_id}")
+	@ResultMap("sgmapper")
+	public Salary_grant selone(String salary_grant_id);
+	
+	@Select("SELECT * FROM salary_grant_details")
+	@ResultMap("sgdmapper")
+	public List<Salary_grant_details> selsgdall();
 }

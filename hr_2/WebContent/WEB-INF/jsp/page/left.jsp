@@ -184,7 +184,7 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryGrant/check_list.html" target="mainFrame" style="color:black;">薪酬发放登记复核</a>
+										<a href="tocheck_list" target="mainFrame" style="color:black;">薪酬发放登记复核</a>
 									</span>
 								</li>
 								<li>

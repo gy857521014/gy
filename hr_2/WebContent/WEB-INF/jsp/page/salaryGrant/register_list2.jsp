@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -55,7 +55,7 @@
 						登记
 					</td>
 				</tr>
-						<c:forEach items="${maplist }" var="eachMap" varStatus="vs">
+				<c:forEach items="${maplist }" var="eachMap" varStatus="vs">
 				<tr class="TD_STYLE2">
 						<td>
 							${vs.count }
@@ -87,7 +87,8 @@
 					</c:forEach>
 						</td>
 						<td>
-							<a href="register_commit.html">登 记</a>
+						
+							<a href="javascript:submitMyForm('<c:forEach items='${eachMap }' var='m'><c:if test="${m.key == 'fname' }">${m.value}</c:if></c:forEach>')">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -95,6 +96,17 @@
 			<p>
 				&nbsp;
 			</p>
+			
+			<form action="toregister_commit2" method="post" id="myfrom">
+				<input type="hidden" name="fname" id="fnameid"/>
+			</form>
+			
+			<script type="text/javascript">
+				function submitMyForm(fname){
+					document.getElementById("fnameid").value = fname;
+					$("#myfrom").submit();
+				}
+			</script>
 		 
 	</body>
 </html>

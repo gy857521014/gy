@@ -9,6 +9,18 @@
   	<result property="attribute_name" column="attribute_name"/>
 </resultMap>
 
+<resultMap type="cftkentity" id="cftk">
+  	<result property="ftk_id" column="ftk_id"/>
+  	<result property="first_kind_id" column="first_kind_id"/>
+  	<result property="first_kind_name" column="first_kind_name"/>
+  	<result property="second_kind_id" column="second_kind_id"/>
+  	<result property="second_kind_name" column="second_kind_name"/>
+  	<result property="third_kind_id" column="third_kind_id"/>
+  	<result property="third_kind_name" column="third_kind_name"/>
+  	<result property="third_kind_sale_id" column="third_kind_sale_id"/>
+  	<result property="third_kind_is_retail" column="third_kind_is_retail"/>
+</resultMap>
+
 <resultMap type="com.zd.entity.Humman_file" id="selhumanmapper">
 	<result property="human_id" column="human_id"/>
 	<result property="first_king_id" column="first_king_id"/>
@@ -71,6 +83,56 @@
 	<result property="delete_time" column="delete_time"/>
 	<result property="recovery_time" column="recovery_time"/>
 	<result property="human_file_status" column="human_file_status"/>
+</resultMap>
+
+<resultMap type="cffkentity" id="cffk">
+  	<result property="ffk_id" column="ffk_id"/>
+  	<result property="first_kind_id" column="first_kind_id"/>
+  	<result property="first_kind_name" column="first_kind_name"/>
+  	<result property="first_kind_salary_id" column="first_kind_salary_id"/>
+  	<result property="first_kind_sale_id" column="first_kind_sale_id"/>
+</resultMap>
+
+<resultMap type="com.zd.entity.Salary_grant" id="sgmapper">
+	<result column="sgr_id" property="sgr_id"/>
+	<result column="salary_grant_id" property="salary_grant_id"/>
+	<result column="salary_standard_id" property="salary_standard_id"/>
+	<result column="first_kind_id" property="first_kind_id"/>
+	<result column="first_kind_name" property="first_kind_name"/>
+	<result column="second_kind_id" property="second_kind_id"/>
+	<result column="second_kind_name" property="second_kind_name"/>
+	<result column="third_kind_id" property="third_kind_id"/>
+	<result column="third_kind_name" property="third_kind_name"/>
+	<result column="human_amount" property="human_amount"/>
+	<result column="salary_standard_sum" property="salary_standard_sum"/>
+	<result column="salary_paid_sum" property="salary_paid_sum"/>
+	<result column="register" property="register"/>
+	<result column="regist_time" property="regist_time"/>
+	<result column="checker" property="checker"/>
+	<result column="check_time" property="check_time"/>
+	<result column="check_status" property="check_status"/>
+</resultMap>
+
+<resultMap type="com.zd.entity.Salary_grant_details" id="sgdmapper">
+	<result column="grd_id" property="grd_id"/>
+	<result column="salary_grant_id" property="salary_grant_id"/>
+	<result column="human_id" property="human_id"/>
+	<result column="human_name" property="human_name"/>
+	<result column="bouns_sum" property="bouns_sum"/>
+	<result column="sale_sum" property="sale_sum"/>
+	<result column="deduct_sum" property="deduct_sum"/>
+	<result column="salary_standard_sum" property="salary_standard_sum"/>
+	<result column="salary_paid_sum" property="salary_paid_sum"/>
+</resultMap>
+
+<resultMap type="cfskentity" id="cfsk">
+  	<result property="fsk_id" column="fsk_id"/>
+  	<result property="first_kind_id" column="first_kind_id"/>
+  	<result property="first_kind_name" column="first_kind_name"/>
+  	<result property="second_kind_id" column="second_kind_id"/>
+  	<result property="second_kind_name" column="second_kind_name"/>
+  	<result property="second_salary_id" column="second_salary_id"/>
+  	<result property="second_sale_id" column="second_sale_id"/>
 </resultMap>
 
 <resultMap type="map" id="ssdmapper"></resultMap>

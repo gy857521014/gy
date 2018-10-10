@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
+		<script type="text/javascript"
+			src="../javascript/jquery-1.7.2.js">
+		</script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 		<!--
@@ -12,8 +16,8 @@
 		td{text-align: center}
 		-->
 		</style>
+		
 	</head>
-
 	<body>
 		<form method="post" action="/HR_Fist/salaryGrant/salaryGrantAction!toCheckList">
 			<table width="100%">
@@ -51,82 +55,32 @@
 						复核
 					</td>
 				</tr>
-				
+				<c:forEach items="${sglist }" var="sg">
 					<tr class="TD_STYLE2">
 						<td>
-							HS1353753198460
+							${sg.salary_grant_id }
 						</td>
 						<td>
-							Ⅰ级结构 
+							${sg.first_kind_name }
 						</td>
 						<td>
-							
+							${sg.second_kind_name }
 						</td>
 						<td>
-							
+							${sg.third_kind_name }
 						</td>
 						<td>
-							5
+							${sg.human_amount }
 						</td>
 						<td>
-							139823.0
+							${sg.salary_standard_sum }
 						</td>
 						<td>
-							<a href="check.html">复核</a>
+							<a href="tocheck?salary_grant_id=${sg.salary_grant_id }">登 记</a>
 						</td>
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322455169
-						</td>
-						<td>
-							Ⅰ级结构  
-						</td>
-						<td>
-							Ⅱ级结构3  
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							1
-						</td>
-						<td>
-							1332.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322419274
-						</td>
-						<td>
-							Ⅰ级结构 
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							5
-						</td>
-						<td>
-							139157.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-						 
-
+				</c:forEach>
 			</table>
-			 
 <html>
   <head>  
   </head>  
@@ -183,8 +137,6 @@ function doPage(startsize) {
    
   </body>
 </html>
- 
-				
-		</form>
+	</form>
 	</body>
 </html>

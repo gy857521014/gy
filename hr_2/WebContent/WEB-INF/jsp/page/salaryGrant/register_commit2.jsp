@@ -40,9 +40,11 @@ td {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: left">机构：${fname.first_kind_name }
+				<td colspan="2" style="text-align: left">机构：${fname.second_kind_name }
 				<input type="hidden" name="first_kind_id" value="${fname.first_kind_id }"/>
 				<input type="hidden" name="first_kind_name" value="${fname.first_kind_name }"/>
+				<input type="hidden" name="second_kind_id" value="${fname.second_kind_id }"/>
+				<input type="hidden" name="second_kind_name" value="${fname.second_kind_name }"/>
 				</td>
 			</tr>
 			<tr>
@@ -121,7 +123,7 @@ td {
 					<td>
 					<input type="hidden" name="salary_standard_sum" value="${human.salary_sum }"/>
 					<input type="text" name="salary_paid_sum"
-						readonly="readonly" id="salaryPaidSum${vs.count }" value="${human.salary_sum }"
+						readonly="readonly" id="salary_paid_sum" value="${human.salary_sum }"
 						class="INPUT_STYLE2" /></td>
 				</tr>
 				</c:forEach>

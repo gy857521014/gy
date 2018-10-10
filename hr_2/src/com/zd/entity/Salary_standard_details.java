@@ -7,6 +7,9 @@ public class Salary_standard_details {
 	private int item_id;
 	private String item_name;
 	private double salary;
+	
+	
+	
 	public int getSdt_id() {
 		return sdt_id;
 	}

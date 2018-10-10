@@ -43,7 +43,7 @@
 					
 					<td width="40%"  class="TD_STYLE1">
 					
-						<span>III级机构名称</span>
+						<span>Ⅱ级机构名称</span>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						<span>人数</span>
@@ -55,7 +55,7 @@
 						登记
 					</td>
 				</tr>
-						<c:forEach items="${maplist }" var="eachMap" varStatus="vs">
+				<c:forEach items="${maplist }" var="eachMap" varStatus="vs">
 				<tr class="TD_STYLE2">
 						<td>
 							${vs.count }
@@ -71,7 +71,7 @@
 					<c:forEach items="${eachMap }" var="m">
 							<c:if test="${m.key == 'fcount' }">
 								${m.value}
-							</c:if>
+							</c:if> 
 					</c:forEach>
 						</td>
 						<td>
@@ -87,7 +87,8 @@
 					</c:forEach>
 						</td>
 						<td>
-							<a href="toregister_commit">登 记</a>
+						
+							<a href="javascript:submitMyForm('<c:forEach items='${eachMap }' var='m'><c:if test="${m.key == 'fname' }">${m.value}</c:if></c:forEach>')">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -95,6 +96,17 @@
 			<p>
 				&nbsp;
 			</p>
+			
+			<form action="toregister_commit3" method="post" id="myfrom">
+				<input type="hidden" name="fname" id="fnameid"/>
+			</form>
+			
+			<script type="text/javascript">
+				function submitMyForm(fname){
+					document.getElementById("fnameid").value = fname;
+					$("#myfrom").submit();
+				}
+			</script>
 		 
 	</body>
 </html>
