@@ -34,7 +34,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_release_search.html" target="mainFrame" style="color:black;">职位发布查询</a>
+														<a href="selallrelease2" target="mainFrame" style="color:black;">职位发布查询</a>
 													</span>
 												</li>
 									</ul>
@@ -112,17 +112,17 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/check_list.html" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
+											<a href="check_list" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/query_locate.html" target="mainFrame" style="color:black;">人力资源档案查询</a>
+											<a href="query_locate" target="mainFrame" style="color:black;">人力资源档案查询</a>
 									</span>
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/change_locate.html" target="mainFrame" style="color:black;">人力资源档案变更</a>
+											<a href="change_locate" target="mainFrame" style="color:black;">人力资源档案变更</a>
 									</span>
 								</li>
 								<li state="closed">
@@ -132,17 +132,17 @@
 									<ul>
 												<li>
 													<span>
-															<a href="humanResources/delete_locate.html" target="mainFrame" style="color:black;">人力资源档案删除</a>
+															<a href="delete_locate" target="mainFrame" style="color:black;">人力资源档案删除</a>
 													</span>
 												</li>
 												<li>
 													<span>
-															<a href="humanResources/recovery_locate.html" target="mainFrame" style="color:black;">档案删除恢复</a>
+															<a href="recovery_locate" target="mainFrame" style="color:black;">档案删除恢复</a>
 													</span>
 												</li>
 												<li>
 													<span>
-															<a href="humanResources/delete_forever_list.html" target="mainFrame" style="color:black;">人力资源档案永久删除</a>
+															<a href="delete_forever_list" target="mainFrame" style="color:black;">人力资源档案永久删除</a>
 													</span>
 												</li>
 									</ul>
@@ -244,12 +244,12 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/major_kind.html" target="mainFrame" style="color:black;">职位分类设置</a>
+														<a href="selcmk" target="mainFrame" style="color:black;">职位分类设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/major.html" target="mainFrame" style="color:black;">职位设置</a>
+														<a href="selcm" target="mainFrame" style="color:black;">职位设置</a>
 													</span>
 												</li>
 												<li>
@@ -266,24 +266,19 @@
 									<ul>
 												<li>
 													<span>
-														<a href="client/salary_item.html" target="mainFrame" style="color:black;">薪酬项目设置</a>
-													</span>
-												</li>
-												<li>
-													<span>
-														<a href="client/salary_grant_mode.html" target="mainFrame" style="color:black;">薪酬发放方式设置</a>
+														<a href="selxc" target="mainFrame" style="color:black;">薪酬项目设置</a>
 													</span>
 												</li>
 									</ul>
 								</li>
 								<li state="closed">
 									<span>
-										其他设置
+										邮箱管理设置
 									</span>
 									<ul>
 												<li>
 													<span>
-														<a href="client/primary_key.html" target="mainFrame" style="color:black;">关键字查询设置</a>
+														<a href="selm" target="mainFrame" style="color:black;">邮箱设置</a>
 													</span>
 												</li>
 									</ul>

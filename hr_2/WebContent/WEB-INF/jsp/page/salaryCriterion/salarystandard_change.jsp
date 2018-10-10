@@ -11,7 +11,12 @@
 
 <body>
 	<form action="updsalarystandard_change_success" method="post">
-
+		
+		<input name="Keyword" value="${Keyword}" type="hidden"/>
+		<input name="startDate" value="${startDate}" type="hidden"/>
+		<input name="endDate" value="${endDate}" type="hidden"/>
+		<input name="standard_id" value="${standard_id}" type="hidden"/>
+		<input name="start" value="${start}" type="hidden" />
 		<table width="100%">
 			<tr>
 				<td><font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记变更</font>
@@ -108,6 +113,7 @@
 				alert("薪酬标准名称不可为空!!!");
 				return;
 			}
+			//document.getElementById("sid").value = standard_id;
 			document.forms[0].submit();
 		}
 		function countMoney(obj, o) {

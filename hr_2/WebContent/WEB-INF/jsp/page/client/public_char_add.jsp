@@ -15,10 +15,14 @@
 			if (document.getElementById("sxzl").value==""){
 				$("#errorSpan").html("<font color='red'>请输入属性种类</font>");
 				return;
+			}else{
+				$("#errorSpan").html("");
 			}
 			if (document.getElementById("sxname").value==""){
 				$("#errorSpanname").html("<font color='red'>请输入属性名称</font>");
 				return;
+			}else{
+				$("#errorSpanname").html("");
 			}
 			$("#document").submit();
 		}	

@@ -57,5 +57,11 @@ public class Salary_standard_details {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Salary_standard_details [sdt_id=" + sdt_id + ", standard_id=" + standard_id + ", standard_name="
+				+ standard_name + ", item_id=" + item_id + ", item_name=" + item_name + ", salary=" + salary + "]";
+	}
+	
 	
 }

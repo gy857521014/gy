@@ -15,6 +15,10 @@ public interface IConfig_file_third_kindService {
 	public List<Config_file_third_kind> selcftk();
 	// 删除用户
 	public void deletecftk(int ftk_id);
+	// 根据一级编号删除用户
+	public void deletebh(String first_kind_id);
+	//根据二级编号删除用户
+	public void deleteej(String second_kind_id);
 	//添加
 	public void addcftk(Config_file_third_kind config_file_third_kind);
 	// 根据id查询（修改）

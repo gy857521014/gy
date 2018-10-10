@@ -19,14 +19,20 @@
 			if(document.getElementById("yiji").value=='0'){
 				$("#errorSpan").html("<font color='red'>请选择I级机构</font>");
 				return;
+			}else{
+				$("#errorSpan").html("");
 			}
 			if(document.getElementById("erji").value=='0'){
 				$("#errorSpanerji").html("<font color='red'>请选择II级机构</font>");
 				return;
+			}else{
+				$("#errorSpanerji").html("");
 			}
 			if(document.getElementById("sanji").value==''){
 				$("#errorSpansanji").html("<font color='red'>请输入III级机构名称</font>");
 				return;
+			}else{
+				$("#errorSpansanji").html("");
 			}
 			if(document.getElementById("xsbh").value==''){
 				$("#errorSpanxsbh").html("<font color='red'>请输入销售责任人编号</font>");
@@ -37,6 +43,8 @@
 				if(!b){
 					$("#errorSpanxsbh").html("<font color='red'>请填写小于5位的数字编号</font>");
 					return;
+				}else{
+					$("#errorSpanxsbh").html("");
 				}
 			}
 			$("#document").submit();
@@ -57,7 +65,7 @@
 					<td align="right">
 						<input type="button" value="提交" class="BUTTON_STYLE1" onclick="check()">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back();">
+							onclick="location.href='selcftk'">
 					</td>
 				</tr>
 			</table>

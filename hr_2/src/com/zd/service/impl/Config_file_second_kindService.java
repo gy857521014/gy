@@ -33,8 +33,8 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		icfskdao.updatecfsk(config_file_second_kind);
 	}
 	//删除
-	public void deletecfsk(int fsk_id) {
-		icfskdao.deletecfsk(fsk_id);
+	public void deletecfsk(String second_kind_id) {
+		icfskdao.deletecfsk(second_kind_id);
 	}
 	//根据一级机构编号查询二级机构
 	public List<Config_file_second_kind> selerji(String fsk_id) {
@@ -51,5 +51,9 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		
 		Config_file_second_kind second=icfskdao.selerjiid(id);
 		return second;
+	}
+	//根据一级编号删除
+	public void deletebh(String first_kind_id) {
+		icfskdao.deletebh(first_kind_id);
 	}
 }

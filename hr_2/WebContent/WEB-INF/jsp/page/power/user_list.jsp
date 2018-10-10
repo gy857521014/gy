@@ -11,7 +11,7 @@
 		<script type="text/javascript">
 			function doDelete(id) {
 				if (confirm("确定删除此用户吗？")) {
-					location.href = "success.html?users.userId=" + id;
+					location.href = "userDel?userid=" + id;
 				}
 			}
 		</script>
@@ -31,6 +31,7 @@
 			<tr>
 				<td align="right">
 					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='queryUr'">
+					<input type="button" value="绑定手机" class="BUTTON_STYLE1" onclick="location.href='phoneByid?userid='+${loginUser.userid }"></input>
 				</td>
 			</tr>
 		</table>
@@ -54,12 +55,15 @@
 					用户身份
 				</td>
 				<td class="TD_STYLE1">
+					手机号码
+				</td>
+				<td class="TD_STYLE1">
 					操作
 				</td>
 			</tr>
 			
 			<c:forEach items="${userList }" var="user">
-				<tr class="TR_STYLE2">
+				<tr class="TR_STYLE2" id="${user.userid }">
 					<td class="TD_STYLE2">
 						${user.userid }
 					</td>
@@ -78,9 +82,15 @@
 						</c:forEach>
 					</td>
 					<td class="TD_STYLE2">
-						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_edit.html'"/>
-						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(9)"/>
+						${user.user_phone }
 					</td>
+					<td class="TD_STYLE2">
+							<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
+						<c:if test="${user.userid != loginUser.userid }">
+							<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${user.userid })"/>
+						</c:if>
+					</td>
+					
 				</tr>
 			</c:forEach>
 

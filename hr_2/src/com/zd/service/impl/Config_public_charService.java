@@ -24,5 +24,9 @@ public class Config_public_charService implements IConfig_public_charService{
 	public void deletecpc(int pbc_id) {
 		icpcdao.deletecpc(pbc_id);
 	}
+	//Ìí¼ÓÐ½³ê
+	public void addxc(Config_public_char config_public_char) {
+		icpcdao.addxc(config_public_char);
+	}
 
 }

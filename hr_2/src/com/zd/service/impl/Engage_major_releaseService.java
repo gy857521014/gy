@@ -44,4 +44,9 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 		
 		releasedao.addrelease(release);
 	}
+	
+	public void updatejigou(Engage_major_release release) {
+		
+		releasedao.updatejigou(release);
+	}
 }

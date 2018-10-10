@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IE_mailDao">
+  <resultMap type="email" id="email">
+  	<result property="mid" column="mid"/>
+  	<result property="mhead" column="mhead"/>
+  	<result property="mcontent" column="mcontent"/>
+  	<result property="mtype" column="mtype"/>
+  </resultMap>
+  <resultMap type="java.util.Map" id="mapMapper"></resultMap>
+</mapper>

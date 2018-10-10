@@ -254,7 +254,16 @@ public class Salary_standardController {
 				}
 				//±ä¸üĞŞ¸Ä
 				@RequestMapping("page/updsalarystandard_change_success")
-				public String updsalarystandard_change_success(Salary_standard ss,@RequestParam Map map) {
+				public String updsalarystandard_change_success(Salary_standard ss,@RequestParam Map map,Map fmap) {
+					
+					fmap.put("Keyword", map.get("Keyword"));
+					fmap.put("startDate", map.get("startDate"));
+					fmap.put("endDate", map.get("endDate"));
+					fmap.put("standard_id", map.get("standard_id"));
+					fmap.put("start", map.get("start"));
+					
+					
+					
 					Salary_standardService.updSalary_standardbg(ss);
 					Map moneyMap = new HashMap<>();
 					Map ssdMap = new HashMap<>();
