@@ -27,10 +27,11 @@
 			src="../javascript/locate.js">
 		</script>
 		</script>
-			<script type="text/javascript"
+		<script type="text/javascript"
 			src="../javascript/comm/time.js">
-			</script>
-	
+		</script>
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js"></script>
  		<script type="text/javascript">
  			window.onload=check;
 		function tick() {
@@ -73,54 +74,81 @@
  	<script type="text/javascript">
  	   function mysubmit(){  
  	   
- 	   document.getElementById("name").style.display ="none";
- 	  document.getElementById("name2").style.display ="none";
  		 if(document.getElementById("firstKindId").value.trim()<1||document.getElementById("firstKindId").value.trim().length>20)	
  		  {
- 			 	alert(1);
- 			 	document.getElementById("name").style.display ="";
+ 			$.messager.show("消息提示", "请选择一级机构!", 1000);
  	       		return false;
  	       }
  		 
  		 if(document.getElementById("engageType").value.trim()<1||document.getElementById("engageType").value.trim().length>20)
  		  {
- 			 document.getElementById("name").style.display ="";
+ 			$.messager.show("消息提示", "请选择招聘类型!", 2000);
+
  	       return false;
  	       } 
  		 
  		 if(document.getElementById("majorKindId").value.trim()<1||document.getElementById("majorKindId").value.trim().length>20)
  		 {
- 			 document.getElementById("name").style.display ="";
+ 			$.messager.show("消息提示", "请选择职位分类!", 2000);
  	       return false;
  	       }  
  		 
  		  if(document.getElementById("majorId").value.trim()<1||document.getElementById("majorId").value.trim().length>20)
  		  {
- 			  document.getElementById("name").style.display ="";
+ 			 $.messager.show("消息提示", "请选择职位名称!", 2000);
+
  	       return false;
  	       }  
  		  
- 		 if(document.getElementById("humanAmount").value<1||document.getElementById("humanAmount").value>10000)
- 		  {
- 			 document.getElementById("name2").style.display ="";
- 	       return false; 
+ 		 if(document.getElementById("humanAmount").value<1||document.getElementById("humanAmount").value>1000)
+ 		  {		 
+ 				$.messager.show("消息提示", "请输入招聘人数!", 2000);
+ 	       	return false; 
  	  }    
  		 
+ 		var re = /^[0-9]+.?[0-9]*$/;
+		if (!re.test(document.getElementById("humanAmount").value)) {
+			$.messager.show("消息提示", "请输入正确的招聘人数!", 2000);
+			document.getElementById("humanAmount").focus();
+			return false;
+		}
+ 		 
+			
+			
  		 if(document.getElementById("date_start").value.trim()<1||document.getElementById("date_start").value.trim().length>20)	
  		  {
- 			 document.getElementById("name").style.display ="";
+ 			$.messager.show("消息提示", "请输入截止日期!", 2000);
+
  	       return false; 
- 	  }   
+ 	 	 }   
+ 		 
+ 		var riqi = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
+		if (!riqi.test(document.getElementById("date_start").value)) {
+			$.messager.show("消息提示", "请输入正确的日期格式!", 2000);
+			document.getElementById("date_start").focus();
+			return false;
+		}
+		// 输入的时间
+			var c =document.getElementById("date_start").value;
+			var inpDate = new Date(c);
+			// 获取当前时间
+			var now = new Date();
+			if(inpDate.getTime() < now.getTime()){
+				$.messager.show("消息提示", "请输入正确的截止日期!", 2000);
+				return false;
+			}
  		 
  	  if(document.getElementById("zhiwei").value.trim()<1||document.getElementById("zhiwei").value.trim().length>20)
 		{
-			document.getElementById("name").style.display ="";
+ 		 $.messager.show("消息提示", "请输入职位描述!", 2000);
+ 			document.getElementById("zhiwei").focus();
 			return false;    				
 		}
  	  
 	  if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>20)
 		{
-			document.getElementById("name").style.display ="";
+		  $.messager.show("消息提示", "请输入招聘要求!", 2000);
+		  document.getElementById("zhp").focus();
 			return false;    				
 			
 		}
@@ -139,7 +167,7 @@ function fun(){
 		success:function(data){
 			var cityselect=$("#majorId");
 			cityselect.empty();
-			cityselect.append("<option value='0'>--请选择职位名称--</option>");
+			cityselect.append("<option value=''>--请选择职位名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.major_id;
@@ -253,7 +281,7 @@ function fun2(){
 							<option value="">--请选择--</option> 
 							
 							<c:forEach var="zhlist" items="${zhaoplist}">
-								<option value="${zhlist.pbc_id}">${zhlist.attribute_name}</option>  
+								<option value="${zhlist.attribute_name}">${zhlist.attribute_name}</option>  
 							</c:forEach>
 							
 								 </select>
