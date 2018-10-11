@@ -40,7 +40,7 @@ public class User_roleController {
 	
 	//查询所有角色转发到角色管理界面
 	@RequestMapping("page/user_roleAll")
-	public String user_roleAll(Map<String, Object> map,int start) {
+	public String user_roleAll(Map<String, Object> map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(User_roleController.class);
 		try {
 			int total = 0;
@@ -100,11 +100,12 @@ public class User_roleController {
 	
 	//修改角色前的查询
 	@RequestMapping("page/user_roleByid")
-	public String user_roleByid(int uroleid,Map<String, Object> map) {
+	public String user_roleByid(int uroleid,Map<String, Object> map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(User_roleController.class);
 		try {
 			User_role ur = user_roleService.user_roleByid(uroleid);
 			List<R_q_conn> rq = r_q_connService.rqconnAll(uroleid);
+			map.put("start", start);
 			map.put("rq", rq);
 			map.put("ur", ur);
 		}catch (Exception e) {
@@ -115,14 +116,14 @@ public class User_roleController {
 	
 	//修改角色信息
 	@RequestMapping("page/user_roleUpdate")
-	public String user_roleUpdate(User_role ur,@RequestParam List<Integer> q_id) {
+	public String user_roleUpdate(User_role ur,@RequestParam List<Integer> q_id,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
 			user_roleService.user_roleUpdate(ur, q_id);
 		}catch (Exception e) {
 			logger.error("修改角色信息错误",e);
 		}
-		return "redirect:/page/user_roleAll";
+		return "forward:/page/user_roleAll";
 	}
 	
 	//判断角色名是否存在

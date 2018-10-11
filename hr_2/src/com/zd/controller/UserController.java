@@ -109,7 +109,7 @@ public class UserController {
 	
 	//查询所有用户信息
 	@RequestMapping("page/queryAll")
-	public String queryAll(Map map,int start) {
+	public String queryAll(Map map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 		try {
@@ -165,7 +165,7 @@ public class UserController {
 	
 	//查询用户（修改）
 	@RequestMapping("page/userById")
-	public String userById(int userid,Map<String, Object> map) {
+	public String userById(int userid,Map<String, Object> map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
 			User user = userService.userByid(userid);// 1, 2
@@ -179,6 +179,7 @@ public class UserController {
 					}
 				}
 			}
+			map.put("start", start);
 			map.put("urList", urList);
 			map.put("user", user);
 		}catch (Exception e) {
@@ -202,14 +203,14 @@ public class UserController {
 	
 	//修改用户信息
 	@RequestMapping("page/userUpdate")
-	public String userUpdate(User user,@RequestParam List<Integer> uroleid) {
+	public String userUpdate(User user,@RequestParam List<Integer> uroleid,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
 			userService.userUpdate(user, uroleid);
 		}catch (Exception e) {
 			logger.error("修改用户信息错误",e);
 		}
-		return "redirect:/page/queryAll";
+		return "forward:/page/queryAll";
 	}
 	
 	//注册获取验证码

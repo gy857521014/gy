@@ -131,9 +131,8 @@
 						${user.user_phone }
 					</td>
 					<td class="TD_STYLE2">
-					
 						<c:if test="${user.userid == loginUser.userid }">
-							<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
+							<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }+'&start='+${start}+''"/>
 						</c:if>
 					<c:forEach items="${loginUser.rq }" var="rqs">
 						<c:if test="${rqs.q_id==8}">
@@ -142,7 +141,6 @@
 							</c:if>
 						</c:if>
 					</c:forEach>
-					
 					<c:forEach items="${loginUser.rq }" var="rqs">
 						<c:if test="${rqs.q_id==8}">	
 							<c:if test="${user.userid != loginUser.userid }">
@@ -151,7 +149,6 @@
 						</c:if>
 					</c:forEach>
 					</td>
-					
 				</tr>
 			</c:forEach>
 

@@ -52,6 +52,7 @@
 
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
+						<input type="text" value="${start }" name="start"/>
 					</td>
 				</tr>
 			</table>

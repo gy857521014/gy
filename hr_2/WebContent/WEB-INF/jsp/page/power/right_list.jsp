@@ -116,8 +116,8 @@
 							否
 						</td>
 					</c:if>
-					<td class="TD_STYLE2">
-						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_roleByid?uroleid='+${us.uroleid }"/>
+					<td class="TD_STYLE2">                                                                
+						<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='user_roleByid?uroleid='+${us.uroleid }+'&start='+${start}+''"/>
 						<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${us.uroleid })"/>
 					</td>
 				</tr>
