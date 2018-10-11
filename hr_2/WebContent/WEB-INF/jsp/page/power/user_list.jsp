@@ -77,7 +77,7 @@
 					<input type="button" value="添加用户" class="BUTTON_STYLE1" onclick="location.href='queryUr'">
 							</c:if>
 				</c:forEach>
-					<input type="button" value="绑定手机" class="BUTTON_STYLE1" onclick="location.href='phoneByid?userid='+${loginUser.userid }"></input>
+					<input type="button" value="绑定手机" class="BUTTON_STYLE1" onclick="location.href='phoneByid?userid='+${loginUser.userid }+'&start='+${start}+''"></input>
 				</td>
 			</tr>
 		</table>
@@ -107,7 +107,6 @@
 					操作
 				</td>
 			</tr>
-			
 			<c:forEach items="${userList }" var="user">
 				<tr class="TR_STYLE2" id="${user.userid }">
 					<td class="TD_STYLE2">
@@ -131,23 +130,10 @@
 						${user.user_phone }
 					</td>
 					<td class="TD_STYLE2">
-						<c:if test="${user.userid == loginUser.userid }">
 							<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }+'&start='+${start}+''"/>
-						</c:if>
-					<c:forEach items="${loginUser.rq }" var="rqs">
-						<c:if test="${rqs.q_id==8}">
-							<c:if test="${user.userid != loginUser.userid }">
-								<img src="../images/bt_edit.gif" title="编辑" style="cursor:pointer;" onclick="location.href='userById?userid='+${user.userid }"/>
-							</c:if>
-						</c:if>
-					</c:forEach>
-					<c:forEach items="${loginUser.rq }" var="rqs">
-						<c:if test="${rqs.q_id==8}">	
 							<c:if test="${user.userid != loginUser.userid }">
 								<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${user.userid })"/>
 							</c:if>
-						</c:if>
-					</c:forEach>
 					</td>
 				</tr>
 			</c:forEach>

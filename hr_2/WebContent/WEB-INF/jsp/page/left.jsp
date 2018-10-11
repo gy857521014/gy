@@ -15,6 +15,8 @@
 	</head>
 	<body >
 	
+		
+		
 		<ul id="tt1" class="easyui-tree" animate="true">
 		<c:forEach items="${loginUser.rq }" var="rqs">
 		<c:if test="${rqs.q_id==1}">
@@ -390,12 +392,14 @@
 				<li>
 						<span>权限管理</span>
 						<ul>
+								
 								<li>
 									<span>
 											<a href="queryAll?start=0" target="mainFrame" style="color:black;">用户管理</a>
 									</span>
 								</li>
-								
+							
+							
 						<c:forEach items="${loginUser.rq }" var="rqs">
 							<c:if test="${rqs.q_id==802}">
 								<li>

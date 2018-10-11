@@ -95,7 +95,7 @@ public class User_roleController {
 		}catch (Exception e) {
 			logger.error("添加角色错误",e);
 		}
-		return "redirect:/page/user_roleAll";
+		return "redirect:/page/user_roleAll?start=0";
 	}
 	
 	//修改角色前的查询

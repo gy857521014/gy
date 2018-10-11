@@ -17,6 +17,10 @@ public class R_q_conn {
 	public void setQ_id(int q_id) {
 		this.q_id = q_id;
 	}
+	@Override
+	public String toString() {
+		return "R_q_conn [r_id=" + r_id + ", q_id=" + q_id + "]";
+	}
 	
 	
 	

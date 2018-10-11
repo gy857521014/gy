@@ -39,8 +39,8 @@ public class UserService implements IUserService {
 
 	//查询所有用户信息
 	@Override
-	public List<User> queryAll(int start) {
-		return userDao.queryAll(start);
+	public List<User> queryAll(Map selMap) {
+		return userDao.queryAll(selMap);
 	}
 
 	//添加用户

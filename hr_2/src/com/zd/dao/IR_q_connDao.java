@@ -16,4 +16,8 @@ public interface IR_q_connDao {
 	
 	//查询角色权限
 	public List<R_q_conn> queryByUid(int userid);
+	
+	/*@Select("")
+	@ResultMap("r_q_connMapper")
+	public List<R_q_conn> qByUid(int userid);*/
 }

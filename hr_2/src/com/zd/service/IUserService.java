@@ -1,6 +1,7 @@
 package com.zd.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
@@ -20,7 +21,7 @@ public interface IUserService {
 	public User loginByphone(User u);
 	
 	//查询用户
-	public List<User> queryAll(int start);
+	public List<User> queryAll(Map selMap);
 	//分页查询
 	public int queryAll2();
 	
