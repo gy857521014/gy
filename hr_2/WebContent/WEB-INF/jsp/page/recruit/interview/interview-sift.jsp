@@ -417,14 +417,7 @@
 						<input type="text" name="engageResume.passCheckTime" value="${er.pass_check_time } " readonly="readonly" class="INPUT_STYLE2">	 
 					</td>
 				</tr>
-				<tr>
-					<td class="TD_STYLE1">
-						档案附件
-					</td>
-					<td colspan="7" class="TD_STYLE2">
-						<input type="text" name="er.checker" readonly="readonly" class="INPUT_STYLE2">
-					</td>
-				</tr>
+				
 			<tr>
 					<td class="TD_STYLE1">
 						个人履历
