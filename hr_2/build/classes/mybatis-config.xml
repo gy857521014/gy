@@ -23,6 +23,9 @@
 		<typeAlias type="com.zd.entity.User_role" alias="user_role"/>
 		<!-- 人力资源表映射 -->
 		<typeAlias type="com.zd.entity.Humman_file" alias="Humman_file"/>
+		
+		<!-- 角色权限关系表 -->
+		<typeAlias type="com.zd.entity.R_q_conn" alias="r_q_conn"/>
 		<typeAlias type="com.zd.entity.e_mail" alias="email"/>
 	</typeAliases>
 	<mappers>
@@ -41,6 +44,8 @@
 		<mapper resource="com/zd/mappers/Salary_grantMapper.xml" />
 		<!-- 人力资源表映射 -->
 		<mapper resource="com/zd/mappers/Humman_fileMapper.xml" />
+		<!-- 角色权限关系表 -->
+		<mapper resource="com/zd/mappers/R_q_connMapper.xml"/>
 		<mapper resource="com/zd/mappers/EmailMapper.xml" />
 	</mappers>
 </configuration>

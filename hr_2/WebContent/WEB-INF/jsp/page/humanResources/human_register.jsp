@@ -33,7 +33,7 @@ function fun(){
 		success:function(data){
 			var cityselect=$("#majorName");
 			cityselect.empty();
-			cityselect.append("<option>--请选择职位名称--</option>");
+			cityselect.append("<option value=0>--请选择职位名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.major_id;
@@ -53,8 +53,11 @@ function querySecond(){
 		type:'get',
 		success:function(data){
 			var cityselect=$("#secondKind");
+			var cityselect1=$("#thirdKind");
+			cityselect1.empty();
+			cityselect1.append("<option value=0>--请选择三级机构名称--</option>");
 			cityselect.empty();
-			cityselect.append("<option>--请选择二级机构名称--</option>");
+			cityselect.append("<option value=0>--请选择二级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.second_kind_id;
@@ -75,7 +78,7 @@ function queryThird(){
 		success:function(data){
 			var cityselect=$("#thirdKind");
 			cityselect.empty();
-			cityselect.append("<option>--请选择二级机构名称--</option>");
+			cityselect.append("<option value=0>--请选择三级机构名称--</option>");
 			for(var i=0;i<data.length;i++){
 				var eachCity=data[i];
 				var id=eachCity.third_kind_id;
@@ -86,9 +89,90 @@ function queryThird(){
 		});
 	}
 </script>
+<script type="text/javascript">
+function pd(){
+	//一级机构
+	if($("#firstKind").val() != 0){
+		//二级机构
+		if($("#secondKind").val() != 0){
+			//三级机构
+			if($("#thirdKind").val() != 0){
+				//职位分类
+				if($("#majorKind").val() != 0){
+					//职位分类名称
+					if($("#majorName").val() != 0){
+						//职称
+						if($("#majorinName").val() != 0){
+							//姓名
+							if($("#humanName1").val() != null && $("#humanName1").val().trim() != ""){
+								//email
+								if($("#humanEmail").val() != null && $("#humanEmail").val().trim() != ""){
+									//电话
+									if($("#humanTelephone").val() != null && $("#humanTelephone").val().trim() != ""){
+										//QQ
+										if($("#humanQq").val() != null && $("#humanQq").val().trim() != ""){
+											//手机
+											if($("#humanMobilephone").val() != null && $("#humanMobilephone").val().trim() != ""){
+												//住址
+												if($("#humanaddress").val() != null && $("#humanaddress").val().trim() != ""){
+													//邮编
+													if($("#humanpostcode").val() != null && $("#humanpostcode").val().trim() != ""){
+														//出生地
+														if($("#humanbirthplace").val() != null && $("#humanbirthplace").val().trim() != ""){
+															//生日
+															if($("#birthday").val() != null && $("#birthday").val().trim() != ""){
+																//社会保障号码
+																if($("#humansocietysecurityid").val() != null && $("#humansocietysecurityid").val().trim() != ""){
+																	//年龄
+																	if($("#humanAge").val() != null && $("#humanAge").val().trim() != ""){
+																		//开户行
+																		if($("#humanbank").val() != null && $("#humanbank").val().trim() != ""){
+																			//银行账户
+																			if($("#humanaccount").val() != null && $("#humanaccount").val().trim() != ""){
+																				$("#tijiao").submit();
+																			}else
+																				$.messager.show("消息提示", "请填写你的银行账户", 2000);
+																		}else
+																			$.messager.show("消息提示", "请填写你的开户行", 2000);
+																	}else
+																		$.messager.show("消息提示", "请填写你的年龄", 2000);
+																}else
+																	$.messager.show("消息提示", "请填写你的社会保障号码", 2000);
+															}else
+																$.messager.show("消息提示", "请填写你的生日", 2000);
+														}else
+															$.messager.show("消息提示", "请填写你的出生地", 2000);
+													}else
+														$.messager.show("消息提示", "请填写你的邮编", 2000);
+												}else
+													$.messager.show("消息提示", "请填写你的住址", 2000);
+											}else
+												$.messager.show("消息提示", "请填写你的手机", 2000);
+										}else
+											$.messager.show("消息提示", "请填写你的QQ", 2000);
+									}else
+										$.messager.show("消息提示", "请填写你的电话，如：123-12345678", 2000);
+								}else
+									$.messager.show("消息提示", "请填写你的电子邮件", 2000);
+							}else
+								$.messager.show("消息提示", "请填写你的姓名", 2000);
+						}else
+							$.messager.show("消息提示", "请选择你的职称", 2000);
+					}else
+						$.messager.show("消息提示", "请选择你的职位分类名称", 2000);
+				}else
+					$.messager.show("消息提示", "请选择你的职位分类", 2000);
+			}else
+				$.messager.show("消息提示", "请选择你的所在三级机构", 2000);
+		}else
+			$.messager.show("消息提示", "请选择你的所在二级机构", 2000);
+	}else
+		$.messager.show("消息提示", "请选择你的所在一级机构", 2000);
+}
+</script>
 	</head>
 	<body>
-		<form method="post" action="add">
+		<form method="post" action="add" id="tijiao">
 			<table width="100%">
 				<tr>
 					<td>
@@ -97,7 +181,7 @@ function queryThird(){
 				</tr>
 			<tr>
 					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1"/>
+						<input type="button" value="提交" onclick="pd()" class="BUTTON_STYLE1"/>
 						<input type="reset" value="清除" class="BUTTON_STYLE1"/>
 					</td>
 				</tr>
@@ -174,7 +258,7 @@ function queryThird(){
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select name="human_pro_designation" class="SELECT_STYLE1">
+						<select name="human_pro_designation" class="SELECT_STYLE1" id="majorinName">
 						<c:forEach var="listzhicheng" items="${listzhicheng }" >
 							<option>${listzhicheng.attribute_name }</option>
 						</c:forEach>
@@ -186,7 +270,7 @@ function queryThird(){
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="human_name"
+						<input type="text" id="humanName1" name="human_name"
 							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
@@ -239,14 +323,14 @@ function queryThird(){
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="human_address"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humanaddress"/>
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_postcode"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humanpostcode"/>
 					</td>
 				</tr>
 				<tr>
@@ -265,14 +349,14 @@ function queryThird(){
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_birthplace"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humanbirthplace"/>
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
-							class="INPUT_STYLE2" id="birthday">
+							class="INPUT_STYLE2" id="birthday"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						民族
@@ -318,7 +402,7 @@ function queryThird(){
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_society_security_id"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humansocietysecurityid"/>
 					</td>
 				</tr>
 				<tr>
@@ -376,14 +460,14 @@ function queryThird(){
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_bank"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humanbank"/>
 					</td>
 					<td class="TD_STYLE1">
 						银行帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
-							class="INPUT_STYLE2"/>
+							class="INPUT_STYLE2" id="humanaccount"/>
 					</td>
 					<td class="TD_STYLE1">
 						登记人

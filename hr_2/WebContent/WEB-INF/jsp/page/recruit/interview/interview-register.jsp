@@ -37,27 +37,46 @@
 			<script type="text/javascript"
 			src="../javascript/comm/time.js">
 			</script>
+			<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+			</script>
 
  	   <script type="text/javascript">
         function myfunction()
 		{
     		
-        	document.getElementById("name1").style.display ="none";
-        	document.getElementById("name2").style.display ="none";
-        	document.getElementById("name3").style.display ="none";
 			if(document.getElementById("mshren").value.trim()<1||document.getElementById("mshren").value.trim().length>10)
 			{
-				document.getElementById("name1").style.display ="";
+				$.messager.show("消息提示", "请输入面试人!", 1000);
+				document.getElementById("mshren").focus();
 				return false;    				
 			}
 			if(document.getElementById("shijian").value.trim()<1||document.getElementById("shijian").value.trim().length>10)
 			{
-				document.getElementById("name2").style.display ="";
+				$.messager.show("消息提示", "请输入面试时间!", 1000);
+				document.getElementById("shijian").focus();
 				return false;    				
 			}
+			var riqi = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
+			if (!riqi.test(document.getElementById("shijian").value)) {
+				$.messager.show("消息提示", "请输入正确的日期格式!yyyy-MM-dd", 1000);
+				document.getElementById("shijian").focus();
+				return false;
+			}
+			// 输入的时间
+				var c =document.getElementById("shijian").value;
+				var inpDate = new Date(c);
+				// 获取当前时间
+				var now = new Date();
+				if(inpDate.getTime() < now.getTime()){
+					$.messager.show("消息提示", "请输入正确的截止日期(今天以后)!", 1000);
+					document.getElementById("shijian").focus();
+					return false;
+				}
 			if(document.getElementById("pjia").value.trim()<1||document.getElementById("pjia").value.trim().length>50)
 			{
-				document.getElementById("name3").style.display ="";
+				$.messager.show("消息提示", "请输入面试评价!", 1000);
+				document.getElementById("pjia").focus();
 				return false;    				
 			}
 			

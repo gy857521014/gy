@@ -4,9 +4,14 @@
 	});
 	$("html").die().live("keydown", function(event) {
 		if (event.keyCode == 13) {
-			doLogin();
+			checkLogin();
 		}
 	});
+//	$(window).keydown(function(event){
+//		if (event.keyCode == 13) {
+//			checkLogin();
+//		}
+//	});
 });
 
 function checkLogin() {

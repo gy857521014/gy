@@ -9,6 +9,17 @@
 	<result property="user_phone" column="user_phone"/>
 	
 	<collection property="urole" column="userid" select="com.zd.dao.IUser_roleDao.queryByUid"/>
+	<collection property="rq"    column="userid" select="com.zd.dao.IR_q_connDao.queryByUid"></collection>
 </resultMap>
+
+<select id="queryAll" resultMap="userMapper" parameterType="map">
+	select * from user 
+	<where>
+		<if test="isAdmin==null">
+			and userid = #{loginUserId}
+		</if>	
+	</where>
+	LIMIT #{start1},10
+</select>
 
 </mapper>

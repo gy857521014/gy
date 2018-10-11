@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zd.dao.IR_q_connDao">
+<resultMap type="r_q_conn" id="r_q_connMapper">
+	<result property="r_id" column="r_id"/>
+	<result property="q_id" column="q_id"/>
+	
+</resultMap>
+	<select id="queryByUid" resultMap="r_q_connMapper" parameterType="int">
+	SELECT * FROM r_q_conn WHERE r_id in (SELECT r_id FROM user_role r,u_r_conn ur WHERE r.uroleid=ur.r_id AND ur.u_id=#{userid}) GROUP BY q_id
+	</select>
+
+</mapper>

@@ -7,15 +7,14 @@
 		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 		function check(){
 			// 获取机构名称
 			var xc = $("#xc").val();
 			if (document.getElementById("xc").value==""){
-				$("#errorSpan").html("<font color='red'>请输入薪酬项目名称</font>");
+				$.messager.show("消息提示", "请输入薪酬项目名称！", 2000);
 				return;
-			}else{
-				$("#errorSpan").html("");
 			}
 			$("#document").submit();
 		}	
@@ -49,7 +48,6 @@
 					</td>
 					<td class="TD_STYLE2" width="81%">
 						<input id="xc" type="text" class="INPUT_STYLE1" name="attribute_name" />
-						<span id="errorSpan"></span>
 					</td>
 				</tr>
 			</table>

@@ -28,34 +28,44 @@
 					alert("你输入的手机号码格式不对")
 					return;
 				}else if(i==1){
-					//发送请求
+					//判断手机号是否存在
 					$.ajax({
-						url:"upSms?user_phone=" + phone,
+						url:"by_phone?user_phone=" + phone,
 						type:'get',
 						success:function(data){
-							// data就是生成的验证码
-							$("#smsCode").val(data);
+							$("#count").val(data);
+							if(data!=0){
+								$.messager.show("消息提示", "该手机号以存在!", 2000);
+							}
+							if(data==0){
+								$.ajax({
+									url:"upSms?user_phone=" + phone,
+									type:'get',
+									success:function(data){
+										// data就是生成的验证码
+										$("#smsCode").val(data);
+									}
+								});
+								//禁用发送短信
+								$("#smsBtn").attr("disabled",true);
+								var num = 60;
+								var timer = window.setInterval(function(){
+									//修改按键上的内容
+									$("#smsBtn").val(num + "秒");
+									num -= 1;
+									if(num == -1){
+										// 1、清除定时器
+										window.clearInterval(timer);
+										// 2、设置按钮不禁用
+										$("#smsBtn").attr("disabled",false);
+										// 3、重置按钮上的文字为发送验证码
+										$("#smsBtn").val("发送验证码");
+									}
+								},1000);
+							}
 						}
 					});
-					//禁用发送短信
-					$("#smsBtn").attr("disabled",true);
-					var num = 60;
-					var timer = window.setInterval(function(){
-						//修改按键上的内容
-						$("#smsBtn").val(num + "秒");
-						num -= 1;
-						if(num == -1){
-							// 1、清除定时器
-							window.clearInterval(timer);
-							// 2、设置按钮不禁用
-							$("#smsBtn").attr("disabled",false);
-							// 3、重置按钮上的文字为发送验证码
-							$("#smsBtn").val("发送验证码");
-						}
-					},1000);
-				
-			}
-				
+				}
 		}
 		//提交绑定的手机号
 		function upload() {
@@ -123,6 +133,7 @@
 				</tr>
 			</table>
 			<input type="hidden" id="smsCode"  />
+			<input type="hidden" id="count"  />
 		</form>
 		
 </body>

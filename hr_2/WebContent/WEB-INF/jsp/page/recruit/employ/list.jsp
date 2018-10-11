@@ -109,17 +109,45 @@
 						</td>
 						    <c:if test="${eil.engage_resume.pass_passComment=='通过,通过' }">
 								<td class="TD_STYLE2">
-									<a href="details_queryDan?id=${eil.ein_id }">通过&nbsp;&nbsp;查询</a>
+									<c:if test="${eil.engage_resume.pass_checkComment=='释放简历,不通过' }">
+										释放简历&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="details_queryDan?id=${eil.ein_id }">查询</a>
+									</c:if>
+									
+									<c:if test="${eil.engage_resume.pass_checkComment=='申请录用,通过' }">
+										申请录用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="details_queryDan?id=${eil.ein_id }">查询</a>
+									</c:if>
+									
 								</td>
 							</c:if>
 							
 							<c:if test="${eil.engage_resume.pass_passComment=='不通过,不通过' }">
 								<td class="TD_STYLE2">
-									<a href="details_queryDan?id=${eil.ein_id }">不通过&nbsp;&nbsp;查询</a>
+									<c:if test="${eil.engage_resume.pass_checkComment=='释放简历,不通过' }">
+										释放简历&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不通过&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="details_queryDan?id=${eil.ein_id }">查询</a>
+									</c:if>
+									
+									<c:if test="${eil.engage_resume.pass_checkComment=='申请录用,通过' }">
+										申请录用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不通过&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="details_queryDan?id=${eil.ein_id }">查询</a>
+									</c:if>
+									
 								</td>
 							</c:if>
+							
+							
 							<td class="TD_STYLE2">
-								<a href="selemail2?id=${eil.engage_resume.res_id }">${eil.engage_resume.human_email }</a>
+								<c:if test="${eil.engage_resume.pass_passComment=='通过,通过' and eil.engage_resume.pass_checkComment=='申请录用,通过' }">
+									<c:if test="${eil.engage_resume.pass_check_status==2 }">
+										<a href="selemail2?id=${eil.engage_resume.res_id }" style="color:red">${eil.engage_resume.human_email }</a>
+									</c:if>
+									<c:if test="${eil.engage_resume.pass_check_status==3 }">
+										<span style="color:red">已发送</span>
+									</c:if>
+								</c:if>
+								<c:if test="${eil.engage_resume.pass_passComment!='通过,通过' or eil.engage_resume.pass_checkComment!='申请录用,通过' }">
+									<span style="color:red">${eil.engage_resume.human_email }</span>
+								</c:if>
 							</td>
 						
 					</tr>

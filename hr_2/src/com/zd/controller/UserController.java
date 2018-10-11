@@ -1,11 +1,13 @@
 package com.zd.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.lookup.IQualifiedTypeResolutionListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zd.dao.IR_q_connDao;
+import com.zd.dao.IUserDao;
+import com.zd.entity.R_q_conn;
 import com.zd.entity.User;
 import com.zd.entity.User_role;
 import com.zd.service.IUserService;
@@ -28,6 +33,8 @@ public class UserController {
 	private IUserService userService;
 	@Autowired
 	private IUser_roleService user_roleService;
+	@Autowired 
+	private IR_q_connDao rqDao;
 	
 	//登陆跳转
 	@RequestMapping("/tologin")
@@ -41,28 +48,25 @@ public class UserController {
 	
 	//用户名密码登陆登陆
 	@RequestMapping("/login")
-	public String login(User u,HttpSession session,String ucode) {
+	public String login(User u,HttpSession session,String ucode,@RequestParam Map<String, String> map,Map resultMap ) {
 	Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	
 	try {
-			if(ucode == null || "".equals(ucode)) {
+			if("".equals(ucode)) {
 				User user = userService.login(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
+					//保存pojo到session
 					return "page/index";
 				}else {
-					System.out.println("登陆失败");
 					return "redirect:tologin";
 				}
-			}
-			if(ucode != null &&  !"".equals(ucode)) {
+			}  
+			if(!"".equals(ucode)) {
 				User user = userService.loginByphone(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
 					return "page/index";
 				}else {
-					System.out.println("登陆失败");
 					return "redirect:tologin";
 				}
 			}
@@ -77,6 +81,20 @@ public class UserController {
 	@ResponseBody
 	public int byuser_phone(String user_phone) {
 		int count = userService.byuser_phone(user_phone);
+		return count;
+	}
+	//判断手机号是否存在
+	@RequestMapping("page/by_phone")
+	@ResponseBody
+	public int by_phone(String user_phone) {
+		int count = userService.byuser_phone(user_phone);
+		return count;
+	}
+	//判断用户名是否存在
+	@RequestMapping("page/by_name")
+	@ResponseBody
+	public int by_name(String user_name) {
+		int count = userService.byuser_name(user_name);
 		return count;
 	}
 	
@@ -97,12 +115,43 @@ public class UserController {
 	
 	//查询所有用户信息
 	@RequestMapping("page/queryAll")
-	public String queryAll(Map<String, Object> map) {
+	public String queryAll(Map map,Integer start, HttpSession session) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 		try {
-			List<User> userList = userService.queryAll();
-			map.put("userList", userList);
+			int total = 0;
+			int li = userService.queryAll2();
+			map.put("li", li);
+			if(li % 10 == 0) {
+				total = li/10;
+				//总条数 / 每页显示的条数
+				map.put("total",total);
+			} else {
+				total = li/10+1;
+				//总条数 / 每页显示的条数+1
+				map.put("total",total);
+			}
+			if(li==0) {
+				map.put("starttrue", 0);
+			}else {
+				Map selMap = new HashMap();
+				//selMap.put("isAdmin", "1");//默认不是管理员
+				// 判断登陆用户是否有管理员的权限
+				User user = (User)session.getAttribute("loginUser");
+				List<R_q_conn> rq = user.getRq();
+				for (R_q_conn r_q_conn : rq) {
+					int qid = r_q_conn.getQ_id();
+					if(qid == 8) {
+						selMap.put("isAdmin", "2");// 是管理员
+					}
+				}
+				map.put("starttrue", start+1);
+				map.put("start", start);
+				selMap.put("start1", start*10);// 保存分页参数
+				selMap.put("loginUserId", user.getUserid());// 保存当前用户的Id
+				List<User> userList = userService.queryAll(selMap);
+				map.put("userList", userList);
+			}
 		}catch(Exception e) {
 			logger.error("查询所有用户信息错误",e);
 		}
@@ -118,7 +167,7 @@ public class UserController {
 		}catch (Exception e) {
 			logger.error("添加用户信息错误",e);
 		}
-		return "redirect:/page/queryAll";
+		return "redirect:/page/queryAll?start=0";
 	}
 	
 	//删除用户
@@ -135,7 +184,7 @@ public class UserController {
 	
 	//查询用户（修改）
 	@RequestMapping("page/userById")
-	public String userById(int userid,Map<String, Object> map) {
+	public String userById(int userid,Map<String, Object> map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
 			User user = userService.userByid(userid);// 1, 2
@@ -149,6 +198,7 @@ public class UserController {
 					}
 				}
 			}
+			map.put("start", start);
 			map.put("urList", urList);
 			map.put("user", user);
 		}catch (Exception e) {
@@ -159,10 +209,11 @@ public class UserController {
 
 	//注册手机前查询用户的id和用户名
 	@RequestMapping("page/phoneByid")
-	public String phoneByid(int userid,Map<String, Object> map) {
+	public String phoneByid(int userid,Map<String, Object> map,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try{
 			User user = userService.userByid(userid);
+			map.put("start", start);
 			map.put("user", user);
 		}catch (Exception e) {
 			logger.error("注册手机前查询用户的id和用户名错误",e);
@@ -172,14 +223,14 @@ public class UserController {
 	
 	//修改用户信息
 	@RequestMapping("page/userUpdate")
-	public String userUpdate(User user,@RequestParam List<Integer> uroleid) {
+	public String userUpdate(User user,@RequestParam List<Integer> uroleid,Integer start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		try {
 			userService.userUpdate(user, uroleid);
 		}catch (Exception e) {
 			logger.error("修改用户信息错误",e);
 		}
-		return "redirect:/page/queryAll";
+		return "forward:/page/queryAll";
 	}
 	
 	//注册获取验证码
@@ -206,6 +257,6 @@ public class UserController {
 		}catch (Exception e) {
 			logger.error("绑定手机号错误",e);
 		}
-		return "redirect:/page/queryAll";
+		return "redirect:/page/queryAll?start=0";
 	}
 }

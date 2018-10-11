@@ -81,16 +81,6 @@
 					</tr>
 						</c:forEach>
 			</table>
-			<p style="text-align: center;">
-					<a href="change_list.html" style="color:black;">首页</a>
-					<a href="change_list.html" style="color:black;">上一页</a>
-								<font color="red">1</font> 
-								<a href="change_list.html" style="color:black;">2</a> 
-								<a href="change_list.html" style="color:black;">3</a> 
-					<a href="change_list.html" style="color:black;">下一页</a> 
-     				<a href="change_list.html" style="color:black;">尾页</a> 
-				
-			</p>
 		</form>
 	</body>
 </html>

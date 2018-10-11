@@ -14,7 +14,7 @@
 		<br/>
 		操作成功，请返回。
 		<td width="51%" align="right">
-			<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='queryAll'" />
+			<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='queryAll?start=0'" />
 		</td>
 	</body>
 </html>

@@ -24,7 +24,9 @@
 		<script type="text/javascript"
 			src="../javascript/locate.js">
 		</script>
-		
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+		</script>
 			<script type="text/javascript">
  			window.onload=check;
 		function tick() {
@@ -64,65 +66,207 @@
 		  	tick();					
 		}
  		</script>
+
  		<script type="text/javascript">
- 		function mysubmit(){  
- 		if(document.getElementById("name").value==""){
- 		alert("请填写姓名");
- 		return false;
- 		}
- 		if(document.getElementById("phone").value==""){ 
-	 		alert("请填写电话");
-	 		return false;
- 		}else if(isNaN(document.getElementById("phone").value)){
-	 		alert("电话号码请填写数字");
-	 		return false;
- 		}
- 		if(document.getElementById("card").value==""){
-	 		alert("请填写身份证号码");
-	 		return false;
- 		} 
- 		if(document.getElementById("birthday").value!=""){
-	 		var str = document.getElementById("birthday").value; 
-	 		var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/); 
-	 		 if(r==null){
-	 		 alert("请输入正确的日期格式：yyyy-MM-dd");
-	 		return false;
-	 		}
- 		} 
- 		if(document.getElementById("email").value!=""){
-	 		var email=document.getElementById("email").value;
-	 		if(email.indexOf(".")<=-1 || email.indexOf("@")<=-1){
-	 		alert("Email格式不匹配，如：123@.com");
-	 		return false;
-	 		}  
- 		}
- 		if(document.getElementById("humanHomephone").value!=""){
-	 		if(isNaN(document.getElementById("humanHomephone").value)){
-	 		alert("家庭电话请填写数字");
-	 		return false;
-	 		}
- 		}
- 		if(document.getElementById("humanMobilephone").value!=""){
-	 		if(isNaN(document.getElementById("humanMobilephone").value)){
-	 		alert("手机请填写数字");
-	 		return false;
-	 		}
- 		}
- 		if(document.getElementById("humanAge").value!=""){
- 			if(isNaN(document.getElementById("humanAge").value)){
-	 		alert("年龄请填写数字");
-	 		return false;
-	 		}
- 		}
- 		if(document.getElementById("demandSalaryStandard").value!=""){
- 			if(isNaN(document.getElementById("demandSalaryStandard").value)){
-	 		alert("年龄请填写数字");
-	 		return false;
-	 		}
- 		} 
- 		document.fm.submit();
- 		}
- 		</script>
+ 	   function mysubmit(){  
+ 		 
+ 		 if(document.getElementById("majorKindId").value.trim()<1||document.getElementById("majorKindId").value.trim().length>20)
+ 		 {
+ 			$.messager.show("消息提示", "请选择职位分类!", 1000);
+ 	       return false;
+ 	       }  
+ 		 
+ 		  if(document.getElementById("majorId").value.trim()<1||document.getElementById("majorId").value.trim().length>20)
+ 		  {
+ 			 $.messager.show("消息提示", "请选择职位名称!",1000);
+
+ 	       	 return false;
+ 	       }
+ 		  
+ 		 if(document.getElementById("name").value.trim()<1||document.getElementById("name").value.trim().length>20)	
+ 		  {
+ 			$.messager.show("消息提示", "请选择姓名！", 1000);
+ 			document.getElementById("name").focus();
+ 	       		return false;
+ 	       }
+ 		 if(document.getElementById("email").value.trim()<1||document.getElementById("email").value.trim().length>20)
+  		{
+  		  $.messager.show("消息提示", "请输入邮箱!", 1000);
+  		  document.getElementById("email").focus();
+  			return false;    				
+  		}
+ 		 
+ 		 		var temp = document.getElementById("email");
+ 		        //对电子邮件的验证
+ 		        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+ 		        if(!myreg.test(temp.value))
+ 		        {
+ 		        	$.messager.show("消息提示", "请输入正确的邮箱(xxx@xxx.com)!", 1000);
+	 		         myreg.focus();
+	 		        return false;
+ 		        }
+ 		 
+ 		 if(document.getElementById("phone").value.trim()<1||document.getElementById("phone").value.trim().length>20)
+ 		  {
+ 			$.messager.show("消息提示", "请选择电话号码!", 1000);
+
+ 	       return false;
+ 	       } 
+	 		var re =  /^1[3578]\d{9}$/;
+			if (!re.test(document.getElementById("phone").value)) {
+				$.messager.show("消息提示", "请输入正确手机号码：13、15、17、18开头,满足11位!", 1000);
+				document.getElementById("xxx@xxx.com").focus();
+				return false;
+			}
+
+ 		 if(document.getElementById("humanHomephone").value.trim()<1||document.getElementById("humanHomephone").value.trim().length>20)
+  		{
+  		  $.messager.show("消息提示", "请输入家庭电话!", 2000);
+  		  document.getElementById("humanHomephone").focus();
+  			return false;    				
+  		}
+ 		var re = /0\d{3,4}-\d{7,8}/;
+		if (!re.test(document.getElementById("humanHomephone").value)) {
+			$.messager.show("消息提示", "请输入正确家庭电话号码：以数字0开始，并跟随3-4个数字,中间-连接,满足7-8位!", 2000);
+			document.getElementById("humanHomephone").focus();
+			return false;
+		}
+
+ 		 if(document.getElementById("humanMobilephone").value.trim()<1||document.getElementById("humanMobilephone").value.trim().length>20)
+  		{
+  		  $.messager.show("消息提示", "请输入手机!", 2000);
+  		  document.getElementById("humanMobilephone").focus();
+  			return false;    				
+  		}
+ 		var re =  /^1[3578]\d{9}$/;
+		if (!re.test(document.getElementById("humanMobilephone").value)) {
+			$.messager.show("消息提示", "请输入正确手机号码：13、15、17、18开头,满足11位!", 2000);
+			document.getElementById("humanMobilephone").focus();
+			return false;
+		}
+
+ 		 if(document.getElementById("zhuzhi").value.trim()<1||document.getElementById("zhuzhi").value.trim().length>20)
+   		{
+   		  $.messager.show("消息提示", "请输入住址!", 2000);
+   		  document.getElementById("zhuzhi").focus();
+   			return false;    				
+   		}
+  		 if(document.getElementById("youbian").value.trim()<1||document.getElementById("youbian").value.trim().length>20)
+   		{
+   		  $.messager.show("消息提示", "请输入邮编!", 2000);
+   		  document.getElementById("youbian").focus();
+   			return false;    				
+   		}
+  		 	var yb= /^[1-9][0-9]{5}$/
+  			if (!yb.test(document.getElementById("youbian").value)) {
+  				$.messager.show("消息提示", "请输入正确的邮编,不以0开头的六位数字!", 2000);
+  				document.getElementById("youbian").focus();
+  				return false;
+  			}
+  		if(document.getElementById("chusheng").value.trim()<1||document.getElementById("chusheng").value.trim().length>20)
+		 {
+			$.messager.show("消息提示", "请输入出生地!", 2000);
+			document.getElementById("chusheng").focus();
+	       return false;
+	       }  
+		 if(document.getElementById("birthday").value.trim()<1||document.getElementById("birthday").value.trim().length>20)
+		{
+		  $.messager.show("消息提示", "请输入生日!", 2000);
+		  document.getElementById("birthday").focus();
+			return false;    				
+		}
+		 var riqi = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
+			if (!riqi.test(document.getElementById("birthday").value)) {
+				$.messager.show("消息提示", "请输入正确的日期格式!yyyy-MM-dd", 1000);
+				document.getElementById("birthday").focus();
+				return false;
+			}
+			// 输入的时间
+				var c =document.getElementById("birthday").value;
+				var inpDate = new Date(c);
+				// 获取当前时间
+				var now = new Date();
+				if(inpDate.getTime() > now.getTime()){
+					$.messager.show("消息提示", "请输入正确的截止日期!(今天以前)", 1000);
+					document.getElementById("birthday").focus();
+					return false;
+				}
+		 if(document.getElementById("card").value.trim()<1||document.getElementById("card").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入身份证号码!", 2000);
+			  document.getElementById("card").focus();
+				return false;    				
+			}
+		 	// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
+		   var sfz = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+		   if (!sfz.test(document.getElementById("card").value)) {
+				$.messager.show("消息提示", "请输入正确的身份证号码！15位或者18位，18位时最后一位可为x或X", 1000);
+				document.getElementById("card").focus();
+				return false;
+			}
+		   
+		 if(document.getElementById("humanAge").value.trim()<1||document.getElementById("humanAge").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入年龄(1~99)!", 2000);
+			  document.getElementById("humanAge").focus();
+				return false;    				
+			}
+		 	var regNum = /^[0-9]{1,2}$/;
+			if (!regNum.test(document.getElementById("humanAge").value)) {
+				$.messager.show("消息提示", "请输入正确年龄(1~99)!", 1000);
+				document.getElementById("humanAge").focus();
+				return false;
+			}
+		 if(document.getElementById("biye").value.trim()<1||document.getElementById("biye").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入毕业院校!", 2000);
+			  document.getElementById("biye").focus();
+				return false;    				
+			}
+		 if(document.getElementById("xueli").value.trim()<1||document.getElementById("xueli").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请选择学历!", 2000);
+				return false;    				
+			}
+		 if(document.getElementById("nianxian").value.trim()<1||document.getElementById("nianxian").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请选择教育年限!", 2000);
+				return false;    				
+			}
+		 if(document.getElementById("zhye").value.trim()<1||document.getElementById("zhye").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请选择学历专业!", 2000);
+			  document.getElementById("zhye").focus();
+				return false;    				
+			}
+		 if(document.getElementById("gongzi").value.trim()<1||document.getElementById("gongzi").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入薪酬要求!", 2000);
+			  document.getElementById("gongzi").focus();
+				return false;    				
+			}
+		 	var gz = /^[1-9]+[0-9]{1,6}$/;
+		 	if (!gz.test(document.getElementById("gongzi").value)) {
+				$.messager.show("消息提示", "请输入正确的薪资要求(数字)!", 1000);
+				document.getElementById("gongzi").focus();
+				return false;
+			}
+		 if(document.getElementById("nvli").value.trim()<1||document.getElementById("nvli").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入个人履历!", 2000);
+			  document.getElementById("nvli").focus();
+				return false;    				
+			}
+		 if(document.getElementById("beizhu").value.trim()<1||document.getElementById("beizhu").value.trim().length>20)
+			{
+			  $.messager.show("消息提示", "请输入备注!", 2000);
+			  document.getElementById("beizhu").focus();
+				return false;    				
+			}
+ 		  	document.fm.submit();
+ 		  	return true;
+  	   }
+ 	  </script>   
  	<script>
 		function fun(){
 			var pid =$("#majorKindId").val();
@@ -132,7 +276,7 @@
 				success:function(data){
 					var cityselect=$("#majorId");
 					cityselect.empty();
-					cityselect.append("<option value='0'>--请选择职位名称--</option>");
+					cityselect.append("<option value=''>--请选择职位名称--</option>");
 					for(var i=0;i<data.length;i++){
 						var eachCity=data[i];
 						var id=eachCity.major_id;
@@ -175,7 +319,7 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">  
-						 <input type="hidden" value="01" id="humanMajorKindId" name="engageResume.humanMajorKindId" />
+						 <input type="hidden" value="01" id="majorKindIdc" name="engageResume.humanMajorKindId" />
 					<select name="human_major_kind_id" onchange="fun()" class="SELECT_STYLE1" id="majorKindId">
 						<option value="">请选择职位分类</option>
 						<c:forEach items="${kindlist }" var="list">
@@ -198,7 +342,7 @@
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2"> 
-					<select name="engage_type" class="SELECT_STYLE1">
+					<select name="engage_type" id="engageType" class="SELECT_STYLE1">
 						<c:forEach items="${zhaoplist }" var="list">
 							<option value="${list.attribute_name }">${list.attribute_name }</option>
 						</c:forEach>
@@ -226,7 +370,7 @@
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="human_email" id="email" class="INPUT_STYLE2">
+						<input type="text" name="human_email" id="email" class="INPUT_STYLE2" placeholder="格式xxx@xxx.com">
 					</td>
 				</tr>
 				<tr>
@@ -234,7 +378,7 @@
 					电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2">
+						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2" placeholder="">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
@@ -254,14 +398,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="human_address" value="" class="INPUT_STYLE2">
+						<input type="text" id="zhuzhi" name="human_address" value="" class="INPUT_STYLE2">
 					</td>
 					 
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="human_postcode" value="" class="INPUT_STYLE2">
+						<input type="text" id="youbian" name="human_postcode" value="" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				 
@@ -270,10 +414,15 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-					 <select name="human_nationality"   class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
+					 <select name="human_nationality" id="guoji"  class="SELECT_STYLE1">
 							<c:forEach items="${guoji }" var="glist">
+							<c:if test="${glist.attribute_name=='中国' }">
+								<option value="${glist.attribute_name }" selected>${glist.attribute_name }</option>
+							</c:if>
+							<c:if test="${glist.attribute_name!='中国' }">
 								<option value="${glist.attribute_name }">${glist.attribute_name }</option>
+							</c:if>
+								
 							</c:forEach>
 							
 					 </select> 
@@ -282,7 +431,7 @@
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="human_birthplace" value="" class="INPUT_STYLE2">
+						<input type="text" id="chusheng" name="human_birthplace" value="" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
@@ -297,10 +446,15 @@
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-				 	 <select name="human_race"   class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
+				 	 <select name="human_race" id="mingzu"  class="SELECT_STYLE1">
 							<c:forEach items="${mingzu }" var="list">
-								<option value="${list.attribute_name }">${list.attribute_name }</option>
+								<c:if test="${list.attribute_name=='汉族' }">
+									<option value="${list.attribute_name }" selected>${list.attribute_name }</option>
+								</c:if>
+								<c:if test="${list.attribute_name!='汉族' }">
+									<option value="${list.attribute_name }">${list.attribute_name }</option>
+								</c:if>
+								
 							</c:forEach> 
 							
 					 </select>  
@@ -310,7 +464,6 @@
 					</td>
 					<td class="TD_STYLE2">
 					   <select name="human_religion"   class="SELECT_STYLE1"> 
-							
 							<option value="无">无</option> 
 							<c:forEach items="${zongjiao }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>
@@ -322,9 +475,7 @@
 						政治面貌
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					   <select name="human_party"   class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
-							
+					   <select name="human_party"   class="SELECT_STYLE1"> 					
 							<c:forEach items="${zhengzhi }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>
 							</c:forEach>
@@ -351,14 +502,14 @@
 						毕业院校
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="human_college" class="INPUT_STYLE2"/>
+						 <input type="text" id="biye" name="human_college" class="INPUT_STYLE2"/>
 					</td>
 					
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-					  <select name="human_educated_degree"   class="SELECT_STYLE1">
+					  <select name="human_educated_degree" id="xueli"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
 							
 							<c:forEach items="${xueli }" var="list">
@@ -374,7 +525,7 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="human_educated_years"   class="SELECT_STYLE1">
+					   <select name="human_educated_years" id="nianxian"  class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
 							
 							<c:forEach items="${jiaoyv }" var="list">
@@ -387,7 +538,7 @@
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="human_educated_major"   class="SELECT_STYLE1">
+					   <select name="human_educated_major" id="zhye"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
 							
 							<c:forEach items="${zhuanye }" var="list">
@@ -401,7 +552,7 @@
 						薪酬要求
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="demand_salary_standard" id="demandSalaryStandard" class="INPUT_STYLE2" />
+						<input type="text" name="demand_salary_standard" id="gongzi" class="INPUT_STYLE2" />
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
@@ -419,8 +570,8 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="human_specility"   class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
+					   <select name="human_specility" id="techang"  class="SELECT_STYLE1">
+							<option value="">--无--</option> 
 							
 							<c:forEach items="${techang }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>
@@ -433,8 +584,8 @@
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-				     <select name="human_hobby"   class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
+				     <select name="human_hobby"  class="SELECT_STYLE1">
+							<option value="">--无--</option> 
 							
 							<c:forEach items="${aihao }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>
@@ -461,7 +612,7 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="human_history_records" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="human_history_records" id="nvli" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 				 
@@ -470,7 +621,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="remark" id="beizhu" rows="4" class="TEXTAREA_STYLE1">无</textarea>
 					</td>
 				</tr>
 			</table>

@@ -26,7 +26,7 @@ public interface IHumman_fileDao {
 	public int sel1all();
 	
 	//查询薪资标准
-	@Select("SELECT * FROM salary_standard_details")
+	@Select("SELECT * FROM salary_standard_details group by standard_name")
 	public List<Salary_standard_details> xinchoulist();
 	//根据薪酬标注编号查询薪酬标准name
 	@Select("select * from salary_standard where standard_id=#{id}")
@@ -45,7 +45,6 @@ public interface IHumman_fileDao {
 	//修改图片
 	@Update("UPDATE humman_file SET human_picture=#{fnewname} WHERE human_id = #{human_id}")
 	public void uploadUpdate(Map map);
-	
 	//查询人力资源档案表
 	@Select("SELECT * FROM humman_file where check_status=2")
 	@ResultMap("Humman_file")
@@ -67,6 +66,9 @@ public interface IHumman_fileDao {
 	//多条件查询
 	public List<Humman_file> query_list(Map map);
 	
+	//人力资源模糊查询
+	public List<Humman_file> query_list_key(Map map);
+	
 	//人力资源变更修改
 		//修改
 		@Update("UPDATE humman_file SET human_name=#{human_name},human_address=#{human_address},human_postcode=#{human_postcode},human_pro_designation=#{human_pro_designation},human_telephone=#{human_telephone},"
@@ -79,6 +81,8 @@ public interface IHumman_fileDao {
 		
 	//多条件查询人力资源删除
 		public List<Humman_file> delete_list(Map map);
+	//模糊查询人力资源删除
+		public List<Humman_file> delete_list_key(Map map);
 	//人力资源删除修改
 		//修改
 		@Update("update Humman_file set human_histroy_records=#{human_histroy_records},human_family_membership=#{human_family_membership},remark=#{remark},delete_time=#{delete_time},human_file_status=3 where human_id = #{human_id}")
@@ -86,6 +90,8 @@ public interface IHumman_fileDao {
 		
 	//多条件查询人力资源恢复
 	public List<Humman_file> recovery_list(Map map);
+	//模糊查询人力资源恢复
+	public List<Humman_file> recovery_list_key(Map map);
 	
 	//人力资源恢复修改
 	@Update("update Humman_file set human_histroy_records=#{human_histroy_records},human_family_membership=#{human_family_membership},remark=#{remark},recovery_time=#{recovery_time},human_file_status=2 where human_id = #{human_id}")

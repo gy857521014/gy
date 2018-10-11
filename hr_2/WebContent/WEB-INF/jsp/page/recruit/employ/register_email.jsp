@@ -28,7 +28,10 @@
 		</script>
 		<script type="text/javascript"
 			src="../javascript/comm/time.js">
-			</script>
+		</script>
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+		</script>
 <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
  function email(){
@@ -48,10 +51,29 @@
 	 });
  }
 </script>
+<script type="text/javascript">
+ 	   function mysubmit(){  
+ 		 
+ 		 if(document.getElementById("mcontent").value.trim()<1||document.getElementById("mcontent").value.trim().length>2000)
+ 		 {
+ 			$.messager.show("消息提示", "请输入邮件内容模板!", 1000);
+ 			document.getElementById("mcontent").focus();
+ 	       	return false;
+ 	       }  
+ 		if(document.getElementById("eid").value.trim()<1||document.getElementById("eid").value.trim().length>20)
+		 {
+			$.messager.show("消息提示", "请选择邮件标题模板!", 1000);
+	       	return false;
+	       }  
+ 			document.humanfileForm.submit();
+ 		  	return true;
+ 	    }
+  	  </script>
  	</head>
 	<body>
 		<form name="humanfileForm" method="post" action="sendEmailMa2" >
 		<input type="hidden" name="human_name" id="human_name" value="${resume.human_name }">
+		<input type="hidden" name="res_id" id="human_name" value="${resume.res_id }">
 			<table width="100%">
 				<tr>
 					<td>
@@ -60,8 +82,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit"  value="发送"  class="BUTTON_STYLE1" 
-						  >
+						<input type="button"  value="发送"  class="BUTTON_STYLE1" onclick="return mysubmit()">
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
@@ -72,7 +93,7 @@
 						发送者电子邮件
 					</td>
 				<td>
-					<input  type="text" name="senderEmail" value="2644736006@qq.com" class="INPUT_STYLE2" >
+					<input  type="text" name="senderEmail" value="2644736006@qq.com" class="INPUT_STYLE2" readonly="readonly">
 				</td>
 		</tr>
 			<tr>
@@ -80,7 +101,7 @@
 						电子邮件
 					</td>
 				<td>
-					<input  type="text" name="human_email" class="INPUT_STYLE2" value="${resume.human_email }">
+					<input  type="text" name="human_email" class="INPUT_STYLE2" value="${resume.human_email }" readonly="readonly">
 				</td>
 		</tr>
 		<tr>

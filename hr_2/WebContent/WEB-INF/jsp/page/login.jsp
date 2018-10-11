@@ -54,7 +54,6 @@
 					url:"byuser_phone?user_phone=" + userName,
 					type:'get',
 					success:function(data){
-						// data就是生成的验证码
 						$("#count").val(data);
 						if(data==0){
 							$.messager.show("消息提示", "该手机号未绑定!请重新输入", 2000);
@@ -122,7 +121,8 @@
 																登 录 名：
 															</td>
 															<td style="height: 28px" width=150>
-																<input id="userName" name="user_name" style="width: 130px" onkeyup="checkNameOrPhone()" />
+																
+																<input id="userName" name="user_phone" style="width: 130px" onkeyup="checkNameOrPhone()" />
 																<input type="hidden" id="count"/>
 															</td>
 															<td></td>

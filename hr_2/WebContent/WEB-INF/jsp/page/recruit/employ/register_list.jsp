@@ -78,41 +78,47 @@
 					</td>
 				</tr>
 				 <c:forEach items="${inlist }" var="inlist">
-					<tr class="TR_STYLE1">
-						<td class="TD_STYLE2">
-							${inlist.human_name }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.engage_resume.human_sex }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.engage_resume.human_age }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.human_major_kind_name }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.human_major_name }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.engage_resume.human_college }
-						</td>
-						<td class="TD_STYLE2">
-							${inlist.engage_resume.human_educated_major }
-						</td>
-						<c:if test="${inlist.engage_resume.pass_checkComment==null }">
+				 	
+						<tr class="TR_STYLE1">
 							<td class="TD_STYLE2">
-								<a href="register_sift_queryDan?id=${inlist.ein_id }">申请</a>
+								${inlist.human_name }
 							</td>
-						</c:if>
-						
-						<c:if test="${inlist.engage_resume.pass_checkComment!=null }">
 							<td class="TD_STYLE2">
-								已申请
+								${inlist.engage_resume.human_sex }
 							</td>
-						</c:if>
+							<td class="TD_STYLE2">
+								${inlist.engage_resume.human_age }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.human_major_kind_name }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.human_major_name }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.engage_resume.human_college }
+							</td>
+							<td class="TD_STYLE2">
+								${inlist.engage_resume.human_educated_major }
+							</td>
+							<c:if test="${inlist.engage_resume.pass_checkComment==null and inlist.check_status!=4}">
+								<td class="TD_STYLE2">
+									<a href="register_sift_queryDan?id=${inlist.ein_id }">申请</a>
+								</td>
+							</c:if>
+							
+							<c:if test="${inlist.engage_resume.pass_checkComment!=null }">
+								<td class="TD_STYLE2">
+									已申请
+								</td>
+							</c:if>
+							<c:if test="${inlist.check_status==4 }">
+								<td class="TD_STYLE2">
+									未通过面试
+								</td>
+							</c:if>
+							</tr>
 						
-					</tr>
 					</c:forEach>
 				
 					 

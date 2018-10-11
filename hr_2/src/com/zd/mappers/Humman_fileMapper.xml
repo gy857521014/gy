@@ -91,6 +91,15 @@ select * from humman_file
 		</if>
 	</where>
 </select>
+<!-- 人力资源管理模糊查询 -->
+<select id="query_list_key" parameterType="java.util.Map" resultMap="Humman_file">
+	SELECT * FROM humman_file
+	<where>
+		<if test="primarKey!=null and primarKey!=''">
+			first_king_name LIKE '${primarKey}%' or second_kind_name LIKE '${primarKey}%' or third_kind_name LIKE '${primarKey}%' or human_name LIKE '${primarKey}%' or human_pro_designation LIKE '${primarKey}%'
+		</if>
+	</where>
+</select>
 <!-- 多条件查询人力资源删除 -->
 <select id="delete_list" parameterType="java.util.Map" resultMap="Humman_file">
 		select * from humman_file 
@@ -119,6 +128,16 @@ select * from humman_file
 		 and check_status = 1 and human_file_status = 2
 		</where>
 	</select>
+<!-- 模糊查询人力资源删除 -->
+<select id="delete_list_key" parameterType="java.util.Map" resultMap="Humman_file">
+	SELECT * FROM humman_file
+	<where>
+		<if test="primarKey!=null and primarKey!=''">
+			(first_king_name LIKE '${primarKey}%' or second_kind_name LIKE '${primarKey}%' or third_kind_name LIKE '${primarKey}%' or human_name LIKE '${primarKey}%' or human_pro_designation LIKE '${primarKey}%')
+		</if>
+		  	and check_status = 1 and human_file_status = 2
+	</where>
+</select>
 <!-- 多条件查询人力资源恢复 -->
 <select id="recovery_list" parameterType="java.util.Map" resultMap="Humman_file">
 		select * from humman_file
@@ -147,4 +166,14 @@ select * from humman_file
 		  and human_file_status = 3
 		</where>
 	</select>
+<!-- 模糊查询人力资源恢复 -->
+<select id="recovery_list_key" parameterType="java.util.Map" resultMap="Humman_file">
+	SELECT * FROM humman_file
+	<where>
+		<if test="primarKey!=null and primarKey!=''">
+			(first_king_name LIKE '${primarKey}%' or second_kind_name LIKE '${primarKey}%' or third_kind_name LIKE '${primarKey}%' or human_name LIKE '${primarKey}%' or human_pro_designation LIKE '${primarKey}%')
+		</if>
+		  	and human_file_status = 3
+	</where>
+</select>
 </mapper>

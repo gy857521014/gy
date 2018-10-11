@@ -14,7 +14,7 @@ import com.zd.entity.User;
 
 public interface IUserDao {
 	//用户名密码登陆登陆
-	@Select("select * from user where user_name=#{user_name} and user_password=#{user_password}")
+	@Select("select * from user where user_name=#{user_phone} and user_password=#{user_password}")
 	@ResultMap("userMapper")
 	public User login(User u);
 
@@ -28,9 +28,13 @@ public interface IUserDao {
 	public int byuser_phone(String user_phone);
 	
 	//查询所有用户
-	@Select("select * from user")
-	@ResultMap("userMapper")
-	public List<User> queryAll();
+	//@Select("select * from user LIMIT #{start},10")
+	//@ResultMap("userMapper")
+	public List<User> queryAll(Map selMap);
+	
+	//分页查询
+	@Select("select count(*) from user")
+	public int queryAll2();
 	
 	//添加用户
 	@Insert("INSERT INTO USER VALUES(NULL,#{user_name},#{user_true_name},#{user_password},null)")
@@ -41,8 +45,8 @@ public interface IUserDao {
 	public void userAdd(User user);
 	
 	//查询用户名是否重复
-	//@Select("SELECT COUNT(*) FROM USER WHERE user_name=#{user_name}")
-	//public int byuser_name(String user_name);
+	@Select("SELECT COUNT(*) FROM USER WHERE user_name=#{user_name}")
+	public int byuser_name(String user_name);
 	
 	//添加用户关系
 	@Insert("INSERT INTO u_r_conn VALUES(#{u_id},#{r_id})")
@@ -62,7 +66,7 @@ public interface IUserDao {
 	public User userByid(int userid);
 	
 	//修改用户信息（修改）
-	@Update("update user set user_name=#{user_name},user_true_name=#{user_true_name},user_password=#{user_password} where userid=#{userid} ")
+	@Update("update user set user_true_name=#{user_true_name},user_password=#{user_password} where userid=#{userid} ")
 	public void userUpdate(User user);
 	
 	//绑定手机号

@@ -221,7 +221,7 @@ public class Engage_resumeController {
 	
 	//发送邮件
 	@RequestMapping("/page/sendEmailMa")
-	public String sendEmailMa(sendemail mai,int emailTitle) throws Exception {
+	public String sendEmailMa(sendemail mai,int emailTitle,int res_id) throws Exception {
 			e_mail email = emailservice.emailselid(emailTitle);
 			// 1、通过发送者创建电子邮件对象-MimeMessage
 			MimeMessage mm = mailSender.createMimeMessage();
@@ -238,12 +238,12 @@ public class Engage_resumeController {
 			helper.setText(mai.getEidaa(), true);
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
-			
+			resumeservice.updemail(res_id);
 			return "redirect:/page/selresume"; 
 	}
 	
 	@RequestMapping("/page/sendEmailMa2")
-	public String sendEmailMa2(sendemail mai,int emailTitle) throws Exception {
+	public String sendEmailMa2(sendemail mai,int emailTitle,int res_id) throws Exception {
 			e_mail email = emailservice.emailselid(emailTitle);
 			// 1、通过发送者创建电子邮件对象-MimeMessage
 			MimeMessage mm = mailSender.createMimeMessage();
@@ -260,6 +260,7 @@ public class Engage_resumeController {
 			helper.setText(mai.getEidaa(), true);
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
+			resumeservice.updemail2(res_id);
 			return "redirect:/page/selresume2"; 
 	}
 }

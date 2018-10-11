@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/table.css" type="text/css" />
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 <title>无标题文档</title>
 
 <style type="text/css">
@@ -16,8 +18,8 @@
 </head>
 
 <body>
-	<form method="post"
-		action="/HR_Fist/salaryCriterion/salaryCriterionAction!querysalarystandardByPage">
+	<form method="post" action="selsalarystandard_query" id="cform">
+		<input type="hidden" name="standardid" id="sid"/>
 		<table width="100%">
 			<tr>
 				<td><font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记查询</font>
@@ -44,7 +46,7 @@
 
 			<c:forEach items="${ss }" var="ss">
 				<tr class="TD_STYLE2">
-				<td><a href="selsalarystandard_query?standard_id=${ss.standard_id}">${ss.standard_id}</a></td>
+				<td><a href="javascript:cform('${ss.standard_id}')">${ss.standard_id}</a></td>
 				<td>${ss.standard_name}</td>
 				<td>${ss.designer}</td>
 				<td>${ss.regist_time}</td>
@@ -52,7 +54,11 @@
 			</tr>
 			</c:forEach>
 
-			
+			<input name="Keyword" value="${Keyword}" type="hidden"/>
+			<input name="startDate" value="${startDate}" type="hidden"/>
+			<input name="endDate" value="${endDate}" type="hidden"/>
+			<input name="standard_id" value="${standard_id}" type="hidden"/>
+			<input name="start" value="${start}" type="hidden" />
 
 
 		</table>
@@ -97,7 +103,7 @@
 					.getElementById("page").value-1;
 					
 				} else {
-					alert("您的输入有误");
+					$.messager.show("错误提示", "您的输入页数有误", 2000);
 					document.getElementById("page").value = document
 							.getElementById("startpage").value;
 					return;
@@ -116,17 +122,27 @@
 				document.getElementById("starty").value = startsize;
 				//document.forms[0].submit();
 				var myform = document.getElementById("queryForm");
-				if(startsize==${total}){
-					alert("已经是末页");
-					return;
-				}
-				if(startsize<0){
-					alert("已经是首页");
-					return;
+				if(${li}==0){
+					$.messager.show("错误提示", "当前没有结果", 2000);
+					return false;
+				}else{
+					if(startsize==${total}){
+						$.messager.show("错误提示", "已经是末页", 2000);
+						return;
+					}
+					if(startsize<0){
+						$.messager.show("错误提示", "已经是首页", 2000);
+						return;
+					}
 				}
 				myform.submit();
 				//location.href="selLikeSalary_standardsy?start="+${start}
 			}
+			function cform(standard_id){
+				document.getElementById("sid").value = standard_id;
+				var myform = document.getElementById("cform");
+				myform.submit();
+			 }
 		</script>
 </body>
 </html>

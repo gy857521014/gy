@@ -7,13 +7,12 @@
 		<link rel="stylesheet" href="../css/table.css" type="text/css"></link>
 		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 				function check(){
 					if (document.getElementById("zwmc").value==""){
-						$("#errorSpan").html("<font color='red'>请输入职位分类名称</font>");
+						$.messager.show("消息提示", "请输入职位分类名称！", 2000);
 						return;
-					}else{
-						$("#errorSpan").html("");
 					}
 					$("#cc").submit();
 				}	
@@ -54,7 +53,6 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input id="zwmc" type="text" class="INPUT_STYLE1" name="major_kind_name" />
-						<span id="errorSpan"></span>
 					</td>
 				</tr>
 			</table>

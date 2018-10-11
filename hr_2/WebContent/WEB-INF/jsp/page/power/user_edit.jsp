@@ -27,6 +27,7 @@
 
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
+						<input type="hidden" value="${start }" name="start" />
 					</td>
 				</tr>
 			</table>
@@ -36,7 +37,7 @@
 				<tr>
 					<td class="TD_STYLE1">用户名称</td>
 					<td class="TD_STYLE2">
-						<input type="text" value="${user.user_name }" id="userName" name="user_name"/>
+						${user.user_name }
 						<input type="hidden" name="users.userId" value="1015"/>
 					</td>
 					<td class="TD_STYLE1">用户密码</td>
@@ -49,24 +50,25 @@
 					<td class="TD_STYLE2">
 						<input type="text" value="${user.user_true_name }" id="userTrueName" name="user_true_name"/>
 					</td>
+					
 					<td class="TD_STYLE1">用户身份</td>
 					<td class="TD_STYLE2">
 					
 						<select name="uroleid" id="powerAction!doModifyUser_users_sysRole_roleId" multiple="multiple">
 						   	<!-- 所有角色 -->
 						   	<c:forEach items="${urList }" var="urs">
-						   		<%-- <c:if test="${urs.check == 1 }">
-						   			<option selected="selected"  value="">${urs.urole_name }</option>
-						   		</c:if>
-						   		<c:if test="${urs.check == 0 }">
-						   			<option  value="">${urs.urole_name }</option>
-						   		</c:if> --%>
-						   		
-						   		<option <c:if test="${urs.check == 1 }">selected="selected"</c:if> value="${urs.uroleid }">${urs.urole_name }</option>
+						   				<option style="width: 80px" <c:if test="${urs.check == 1 }">selected="selected"</c:if> value="${urs.uroleid }">
+						   					<c:forEach items="${loginUser.rq }" var="rqs">
+												<c:if test="${rqs.q_id==8}">
+						   							${urs.urole_name }
+						   						</c:if>
+											</c:forEach>
+						   				</option>
 						   	</c:forEach>
 						</select>
-					
 					</td>
+					
+					
 				</tr>
 			</table>
 		</form>

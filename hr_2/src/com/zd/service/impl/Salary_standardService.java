@@ -10,6 +10,7 @@ import com.zd.dao.ISalary_standardDao;
 import com.zd.entity.Compensation_item;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.ISalary_standardService;
 
 @Service
@@ -79,6 +80,31 @@ public class Salary_standardService implements ISalary_standardService{
 	public int selLikeSalary_standardli(Map map) {
 		return Salary_standardDao.selLikeSalary_standardli(map);
 	}
+
+	//根据薪酬编号修改薪酬标准(变更)
+	public void updSalary_standardbg(Salary_standard ss) {
+		Salary_standardDao.updSalary_standardbg(ss);
+	}
+
+	//修改薪酬标准单详细信息
+	public void updSalary_standard_details(Map map) {
+		Salary_standardDao.updSalary_standard_details(map);
+		
+	}
+
+	//根据项目id修改项目金额(变更)
+	public void updcompensation_itembg(Map map) {
+		Salary_standardDao.updcompensation_itembg(map);
+		
+	}
+
+	//单条查询薪酬标准单详细信息
+	public Salary_standard_details sonedelSalary_standard_details(Map map) {
+		return Salary_standardDao.sonedelSalary_standard_details(map);
+	}
+
+	
+
 	
 	
 }

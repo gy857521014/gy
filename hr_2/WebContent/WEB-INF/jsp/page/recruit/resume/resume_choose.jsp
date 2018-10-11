@@ -130,11 +130,11 @@ function fun(){
 					<td width="84%" class="TD_STYLE2">
 					<input type="hidden" name="datePropertyName" value="registTime"/>
 						 
-						<input type="text" name="startDate"   onclick="aa('utilBean.startDate')" 
+						<input type="text" name="startDate"   onclick="aa('startDate')" 
 							style="width: 14%" class="INPUT_STYLE2">
 						至
 						<input type="text" name="endDate" 
-							style="width: 14%" class="INPUT_STYLE2" onclick="aa('utilBean.endDate')">
+							style="width: 14%" class="INPUT_STYLE2" onclick="aa('endDate')">
 						（YYYY-MM-DD）
 					</td>
 				</tr>

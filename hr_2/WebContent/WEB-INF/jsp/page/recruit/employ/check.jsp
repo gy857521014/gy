@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -103,8 +104,8 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="radio"  name="pass_passComment" value="通过"  checked onclick="sf()">通过
-						<input type="radio"  name="pass_passComment" value="不通过"   onclick="ly()">不通过
+							<input type="radio"  name="pass_passComment" value="通过"  checked onclick="sf()">通过
+							<input type="radio"  name="pass_passComment" value="不通过"   onclick="ly()">不通过
 						<input type="submit" value="确认" class="BUTTON_STYLE1"
 							onclick="search();">
 						<input type="button" value="返回" class="BUTTON_STYLE1" 
@@ -456,7 +457,9 @@
 					<td class="TD_STYLE2" colspan="7">
 						<textarea
 							name="pass_passComment" id="passPasscomment" class="TEXTAREA_STYLE1"
-							rows="4" readonly="readonly">通过</textarea>
+							rows="4" readonly="readonly">
+								通过
+							</textarea>
 					</td>
 				</tr>
 			</table>

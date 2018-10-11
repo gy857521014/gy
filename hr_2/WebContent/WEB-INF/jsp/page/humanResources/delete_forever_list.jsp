@@ -7,13 +7,30 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
 			href="../css/table.css" type="text/css">
+			<script type="text/javascript"
+			src="../javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+		</script>
 		<script type="text/javascript">
-			function doDelete(human_id) {
+			function doDelete(id) {
+				var ajaxdel = $("#ajaxdel");
 				if (confirm("确定删除此档案吗？")) {
-					location.href = "Delete?human_id=" + human_id;
+					$.ajax({
+						url:'Delete?human_id='+id,
+						type:'get',
+						success:function(data){
+							if(data == 1){
+								ajaxdel.remove();
+								$.messager.show("删除提示", "删除成功", 2000);
+							}
+						}
+					});
 				}
 			}
 		</script>
+
 	</head>
 
 	<body>
@@ -63,7 +80,7 @@
 					</td>
 				</tr>
 				<c:forEach items="${humman_fileslist }" var="humman_fileslist">
-					<tr class="TR_STYLE2" id ="${humman_fileslist.human_id }">
+					<tr class="TR_STYLE2" id ="ajaxdel">
 						<td width="14%" height="13" class="TD_STYLE2">
 							${humman_fileslist.human_id }
 						</td>
@@ -89,18 +106,12 @@
 							${humman_fileslist.hunma_major_name }
 						</td>
 						<td width="7%" class="TD_STYLE2">
-							<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${humman_fileslist.human_id })"/>
+							<img src="../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${humman_fileslist.human_id })"/>
 						</td>
 					</tr>
 				</c:forEach>
 				
 			</table>
-			<p style="text-align: center;">
-					<a href="delete_forever_list.html" style="color:black;">首页</a>
-							    <font color="red">1</font> 
-     				<a href="delete_forever_list.html" style="color:black;">尾页</a> 
-				
-			</p>
 		</form>
 	</body>
 </html>
