@@ -114,7 +114,7 @@ function pd(){
 						${humman_file.human_id }
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="../upload/${humman_file.human_picture }"  style="width:120px;height:150px;"/>
+						<img src="/usr/file_upload/${humman_file.human_picture }"  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
