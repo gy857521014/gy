@@ -4,11 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet"
-			href="../css/table.css" type="text/css">
+			href="../css/table.css" type="text/css"/>
 		<link rel="stylesheet"
-			href="../css/cwcalendar.css" type="text/css">
+			href="../css/cwcalendar.css" type="text/css"/>
 		<script type="text/javascript"
 			src="../javascript/comm/comm.js">
 		</script>
@@ -31,10 +31,71 @@
 		<script type="text/javascript"
 			src="../javascript/human_input_check.js">
 		</script>
+<script type="text/javascript">
+function pd(){
+						//职称
+						if($("#majorinName").val() != 0){
+							//姓名
+							if($("#humanName1").val() != null && $("#humanName1").val().trim() != ""){
+								//email
+								if($("#humanEmail").val() != null && $("#humanEmail").val().trim() != ""){
+									//电话
+									if($("#humanTelephone").val() != null && $("#humanTelephone").val().trim() != ""){
+										//QQ
+										if($("#humanQq").val() != null && $("#humanQq").val().trim() != ""){
+											//手机
+											if($("#humanMobilephone").val() != null && $("#humanMobilephone").val().trim() != ""){
+												//住址
+												if($("#humanaddress").val() != null && $("#humanaddress").val().trim() != ""){
+													//邮编
+													if($("#humanpostcode").val() != null && $("#humanpostcode").val().trim() != ""){
+														//出生地
+														if($("#humanbirthplace").val() != null && $("#humanbirthplace").val().trim() != ""){
+															//生日
+															if($("#birthday").val() != null && $("#birthday").val().trim() != ""){
+																//社会保障号码
+																if($("#humansocietysecurityid").val() != null && $("#humansocietysecurityid").val().trim() != ""){
+																	//年龄
+																	if($("#humanAge").val() != null && $("#humanAge").val().trim() != ""){
+																		//开户行
+																		if($("#humanbank").val() != null && $("#humanbank").val().trim() != ""){
+																			//银行账户
+																			if($("#humanaccount").val() != null && $("#humanaccount").val().trim() != ""){
+																				$("#tijiao").submit();
+																			}else
+																				$.messager.show("消息提示", "请填写你的银行账户", 2000);
+																		}else
+																			$.messager.show("消息提示", "请填写你的开户行", 2000);
+																	}else
+																		$.messager.show("消息提示", "请填写你的年龄", 2000);
+																}else
+																	$.messager.show("消息提示", "请填写你的社会保障号码", 2000);
+															}else
+																$.messager.show("消息提示", "请填写你的生日", 2000);
+														}else
+															$.messager.show("消息提示", "请填写你的出生地", 2000);
+													}else
+														$.messager.show("消息提示", "请填写你的邮编", 2000);
+												}else
+													$.messager.show("消息提示", "请填写你的住址", 2000);
+											}else
+												$.messager.show("消息提示", "请填写你的手机", 2000);
+										}else
+											$.messager.show("消息提示", "请填写你的QQ", 2000);
+									}else
+										$.messager.show("消息提示", "请填写你的电话，如：123-12345678", 2000);
+								}else
+									$.messager.show("消息提示", "请填写你的电子邮件", 2000);
+							}else
+								$.messager.show("消息提示", "请填写你的姓名", 2000);
+						}else
+							$.messager.show("消息提示", "请选择你的职称", 2000);
+}
+</script>
 	</head>
 	<body>
 
-		<form action="register_choose_picture_update" method="post" enctype="multipart/form-data">
+		<form action="register_choose_picture_update" id="tijiao" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="human_id" value="${humman_file.human_id }"/>
 			<table width="100%">
 				<tr>
@@ -44,10 +105,10 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="确认变更" class="BUTTON_STYLE1"/>
-						<input type="reset" value="清除" class="BUTTON_STYLE1">
+						<input type="button" value="确认变更" onclick="pd()" class="BUTTON_STYLE1"/>
+						<input type="reset" value="清除" class="BUTTON_STYLE1"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back()">
+							onclick="history.back()"/>
 					</td>
 				</tr>
 			</table>
@@ -120,8 +181,8 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="human_name" value="${humman_file.human_name }"
-							class="INPUT_STYLE2">
+						<input type="text" id="humanName1" name="human_name" value="${humman_file.human_name }"
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						性别
@@ -143,7 +204,7 @@
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_email" value="${humman_file.human_email }"
-							class="INPUT_STYLE2" id="humanEmail">
+							class="INPUT_STYLE2" id="humanEmail"/>
 					</td>
 				</tr>
 				<tr>
@@ -152,21 +213,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_telephone" value="${humman_file.human_telephone }"
-							class="INPUT_STYLE2" id="humanTelephone">
+							class="INPUT_STYLE2" id="humanTelephone"/>
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_qq" value="${humman_file.human_qq }"
-							class="INPUT_STYLE2" id="humanQq">
+							class="INPUT_STYLE2" id="humanQq"/>
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_mobilephone" id="humanMobilephone"
-							value="${humman_file.human_mobilephone }" class="INPUT_STYLE2">
+							value="${humman_file.human_mobilephone }" class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -175,14 +236,14 @@
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="human_address" value="${humman_file.human_address }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanaddress"/>
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="human_postcode" value="${humman_file.human_postcode }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanpostcode"/>
 					</td>
 				</tr>
 				<tr>
@@ -206,14 +267,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_birthplace" value="${humman_file.human_birthplace }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanbirthplace"/>
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
-							value="${humman_file.human_birthday }" class="INPUT_STYLE2" id="birthday">
+							value="${humman_file.human_birthday }" class="INPUT_STYLE2" id="birthday"/>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
@@ -267,14 +328,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_id_card" id="humanIdCard"
-							value="${humman_file.human_id_card }" class="INPUT_STYLE2">
+							value="${humman_file.human_id_card }" class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_society_security_id" value="${humman_file.human_society_security_id }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humansocietysecurityid"/>
 					</td>
 				</tr>
 				<tr>
@@ -283,7 +344,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_age" value="${humman_file.human_age }"
-							class="INPUT_STYLE2" id="humanAge">
+							class="INPUT_STYLE2" id="humanAge"/>
 					</td>
 					<td class="TD_STYLE1">
 						学历
@@ -352,21 +413,21 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_bank" value="${humman_file.human_bank }"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2" id="humanbank"/>
 					</td>
 					<td class="TD_STYLE1">
 						银行帐号
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="human_account"
-							value="${humman_file.human_account }" class="INPUT_STYLE2">
+							value="${humman_file.human_account }" class="INPUT_STYLE2" id="humanaccount"/>
 					</td>
 					<td class="TD_STYLE1">
 						变更人
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="changer" value="${loginUser.user_true_name }"
-							readonly="readonly" class="INPUT_STYLE2">
+							readonly="readonly" class="INPUT_STYLE2"/>
 					</td>
 				</tr>
 				<tr>
@@ -376,7 +437,7 @@
 					<td class="TD_STYLE2">
 						<input type="text" name="change_time"
 							id="create_time" readonly="readonly"
-							class="INPUT_STYLE2">
+							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						特长

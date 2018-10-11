@@ -81,12 +81,6 @@
 					</tr>
 						</c:forEach>
 			</table>
-			<p style="text-align: center;">
-					<a href="recovery_list.html" style="color:black;">首页</a>
-							    <font color="red">1</font> 
-     				<a href="recovery_list.html" style="color:black;">尾页</a> 
-				
-			</p>
 		</form>
 	</body>
 </html>

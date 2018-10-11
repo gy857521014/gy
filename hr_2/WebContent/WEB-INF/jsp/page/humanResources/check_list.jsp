@@ -80,12 +80,6 @@
 				</tr>
 				</c:forEach>
 			</table>
-			<p style="text-align: center;">
-					<a href="check_list.html" style="color:black;">首页</a>
-							    <font style="color:red;">1</font> 
-     				<a href="check_list.html" style="color:black;">尾页</a> 
-				
-			</p>
 		</form>
 	</body>
 </html>

@@ -112,12 +112,6 @@
 				</c:forEach>
 				
 			</table>
-			<p style="text-align: center;">
-					<a href="delete_forever_list.html" style="color:black;">首页</a>
-							    <font color="red">1</font> 
-     				<a href="delete_forever_list.html" style="color:black;">尾页</a> 
-				
-			</p>
 		</form>
 	</body>
 </html>

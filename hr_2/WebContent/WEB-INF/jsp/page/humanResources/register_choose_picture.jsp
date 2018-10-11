@@ -7,7 +7,7 @@
 		<link rel="stylesheet"
 			href="../css/table.css" type="text/css"/>
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="../javascript/comm/comm.js">
 		</script>
 	</head>
 	<body>
