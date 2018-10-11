@@ -113,6 +113,33 @@
 	<result column="check_status" property="check_status"/>
 </resultMap>
 
+<select id="sgall" parameterType="map" resultMap="sgmapper">
+		select * from Salary_grant
+		<where>
+			 check_status=1
+			<if test="startDate!=null and startDate!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+			</if>
+			
+			<if test="endDate!=null and endDate!=''">
+			<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')<=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+			</if>
+			
+			<if test="primarKey!=null and primarKey!=''">
+				and (first_kind_name like '%${primarKey}%' or second_kind_name like '%${primarKey}%' or third_kind_name like '%${primarKey}%')
+			</if>
+			
+			<if test="sgid!=null and sgid!=''">
+				and salary_grant_id=#{sgid}
+			</if>
+			
+		</where>
+		
+	</select>
+
+
+
+
 <resultMap type="com.zd.entity.Salary_grant_details" id="sgdmapper">
 	<result column="grd_id" property="grd_id"/>
 	<result column="salary_grant_id" property="salary_grant_id"/>
@@ -123,6 +150,19 @@
 	<result column="deduct_sum" property="deduct_sum"/>
 	<result column="salary_standard_sum" property="salary_standard_sum"/>
 	<result column="salary_paid_sum" property="salary_paid_sum"/>
+</resultMap>
+
+<resultMap type="com.zd.entity.Salary_grant_details" id="sgdmapper2">
+	<result column="grd_id" property="grd_id"/>
+	<result column="salary_grant_id" property="salary_grant_id"/>
+	<result column="human_id" property="human_id"/>
+	<result column="human_name" property="human_name"/>
+	<result column="bouns_sum" property="bouns_sum"/>
+	<result column="sale_sum" property="sale_sum"/>
+	<result column="deduct_sum" property="deduct_sum"/>
+	<result column="salary_standard_sum" property="salary_standard_sum"/>
+	<result column="salary_paid_sum" property="salary_paid_sum"/>
+	<result column="salary_standard_id" property="salary_standard_id"/>
 </resultMap>
 
 <resultMap type="cfskentity" id="cfsk">

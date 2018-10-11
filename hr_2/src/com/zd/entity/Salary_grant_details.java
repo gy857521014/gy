@@ -1,5 +1,7 @@
 package com.zd.entity;
 
+import java.util.List;
+
 public class Salary_grant_details {
 	private	int grd_id;
 	private	String salary_grant_id;
@@ -10,6 +12,23 @@ public class Salary_grant_details {
 	private	double deduct_sum;
 	private	double salary_standard_sum;
 	private	double salary_paid_sum;
+	
+	private String salary_standard_id;
+	private List<Salary_standard_details> ssdList;
+	
+	
+	public String getSalary_standard_id() {
+		return salary_standard_id;
+	}
+	public void setSalary_standard_id(String salary_standard_id) {
+		this.salary_standard_id = salary_standard_id;
+	}
+	public List<Salary_standard_details> getSsdList() {
+		return ssdList;
+	}
+	public void setSsdList(List<Salary_standard_details> ssdList) {
+		this.ssdList = ssdList;
+	}
 	public int getGrd_id() {
 		return grd_id;
 	}
@@ -71,7 +90,7 @@ public class Salary_grant_details {
 		return "Salary_grant_details [grd_id=" + grd_id + ", salary_grant_id=" + salary_grant_id + ", human_id="
 				+ human_id + ", human_name=" + human_name + ", bouns_sum=" + bouns_sum + ", sale_sum=" + sale_sum
 				+ ", deduct_sum=" + deduct_sum + ", salary_standard_sum=" + salary_standard_sum + ", salary_paid_sum="
-				+ salary_paid_sum + "]";
+				+ salary_paid_sum + ", salary_standard_id=" + salary_standard_id + "]";
 	}
 	
 	

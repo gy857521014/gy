@@ -100,8 +100,8 @@ public class Salary_grantService implements ISalary_grantService{
 		return dao.selone(salary_grant_id);
 	}
 
-	public List<Salary_grant_details> selsgdall() {
-		return dao.selsgdall();
+	public List<Salary_grant_details> selsgdall(String salary_grant_id) {
+		return dao.selsgdall(salary_grant_id);
 	}
 
 	public List<Humman_file> selhuman2(String second_kind_name) {
@@ -134,5 +134,14 @@ public class Salary_grantService implements ISalary_grantService{
 
 	public Config_file_third_kind selall3(String fname) {
 		return dao.selall3(fname);
+	}
+	
+	public void upd(Salary_grant sg) {
+		dao.upd(sg);
+		
+	}
+
+	public List<Salary_grant> sgall(Map map) {
+		return dao.sgall(map);
 	}
 }

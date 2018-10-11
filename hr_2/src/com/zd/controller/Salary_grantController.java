@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.ResultMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,6 +144,9 @@ public class Salary_grantController {
 			sg.setSalary_standard_sum(salarystandardsum);
 			sg.setSalary_paid_sum(salarypaidsum);
 		}
+		/*for(int index = 0; index < human_name.size(); index++) {
+			
+		}*/
 		isg.addsg(sg);
 		return "page/salaryGrant/register_success";
 	}
@@ -205,21 +209,43 @@ public class Salary_grantController {
 		User u = (User)session.getAttribute("loginUser");
 		map.put("u", u);
 		
+		/*List<Humman_file> mmlist = isg.selhuman(fname);
+		for (Humman_file humman_file : mmlist) {
+			String ssid = humman_file.getSalary_standard_id();
+			// 查询每个人的薪酬项目--List
+			List<Salary_standard_details> list1= isg.selBySSD(ssid);
+			humman_file.setSsdList(list1);
+		}*/
+		
 		Salary_grant sg = isg.selone(salary_grant_id);
 		map.put("sg", sg);
 		
-		/*List<Salary_grant_details> sgdlist = isg.selsgdall();
+		List<Salary_grant_details> sgdlist = isg.selsgdall(salary_grant_id);
 		for (Salary_grant_details salary_grant_details : sgdlist) {
-			String ssid = humman_file.getSalary_standard_id();
-			 查询每个人的薪酬项目--List
+			String ssid = salary_grant_details.getSalary_standard_id();
 			List<Salary_standard_details> list1= isg.selBySSD(ssid);
-			humman_file.setSsdList(list1);
+			salary_grant_details.setSsdList(list1);
 		}
-		map.put("sgdlist", sgdlist);*/
+		map.put("sgdlist", sgdlist);
 		
 		List<Config_public_char> plist = isg.selpubulic();
 		map.put("plist", plist);
 		return "page/salaryGrant/check";
+	}
+	@RequestMapping("page/tocheck_success")
+	public String tocheck_success(Salary_grant sg,Map map) {
+		isg.upd(sg);
+		return "page/salaryGrant/check_success";
+	}
+	@RequestMapping("page/toquery_locate")
+	public String toquery_locate() {
+		return "page/salaryGrant/query_locate";
+	}
+	@RequestMapping("page/toquery_list")
+	public String totoquery_list(@RequestParam Map map,Map map2) {
+		List<Salary_grant> sglist = isg.sgall(map);
+		map2.put("sglist", sglist);
+		return "page/salaryGrant/query_list";
 	}
 	
 }

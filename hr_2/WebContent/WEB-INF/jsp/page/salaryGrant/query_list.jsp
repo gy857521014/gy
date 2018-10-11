@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 		<!--
@@ -58,52 +59,33 @@
 				
 				</tr>
 				
-				
+				<c:forEach items="${sglist }" var="sg">
 					<tr class="TD_STYLE2">
 						<td>
-							<a href="query.html">HS1353753198460</a>
+							${sg.salary_grant_id }
 						</td>
 						<td>
-							Ⅰ级结构 
+							${sg.first_kind_name }
 						</td>
 						<td>
-							
+							<c:if test="${not empty sg.second_kind_name }">
+							${sg.second_kind_name }
+							</c:if>
 						</td>
 						<td>
-							
+							<c:if test="${not empty sg.third_kind_name }">
+							${sg.third_kind_name }
+							</c:if>
 						</td>
 						<td>
-							5
+							${sg.human_amount }
 						</td>
 						<td>
-							139823.0
+							${sg.salary_standard_sum }
 						</td>
 						 
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							<a href="query.html">HS1353322467447</a>
-						</td>
-						<td>
-							总部  
-						</td>
-						<td>
-							湖南分校区  
-						</td>
-						<td>
-							长沙分校区1  
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							2664.0
-						</td>
-						 
-					</tr>
-					
-				 			
+				 	</c:forEach>		
 			</table>
 			
 			
@@ -111,36 +93,7 @@
   <head>  
   </head>  
   <body>
-   <p>
-   <div align="center" style="font-size: 18px;color: gray">
-				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">2</font>
-				例 
-				&nbsp;&nbsp;&nbsp;
-				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
-				条
-				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">1</font>
-				 页 
-				&nbsp;&nbsp;&nbsp;共 
-				<font style="color: maroon;font-weight: bold;">1</font>
-				 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPage(1)">首页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(0)">上一页</a>
-				 
-				<a style="color: navy;font-weight: bold" 
-				href="javascript:doPage(2)">下一页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(1)">末页</a>
-				&nbsp;&nbsp;&nbsp;跳到第
-				<input id=page type=text  value="1" class=input1 size=1>
-				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="1">
-			</div>
+   
 			<script type="text/javascript">
 function dopagebybutton() {
 	var reg = /^[0-9]*[1-9][0-9]*$/;

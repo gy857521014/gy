@@ -22,8 +22,8 @@
     <td width="51%" align="right">
 			<input type="button" 
 			class="BUTTON_STYLE1" 
-			onclick="javascript:window.location='tocheck_list';" 
-			value="复核" />
+			onclick="javascript:window.location='tolo';" 
+			value="返回" />
 		</td>
 		
 		

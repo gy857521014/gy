@@ -64,11 +64,13 @@ public interface ISalary_grantService {
 	
 	public Salary_grant selone(String salary_grant_id);
 	
-	public List<Salary_grant_details> selsgdall();
+	public List<Salary_grant_details> selsgdall(String salary_grant_id);
 	
 	public int selhum2(String second_kind_name);
 	
 	public int selhum3(String third_kind_name);
 	
+	public void upd(Salary_grant sg);
 	
+	public List<Salary_grant> sgall(Map map);
 }

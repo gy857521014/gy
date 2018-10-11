@@ -4,32 +4,29 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="../css/table.css" type="text/css">
+		<script type="text/javascript" src="../javascript/comm/comm.js"></script>
+		<script type="text/javascript" src="../javascript/comm/list.js"></script>
 		<title>无标题文档</title>
-		<style type="text/css">
-		<!--
-		.style3 {color: #0000CC}
-		td{text-align: center}
-		-->
-		</style>
-	</head>
+		<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>	
+		<script type="text/javascript" src="../javascript/calendar-ch.js"></script>
+		<script type="text/javascript" src="../javascript/comm/time.js"></script>
+		<link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"></link></head>
 
 	<body>
-	<form action="/HR_Fist/salaryGrant/salaryGrantAction!toQueryListByPage">
+		<form method="post" action="toquery_list">
+		<input type="hidden" name="page.startPage" value="0">
 			<table width="100%">
 				<tr>
-					<td style="text-align:left;">
+					<td>
 						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放查询</font>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td>
-						
+						<div align="right">
+							<input type="submit" value="查询" class="BUTTON_STYLE1" >
+						</div>
 					</td>
 				</tr>
 			</table>
@@ -37,139 +34,35 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="20%" class="TD_STYLE1">
-						<span>薪酬编号</span>
+					<td width="20%"  class="TD_STYLE1">
+						请输入薪酬单号:
 					</td>
-					<td width="15%" class="TD_STYLE1">
-						<span>I级机构名称</span>
+					<td class="TD_STYLE2">
+						<input type="text"  name="sgid" class="INPUT_STYLE1" />
 					</td>
-					<td width="15%" class="TD_STYLE1">
-						<span>II级机构名称</span>
-					</td>
-					<td width="15%" class="TD_STYLE1">
-						<span>III级机构名称</span>
-					</td>
-					<td width="10%" class="TD_STYLE1">
-						<span>人数</span>
-					</td>
-					<td width="20%" class="TD_STYLE1">
-						基本薪酬总额(元)
-					</td>
-				
 				</tr>
-				
-				
-					<tr class="TD_STYLE2">
-						<td>
-							<a href="query.html">HS1353753198460</a>
-						</td>
-						<td>
-							Ⅰ级结构 
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							5
-						</td>
-						<td>
-							139823.0
-						</td>
-						 
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							<a href="query.html">HS1353322467447</a>
-						</td>
-						<td>
-							总部  
-						</td>
-						<td>
-							湖南分校区  
-						</td>
-						<td>
-							长沙分校区1  
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							2664.0
-						</td>
-						 
-					</tr>
-					
-				 			
+				<tr>
+					<td class="TD_STYLE1">
+						请输入关键字:
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="primarKey" class="INPUT_STYLE1">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1" >
+						请输入发放时间:
+					</td>
+					<td width="70%" class="TD_STYLE2">
+						<input name="startDate" onclick="aa('startDate')" type="text" class="INPUT_STYLE2" id="date_start" style="width:24% " size="30">
+						至 <input type="text" name="endDate" onclick="aa('endDate')"  style="width:24% " class="INPUT_STYLE2" >
+						（YYYY-MM-DD）
+					</td>
+				</tr>
 			</table>
-			
-			
-<html>
-  <head>  
-  </head>  
-  <body>
-   <p>
-   <div align="center" style="font-size: 18px;color: gray">
-				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">2</font>
-				例 
-				&nbsp;&nbsp;&nbsp;
-				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
-				条
-				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">1</font>
-				 页 
-				&nbsp;&nbsp;&nbsp;共 
-				<font style="color: maroon;font-weight: bold;">1</font>
-				 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPage(1)">首页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(0)">上一页</a>
-				 
-				<a style="color: navy;font-weight: bold" 
-				href="javascript:doPage(2)">下一页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(1)">末页</a>
-				&nbsp;&nbsp;&nbsp;跳到第
-				<input id=page type=text  value="1" class=input1 size=1>
-				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="1">
-			</div>
-			<script type="text/javascript">
-function dopagebybutton() {
-	var reg = /^[0-9]*[1-9][0-9]*$/;
-	if (reg.test(document.getElementById("page").value)) {
-		document.getElementById("startpage").value= document.getElementById("page").value;
-	} else {
-		alert("您的输入有误");
-		document.getElementById("page").value = document.getElementById("startpage").value;
-	}
-	document.forms[0].submit();
-	
-}
-function doPage(startsize) {
-	document.getElementById("startpage").value =startsize;
-	document.forms[0].submit();
-	 
-}
-</script>
-   
-   
-  </body>
-</html>
- 
-			
-			
-			
-			</form>
-				 
-
+		</form>
 	</body>
+	 
 </html>
+
 

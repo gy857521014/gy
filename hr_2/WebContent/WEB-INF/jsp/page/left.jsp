@@ -189,7 +189,7 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryGrant/query_locate.html" target="mainFrame" style="color:black;">薪酬发放查询</a>
+										<a href="toquery_locate" target="mainFrame" style="color:black;">薪酬发放查询</a>
 									</span>
 								</li>
 					</ul>

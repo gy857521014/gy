@@ -76,7 +76,12 @@
 							${sg.salary_standard_sum }
 						</td>
 						<td>
-							<a href="tocheck?salary_grant_id=${sg.salary_grant_id }">登 记</a>
+						<c:if test="${sg.check_status==0 }">
+							<a href="tocheck?salary_grant_id=${sg.salary_grant_id }">复核</a>
+						</c:if>
+						<c:if test="${sg.check_status==1 }">
+							已复核
+						</c:if>
 						</td>
 					</tr>
 				</c:forEach>
@@ -85,36 +90,6 @@
   <head>  
   </head>  
   <body>
-   <p>
-   <div align="center" style="font-size: 18px;color: gray">
-				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">3</font>
-				例 
-				&nbsp;&nbsp;&nbsp;
-				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
-				条
-				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">1</font>
-				 页 
-				&nbsp;&nbsp;&nbsp;共 
-				<font style="color: maroon;font-weight: bold;">1</font>
-				 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPage(1)">首页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(0)">上一页</a>
-				 
-				<a style="color: navy;font-weight: bold" 
-				href="javascript:doPage(2)">下一页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(1)">末页</a>
-				&nbsp;&nbsp;&nbsp;跳到第
-				<input id=page type=text  value="1" class=input1 size=1>
-				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="1">
-			</div>
 			<script type="text/javascript">
 function dopagebybutton() {
 	var reg = /^[0-9]*[1-9][0-9]*$/;

@@ -125,7 +125,7 @@ td {
 					<td>
 					<input type="hidden" name="salary_standard_sum" value="${human.salary_sum }"/>
 					<input type="text" name="salary_paid_sum"
-						readonly="readonly" id="salary_paid_sum" value="${human.salary_sum }"
+						readonly="readonly" id="salaryPaidSum${vs.count }" value="${human.salary_sum }"
 						class="INPUT_STYLE2" /></td>
 				</tr>
 				</c:forEach>

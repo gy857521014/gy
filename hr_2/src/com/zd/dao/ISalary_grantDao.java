@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
@@ -117,7 +118,12 @@ public interface ISalary_grantDao {
 	@ResultMap("sgmapper")
 	public Salary_grant selone(String salary_grant_id);
 	
-	@Select("SELECT * FROM salary_grant_details")
-	@ResultMap("sgdmapper")
-	public List<Salary_grant_details> selsgdall();
+	@Select("SELECT a.*,b.salary_standard_id FROM salary_grant_details a,salary_grant b WHERE a.salary_grant_id=b.salary_grant_id AND b.salary_grant_id=#{salary_grant_id}")
+	@ResultMap("sgdmapper2")
+	public List<Salary_grant_details> selsgdall(String salary_grant_id);
+	
+	@Update("UPDATE salary_grant SET salary_standard_sum=#{salary_standard_sum},salary_paid_sum=#{salary_paid_sum},register=#{register},regist_time=#{regist_time},checker=#{checker},check_time=#{check_time},check_status=1 where salary_grant_id=#{salary_grant_id}")
+	public void upd(Salary_grant sg);
+	
+	public List<Salary_grant> sgall(Map map);
 }
