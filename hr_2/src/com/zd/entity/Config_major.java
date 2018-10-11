@@ -50,6 +50,11 @@ public class Config_major {
 	public Config_major() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Config_major [major_kind_id=" + major_kind_id + ", major_kind_name="
+				+ major_kind_name + ", major_id=" + major_id + ", major_name=" + major_name + "]";
+	}
 	
 	
 }

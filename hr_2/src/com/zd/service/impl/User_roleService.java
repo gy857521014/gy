@@ -61,4 +61,10 @@ public class User_roleService implements IUser_roleService {
 		}
 	}
 
+	//查询角色名是否存在
+	@Override
+	public int byurole_name(String urole_name) {
+		return user_roleDao.byurole_name(urole_name);
+	}
+
 }

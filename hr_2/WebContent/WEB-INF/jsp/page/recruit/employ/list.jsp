@@ -76,6 +76,9 @@
 					<td class="TD_STYLE1">
 						查询
 					</td>
+					<td class="TD_STYLE1">
+						发送邮件
+					</td>
 				</tr>
 				
 				 <c:forEach items="${eil }" var="eil">
@@ -115,6 +118,9 @@
 									<a href="details_queryDan?id=${eil.ein_id }">不通过&nbsp;&nbsp;查询</a>
 								</td>
 							</c:if>
+							<td class="TD_STYLE2">
+								<a href="selemail2?id=${eil.engage_resume.res_id }">${eil.engage_resume.human_email }</a>
+							</td>
 						
 					</tr>
 				 </c:if>

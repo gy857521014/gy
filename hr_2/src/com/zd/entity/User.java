@@ -16,8 +16,18 @@ public class User {
 	
 	//角色表
 	private List<User_role> urole;
+	//权限表
+	private List<R_q_conn> rq;
 	
 	
+	
+	
+	public List<R_q_conn> getRq() {
+		return rq;
+	}
+	public void setRq(List<R_q_conn> rq) {
+		this.rq = rq;
+	}
 	public List<User_role> getUrole() {
 		return urole;
 	}

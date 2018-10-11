@@ -9,6 +9,7 @@
 	<result property="user_phone" column="user_phone"/>
 	
 	<collection property="urole" column="userid" select="com.zd.dao.IUser_roleDao.queryByUid"/>
+	<collection property="rq"    column="userid" select="com.zd.dao.IR_q_connDao.queryByUid"></collection>
 </resultMap>
 
 </mapper>

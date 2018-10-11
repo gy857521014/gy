@@ -47,4 +47,8 @@ public interface IUser_roleDao {
 	//添加用户关系
 	@Insert("INSERT INTO r_q_conn VALUES(#{r_id},#{q_id})")
 	public void u_r_connAdd(Map<String, Integer> map);
+	
+	//查询角色名是否存在
+	@Select("SELECT COUNT(*) FROM user_role WHERE urole_name=#{urole_name}")
+	public int byurole_name(String urole_name);
 }

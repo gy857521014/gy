@@ -152,6 +152,8 @@ public class EngageMajotController {
 			List<Config_file_third_kind> sanlist=thirdservice.selcftk();
 			List<Config_major_kind> kindlist=kindservice.selconfigmajor();
 			List<Config_major> majorlist=majorservice.selallzhi();
+			System.out.println(majorlist);
+			System.out.println(release.getMajor_id());
 			map.put("release", release);
 			map.put("zhaoplist", zhaoplist);
 			map.put("firstlist", firstlist);
@@ -167,9 +169,15 @@ public class EngageMajotController {
 			//根据一级机构id查名称
 			release.setFirst_kind_name(firstservice.selcffkid(release.getFirst_kind_id()).getFirst_kind_name());
 			//根据二级机构id查名称
-			release.setSecond_kind_name(secondservice.selerjiid(release.getSecond_kind_id()).getSecond_kind_name());
+			if(release.getSecond_kind_id()!=null) {
+				
+				release.setSecond_kind_name(secondservice.selerjiid(release.getSecond_kind_id()).getSecond_kind_name());
+			}
 			//根据三级机构id查名称
-			release.setThird_kind_name(thirdservice.selsanjiid(release.getThird_kind_id()).getThird_kind_name());
+			if(release.getThird_kind_id()!=null) {
+				
+				release.setThird_kind_name(thirdservice.selsanjiid(release.getThird_kind_id()).getThird_kind_name());
+			}
 			//根据职位分类id查名称
 			release.setMajor_kind_name(kindservice.selmajorkindid(release.getMajor_kind_id()).getMajor_kind_name());
 			//根据职位id查名称

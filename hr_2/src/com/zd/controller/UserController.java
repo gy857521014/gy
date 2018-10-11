@@ -48,6 +48,8 @@ public class UserController {
 				User user = userService.login(u);
 				if(user != null) {
 					session.setAttribute("loginUser", user);
+					//保存pojo到session
+					
 					return "page/index";
 				}else {
 					return "redirect:tologin";
@@ -75,6 +77,20 @@ public class UserController {
 		int count = userService.byuser_phone(user_phone);
 		return count;
 	}
+	//判断手机号是否存在
+	@RequestMapping("page/by_phone")
+	@ResponseBody
+	public int by_phone(String user_phone) {
+		int count = userService.byuser_phone(user_phone);
+		return count;
+	}
+	//判断用户名是否存在
+	@RequestMapping("page/by_name")
+	@ResponseBody
+	public int by_name(String user_name) {
+		int count = userService.byuser_name(user_name);
+		return count;
+	}
 	
 	//退出
 	@RequestMapping("page/esc")
@@ -93,12 +109,31 @@ public class UserController {
 	
 	//查询所有用户信息
 	@RequestMapping("page/queryAll")
-	public String queryAll(Map<String, Object> map) {
+	public String queryAll(Map map,int start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 		try {
-			List<User> userList = userService.queryAll();
-			map.put("userList", userList);
+			int total = 0;
+			int li = userService.queryAll2();
+			map.put("li", li);
+			if(li % 4 == 0) {
+				total = li/4;
+				//总条数 / 每页显示的条数
+				map.put("total",total);
+			} else {
+				total = li/4+1;
+				//总条数 / 每页显示的条数+1
+				map.put("total",total);
+			}
+			if(li==0) {
+				map.put("starttrue", 0);
+			}else {
+				map.put("starttrue", start+1);
+				map.put("start", start);
+				List<User> userList = userService.queryAll(start*4);
+				map.put("userList", userList);
+				
+			}
 		}catch(Exception e) {
 			logger.error("查询所有用户信息错误",e);
 		}

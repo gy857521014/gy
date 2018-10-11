@@ -113,7 +113,12 @@
 							 	<td class="TD_STYLE2">
 									不可以面试
 								</td>
+								<td class="TD_STYLE2">
+									<a href="#">${list.human_email }</a>
+								</td>
 							</c:if>
+							
+							
 							<c:if test="${list.check_status==2 }">
 								<td class="TD_STYLE2">
 									可以面试
