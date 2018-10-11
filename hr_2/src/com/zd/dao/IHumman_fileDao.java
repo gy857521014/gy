@@ -26,7 +26,7 @@ public interface IHumman_fileDao {
 	public int sel1all();
 	
 	//查询薪资标准
-	@Select("SELECT * FROM salary_standard_details")
+	@Select("SELECT * FROM salary_standard_details group by standard_name")
 	public List<Salary_standard_details> xinchoulist();
 	//根据薪酬标注编号查询薪酬标准name
 	@Select("select * from salary_standard where standard_id=#{id}")
@@ -45,7 +45,6 @@ public interface IHumman_fileDao {
 	//修改图片
 	@Update("UPDATE humman_file SET human_picture=#{fnewname} WHERE human_id = #{human_id}")
 	public void uploadUpdate(Map map);
-	
 	//查询人力资源档案表
 	@Select("SELECT * FROM humman_file where check_status=2")
 	@ResultMap("Humman_file")
