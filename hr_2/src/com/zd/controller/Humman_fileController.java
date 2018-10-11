@@ -179,8 +179,8 @@ public class Humman_fileController {
 			String fname = file1.getOriginalFilename();
 			// 获取到要上传到文件的路径
 			// 1、获取upload文件夹在web项目中的真实路径
-			String dir = 
-				session.getServletContext().getRealPath("/usr/file_upload");
+			String dir = "/usr/file_upload";
+//				session.getServletContext().getRealPath("/usr/file_upload");
 			// 2、获取上传到文件的的路径
 			String fnewname = fname.replace(".", System.currentTimeMillis()+".");
 			String fpath = dir +"/" +fnewname;
