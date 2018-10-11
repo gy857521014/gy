@@ -30,7 +30,9 @@
 			src="../javascript/locate.js">
 	
 </script>
-		
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+		</script>
 	 
 <script type="text/javascript">
  
@@ -160,10 +162,10 @@
  		</script>
  		<script type="text/javascript">
  		function search(id){   
- 			document.getElementById("name1").style.display ="none";
  			if(document.getElementById("shaixuan").value.trim()<1||document.getElementById("shaixuan").value.trim().length>10)
 			{
-				document.getElementById("name1").style.display ="";
+ 				$.messager.show("消息提示", "请输入筛选人!", 1000);
+ 				document.getElementById("shaixuan").focus();
 				return false;    				
 			}
 	 		if(document.getElementById("passCheckcomment").value=="删除简历"){
@@ -192,8 +194,7 @@
 				<tr>
 					<td align="right">
 						<span style="color:red;display:none" id="name1">请输入筛选人</span>
-						<input type="radio" name="check_status"  value="1" onclick="mians()">建议面试
-						<input type="radio" name="check_status"   value="2" onclick="bis()">建议笔试
+						<!-- <input type="radio" name="check_status"  value="1" onclick="mians()">建议面试 -->
 						<input type="radio" name="check_status"   value="3"  checked="checked" onclick="luy()">建议录用
 						<input type="radio" name="check_status"  value="4" onclick="del()">删除简历
 						<input type="submit" value="确认" class="BUTTON_STYLE1"
@@ -536,7 +537,7 @@
 						筛选人
 					</td>
 					<td class="TD_STYLE2">
-					 <input type="text" id="shaixuan" name="checker" value="${ei.checker }" class="INPUT_STYLE2"/>
+					 <input type="text" id="shaixuan" name="checker" value="${loginUser.user_true_name }" class="INPUT_STYLE2" readonly="readonly"/>
 				 
 					</td>
 					<td class="TD_STYLE1">

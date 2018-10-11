@@ -43,6 +43,14 @@ public class Engage_resumeService implements IEngage_resumeService{
 	public void resumeupdate(int res_id) {
 		resumedao.resumeupdate(res_id);
 	}
+	
+	public void updemail(int res_id) {
+		resumedao.updemail(res_id);
+	}
+	
+	public void updemail2(int res_id) {
+		resumedao.updemail2(res_id);
+	}
 }
 
 

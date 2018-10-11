@@ -109,25 +109,40 @@
 							</c:if>
 						</td>
 						
-							 <c:if test="${list.check_status==1 }">
+							 <c:if test="${list.interview_status==2 }">
 							 	<td class="TD_STYLE2">
 									不可以面试
 								</td>
 								<td class="TD_STYLE2">
-									<a href="#">${list.human_email }</a>
+									<span style="color:red">${list.human_email }</span>
 								</td>
 							</c:if>
 							
 							
-							<c:if test="${list.check_status==2 }">
+							<c:if test="${list.interview_status==1 }">
 								<td class="TD_STYLE2">
 									可以面试
 								</td>
 								<td class="TD_STYLE2">
-									<a href="selemail?id=${list.res_id }">${list.human_email }</a>
+									<c:if test="${list.pass_check_status==1}">
+										<a href="selemail?id=${list.res_id }" style="color:red">${list.human_email }</a>
+									</c:if>
+									<c:if test="${list.pass_check_status==2}">
+										<span style="color:red">已发送</span>
+									</c:if>
 								</td>								
 							</c:if>
-						
+							
+							<c:if test="${list.interview_status==3 }">
+								<td class="TD_STYLE2">
+									已面试
+								</td>
+								<td class="TD_STYLE2">
+									<c:if test="${list.pass_check_status==2 or list.pass_check_status==3}">
+										<span style="color:red">已发送</span>
+									</c:if>
+								</td>								
+							</c:if>
 					</tr>
 					</c:forEach>
 					

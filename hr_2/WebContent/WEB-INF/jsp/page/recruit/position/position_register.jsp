@@ -31,7 +31,8 @@
 			src="../javascript/comm/time.js">
 		</script>
 		<script type="text/javascript"
-			src="../javascript/jquery.messager.js"></script>
+			src="../javascript/jquery.messager.js">
+		</script>
  		<script type="text/javascript">
  			window.onload=check;
 		function tick() {
@@ -82,33 +83,33 @@
  		 
  		 if(document.getElementById("engageType").value.trim()<1||document.getElementById("engageType").value.trim().length>20)
  		  {
- 			$.messager.show("消息提示", "请选择招聘类型!", 2000);
+ 			$.messager.show("消息提示", "请选择招聘类型!", 1000);
 
  	       return false;
  	       } 
  		 
  		 if(document.getElementById("majorKindId").value.trim()<1||document.getElementById("majorKindId").value.trim().length>20)
  		 {
- 			$.messager.show("消息提示", "请选择职位分类!", 2000);
+ 			$.messager.show("消息提示", "请选择职位分类!", 1000);
  	       return false;
  	       }  
  		 
  		  if(document.getElementById("majorId").value.trim()<1||document.getElementById("majorId").value.trim().length>20)
  		  {
- 			 $.messager.show("消息提示", "请选择职位名称!", 2000);
+ 			 $.messager.show("消息提示", "请选择职位名称!", 1000);
 
- 	       return false;
+ 	       	 return false;
  	       }  
  		  
  		 if(document.getElementById("humanAmount").value<1||document.getElementById("humanAmount").value>1000)
  		  {		 
- 				$.messager.show("消息提示", "请输入招聘人数!", 2000);
- 	       	return false; 
- 	  }    
+ 				$.messager.show("消息提示", "请输入招聘人数!", 1000);
+ 	       		return false; 
+ 	  		}    
  		 
  		var re = /^[0-9]+.?[0-9]*$/;
 		if (!re.test(document.getElementById("humanAmount").value)) {
-			$.messager.show("消息提示", "请输入正确的招聘人数!", 2000);
+			$.messager.show("消息提示", "请输入正确的招聘人数!", 1000);
 			document.getElementById("humanAmount").focus();
 			return false;
 		}
@@ -117,14 +118,14 @@
 			
  		 if(document.getElementById("date_start").value.trim()<1||document.getElementById("date_start").value.trim().length>20)	
  		  {
- 			$.messager.show("消息提示", "请输入截止日期!", 2000);
+ 			$.messager.show("消息提示", "请输入截止日期!", 1000);
 
  	       return false; 
  	 	 }   
  		 
  		var riqi = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
 		if (!riqi.test(document.getElementById("date_start").value)) {
-			$.messager.show("消息提示", "请输入正确的日期格式!", 2000);
+			$.messager.show("消息提示", "请输入正确的日期格式!yyyy-MM-dd", 1000);
 			document.getElementById("date_start").focus();
 			return false;
 		}
@@ -134,20 +135,20 @@
 			// 获取当前时间
 			var now = new Date();
 			if(inpDate.getTime() < now.getTime()){
-				$.messager.show("消息提示", "请输入正确的截止日期!", 2000);
+				$.messager.show("消息提示", "请输入正确的截止日期!(今天以后)", 1000);
 				return false;
 			}
  		 
  	  if(document.getElementById("zhiwei").value.trim()<1||document.getElementById("zhiwei").value.trim().length>20)
 		{
- 		 $.messager.show("消息提示", "请输入职位描述!", 2000);
+ 		 $.messager.show("消息提示", "请输入职位描述!", 1000);
  			document.getElementById("zhiwei").focus();
 			return false;    				
 		}
  	  
 	  if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>20)
 		{
-		  $.messager.show("消息提示", "请输入招聘要求!", 2000);
+		  $.messager.show("消息提示", "请输入招聘要求!", 1000);
 		  document.getElementById("zhp").focus();
 			return false;    				
 			

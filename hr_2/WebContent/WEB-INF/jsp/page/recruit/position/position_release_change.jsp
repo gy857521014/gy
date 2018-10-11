@@ -72,47 +72,57 @@
 		}
  		</script>
  		
- 	<!--  <script type="text/javascript">
- 	   function mySubmit(){  
-  	document.humanfileForm.submit();
- 	}
-  
- 	</script> 
- 	-->
+ 	<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+ 	</script>
  	<script type="text/javascript">
         function myfunction()
 		{
-    		
-        	document.getElementById("name").style.display ="none";
-
 			if(document.getElementById("renshu").value.trim()<1||document.getElementById("renshu").value.trim().length>4)
 			{
-				document.getElementById("name").style.display ="";
+				$.messager.show("消息提示", "请输入招聘人数!", 2000);
 				return false;    				
+			}
+			var re = /^[0-9]+.?[0-9]*$/;
+			if (!re.test(document.getElementById("renshu").value)) {
+				$.messager.show("消息提示", "请输入正确的招聘人数!", 2000);
+				document.getElementById("renshu").focus();
+				return false;
 			}
 			if(document.getElementById("riqi").value.trim()<1||document.getElementById("riqi").value.trim().length>10)
 			{
-				document.getElementById("name").style.display ="";
+				$.messager.show("消息提示", "请输入截止日期!", 2000);
 				return false;    				
 			}
-			if(document.getElementById("bgr").value.trim()<1||document.getElementById("bgr").value.trim().length>11)
-			{
-				document.getElementById("name").style.display ="";
-				return false;    				
+			var riqi = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
+			if (!riqi.test(document.getElementById("riqi").value)) {
+				$.messager.show("消息提示", "请输入正确的日期格式!", 2000);
+				document.getElementById("riqi").focus();
+				return false;
 			}
+			// 输入的时间
+				var c =document.getElementById("riqi").value;
+				var inpDate = new Date(c);
+				// 获取当前时间
+				var now = new Date();
+				if(inpDate.getTime() < now.getTime()){
+					$.messager.show("消息提示", "请输入正确的截止日期!", 2000);
+					return false;
+				}
+			
 			if(document.getElementById("zhiwei").value.trim()<1||document.getElementById("zhiwei").value.trim().length>20)
 			{
-				document.getElementById("name").style.display ="";
+				 $.messager.show("消息提示", "请输入职位描述!", 2000);
+		 		 document.getElementById("zhiwei").focus();
 				return false;    				
 			}
 			if(document.getElementById("zhp").value.trim()<1||document.getElementById("zhp").value.trim().length>60)
 			{
-				document.getElementById("name").style.display ="";
+				$.messager.show("消息提示", "请输入招聘要求!", 2000);
+				 document.getElementById("zhp").focus();
 				return false;    				
 			}
 			
-			 
-			 
 			document.humanfileForm.submit();
 			return true;
 		}

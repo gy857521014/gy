@@ -49,7 +49,7 @@ function search() {
 				success:function(data){
 					var cityselect=$("#majorId");
 					cityselect.empty();
-					cityselect.append("<option value='0'>--请选择职位名称--</option>");
+					cityselect.append("<option value=''>--请选择职位名称--</option>");
 					for(var i=0;i<data.length;i++){
 						var eachCity=data[i];
 						var id=eachCity.major_id;
@@ -97,7 +97,7 @@ function search() {
 					 
 					<select name="majorKindId" onchange="fun()"  multiple="multiple" style="width: 290;height: 100"
 							 id="majorKindId"  class="SELECT_STYLE2"> 
-						<option value="0">--请选择--</option>
+						<option value="">--请选择--</option>
 					
 					<c:forEach items="${major}" var="major">
 						<option value="${major.major_kind_id }">${major.major_kind_name }</option>
@@ -125,16 +125,16 @@ function search() {
 				
 				<tr>
 					<td class="TD_STYLE1" width="30%">
-						请输入登记时间
+						请输入面试时间
 					</td>
-					<td width="84%" class="TD_STYLE2" >
-					<input type="hidden" name="mindate"/>
+					<td width="84%" class="TD_STYLE2">
+					<input type="hidden" name="mindate1"/>
 					 
-					<input type="text" name="utilBean.startDate"   onclick="aa('utilBean.startDate')" 
+					<input type="text" name="mindate"   onclick="aa('mindate')" 
 							style="width: 14%" class="INPUT_STYLE2">
 						至
 						<input type="text" name="maxdate" 
-							style="width: 14%" class="INPUT_STYLE2" onclick="aa('utilBean.endDate')">
+							style="width: 14%" class="INPUT_STYLE2" onclick="aa('maxdate')">
 						（YYYY-MM-DD）
 					</td>
 				</tr>

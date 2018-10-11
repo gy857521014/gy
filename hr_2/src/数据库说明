@@ -328,7 +328,7 @@ remark	VARCHAR(60),	-- 备注
 recomandation	VARCHAR(60),	-- 推荐意见
 human_picture	VARCHAR(60),	-- 照片
 attachment_name	VARCHAR(60),	-- 档案附件
-check_status	INT,	-- 复核状态（????）
+check_status	INT,	-- 复核状态（????）添加完1，推荐，可以面试2，
 register	VARCHAR(60), 	 -- 登记人
 regist_time	DATE,	-- 登记时间 
 checker	VARCHAR(60), -- 	复核人姓名
@@ -342,7 +342,7 @@ pass_register	VARCHAR(60),	-- 通过登记人姓名
 pass_regist_time	DATE,	-- 通过登记时间 
 pass_checker	VARCHAR(60),	-- 通过复核人姓名  
 pass_check_time	DATE,	-- 通过复核时间 
-pass_check_status	INT,	-- 通过的复核状态（？？？？）
+pass_check_status	INT,	-- 通过的复核状态（？？？？）推荐完，可以面试1,2发送面试，3已发送面试，
 pass_checkComment	VARCHAR(60),	-- 录用申请审核意见
 pass_passComment	VARCHAR(60)	-- 录用申请审批意见  
 )
