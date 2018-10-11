@@ -398,51 +398,7 @@
 				</table>
 				<hr/>
 			
-				<table class="grandfather">
-					<tr>
-						<td>
-							<input type="checkbox" name="q_id" value="5" id="powerAction!doModifyRight_rightCodes5" class="grandfather_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L05" /> 
-							&#35843;&#21160;&#31649;&#29702;
-							<table class="parent">
-										<tr>
-											<td>
-												<input type="checkbox" name="q_id" value="501" id="powerAction!doModifyRight_rightCodes501" class="parent_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L0501" /> 
-												&#35843;&#21160;&#30331;&#35760;
-												<table class="children">
-													<tr>
-													</tr>
-												</table>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input type="checkbox" name="q_id" value="502" id="powerAction!doModifyRight_rightCodes502" class="parent_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L0502" /> 
-												&#35843;&#21160;&#23457;&#26680;
-												<table class="children">
-													<tr>
-													</tr>
-												</table>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input type="checkbox" name="q_id" value="503" id="powerAction!doModifyRight_rightCodes503" class="parent_ck"/>
-<input type="hidden" id="__checkbox_powerAction!doModifyRight_rightCodes" name="__checkbox_rightCodes" value="L0503" /> 
-												&#35843;&#21160;&#26597;&#35810;
-												<table class="children">
-													<tr>
-													</tr>
-												</table>
-											</td>
-										</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-				<hr/>
+				
 			
 				<table class="grandfather">
 					<tr>
@@ -605,9 +561,7 @@
 								  "4","401",
 								  	  "402",
 								  	  "403",
-								  "5","501",
-								  	  "502",
-								  	  "503",
+								  
 								  "6","601","60101","60102","60103","60104","60105","60106","60107",
 								  	  "602","60201",
 								  	  "604","60401",

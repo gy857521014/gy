@@ -107,12 +107,11 @@ public class User_roleController {
 		return "redirect:/page/user_roleAll";
 	}
 	
-	//判断手机号是否存在
+	//判断角色名是否存在
 	@RequestMapping("page/byurole_name")
 	@ResponseBody
-	public int byurole_name(String urole_name) {
-	int count = user_roleService.byurole_name(urole_name);
-	System.out.println(urole_name);
+	public int byurole_name(String roleName) {
+	int count = user_roleService.byurole_name(roleName);
 	return count;
 	}
 }

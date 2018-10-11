@@ -28,9 +28,13 @@ public interface IUserDao {
 	public int byuser_phone(String user_phone);
 	
 	//查询所有用户
-	@Select("select * from user")
+	@Select("select * from user LIMIT #{start},4")
 	@ResultMap("userMapper")
-	public List<User> queryAll();
+	public List<User> queryAll(int start);
+	
+	//分页查询
+	@Select("select count(*) from user")
+	public int queryAll2();
 	
 	//添加用户
 	@Insert("INSERT INTO USER VALUES(NULL,#{user_name},#{user_true_name},#{user_password},null)")

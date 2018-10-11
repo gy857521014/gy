@@ -22,8 +22,9 @@
 			}
 			if(uroleid!=null){
 			$.ajax({
-				url:"by_name?user_name=" + userName,
-				type:'get',
+				url:"by_name",
+				type:'post',
+				data:{'user_name':userName},
 				success:function(data){
 					$("#count").val(data);
 					if(data!=0){

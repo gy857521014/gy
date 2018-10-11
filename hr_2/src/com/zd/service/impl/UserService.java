@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +39,8 @@ public class UserService implements IUserService {
 
 	//查询所有用户信息
 	@Override
-	public List<User> queryAll() {
-		return userDao.queryAll();
+	public List<User> queryAll(int start) {
+		return userDao.queryAll(start);
 	}
 
 	//添加用户
@@ -97,6 +98,11 @@ public class UserService implements IUserService {
 	@Override
 	public int byuser_name(String user_name) {
 		return userDao.byuser_name(user_name);
+	}
+	//分页查询
+	@Override
+	public int queryAll2() {
+		return userDao.queryAll2();
 	}
 
 	

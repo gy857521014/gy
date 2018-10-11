@@ -22,25 +22,22 @@
 				$.messager.show("消息提示", "角色说明不能为空!", 2000);
 			}
 			if(uroleExp!=""){
-				alert(roleName)
-			$.ajax({
-				url:"byurole_name?urole_name=" + roleName,
-				type:'post',
-				data:{'map.roleName':roleName},
-				/*dataType:"json",
-				scriptCharset:"utf-8", */
-				success:function(data){
-					$("#count").val(data);
-					if(data!=0){
-						$.messager.show("消息提示", "该角色名以存在!", 2000);
+				$.ajax({
+					url:"byurole_name",
+					type:'post',
+					data:{'roleName':roleName},
+					success:function(data){
+						$("#count").val(data);
+						if(data!=0){
+							$.messager.show("消息提示", "该角色名以存在!", 2000);
+						}
+						if(data==0){
+							$("#bc").submit();
+						}
 					}
-					if(data==0){
-						$("#bc").submit();
-					}
-				}
-			});
+				});
+			}
 		}
-	}
 		
 		</script>
 	</head>

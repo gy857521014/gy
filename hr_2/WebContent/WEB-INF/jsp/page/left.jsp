@@ -280,36 +280,7 @@
 			</c:if>
 		</c:forEach>
 		
-		<c:forEach items="${loginUser.rq }" var="rqs">
-			<c:if test="${rqs.q_id==5}">
-				<li>
-					<span>调动管理</span>
-					<ul>
-							<c:if test="${rqs.q_id==5 or rqs.q_id==501 }">
-								<li>
-									<span>
-										<a href="transfer/register_locate.html" target="mainFrame" style="color:black;">调动登记</a>
-									</span>
-								</li>
-							</c:if>	
-							<c:if test="${rqs.q_id==5 or rqs.q_id==502 }">
-								<li>
-									<span>
-										<a href="transfer/check_list.html" target="mainFrame" style="color:black;">调动审核</a>
-									</span>
-								</li>
-							</c:if>	
-							<c:if test="${rqs.q_id==5 or rqs.q_id==503 }">
-								<li>
-									<span>
-										<a href="transfer/locate.html" target="mainFrame" style="color:black;">调动查询</a>
-									</span>
-								</li>
-							</c:if>
-					</ul>
-				</li>
-			</c:if>
-		</c:forEach>
+		
 		
 		<c:forEach items="${loginUser.rq }" var="rqs">
 			<c:if test="${rqs.q_id==6}">
@@ -418,7 +389,7 @@
 						<ul>
 								<li>
 									<span>
-											<a href="queryAll" target="mainFrame" style="color:black;">用户管理</a>
+											<a href="queryAll?start=0" target="mainFrame" style="color:black;">用户管理</a>
 									</span>
 								</li>
 								

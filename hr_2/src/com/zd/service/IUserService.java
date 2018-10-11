@@ -2,6 +2,8 @@ package com.zd.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.zd.entity.User;
 import com.zd.entity.User_role;
 
@@ -18,7 +20,9 @@ public interface IUserService {
 	public User loginByphone(User u);
 	
 	//查询用户
-	public List<User> queryAll();
+	public List<User> queryAll(int start);
+	//分页查询
+	public int queryAll2();
 	
 	//添加用户
 	public void userAdd(User user,List<Integer> userIds);

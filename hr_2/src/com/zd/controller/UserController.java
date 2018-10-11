@@ -109,12 +109,31 @@ public class UserController {
 	
 	//查询所有用户信息
 	@RequestMapping("page/queryAll")
-	public String queryAll(Map<String, Object> map) {
+	public String queryAll(Map map,int start) {
 		Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 		try {
-			List<User> userList = userService.queryAll();
-			map.put("userList", userList);
+			int total = 0;
+			int li = userService.queryAll2();
+			map.put("li", li);
+			if(li % 4 == 0) {
+				total = li/4;
+				//总条数 / 每页显示的条数
+				map.put("total",total);
+			} else {
+				total = li/4+1;
+				//总条数 / 每页显示的条数+1
+				map.put("total",total);
+			}
+			if(li==0) {
+				map.put("starttrue", 0);
+			}else {
+				map.put("starttrue", start+1);
+				map.put("start", start);
+				List<User> userList = userService.queryAll(start*4);
+				map.put("userList", userList);
+				
+			}
 		}catch(Exception e) {
 			logger.error("查询所有用户信息错误",e);
 		}
