@@ -11,10 +11,11 @@
 <script type="text/javascript" src="../javascript/calendar/cal.js"></script>
 <script type="text/javascript" src="../javascript/comm/comm.js"></script>
 <script type="text/javascript" src="../javascript/comm/list.js"></script>
-<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="../javascript/calendar-ch.js"></script>
 <script type="text/javascript" src="../javascript/comm/time.js"></script>
 <link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"></link>
+<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 
 </head>
 
@@ -64,16 +65,17 @@
 	<script type="text/javascript">
 			function time(){
 				var myform = document.getElementById("queryForm");
-				var startDate = document.getElementById("date_start").value;
+				/* var startDate = document.getElementById("date_start").value;
 				var endDate = document.getElementById("date_end").value;
 				if(startDate!=null&&startDate!=""&&endDate!=null&&endDate!=""){
 					if(startDate>endDate){
-						alert("您的输入日期有误");
+					
+						$.messager.show("错误提示", "您的输入日期有误!请重新输入", 2000);
 						document.getElementById("date_start").value=null;
 						document.getElementById("date_end").value=null;
 						return;
 					}
-				}
+				} */
 				myform.submit();
 			}
 		</script>

@@ -9,6 +9,7 @@
 		<link rel="stylesheet"
 			href="../css/table.css" type="text/css"/>
 			<script type="text/javascript" src="../javascript/jquery-1.7.2.js"></script>
+			<script type="text/javascript" src="../javascript/jquery.messager.js"></script>
 		<script type="text/javascript">
 			function doDelete(id) {
 				if (confirm("确定删除此用户吗？")) {
@@ -27,7 +28,7 @@
 					.getElementById("page").value-1;
 					
 				} else {
-					alert("您的输入有误");
+					$.messager.show("错误提示", "您的输入有误!!!请重新输入", 2000);
 					document.getElementById("page").value = document
 							.getElementById("startpage").value;
 					return;
@@ -41,15 +42,15 @@
 				document.getElementById("starty").value = startsize;
 				var myform = document.getElementById("queryForm");
 				if(${li}==0){
-					alert("当前没有结果");
+					$.messager.show("错误提示", "当前没有结果", 2000);
 					return false;
 				}else{
 					if(startsize==${total}){
-						alert("已经是末页");
+						$.messager.show("错误提示", "已经是末页", 2000);
 						return;
 					}
 					if(startsize<0){
-						alert("已经是首页");
+						$.messager.show("错误提示", "已经是首页", 2000);
 						return;
 					}
 				}

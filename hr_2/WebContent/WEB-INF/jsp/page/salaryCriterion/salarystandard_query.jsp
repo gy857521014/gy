@@ -119,8 +119,7 @@
 				<tr>
 					<td>
 						<div align="right">
-							<input type="button" value="打印" id="button1"
-								class="BUTTON_STYLE1"> <input type="button" value="返回"
+							 <input type="button" value="返回"
 								onclick="javascript:cform()"
 								class="BUTTON_STYLE1">
 						</div>
@@ -173,7 +172,7 @@
 						<td><input type="text" id="salary${vs.count}"
 							value="${ci.money}" name="x_${ci.pbc_id}_${ci.attribute_name }"
 							onkeyup="countMoney('${cisize }','salary${vs.count}')"
-							class="INPUT_STYLE2"></td>
+							class="INPUT_STYLE2" readonly="readonly"></td>
 						<td colspan="3">&nbsp;</td>
 					</tr>
 				</c:forEach>

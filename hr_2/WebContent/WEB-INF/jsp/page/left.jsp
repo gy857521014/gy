@@ -277,6 +277,7 @@
 							</c:if>
 					</ul>
 				</li>
+<<<<<<< HEAD
 			</c:if>
 		</c:forEach>
 		
@@ -284,6 +285,8 @@
 		
 		<c:forEach items="${loginUser.rq }" var="rqs">
 			<c:if test="${rqs.q_id==6}">
+=======
+>>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 				<li>
 					<span>客户化设置</span>
 					<ul>
