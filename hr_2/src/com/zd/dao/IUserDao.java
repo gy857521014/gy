@@ -28,7 +28,7 @@ public interface IUserDao {
 	public int byuser_phone(String user_phone);
 	
 	//查询所有用户
-	@Select("select * from user LIMIT #{start},4")
+	@Select("select * from user LIMIT #{start},10")
 	@ResultMap("userMapper")
 	public List<User> queryAll(int start);
 	

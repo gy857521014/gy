@@ -21,9 +21,12 @@ public interface IUser_roleDao {
 	public List<User_role> queryUr();
 	
 	//查询所有角色
-	@Select("select * from user_role")
+	@Select("select * from user_role LIMIT #{start},10")
 	@ResultMap("user_roleMapper")
-	public List<User_role> user_roleAll();
+	public List<User_role> user_roleAll(int start);
+	//分页查询
+	@Select("select count(*) from user_role")
+	public int queryAll2();
 	
 	//根据角色id删除角色
 	@Delete("delete from user_role where uroleid=#{uroleid}")

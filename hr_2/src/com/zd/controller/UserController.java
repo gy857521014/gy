@@ -116,12 +116,12 @@ public class UserController {
 			int total = 0;
 			int li = userService.queryAll2();
 			map.put("li", li);
-			if(li % 4 == 0) {
-				total = li/4;
+			if(li % 10 == 0) {
+				total = li/10;
 				//总条数 / 每页显示的条数
 				map.put("total",total);
 			} else {
-				total = li/4+1;
+				total = li/10+1;
 				//总条数 / 每页显示的条数+1
 				map.put("total",total);
 			}
@@ -130,9 +130,8 @@ public class UserController {
 			}else {
 				map.put("starttrue", start+1);
 				map.put("start", start);
-				List<User> userList = userService.queryAll(start*4);
+				List<User> userList = userService.queryAll(start*10);
 				map.put("userList", userList);
-				
 			}
 		}catch(Exception e) {
 			logger.error("查询所有用户信息错误",e);

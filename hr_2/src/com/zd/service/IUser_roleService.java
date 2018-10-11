@@ -12,7 +12,9 @@ public interface IUser_roleService {
 	public List<User_role> queryUr();
 	
 	//查询所有角色
-	public List<User_role> user_roleAll();
+	public List<User_role> user_roleAll(int start);
+	//分页查询
+	public int queryAll2();
 	
 	//根据角色id删除角色
 	public void user_roleDel(int uroleid);

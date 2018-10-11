@@ -54,11 +54,7 @@
 						return;
 					}
 				}
-				
-				
-				
 				myform.submit();
-				
 			}
 		</script>
 	</head>
@@ -167,7 +163,7 @@
 		</form>
 			&nbsp;&nbsp;总数： <font style="color: maroon;font-weight: bold;">${li}</font>
 			例 &nbsp;&nbsp;&nbsp; 每页显示 <font
-				style="color: maroon;font-weight: bold;">4</font> 条
+				style="color: maroon;font-weight: bold;">10</font> 条
 			&nbsp;&nbsp;&nbsp; 当前第 <font style="color: maroon;font-weight: bold;">${starttrue}</font>
 			页 &nbsp;&nbsp;&nbsp;共 <font style="color: maroon;font-weight: bold;">${total}</font>
 			页 <a style="color: navy; font-weight: bold"

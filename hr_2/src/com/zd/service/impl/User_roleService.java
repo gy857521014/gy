@@ -24,8 +24,8 @@ public class User_roleService implements IUser_roleService {
 
 	//查询所有角色
 	@Override
-	public List<User_role> user_roleAll() {
-		return user_roleDao.user_roleAll();
+	public List<User_role> user_roleAll(int start) {
+		return user_roleDao.user_roleAll(start);
 	}
 
 	//根据角色id删除角色
@@ -65,6 +65,12 @@ public class User_roleService implements IUser_roleService {
 	@Override
 	public int byurole_name(String urole_name) {
 		return user_roleDao.byurole_name(urole_name);
+	}
+
+	//分页查询
+	@Override
+	public int queryAll2() {
+		return user_roleDao.queryAll2();
 	}
 
 }

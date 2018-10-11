@@ -400,7 +400,7 @@
 							<c:if test="${rqs.q_id==802}">
 								<li>
 									<span>
-											<a href="user_roleAll" target="mainFrame" style="color:black;">角色管理</a>
+											<a href="user_roleAll?start=0" target="mainFrame" style="color:black;">角色管理</a>
 									</span>
 								</li>
 							</c:if>
