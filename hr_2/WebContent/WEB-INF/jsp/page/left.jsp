@@ -23,122 +23,138 @@
 				<li>
 					<span>招聘管理</span>
 					<ul>
-							<c:if test="${rqs.q_id==101 or rqs.q_id==1}">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${rqs.q_id==101}">
 								<li state="closed">
 									<span>
 										职位发布管理
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==101 or rqs.q_id==10101}">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==10101}">
 												<li>
 													<span>
 														<a href="torecruit" target="mainFrame" style="color:black;">职位发布登记</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==101 or rqs.q_id==10102}">
+											
+											<c:if test="${ rqs.q_id==10102}">
 												<li>
 													<span>
 														<a href="selallrelease" target="mainFrame" style="color:black;">职位发布变更</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==1 or rqs.q_id==101 or rqs.q_id==10103}">	
+											
+											<c:if test="${ rqs.q_id==10103}">	
 												<li>
 													<span>
 														<a href="selallrelease2" target="mainFrame" style="color:black;">职位发布查询</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
-								
-							<c:if test="${rqs.q_id==1 or rqs.q_id==102}">	
+						</c:forEach>
+							
+						<c:forEach items="${loginUser.rq }" var="rqs">	
+							<c:if test="${ rqs.q_id==102}">	
 								<li state="closed">
 									<span>
 										简历管理
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==102 or rqs.q_id==10201}">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==10201}">
 												<li>
 													<span>
 														<a href="seltype" target="mainFrame" style="color:black;">简历登记</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==102 or rqs.q_id==10202}">
+											<c:if test="${ rqs.q_id==10202}">
 												<li>
 													<span>
 														<a href="shaixuan" target="mainFrame" style="color:black;">简历筛选</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==102 or rqs.q_id==10203}">
+											<c:if test="${ rqs.q_id==10203}">
 												<li>
 													<span>
 														<a href="shaixuan2" target="mainFrame" style="color:black;">有效简历查询</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
-								
-							<c:if test="${rqs.q_id==1 or rqs.q_id==103}">	
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==103}">	
 								<li state="closed">
 									<span>
 										面试管理
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==103 or rqs.q_id==10301}">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==10301}">
 												<li>
 													<span>
 														<a href="selmianshi" target="mainFrame" style="color:black;">面试结果登记</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==103 or rqs.q_id==10302}">
+											<c:if test="${ rqs.q_id==10302}">
 												<li>
 													<span>
 														<a href="mshisel" target="mainFrame" style="color:black;">面试筛选</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
-							
-							<c:if test="${rqs.q_id==1 or rqs.q_id==106}">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">	
+							<c:if test="${ rqs.q_id==106}">
 								<li state="closed">
 									<span>
 										录用管理
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==106 or rqs.q_id==10601}">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==10601}">
 												<li>
 													<span>
 														<a href="Engage_interview_query" target="mainFrame" style="color:black;">录用申请</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==106 or rqs.q_id==10602}">
+											<c:if test="${ rqs.q_id==10602}">
 												<li>
 													<span>
 														<a href="check_list_query" target="mainFrame" style="color:black;">录用审批</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==1 or rqs.q_id==106 or rqs.q_id==10603}">
+											<c:if test="${ rqs.q_id==10603}">
 												<li>
 													<span>
 														<a href="list_query" target="mainFrame" style="color:black;">录用查询</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
+						</c:forEach>
 					</ul>
 				</li>
 				</c:if>
@@ -150,64 +166,76 @@
 				<li>
 					<span>人力资源档案管理</span>
 					<ul>
-							<c:if test="${rqs.q_id==2 or rqs.q_id==201 }">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==201 }">
 								<li>
 									<span>
 											<a href="human_register" target="mainFrame" style="color:black;">人力资源档案登记</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==2 or rqs.q_id==202 }">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==202 }">
 								<li>
 									<span>
 											<a href="check_list" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==2 or rqs.q_id==203 }">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==203 }">
 								<li>
 									<span>
 											<a href="query_locate" target="mainFrame" style="color:black;">人力资源档案查询</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==2 or rqs.q_id==204 }">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==204 }">
 								<li>
 									<span>
 											<a href="change_locate" target="mainFrame" style="color:black;">人力资源档案变更</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==2 or rqs.q_id==205 }">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==205 }">
 								<li state="closed">
 									<span>
 										人力资源档案删除管理
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==2 or rqs.q_id==205 or rqs.q_id==20501 }">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==20501 }">
 												<li>
 													<span>
 															<a href="delete_locate" target="mainFrame" style="color:black;">人力资源档案删除</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==2 or rqs.q_id==205 or rqs.q_id==20502 }">
+											<c:if test="${ rqs.q_id==20502 }">
 												<li>
 													<span>
 															<a href="recovery_locate" target="mainFrame" style="color:black;">档案删除恢复</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==2 or rqs.q_id==205 or rqs.q_id==20503 }">
+											<c:if test="${ rqs.q_id==20503 }">
 												<li>
 													<span>
 															<a href="delete_forever_list" target="mainFrame" style="color:black;">人力资源档案永久删除</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
+						</c:forEach>
 					</ul>
 				</li>
 			</c:if>
@@ -218,34 +246,36 @@
 				<li>
 					<span>薪酬标准管理</span>
 					<ul>
-							<c:if test="${rqs.q_id==3 or rqs.q_id==301 }">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==301 }">
 								<li>
 									<span>
 										<a href="tosalarystandard_register" target="mainFrame" style="color:black;">薪酬标准登记</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==3 or rqs.q_id==302 }">
+							<c:if test="${ rqs.q_id==302 }">
 								<li>
 									<span>
 										<a href="tosalarystandard_check_list?start=0" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==3 or rqs.q_id==303 }">
+							<c:if test="${ rqs.q_id==303 }">
 								<li>
 									<span>
 										<a href="tosalarystandard_query_locate" target="mainFrame" style="color:black;">薪酬标准查询</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==3 or rqs.q_id==304 }">
+							<c:if test="${ rqs.q_id==304 }">
 								<li>
 									<span>
 										<a href="tosalarystandard_change_locate" target="mainFrame" style="color:black;">薪酬标准变更</a>
 									</span>
 								</li>
 							</c:if>
+						</c:forEach>
 					</ul>
 				</li>
 			</c:if>
@@ -256,30 +286,31 @@
 				<li>
 					<span>薪酬发放管理</span>
 					<ul>
-							<c:if test="${rqs.q_id==4 or rqs.q_id==401 }">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==401 }">
 								<li>
 									<span>
 										<a href="tolo" target="mainFrame" style="color:black;">薪酬发放登记</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==4 or rqs.q_id==402 }">	
+							<c:if test="${ rqs.q_id==402 }">	
 								<li>
 									<span>
 										<a href="tocheck_list" target="mainFrame" style="color:black;">薪酬发放登记复核</a>
 									</span>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==4 or rqs.q_id==403 }">	
+							<c:if test="${ rqs.q_id==403 }">	
 								<li>
 									<span>
 										<a href="salaryGrant/query_locate.html" target="mainFrame" style="color:black;">薪酬发放查询</a>
 									</span>
 								</li>
 							</c:if>
+						</c:forEach>
 					</ul>
 				</li>
-<<<<<<< HEAD
 			</c:if>
 		</c:forEach>
 		
@@ -287,102 +318,112 @@
 		
 		<c:forEach items="${loginUser.rq }" var="rqs">
 			<c:if test="${rqs.q_id==6}">
-=======
->>>>>>> branch 'master' of https://github.com/gy857521014/gy.git
 				<li>
 					<span>客户化设置</span>
 					<ul>
-							<c:if test="${rqs.q_id==6 or rqs.q_id==601 }">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==601 }">
 								<li state="closed">
 									<span>
 										人力资源档案管理设置
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60101 }">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==60101 }">
 												<li>
 													<span>
 														<a href="selcffk" target="mainFrame" style="color:black;">Ⅰ级机构设置</a>
 													</span>
 												</li>
 											</c:if>
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60102 }">
+											<c:if test="${ rqs.q_id==60102 }">
 												<li>
 													<span>
 														<a href="selcfsk" target="mainFrame" style="color:black;">Ⅱ级机构设置</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60103 }">
+											<c:if test="${ rqs.q_id==60103 }">
 												<li>
 													<span>
 														<a href="selcftk" target="mainFrame" style="color:black;">Ⅲ级机构设置</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60104 }">	
+											<c:if test="${ rqs.q_id==60104 }">	
 												<li>
 													<span>
 														<a href="selzc" target="mainFrame" style="color:black;">职称设置</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60105 }">	
+											<c:if test="${ rqs.q_id==60105 }">	
 												<li>
 													<span>
 														<a href="selcmk" target="mainFrame" style="color:black;">职位分类设置</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60106 }">	
+											<c:if test="${ rqs.q_id==60106 }">	
 												<li>
 													<span>
 														<a href="selcm" target="mainFrame" style="color:black;">职位设置</a>
 													</span>
 												</li>
 											</c:if>	
-											<c:if test="${rqs.q_id==6 or rqs.q_id==601  or rqs.q_id==60107 }">	
+											<c:if test="${ rqs.q_id==60107 }">	
 												<li>
 													<span>
 														<a href="selcpc" target="mainFrame" style="color:black;">公共属性设置</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
+						</c:forEach>
 							
-							<c:if test="${rqs.q_id==6 or rqs.q_id==602 }">
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==602 }">
 								<li state="closed">
 									<span>
 										薪酬管理设置
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==6 or rqs.q_id==602  or rqs.q_id==60201 }">	
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==60201 }">	
 												<li>
 													<span>
 														<a href="selxc" target="mainFrame" style="color:black;">薪酬项目设置</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
-							<c:if test="${rqs.q_id==6 or rqs.q_id==604 }">
+						</c:forEach>
+						<c:forEach items="${loginUser.rq }" var="rqs">
+							<c:if test="${ rqs.q_id==604 }">
 								<li state="closed">
 									<span>
 										邮箱管理设置
 									</span>
 									<ul>
-											<c:if test="${rqs.q_id==6 or rqs.q_id==604  or rqs.q_id==60401 }">
+										<c:forEach items="${loginUser.rq }" var="rqs">
+											<c:if test="${ rqs.q_id==60401 }">
 												<li>
 													<span>
 														<a href="selm" target="mainFrame" style="color:black;">邮箱设置</a>
 													</span>
 												</li>
 											</c:if>
+										</c:forEach>
 									</ul>
 								</li>
 							</c:if>
+						</c:forEach>
 					</ul>
 				</li>
 			</c:if>

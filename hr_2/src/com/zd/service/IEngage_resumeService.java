@@ -19,4 +19,8 @@ public interface IEngage_resumeService {
 	
 	//修改面试状态值为3
 	public void resumeupdate(int res_id);
+	
+	public void updemail(int res_id);
+	
+	public void updemail2(int res_id);
 }

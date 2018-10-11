@@ -52,4 +52,9 @@ public interface IEngage_resumeDao {
 	@Update("update Engage_resume set interview_status=3 where res_id=#{res_id}")
 	public void resumeupdate(int res_id);
 	
+	@Update("update Engage_resume set pass_check_status=2 where res_id=#{res_id}")
+	public void updemail(int res_id);
+	
+	@Update("update Engage_resume set pass_check_status=3 where res_id=#{res_id}")
+	public void updemail2(int res_id);
 }

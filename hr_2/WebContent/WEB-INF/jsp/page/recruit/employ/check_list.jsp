@@ -114,8 +114,8 @@
 								
 								<c:if test="${eil.engage_resume.pass_passComment==null}">
 									<td class="TD_STYLE2">
-									<a href="check_list_queryDan?id=${eil.ein_id }">审批</a>
-								</td>
+											<a href="check_list_queryDan?id=${eil.ein_id }">审批</a>
+									</td>
 								</c:if>
 								
 								<c:if test="${eil.engage_resume.pass_passComment!=null }">
