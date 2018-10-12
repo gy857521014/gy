@@ -117,10 +117,7 @@
 				</c:forEach>
 				
 			</table>
-			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
-			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
-		</form>
+			</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
 		if(currPage<=0){

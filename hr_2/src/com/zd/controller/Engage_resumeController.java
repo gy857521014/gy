@@ -239,7 +239,7 @@ public class Engage_resumeController {
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
 			resumeservice.updemail(res_id);
-			return "redirect:/page/selresume"; 
+			return "redirect:/page/selresume2"; 
 	}
 	
 	@RequestMapping("/page/sendEmailMa2")
@@ -261,6 +261,6 @@ public class Engage_resumeController {
 			// 4、通过邮件发送者发送电子邮件
 			mailSender.send(mm);
 			resumeservice.updemail2(res_id);
-			return "redirect:/page/selresume2"; 
+			return "redirect:/page/list_query"; 
 	}
 }
