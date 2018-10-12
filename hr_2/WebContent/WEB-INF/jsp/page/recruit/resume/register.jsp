@@ -101,7 +101,7 @@
  		        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
  		        if(!myreg.test(temp.value))
  		        {
- 		        	$.messager.show("消息提示", "请输入正确的邮箱(xxx@xxx.com)!", 1000);
+ 		        	$.messager.show("消息提示", "请输入正确的邮箱(xxx@xxx.xxx)!", 1000);
 	 		         myreg.focus();
 	 		        return false;
  		        }
@@ -125,12 +125,15 @@
   		  document.getElementById("humanHomephone").focus();
   			return false;    				
   		}
- 		var re = /0\d{3,4}-\d{7,8}/;
-		if (!re.test(document.getElementById("humanHomephone").value)) {
-			$.messager.show("消息提示", "请输入正确家庭电话号码：以数字0开始，并跟随3-4个数字,中间-连接,满足7-8位!", 2000);
-			document.getElementById("humanHomephone").focus();
-			return false;
-		}
+ 		 if(document.getElementById("humanHomephone").value!='无'){
+ 			var re = /0\d{3,4}-\d{7,8}/;
+ 			if (!re.test(document.getElementById("humanHomephone").value)) {
+ 				$.messager.show("消息提示", "请输入正确家庭电话号码：以数字0开始，并跟随3-4个数字,中间-连接,满足7-8位!", 2000);
+ 				document.getElementById("humanHomephone").focus();
+ 				return false;
+ 			}
+ 		 }
+ 		
 
  		 if(document.getElementById("humanMobilephone").value.trim()<1||document.getElementById("humanMobilephone").value.trim().length>20)
   		{
@@ -370,7 +373,7 @@
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="human_email" id="email" class="INPUT_STYLE2" placeholder="格式xxx@xxx.com">
+						<input type="text" name="human_email" id="email" class="INPUT_STYLE2" placeholder="格式xxx@xxx.xxx">
 					</td>
 				</tr>
 				<tr>
@@ -378,19 +381,19 @@
 					电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2" placeholder="">
+						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2" placeholder="以13,15,17,18开头的11位数字">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
 					</td>
 					<td class="TD_STYLE2">
-					 <input type="text" name="human_homephone" id="humanHomephone" class="INPUT_STYLE2">
+					 <input type="text" name="human_homephone" id="humanHomephone" class="INPUT_STYLE2" placeholder="格式xxxx-xxxxxxx,若没有填无">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="human_mobilephone" id="humanMobilephone" class="INPUT_STYLE2">
+						<input type="text" name="human_mobilephone" id="humanMobilephone" class="INPUT_STYLE2" placeholder="以13,15,17,18开头的11位数字">
 					</td>
 				</tr>
 				<tr>
@@ -405,7 +408,7 @@
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" id="youbian" name="human_postcode" value="" class="INPUT_STYLE2">
+						<input type="text" id="youbian" name="human_postcode" value="" class="INPUT_STYLE2" placeholder="不以0开头的6位数字">
 					</td>
 				</tr>
 				 
@@ -437,7 +440,7 @@
 						生日
 					</td>
 					<td width="13%" colspan="2" class="TD_STYLE2">
-						<input type="text" name="human_birthday" id="birthday" class="INPUT_STYLE2"  >
+						<input type="text" name="human_birthday" id="birthday" class="INPUT_STYLE2" placeholder="格式为2018-10-12" >
 					</td>
 					
 				</tr>
@@ -490,7 +493,7 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="human_idcard" value="" id="card" class="INPUT_STYLE2">
+						<input type="text" name="human_idcard" value="" id="card" class="INPUT_STYLE2" placeholder="18或15位数字的身份证号码">
 					</td>
 					<td class="TD_STYLE1">
 						年龄
@@ -571,7 +574,7 @@
 					</td>
 					<td class="TD_STYLE2">
 					   <select name="human_specility" id="techang"  class="SELECT_STYLE1">
-							<option value="">--无--</option> 
+							<option value="无">--无--</option> 
 							
 							<c:forEach items="${techang }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>
@@ -585,7 +588,7 @@
 					</td>
 					<td class="TD_STYLE2">
 				     <select name="human_hobby"  class="SELECT_STYLE1">
-							<option value="">--无--</option> 
+							<option value="无">--无--</option> 
 							
 							<c:forEach items="${aihao }" var="list">
 								<option value="${list.attribute_name }">${list.attribute_name }</option>

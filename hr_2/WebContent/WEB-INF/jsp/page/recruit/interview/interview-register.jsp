@@ -68,8 +68,8 @@
 				var inpDate = new Date(c);
 				// 获取当前时间
 				var now = new Date();
-				if(inpDate.getTime() < now.getTime()){
-					$.messager.show("消息提示", "请输入正确的截止日期(今天以后)!", 1000);
+				if(inpDate.getTime() > now.getTime()){
+					$.messager.show("消息提示", "请输入正确的面试日期(不能是今天以后)!", 1000);
 					document.getElementById("shijian").focus();
 					return false;
 				}

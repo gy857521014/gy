@@ -124,13 +124,16 @@
   		  document.getElementById("humanHomephone").focus();
   			return false;    				
   		}
- 		var re = /0\d{3,4}-\d{7,8}/;
-		if (!re.test(document.getElementById("humanHomephone").value)) {
-			$.messager.show("消息提示", "请输入正确家庭电话号码：以数字0开始，并跟随3-4个数字,中间-连接,满足7-8位!", 2000);
-			document.getElementById("humanHomephone").focus();
-			return false;
-		}
-
+ 		if(document.getElementById("humanHomephone").value!='无'){
+ 			var re = /0\d{3,4}-\d{7,8}/;
+ 			if (!re.test(document.getElementById("humanHomephone").value)) {
+ 				$.messager.show("消息提示", "请输入正确家庭电话号码：以数字0开始，并跟随3-4个数字,中间-连接,满足7-8位!", 2000);
+ 				document.getElementById("humanHomephone").focus();
+ 				return false;
+ 			}
+ 			
+ 		}
+ 		
  		 if(document.getElementById("humanMobilephone").value.trim()<1||document.getElementById("humanMobilephone").value.trim().length>20)
   		{
   		  $.messager.show("消息提示", "请输入手机!", 2000);
@@ -507,7 +510,11 @@
 								<c:if test="${zongjiao.attribute_name!=resume.human_religion }">
 									<option value="${zongjiao.attribute_name }">${zongjiao.attribute_name}</option>
 								</c:if>
+								
 							</c:forEach>
+							<c:if test="${resume.human_religion=='无' }">
+									<option value="无" selected="selected">无</option>
+							</c:if>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -616,7 +623,7 @@
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
-					<td class="TD_STYLE1">
+					<td class="TD_STYLE2">
 					<input type="text" value="${resume.regist_time }" name="regist_time" class="INPUT_STYLE2">
 					 	
 					</td>
@@ -633,10 +640,14 @@
 								<c:if test="${techang.attribute_name==resume.human_specility }">
 									<option value="${techang.attribute_name }" selected>${techang.attribute_name}</option>
 								</c:if>
-								<c:if test="${techang.attribute_name!=resume.human_specility }">
+								<c:if test="${techang.attribute_name!=resume.human_specility}">
 									<option value="${techang.attribute_name }">${techang.attribute_name}</option>
 								</c:if>
+								
 							</c:forEach>
+							<c:if test="${resume.human_specility=='无' }">
+									<option value="无" selected="selected">无</option>
+							</c:if>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -651,7 +662,11 @@
 								<c:if test="${aihao.attribute_name!=resume.human_hobby }">
 									<option value="${aihao.attribute_name }">${aihao.attribute_name}</option>
 								</c:if>
+								
 							</c:forEach>
+							<c:if test="${resume.human_hobby=='无' }">
+									<option value="无" selected="selected">无</option>
+							</c:if>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
