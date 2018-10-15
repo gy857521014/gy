@@ -27,7 +27,7 @@
 				<tr>
 					<td colspan="2" style="text-align: right"  >
 						<input type="submit" value="复核通过"   class="BUTTON_STYLE1">	　					
-						<input type="button" value="返 回" onclick="location.href='check_list.html'" class="BUTTON_STYLE1">
+						<input type="button" value="返 回" onclick="location.href='tocheck_list'" class="BUTTON_STYLE1">
 					</td>
 				</tr>
 				<tr>

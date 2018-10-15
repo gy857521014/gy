@@ -122,7 +122,7 @@ public interface ISalary_grantDao {
 	@ResultMap("sgdmapper2")
 	public List<Salary_grant_details> selsgdall(String salary_grant_id);
 	
-	@Update("UPDATE salary_grant SET salary_standard_sum=#{salary_standard_sum},salary_paid_sum=#{salary_paid_sum},register=#{register},regist_time=#{regist_time},checker=#{checker},check_time=#{check_time},check_status=1 where salary_grant_id=#{salary_grant_id}")
+	@Update("UPDATE salary_grant SET salary_standard_sum=#{salary_standard_sum},salary_paid_sum=#{salary_paid_sum},checker=#{checker},check_time=#{check_time},check_status=1 where salary_grant_id=#{salary_grant_id}")
 	public void upd(Salary_grant sg);
 	
 	public List<Salary_grant> sgall(Map map);

@@ -457,7 +457,7 @@
 						面试时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="registe_time" id="shijian"  onclick="aa('engageInterview.registeTime')"
+						<input type="text" name="registe_time" id="shijian"  onclick="aa('registe_time')"
 							  class="INPUT_STYLE2"  id="date" >
 						 
 						
